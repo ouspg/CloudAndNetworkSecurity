@@ -28,7 +28,7 @@ Make yourself familiar with following tools.
 
 Task #|Points|Description|
 -----|:---:|-----------|
-Task 1 | 1 | Setting up and running the virtual network
+Task 1 | 1 | Set up and run the virtual network
 Task 2 | 2 | ICMP Tunneling Attack
 Task 3 | 3 | TBD
 Task 4 | 5 | Firewall Testing?
