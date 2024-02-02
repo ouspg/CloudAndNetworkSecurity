@@ -218,14 +218,71 @@ In-case you are struggling with this task, refer to this cifuzz [example](https:
 In the realm of network adversary tactics, one commonly employed technique is Protocol Tunneling, denoted by MITRE as T1572. This method involves encapsulating data packets within a different protocol, offering a means to obscure malicious traffic and provide encryption for enhanced security and identity protection.
 
 
-When discovering hosts, ICMP is the easiest and fastest way to do it. ICMP is the protocol used by the typical PING command to send packets to hosts and see if they respond back or not.
+When discovering hosts, ICMP is the easiest and fastest way to do it. ICMP stands for Internet Control Message Protocol and is the protocol used by the typical PING command to send packets to hosts and see if they respond back or not.
 You could try to send some ICMP packets and expect responses. The easiest way is just sending an echo request and expect from the response. You can do that using a simple ping or using fping for ranges.
 Moreover, you could also use nmap to send other types of ICMP packets (this will avoid filters to common ICMP echo request-response).
 
 In this task, you will perform and ICMP tunneling attack from your kali (attack machine) to server (ubuntu linux).
 
+## Tools & dependencies used in this task (most of it is pre-installed on kali but not ubuntu)
+Install make
+sudo apt-get install make
 
-**A) Update fuzz test file with correct code**
+Install git
+sudo apt install git
+
+Install gcc
+sudo apt install build-essential
+
+ICMPtunnel
+https://github.com/DhavalKapil/icmptunnel
+
+NMAP
+https://github.com/nmap/nmap
+sudo apt-get install nmap
+
+
+**A) Run tunnel on server (victim) on port 1234. Then modify the client.sh file on kali linux (attacker)**
+
+Run tunnel on server with:
+sudo ./icmptunnel -s -p 1234
+
+Active listening using netcat (not relevant. It listens on port 4444)
+nc -lvnp 4444
+
+Run and remove tun0 interface
+ifconfig -a
+sudo ip link del dev tun0
+
+
+Replace <gateway_of_attacker> and <interface_of_attacker> with the gateway and network interface values for the Kali Linux machine (attacker). You can find these values using the route -n command on the Kali Linux machine.
+
+```shell
+#!/bin/sh
+
+# Assigining an IP address and mask to 'tun0' interface
+ifconfig tun0 mtu 1472 up 10.0.1.2 netmask 255.255.255.0
+
+# Modifying IP routing tables
+route del default
+# 'server' is the IP address of the proxy server (10.0.0.23 in this case)
+# 'gateway' and 'interface' are obtained from the route -n output
+route add -host 10.0.0.23 gw 0.0.0.0 dev eth0
+route add default gw 10.0.1.1
+```
+### What does it do? It correctly configures the routing tables for ICMP tunnel
+
+This script configures the tun0 interface, deletes the default route, adds a route to the proxy server (10.0.0.23) via the eth0 interface, and sets a new default route via the tun0 interface.
+
+Run this script on your victim machine (server) after starting the icmptunnel server. Adjust the permissions if needed (chmod +x script_name.sh), and then execute it using ./script_name.sh. This should properly configure the routing tables for the ICMP tunnel.
+
+### Can you ping server from attack machine? How about pfSense? What could be wrong?
+
+When you run a tunneling tool like icmptunnel, it encapsulates the traffic within ICMP packets. If the tunnel is working correctly, standard ICMP tools like ping won't work as expected because the ICMP traffic is being used for the tunnel, not for traditional ping responses.
+
+If your tunnel is running properly, the ICMP packets are carrying your payload between the client (attacker) and server, and they won't respond to regular ICMP requests. This behavior is expected when using ICMP tunneling.
+
+
 
 Go to your empty fuzz test template file (test1.cpp) created in task 1 and update it with the correct code to generate input mutations. Afterwards, you will call your function under test in the main program and fuzzer will automatically feed mutated inputs to it using this fuzz test file!
 
