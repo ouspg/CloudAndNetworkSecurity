@@ -215,9 +215,14 @@ In-case you are struggling with this task, refer to this cifuzz [example](https:
 
 ### ICMP Tunneling Attack
 
+In the realm of network adversary tactics, one commonly employed technique is Protocol Tunneling, denoted by MITRE as T1572. This method involves encapsulating data packets within a different protocol, offering a means to obscure malicious traffic and provide encryption for enhanced security and identity protection.
+
+
 When discovering hosts, ICMP is the easiest and fastest way to do it. ICMP is the protocol used by the typical PING command to send packets to hosts and see if they respond back or not.
-You could try to send some ICMP packets and expect responses. The easiest way is just sending an echo request and expect from the response. You can do that using a simple ping or using fpingfor ranges.
-You could also use nmap to send other types of ICMP packets (this will avoid filters to common ICMP echo request-response).
+You could try to send some ICMP packets and expect responses. The easiest way is just sending an echo request and expect from the response. You can do that using a simple ping or using fping for ranges.
+Moreover, you could also use nmap to send other types of ICMP packets (this will avoid filters to common ICMP echo request-response).
+
+In this task, you will perform and ICMP tunneling attack from your kali (attack machine) to server (ubuntu linux).
 
 
 **A) Update fuzz test file with correct code**
