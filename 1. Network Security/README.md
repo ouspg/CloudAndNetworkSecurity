@@ -119,31 +119,94 @@ Update your package manager based on your Linux distribution and install the fol
 
 Cmake, LLVM clang, LCOV, bazel
 
-Sample install instructions for arch-linux below:
+Sample install instructions for ubuntu/debian-linux below:
 
-#### Install dependencies
-
-```cmd
-sudo pacman -S clang llvm lcov python jdk-openjdk zip
+## Install and setup libvirtd and necessary packages for UEFI virtualization
+```
+sudo apt update
+sudo apt-get install qemu-kvm libvirt-daemon-system virt-top libguestfs-tools ovmf
+sudo adduser $USER libvirt
+sudo usermod -aG libvirt $(whoami)
 ```
 
-#### Install bazelisk
-```cmd
-sudo curl -L https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-amd64 -o /usr/local/bin/bazel
-
-sudo chmod +x /usr/local/bin/bazel
+Start and enable libvirtd
+```
+sudo systemctl start libvirtd
+sudo systemctl enable libvirtd
 ```
 
-#### Install the tool by running the following script:
+## Install terraform
+Follow specific instructions for your system
 
-```cmd
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/CodeIntelligenceTesting/cifuzz/main/install.sh)"
+https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 
+### verify terraform is accessible and the CLI works
+```
+which terraform
+terraform --version
 ```
 
-#### Install docker (preinstalled for Arch)
+
+### install virt-manager for VM accessibility
 ```
-sudo pacman –S docker
+sudo apt-get install virt-install virt-viewer
+sudo apt-get install virt-manager
+```
+
+### install qemu and verify the installation
+https://www.qemu.org/download/#linux
+```
+qemu-system-x86_64 --version
+```
+### download the relevant images & place them in the directory containing main.tf
+
+https://github.com/maurice-w/opnsense-vm-images/releases/tag/23.7.11
+(I am currently using the OPNsense-23.7.11-ufs-efi-vm-amd64.qcow2.bz2)
+
+{Insert the custom pfSense image path here}
+
+https://cdimage.kali.org/kali-2023.4/kali-linux-2023.4-qemu-amd64.7z
+
+Move the image to terraform-testing directory and rename it opnsense.qcow2
+
+### Install mkisofs
+```
+sudo apt-get install -y mkisofs
+```
+
+### Install xsltproc 
+```
+sudo apt-get install xsltproc
+```
+
+### Initialize default storage pool if it hasn't been created by libvirt
+
+```
+sudo virsh pool-define /dev/stdin <<EOF
+<pool type='dir'>
+  <name>default</name>
+  <target>
+    <path>$PWD/images</path>
+  </target>
+</pool>
+EOF
+
+sudo virsh pool-start default
+sudo virsh pool-autostart default
+```
+
+### Configure user permisions for libvirt to storage pool
+```
+sudo chown -R $(whoami):libvirt ~/images
+sudo systemctl restart libvirtd
+```
+
+
+### Terraform magic
+```
+export TERRAFORM_LIBVIRT_TEST_DOMAIN_TYPE="qemu"
+terraform init
+terraform apply
 ```
 
 ---
