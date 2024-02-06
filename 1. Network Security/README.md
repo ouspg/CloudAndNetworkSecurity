@@ -16,10 +16,10 @@ A basic understanding of networking is required. GitHub is required to complete 
 
 Make yourself familiar with following tools.
 
-* **CIFUZZ** - https://github.com/CodeIntelligenceTesting/cifuzz
-* **CIFUZZ Documentation** https://docs.code-intelligence.com/ci-fuzz/ci-fuzz-overview
-* **GitHub Actions** https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions
-* **Creating .yml or .yaml file in GitHub actions** https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+* **nmap** - [Host discovery with nmap](https://nmap.org/book/man-host-discovery.html)
+* **terraform** - [Basic tutorial about what is terraform](https://k21academy.com/terraform-iac/terraform-beginners-guide/)
+* 
+
 
 
 ## Grading
@@ -28,9 +28,9 @@ Make yourself familiar with following tools.
 
 Task #|Points|Description|
 -----|:---:|-----------|
-Task 1 | 1 | Set up and run the virtual network
-Task 2 | 2 | ICMP Tunneling Attack
-Task 3 | 3 | TBD
+Task 1 | 2 | Set up and run the virtual network
+Task 2 | 3 | Host discovery
+Task 3 | 4 | ICMP Tunneling Attack
 Task 4 | 5 | Firewall Testing?
 
 
@@ -51,8 +51,8 @@ Total points accumulated by doing the exercises reflect the overall grade. You c
 ## Background
 
 This week’s theme is network security.
-Tasks are designed to be done with the provided Arch Linux virtual machine, see the [ouspg.org](https://ouspg.org/resources/laboratories/) for instructions on how to run the virtual machine (VM).
-The provided Arch VM has all the required tools preinstalled, but if you have your own computer with some other Linux distribution, you are free to use it, just install all the required tools.
+Tasks are designed to be done with the provided network setup using [terraform](https://en.wikipedia.org/wiki/Terraform_(software)), see the [terraform commands tutorial]([https://ouspg.org/resources/laboratories/](https://tecadmin.net/terraform-basic-commands/)) for instructions on how to run the network using terraform.
+The provided VM's within terraform has all the required tools preinstalled.
 
 
 
@@ -212,6 +212,43 @@ In-case you are struggling with this task, refer to this cifuzz [example](https:
 ---
 
 ## Task 2
+
+### Host discovery
+
+### Discovering hosts inside the network
+
+From your network setup, you know that you're on the network 10.0.0.1/24. Use nmap scan to discover hosts on the network.
+
+**A) How many hosts are present in the internal LAN network? What are their IP addresses?**
+
+```shell
+nmap -sn 10.0.0.1/24
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-02-06 04:19 EST
+Nmap scan report for kyber3.cyber.range (10.0.0.1)
+Host is up (0.00080s latency).
+Nmap scan report for 10.0.0.23
+Host is up (0.00084s latency).
+Nmap scan report for 10.0.0.24
+Host is up (0.00011s latency).
+Nmap done: 256 IP addresses (3 hosts up) scanned in 3.68 seconds
+```
+
+**B) Now try running the same command from outside the LAN network? Are you able to discover devices inside the internal LAN network? Explain your answer**
+
+**C) Extracting more host info using NMAP**
+
+Use the -PE, -PP, -PM flags of nmap to perform host discovery sending respectively ICMPv4 echo, timestamp, and subnet mask requests. 
+
+**Provide command used to do this**
+
+```shell
+sudo nmap -PE -PM -PP -sn -vvv -n 10.0.0.1/24
+```
+
+**What extra information did you gather using this? Paste screenshot**
+Mac addresses and NIC info
+
+## Task 3
 
 ### ICMP Tunneling Attack
 
