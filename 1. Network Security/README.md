@@ -352,16 +352,17 @@ sudo apt-get install nmap
 
 **A) Run tunnel on server (victim) on port 1234. Then modify the client.sh file on kali linux (attacker)**
 
-Run tunnel on server with:
+```shell
+#Run tunnel on server with:
 sudo ./icmptunnel -s -p 1234
 
-Active listening using netcat (not relevant. It listens on port 4444)
+#Active listening using netcat (not relevant. It listens on port 4444)
 nc -lvnp 4444
 
-Run and remove tun0 interface
+#Run and remove tun0 interface if needed to start again
 ifconfig -a
 sudo ip link del dev tun0
-
+```
 
 Replace <gateway_of_attacker> and <interface_of_attacker> with the gateway and network interface values for the Kali Linux machine (attacker). You can find these values using the route -n command on the Kali Linux machine.
 
