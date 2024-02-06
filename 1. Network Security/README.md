@@ -16,9 +16,10 @@ A basic understanding of networking is required. GitHub is required to complete 
 
 Make yourself familiar with following tools.
 
-* **nmap** - [Host discovery with nmap](https://nmap.org/book/man-host-discovery.html)
+*
+* **nmap** - [Host discovery with nmap](https://nmap.org/book/man-host-discovery.html) [nmap on Wikipedia](https://en.wikipedia.org/wiki/Nmap)
 * **terraform** - [Basic tutorial about what is terraform](https://k21academy.com/terraform-iac/terraform-beginners-guide/)
-* 
+* **ICMP** - [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol)
 
 
 
@@ -57,24 +58,32 @@ The provided VM's within terraform has all the required tools preinstalled.
 
 
 ## INTRODUCTION TO THE NETWORK SETUP
-Fuzz automation is the buzzword for industry standard practice, where software production phases are monitored by fuzz testing jobs which run automatically whenever there are new code changes to look for bugs and vulnerabilities before the software is launched into production.
 
-In this lab, we will first explore the concept of Continuous Integration and Continuous Delivery (CI/CD).
-Students will learn how CI/CD pipeline works and how can they design fuzz-testing jobs that can be incorporated into these pipelines.
+The virtual test network is based on two networks:
+1. WAN
+2. LAN
 
+The WAN is your standard computer network. The LAN is the internal network which contains HTTP server (Ubuntu) and probe machine (kali) protected by pfSense firewall which also
+acts as the default router for this. By default, WAN is not allowed to communicate or discover the LAN network.
 
-The concept of CI/CD pipeline
+In this lab, we will first explore some techniques to discover hosts within the internal LAN network using [nmap](https://en.wikipedia.org/wiki/Nmap) and [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) requests. Students will observe traffic packets using pfSense traffic capture tool. Towards the end of lab, students will perform an actual ICMP tunneling attack.
 
- * Continuous integration (CI) automatically builds, tests, and integrates code changes within a shared repository; then
+The internal LAN network consists of following machines
 
- * Continuous delivery (CD) automatically delivers code changes to production-ready environments for approval; or
+ * Kali linux (attack machine)
 
- * Continuous deployment (CD) automatically deploys code changes to customers directly.
+ * Ubuntu linux (server)
+
+ * Router & Firewall (pfSense) - to protect the internal LAN network and shield it from outside
+
+**TODO**
+
+##INSERT NETWORK IMAGE HERE
 
 The objective of deploying a CI/CD pipeline: A CI pipeline runs whenever there are code changes and is designed to make sure all of the changes work with the rest of the code when it’s integrated.
 It should also compile your code, run tests, and check that it’s functional. The CD pipeline goes one step further and deploys the built code into production.
 
-Now that we know the basics of CI/CD, let’s get into the lab task
+Now that we know the basics of virtual network setup, let’s get into the lab task
 
 
 
@@ -82,7 +91,9 @@ Now that we know the basics of CI/CD, let’s get into the lab task
 
 ## TASKS 1-3: CASE SCENARIO
 
-You were recently hired as a Cybersecurity person in TechnoTech – a software company that releases small software products.
+You were recently hired as a Cybersecurity person in NetworkTech – a software company that provides virtualized network solutions to its clients.
+
+**TO BE UPDATED**
 TechnoTech is an agile C/C++ software development company that utilizes modern tech stacks such as GitHub to deploy its code and track version changes.
 Moreover, TechnoTech follows the latest practices of DevOps.
 
@@ -96,16 +107,13 @@ Your first task is to correctly configure your fuzzer with the project's source 
 You will use CIFUZZ as a fuzzing tool for tasks 1-3.
 To build your C++ project correctly with `cifuzz`, you will be using CMake.
 Documentation for CMake is widely available online for example:
-
-[CMake Reference](https://cmake.org/cmake/help/latest/index.html)
-
-CMake another [reference](https://cmake.org/cmake/help/latest/guide/tutorial/A%20Basic%20Starting%20Point.html#exercise-1-building-a-basic-project)
+**TO BE UPDATED**
 
 **Check *prerequisites* if you haven't at this point!**
 
 ---
 
-### Setup Installation
+### Setup Installation (TO BE REVIEWED AND UPDATED)
 
 Update your package manager based on your Linux distribution and install the following dependencies:
 
