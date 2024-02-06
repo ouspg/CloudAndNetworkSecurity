@@ -391,29 +391,46 @@ When you run a tunneling tool like icmptunnel, it encapsulates the traffic withi
 
 If your tunnel is running properly, the ICMP packets are carrying your payload between the client (attacker) and server, and they won't respond to regular ICMP requests. This behavior is expected when using ICMP tunneling.
 
+===================================
+DOING ATTACK STEP BY STEP
+===================================
 
-
-Go to your empty fuzz test template file (test1.cpp) created in task 1 and update it with the correct code to generate input mutations. Afterwards, you will call your function under test in the main program and fuzzer will automatically feed mutated inputs to it using this fuzz test file!
-
-Next two things you need to do with this file:
-
-1. Write your code for the following function. Mutation schemes for integer, character etc goes here
-
-```c++
-FUZZ_TEST(const uint8_t *data, size_t size) {
-/* Your code */
-}
+ o **Attack machine:** Send message to linux kernal to disable loop-back ping: echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all
+ Tunnel should not respond to packets to itself (8min)
+ 
+ ```shell
+ echo 1 | sudo tee /proc/sys/net/ipv4/icmp_echo_ignore_all
 ```
-2. Include appropriate header files. Check notes below
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/9d7434c6-3fce-4f99-b606-0800734b2ced)
 
-Notes for fuzz test file:
 
- o Fuzz test must include the header for the target function _<../src/calculator.h>_ and cifuzz _<cifuzz/cifuzz.h>_
+ o **Server machine:** Run the tunnel server
+ ```
+#  sudo ./icmptunnel -s
+# Create tun0
+ubuntu@ubuntu1804:~/cyberII/icmptunnel$ sudo ip tuntap add mode tun tun0
+ubuntu@ubuntu1804:~/cyberII/icmptunnel$ sudo ip link set tun0 up
 
- o Fuzz test file uses the _<fuzzer/FuzzedDataProvider.h>_ header from LLVM. This should be included
+# Assign interface tun0 IP address
+sudo ip addr add 10.0.1.1/255.255.255.0 dev tun0
 
- o Create input variables and define their mutation scheme. As an example, if one of the input variables is integer, its mutation scheme can be defined using LLVM’s _FuzzedDataProvide.h_ header as:
- ```int num1 = fuzzed_data.ConsumeIntegral<int8_t>();```
+ ```
+
+ o **Attack machine:** Run the tunnel server
+ ```
+  sudo ./icmptunnel -s
+# Create tun0
+ubuntu@ubuntu1804:~/cyberII/icmptunnel$ sudo ip tuntap add mode tun tun0
+ubuntu@ubuntu1804:~/cyberII/icmptunnel$ sudo ip link set tun0 up
+
+# Assign interface tun0 IP address
+sudo ip addr add 10.0.1.2/255.255.255.0 dev tun0
+
+ ```
+```
+ tcpdump -vv -XXX -i tun0 icmp
+```
+ 
 
  LLVM [documentation](https://releases.llvm.org/5.0.0/docs/LibFuzzer.html#fuzz-target)
 
