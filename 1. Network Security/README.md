@@ -51,7 +51,7 @@ Total points accumulated by doing the exercises reflect the overall grade. You c
 ## Background
 
 This week’s theme is network security.
-Tasks are designed to be done with the provided network setup using [terraform](https://en.wikipedia.org/wiki/Terraform_(software)), see the [terraform commands tutorial]([https://ouspg.org/resources/laboratories/](https://tecadmin.net/terraform-basic-commands/)) for instructions on how to run the network using terraform.
+Tasks are designed to be done with the provided network setup using [terraform](https://en.wikipedia.org/wiki/Terraform_(software)), see the [terraform commands tutorial]((https://tecadmin.net/terraform-basic-commands/)) for instructions on how to run the network using terraform.
 The provided VM's within terraform has all the required tools preinstalled.
 
 
