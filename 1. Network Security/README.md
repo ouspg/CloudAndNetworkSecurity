@@ -16,12 +16,14 @@ A basic understanding of networking is required. GitHub is required to complete 
 
 Make yourself familiar with following tools.
 
-*
+* **hping3** - [Intro to hping3](https://www.kali.org/tools/hping3/)
 * **nmap** - [Host discovery with nmap](https://nmap.org/book/man-host-discovery.html) [nmap on Wikipedia](https://en.wikipedia.org/wiki/Nmap)
 * **terraform** - [Basic tutorial about what is terraform](https://k21academy.com/terraform-iac/terraform-beginners-guide/)
 * **ICMP** - [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol)
 
-
+If you feel like your networking knowledge needs a revision, go through these tutorials:
+https://www.hackers-arise.com/post/networking-basics-for-hackers-part-1
+https://www.hackers-arise.com/post/networking-basics-for-hackers-part-2
 
 ## Grading
 
@@ -332,6 +334,9 @@ Moreover, you could also use nmap to send other types of ICMP packets (this will
 
 In this task, you will perform and ICMP tunneling attack from your kali (attack machine) to server (ubuntu linux).
 
+[hping3 tutorial](https://www.hackers-arise.com/post/port-scanning-and-reconnaissance-with-hping3)
+
+
 ## Tools & dependencies used in this task (most of it is pre-installed on kali but not ubuntu)
 Install make
 sudo apt-get install make
@@ -349,6 +354,8 @@ NMAP
 https://github.com/nmap/nmap
 sudo apt-get install nmap
 
+hping3
+sudo apt install hping3
 
 **A) Run tunnel on server (victim) on port 1234. Then modify the client.sh file on kali linux (attacker)**
 
