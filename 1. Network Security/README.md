@@ -22,8 +22,8 @@ Make yourself familiar with following tools.
 * **ICMP** - [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol)
 
 If you feel like your networking knowledge needs a revision, go through these tutorials:
-https://www.hackers-arise.com/post/networking-basics-for-hackers-part-1
-https://www.hackers-arise.com/post/networking-basics-for-hackers-part-2
+[Basic tutorial 1](https://www.hackers-arise.com/post/networking-basics-for-hackers-part-1)
+[Basic tutorial 2](https://www.hackers-arise.com/post/networking-basics-for-hackers-part-2)
 
 ## Grading
 
