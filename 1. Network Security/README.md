@@ -321,9 +321,11 @@ sudo nmap -PE -PM -PP -sn -vvv -n 10.0.0.1/24
 **What extra information did you gather using this? Paste screenshot**
 Mac addresses and NIC info
 
+---
+
 ## Task 3
 
-### ICMP Tunneling Attack
+### File transfer through ICMP Tunneling
 
 In the realm of network adversary tactics, one commonly employed technique is Protocol Tunneling, denoted by MITRE as T1572. This method involves encapsulating data packets within a different protocol, offering a means to obscure malicious traffic and provide encryption for enhanced security and identity protection.
 
@@ -336,6 +338,23 @@ In this task, you will perform and ICMP tunneling attack from your kali (attack 
 
 [hping3 tutorial](https://www.hackers-arise.com/post/port-scanning-and-reconnaissance-with-hping3)
 
+---
+
+## Task 4
+
+### ICMP Tunneling Attack
+
+### Establish a reverse shell connecton between server and your kali linux
+
+In the previous task you discovered how ICMP packets can be used to transfer data despite having a firewall in place. In this task, you'll take this concept one step further and establish a reverse shell session
+between the server (ubuntu) and kali machine. Using reverse shell, you'll extract the server info.
+
+This is a free form task where you can use tool of your choice
+
+https://github.com/krabelize/icmpdoor?tab=readme-ov-file
+
+
+---
 
 ## Tools & dependencies used in this task (most of it is pre-installed on kali but not ubuntu)
 Install make
