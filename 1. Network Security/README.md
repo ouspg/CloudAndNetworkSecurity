@@ -40,7 +40,7 @@ Task #|Points|Description|Tools
 Task 1 | 1 | Install and setup the network | Terraform, libvirt, Qemu, KVM
 Task 2 | 2 | Run the virtual network | pfSense, terraform, virtual manager
 Task 3 | 3 | Host discovery in LAN | Nmap
-Task 4 | 4 | ICMP Tunneling Attack | Hping3, Wireshark, tshark
+Task 4 | 4 | ICMP Tunneling Attack | Hping3, wireshark, tshark
 Task 5 | 5 | Accessing HTTP Server from outside LAN | Open-ended
 
 
@@ -428,43 +428,38 @@ https://github.com/krabelize/icmpdoor?tab=readme-ov-file
 
 ## Task 5
 
-### Implement CI pipeline and fuzz an existing software or a project w.r.t. automation
+### Accessing HTTP Server from outside LAN
 
-This is a free-form task where you will integrate a fuzzer into an existing project and design a CI pipeline that triggers on each pull/commit request.
+This is a free-form task where you will play around with pfSense firewall webGUI or come up with an alternative solution to access the HTTP server (ubuntu) running on internal virtual LAN from your host computer. 
+
+Here's what you need to understand first:
+* Your host machine is on a WAN network (if it's connected to Wifi) OR a different LAN network (if ethernet network)
+* You've so far configured an internal LAN network using pfSense which cannot be accessed from outside
+* HTTP server inside internal LAN behind pfSense is not discoverable to your host machine
 
 Here's what you need to do:
-* Find a project or use one of your own
-* Create a repository in Github and upload your project there
-* Clone the repository and work to integrate a fuzzer of your choice
-* Push the changes and design a Github actions workflow
-* GitHub actions workflow file should trigger fuzzer on each code change and log results
-* A better-implemented workflow would store bugs found as artifacts
+* Establish a communication channel between your host machine (WAN or other LAN) and HTTP server (internal LAN)
+* Access the web-service running on HTTP server from your host machine
+ 
 
-There is no restriction to the choice of software or platform that students use for this task.
-The main idea behind this task is to integrate fuzz automation into existing software. **If you want to design a CI pipeline outside
-GitHub you are free to do so, but discuss it with TAs before-hand.**
+There is no restriction to the choice of software or platform that students use for this task. However, utilizing pfSense webGUI is recommend as it has multiple useful options to complete this task such as:
+* Port forwarding
+* Firewall rules
+* VPN (OpenVPN)
 
-This task can be completed with cifuzz or any other fuzzer that supports continuous integration (CI) such as:
-- [OSS-fuzz](https://github.com/google/oss-fuzz)
-   Sample guide: https://google.github.io/oss-fuzz/getting-started/continuous-integration/
-
-- [ClusterFuzzLite](https://google.github.io/clusterfuzzlite/)
-
-For CI, Gitlab can also be used:
-- https://docs.gitlab.com/ee/user/application_security/coverage_fuzzing/
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/fb64c03a-fb78-4eee-806b-55848225f214)
 
 
+The main idea behind this task is to configure firewall to allow host to communicate with ubuntu server. **If you decide to do this task, you'll have to research on your own how it could be achieve and then try to implement it**
 
-If you are unable to find any project for this task, you can utilize the source code of [ProjectX](https://github.com/ouspg/ProjectX) but this might not give you full 2 points. Therefore, it is recommended to pick up a project
-from Github, fork it and try to fuzz automate it. 2 points will be awarded for a well-implemented CI pipeline with fuzz automation.
 
 **Document your work properly for this task and include necessary screenshots and commands used**
 
-**You should state clearly which project and fuzzer you are going to use and on which platform CI pipeline would be implemented**
+**You should state clearly your PLAN, which pathways you took to achieve the objective**
 
-**Include a link to your project repository/work. Make sure to test the pipeline and share fuzzing results and/or logs**
+**Make sure to document proper testing results to showcase success or failure**
 
-**In case of partial implementation, write a brief report on issues and roadblocks encountered**
+**In case of partial implementation, write a brief report on issues and roadblocks encountered. You can still earn some points with failed attempts**
 
 
 ---
