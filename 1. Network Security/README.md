@@ -16,14 +16,19 @@ A basic understanding of networking is required. GitHub is required to complete 
 
 Make yourself familiar with following tools.
 
-* **hping3** - [Intro to hping3](https://www.kali.org/tools/hping3/)
-* **nmap** - [Host discovery with nmap](https://nmap.org/book/man-host-discovery.html) [nmap on Wikipedia](https://en.wikipedia.org/wiki/Nmap)
-* **terraform** - [Basic tutorial about what is terraform](https://k21academy.com/terraform-iac/terraform-beginners-guide/)
+* **hping3** - Intro to [hping3](https://www.kali.org/tools/hping3/)
+* **nmap** - Host discovery with [nmap](https://nmap.org/book/man-host-discovery.html) nmap on [Wikipedia](https://en.wikipedia.org/wiki/Nmap)
+* **terraform** - Basic tutorial about what is terraform [here](https://k21academy.com/terraform-iac/terraform-beginners-guide/)
 * **ICMP** - [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol)
+* **pfSense** - Official documentation of pfSense [here](https://docs.netgate.com/pfsense/en/latest/install/assign-interfaces.html)
+* **wireshark** - Covered in pre-requisite courses. Official documentation [here](https://www.wireshark.org/docs/wsug_html/)
+* **icmpdoor** - Github repository [here](https://github.com/krabelize/icmpdoor)
 
 If you feel like your networking knowledge needs a revision, go through these tutorials:
 [Basic tutorial 1](https://www.hackers-arise.com/post/networking-basics-for-hackers-part-1)
 [Basic tutorial 2](https://www.hackers-arise.com/post/networking-basics-for-hackers-part-2)
+
+Further reading about [networking concepts](https://docs.netgate.com/pfsense/en/latest/network/index.html)
 
 ## Grading
 
@@ -31,10 +36,11 @@ If you feel like your networking knowledge needs a revision, go through these tu
 
 Task #|Points|Description|
 -----|:---:|-----------|
-Task 1 | 2 | Set up and run the virtual network
-Task 2 | 3 | Host discovery
-Task 3 | 4 | ICMP Tunneling Attack
-Task 4 | 5 | Firewall Testing?
+Task 1 | 1 | Install and setup the network
+Task 2 | 2 | Run the virtual network
+Task 3 | 3 | Host discovery in LAN
+Task 4 | 4 | ICMP Tunneling Attack
+Task 5 | 5 | Accessing HTTP Server from outside LAN
 
 
 Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 5 points per whole exercise.
@@ -46,7 +52,7 @@ Total points accumulated by doing the exercises reflect the overall grade. You c
 ## About the lab
 
 * This document contains task descriptions and theory for the network security lab. If there are any differences between the return template and this file, consider this to be the up-to-date document.
-* **You can use your own computer/virtual machine if you want.** Check the chapter "Prerequisites" for information on what you need to install. This lab has been made to be completed in a Linux environment and tested to work in the provided Arch Linux virtual machine.
+* **You to use your own computer/virtual machine if you want.** Check the chapter "**Setup Installation**" for information on what you need to install. This lab has been made to be completed in a Linux environment and tested to work in debian, ubuntu and the provided Arch Linux virtual machine.
 * __Upper scores for this assignment require that all previous tasks in this assignment have been done as well__, so e.g. in order to get the third point you will have to complete tasks 1, 2 & 3.
 * Check the deadline from Moodle and __remember that you have to return your name (and possibly people you worked together with) and GitHub repository information to Moodle before the deadline.__
 
@@ -54,8 +60,8 @@ Total points accumulated by doing the exercises reflect the overall grade. You c
 ## Background
 
 This week’s theme is network security.
-Tasks are designed to be done with the provided network setup using [terraform](https://en.wikipedia.org/wiki/Terraform_(software)), see the [terraform commands tutorial](https://tecadmin.net/terraform-basic-commands/) for instructions on how to run the network using terraform.
-The provided VM's within terraform has all the required tools preinstalled.
+Tasks are designed to be done with the provided network setup using [terraform](https://en.wikipedia.org/wiki/Terraform_(software)), see the [terraform commands tutorial](https://tecadmin.net/terraform-basic-commands/) for instructions on how to run the network using terraform. The firewall (+router) used in this network is [pfSense](https://docs.netgate.com/pfsense/en/latest/general/index.html).
+The provided VM's within terraform has all the required tools preinstalled.  Contact course assistants if you require any extra tools, they'll install them in a custom image for you and provide instructions how to use it within the setup. 
 
 
 
@@ -68,7 +74,7 @@ The virtual test network is based on two networks:
 The WAN is your standard computer network. The LAN is the internal network which contains HTTP server (Ubuntu) and probe machine (kali) protected by pfSense firewall which also
 acts as the default router for this. By default, WAN is not allowed to communicate or discover the LAN network.
 
-In this lab, we will first explore some techniques to discover hosts within the internal LAN network using [nmap](https://en.wikipedia.org/wiki/Nmap) and [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) requests. Students will observe traffic packets using pfSense traffic capture tool. Towards the end of lab, students will perform an actual ICMP tunneling attack.
+In this lab, we will first explore some techniques to discover hosts within the internal LAN network using [nmap](https://en.wikipedia.org/wiki/Nmap) and [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) requests. Students will observe traffic packets using pfSense traffic capture tool. Towards the end of lab, students will perform an actual ICMP tunneling attack and transfer a .txt file using modified packets.
 
 The internal LAN network consists of following machines
 
@@ -82,48 +88,19 @@ The internal LAN network consists of following machines
 
 ##INSERT NETWORK IMAGE HERE
 
-The objective of deploying a CI/CD pipeline: A CI pipeline runs whenever there are code changes and is designed to make sure all of the changes work with the rest of the code when it’s integrated.
-It should also compile your code, run tests, and check that it’s functional. The CD pipeline goes one step further and deploys the built code into production.
-
-Now that we know the basics of virtual network setup, let’s get into the lab task
 
 
-
-
-
-## TASKS 1-3: CASE SCENARIO
-
-You were recently hired as a Cybersecurity person in NetworkTech – a software company that provides virtualized network solutions to its clients.
-
-**TO BE UPDATED**
-TechnoTech is an agile C/C++ software development company that utilizes modern tech stacks such as GitHub to deploy its code and track version changes.
-Moreover, TechnoTech follows the latest practices of DevOps.
-
-TechnoTech’s software team recently designed a calculator product for children, which allows them to perform basic mathematical operations i.e. addition, multiplication, subtraction and division.
-TechnoTech intends to invoice a manufacturing order for 1000 physical calculators with their code at the back end and incorporate it into mathematics teaching e-books.
-
-As a cybersecurity personnel, you are given the source code of the project.
-Your first task is to set up a fuzzer in the project repository and look for bugs.
-Your first task is to correctly configure your fuzzer with the project's source code and report back to the developer team with your findings!
-
-You will use CIFUZZ as a fuzzing tool for tasks 1-3.
-To build your C++ project correctly with `cifuzz`, you will be using CMake.
-Documentation for CMake is widely available online for example:
-**TO BE UPDATED**
-
-**Check *prerequisites* if you haven't at this point!**
+Now that we know the basics of virtual network setup, let’s get into the lab task. Task 1 is about setting up the network by installing required pre-requisite softwares
 
 ---
 
-### Setup Installation (TO BE REVIEWED AND UPDATED)
+## Task 1
 
-Update your package manager based on your Linux distribution and install the following dependencies:
+### Setup Installation 
 
-Cmake, LLVM clang, LCOV, bazel
+The network structure in this lab is built upon terraform. Terraform is a tool for deploying infrastructure as a code. Here, it is used to spawn the network infrastructure resources virtually using code configurations in terraform files (which is already done for you). A set of certain software dependencies are required to achieve this such as Libvirt, QEMU and KVM. Therefore, to make the network structure work, you'll have to follow the guidelines below. The instruction set has been tested on ubuntu/debian-linux as well as arch linux. Install guide for arch linux can be accessed here **TO_DO_ARCH_GUIDE_LINK**
 
-Sample install instructions for ubuntu/debian-linux below:
-
-## Install and setup libvirtd and necessary packages for UEFI virtualization
+### Install and setup libvirtd and necessary packages for UEFI virtualization
 ```
 sudo apt update
 sudo apt-get install qemu-kvm libvirt-daemon-system virt-top libguestfs-tools ovmf
@@ -137,33 +114,34 @@ sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
 ```
 
-## Install terraform
+### Install terraform
+
 Follow specific instructions for your system
 
 https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 
-### verify terraform is accessible and the CLI works
+**Verify terraform is accessible and the CLI works**
 ```
 which terraform
 terraform --version
 ```
 
 
-### install virt-manager for VM accessibility
+### Install virt-manager for VM accessibility
 ```
 sudo apt-get install virt-install virt-viewer
 sudo apt-get install virt-manager
 ```
 
-### install qemu and verify the installation
+### Install qemu and verify the installation
 https://www.qemu.org/download/#linux
 ```
 qemu-system-x86_64 --version
 ```
-### download the relevant images & place them in the directory containing main.tf
+### Download the relevant images & place them in the directory containing main.tf
 
-https://github.com/maurice-w/opnsense-vm-images/releases/tag/23.7.11
-(I am currently using the OPNsense-23.7.11-ufs-efi-vm-amd64.qcow2.bz2)
+**TO DO**
+GENERATE NEW LINKS
 
 {Insert the custom pfSense image path here}
 
@@ -204,7 +182,7 @@ sudo systemctl restart libvirtd
 ```
 
 
-### Terraform magic
+### Using Terraform to deploy the network
 ```
 export TERRAFORM_LIBVIRT_TEST_DOMAIN_TYPE="qemu"
 terraform init
@@ -212,83 +190,108 @@ terraform apply
 ```
 
 ---
+## Task 2
 
-## Task 1
+### Run the virtual network
 
-### A) Installing software and dependencies and initializing terraform locally
+If you've successfully installed all the required softwares, you're now set to download and clone the network setup from Github and initialize it using terraform.
+Following this, you'll use virtual manager to access the virtual resources spawned by terraform. 
 
-The developer team has pushed the code of the calculator into the following GitHub repository:
-https://github.com/ouspg/ProjectX.git
+**A) Clone the master branch which contains network configuration for this lab. Go into terraform-testing folder and initialize terraform and deploy the configuration**
 
-The source code is present under the ```source``` branch. Clone it locally into your machine with the command:
-
-```cmd
-git clone -b source https://github.com/ouspg/ProjectX.git
+```shell
+git clone https://github.com/lsuutari19/master_thesis_stuff
 ```
 
-Explore all files within the project to have a better understanding of the project structure.
-Take a look at the flowchart below.
+Useful commands:
+```
+terraform init
+terraform validate
+terraform apply
+terraform destroy
+terraform plan
+```
+Note: It can take few minutes to deploy the network structure, so be paitent
 
-![Flowchart Image](./Pictures/fuzzing_with_cifuzz.png)
+**Provide commands used**
 
+**How many resources does terraform prompt in the Plan to create/add?**
 
-Hints are left inside files as comments.
+**Provide screenshot if Apply completed successfully**
 
-Cifuzz works on two important files:
+**B) Access virtual manager and open virtual machine**s
 
-**o _CMakelists.txt:_**
-Configuration file for CMake build system.
-It defines the build configuration, dependencies, and build instructions for the C++ project.
-For the scope of this project, two CMake files are present, one in the root directory and the other in `/src` directory
+```shell
+# Command to access virtual manager
+virt-manager
+```
 
-**o _cifuzz.yaml:_**
+**How many virtual machines do you see? Where do you see the pfSense firewall deployed**
 
-Configuration file for CIFuzz.
-It specifies the fuzzing target, corpus location, and other fuzzing parameters for CIFuzz to execute the C++ fuzzing process.
-Go to your project's root folder and initialize it with command `cifuzz init`
-It will create a .yaml file for you that defines the fuzzer's configuration.
-You can make changes to this file according to your project needs.
+**Provide screenshot**
 
-**Provide the command line you used to do this.**
+**C) Configure LAN Network using pfSense CLI and access webGUI from kali linux**
 
-**What did you change in `cifuzz.yaml` and why? Provide explanations**
+PfSense boots with default configuration for LAN network. Your task it to configure it correctly and build a LAN network valid for the configuration provided below.
+If done correctly, you should be able to access the pfSense WebGUI from machines on your virtual LAN network (such as kali and ubuntu server).
 
-Once a project is initialized with `cifuzz`, it must be built with a build system like `bazel` or `CMake`.
-Also, the project contains multiple C++ files such as a source function, a header file and a main.
-Your next task is to correctly configure CMake files
-to link and build your project.
+IMPORTANT: After configuring LAN network using pfSense CLI, you'll have to reboot your kali and ubuntu linux for new network configurations to take effect.
+Simply go to terminal and use
+```shell
+sudo reboot
+```
 
-**Configure CMake files**
-Two CMakelists.txt files are present.
-Correctly configure them to build your project with `cifuzz``.
-Look for hints within CMake files
+```
+LAN Network Specifications:
+
+Internal LAN Network which contains kali linux, ubuntu server and pfSense acting as a router.
+The network operates on sub-net mask 255.255.255.0 (/24)
+PfSense is assigned following IP: 10.0.0.1
+
+The IP address range for network is as follows:
+Start address: 10.0.0.11 (/24)
+End address: 10.0.0.100 (/24)
+
+DHCP Server enabled: Yes
+IPv6: No
+
+Protocol for webGUI: HTTPS
+
+```
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/e32f328b-c8c3-4232-aef5-b95085a61d7f)
+
+To help you get started: select option 1) and assign interfaces as follows:
+
+WAN ---> vtnet0
+LAN ---> vtnet1
+OPT1 ---> vtnet2
+
+Proceed to option 2) and use LAN Network Specification guide provided above to build a LAN network.
+This process is easy enough and should allow you to correctly setup the LAN network. Useful [guide](https://docs.netgate.com/pfsense/en/latest/install/assign-interfaces.html)
+
+**Reboot kali linux**
+
+**What is the IP address of your kali linux? Is it on correct LAN network? How can you test and confirm?**
+
+**Access the webGUI from your kali linux. Provide screenshot**
+
+Congratulations if you've successfully accessed the webGUI of pfSense. With this portal, you can configure firewall rules, utilized diagnostic tools, observed network traffic and much more.
+Use following default credentials to login as root
+
+_Username:_ admin
+
+_Password:_ pfsense
+
 
 ---
 
-### **B) Correctly configure LAN network using pfSense 
-Create an empty fuzz test template file in folder <ProjectX/test> called ```test1```. You will use this file to write your fuzz test cases in task 2 to generate mutated inputs to test your calculator function.
-
-**Provide the command line you used to do this.**
-
----
-
-### **C) Access the pfSense WebGUI server from attack machine (kali linux)
-By now, your fuzzer should be correctly linked across the calculator project and initialized with an empty test case called ```test1```. Run your fuzzer with this test case!
-
-**Provide the command used to run the fuzzer**
-
-**Paste screenshot**
 
 
-In-case you are struggling with this task, refer to this cifuzz [example](https://github.com/CodeIntelligenceTesting/cifuzz/tree/main/examples/cmake).
-
----
-
-## Task 2
+## Task 3
 
 ### Host discovery
 
-### Discovering hosts inside the network
+### Discovering hosts inside the LAN network
 
 From your network setup, you know that you're on the network 10.0.0.1/24. Use nmap scan to discover hosts on the network.
 
