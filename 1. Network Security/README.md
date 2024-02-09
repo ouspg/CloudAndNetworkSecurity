@@ -14,7 +14,7 @@ Responsible person/main contact: Asad Hasan & Lauri Suutari
 
 A basic understanding of networking is required. GitHub is required to complete this exercise
 
-Make yourself familiar with following tools.
+Make yourself familiar with following.
 
 * **hping3** - Intro to [hping3](https://www.kali.org/tools/hping3/)
 * **nmap** - Host discovery with [nmap](https://nmap.org/book/man-host-discovery.html) nmap on [Wikipedia](https://en.wikipedia.org/wiki/Nmap)
@@ -22,7 +22,8 @@ Make yourself familiar with following tools.
 * **ICMP** - [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol)
 * **pfSense** - Official documentation of pfSense [here](https://docs.netgate.com/pfsense/en/latest/install/assign-interfaces.html)
 * **wireshark** - Covered in pre-requisite courses. Official documentation [here](https://www.wireshark.org/docs/wsug_html/)
-* **icmpdoor** - Github repository [here](https://github.com/krabelize/icmpdoor)
+* 
+* **icmpdoor** - Github repository [here](https://github.com/krabelize/icmpdoor) ????
 
 If you feel like your networking knowledge needs a revision, go through these tutorials:
 [Basic tutorial 1](https://www.hackers-arise.com/post/networking-basics-for-hackers-part-1)
@@ -34,13 +35,13 @@ Further reading about [networking concepts](https://docs.netgate.com/pfsense/en/
 
 <!-- <details><summary>Details</summary> -->
 
-Task #|Points|Description|
------|:---:|-----------|
-Task 1 | 1 | Install and setup the network
-Task 2 | 2 | Run the virtual network
-Task 3 | 3 | Host discovery in LAN
-Task 4 | 4 | ICMP Tunneling Attack
-Task 5 | 5 | Accessing HTTP Server from outside LAN
+Task #|Points|Description|Tools
+-----|:---:|-----------|-----
+Task 1 | 1 | Install and setup the network | Terraform, libvirt, Qemu, KVM
+Task 2 | 2 | Run the virtual network | pfSense, terraform, virtual manager
+Task 3 | 3 | Host discovery in LAN | Nmap
+Task 4 | 4 | ICMP Tunneling Attack | Hping3, Wireshark, tshark
+Task 5 | 5 | Accessing HTTP Server from outside LAN | Open-ended
 
 
 Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 5 points per whole exercise.
