@@ -1,4 +1,4 @@
-Cloud and Network Security Lab 1: Network Security
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/4050c088-6db0-4c73-b03f-de0a5e1c61a9)Cloud and Network Security Lab 1: Network Security
 ====
 
 Responsible person/main contact: Asad Hasan & Lauri Suutari
@@ -266,13 +266,19 @@ Protocol for webGUI: HTTPS
 To help you get started: select option 1) and assign interfaces as follows:
 
 WAN ---> vtnet0
+
 LAN ---> vtnet1
+
 OPT1 ---> vtnet2
 
 Proceed to option 2) and use LAN Network Specification guide provided above to build a LAN network.
 This process is easy enough and should allow you to correctly setup the LAN network. Useful [guide](https://docs.netgate.com/pfsense/en/latest/install/assign-interfaces.html)
 
-**Reboot kali linux**
+Next, reboot kali linux for new network configurations to take affect. Alternativel you can also restart your network adapter using:
+```shell
+sudo ip link set eth0 down #replace eth0 with your interface name
+sudo ip link set eth0 up
+```
 
 **What is the IP address of your kali linux? Is it on correct LAN network? How can you test and confirm?**
 
@@ -300,17 +306,10 @@ From your network setup, you know that you're on the network 10.0.0.1/24. Use nm
 
 ### **A) How many hosts are present in the internal LAN network? What are their IP addresses?**
 
-```shell
-nmap -sn 10.0.0.1/24
-Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-02-06 04:19 EST
-Nmap scan report for kyber3.cyber.range (10.0.0.1)
-Host is up (0.00080s latency).
-Nmap scan report for 10.0.0.23
-Host is up (0.00084s latency).
-Nmap scan report for 10.0.0.24
-Host is up (0.00011s latency).
-Nmap done: 256 IP addresses (3 hosts up) scanned in 3.68 seconds
-```
+**Provide commands**
+
+**Screenshot**
+
 ---
 
 ### **B) Now try running the same command from outside the LAN network? Are you able to discover devices inside the internal LAN network? Explain your answer**
@@ -323,16 +322,13 @@ Use the -PE, -PP, -PM flags of nmap to perform host discovery sending respective
 
 **Provide command used to do this**
 
-```shell
-sudo nmap -PE -PM -PP -sn -vvv -n 10.0.0.1/24
-```
 
 **What extra information did you gather using this? Paste screenshot**
-Mac addresses and NIC info
+
 
 ---
 
-## Task 3
+## Task 4
 
 ### File transfer through ICMP Tunneling
 
@@ -343,15 +339,77 @@ When discovering hosts, ICMP is the easiest and fastest way to do it. ICMP stand
 You could try to send some ICMP packets and expect responses. The easiest way is just sending an echo request and expect from the response. You can do that using a simple ping or using fping for ranges.
 Moreover, you could also use nmap to send other types of ICMP packets (this will avoid filters to common ICMP echo request-response).
 
-In this task, you will perform and ICMP tunneling attack from your kali (attack machine) to server (ubuntu linux).
+ICMP packets can be modified to include information in their payloads. The data portion of ICMP (Internet Control Message Protocol) packets, known as the payload, can be altered to include additional information beyond what is typically included in standard ICMP packets.In this task, you will perform ICMP tunneling to transfer a .txt file from server (ubuntu linux) to kali linux using hping3.
 
 [hping3 tutorial](https://www.hackers-arise.com/post/port-scanning-and-reconnaissance-with-hping3)
 
 ---
 
-## Task 4
+### **A) Send hackers_data.txt file as ICMP packets to kali linux**
 
-### ICMP Tunneling Attack
+ICMP packets can be used for tunneling other protocols or data across networks. By encapsulating data within the payload of ICMP packets, it's possible to transmit information between endpoints without directly using the protocols typically associated with those endpoints. This technique is sometimes used for evasion or bypassing network filtering. In this task, you'll explicitly use hping3 to send the 
+text file with ICMP packets and observed the received packets through wireshark.
+
+For converting the file into ICMP packets, you'll be using the hping3 (packet crafting tool). How does it work? See diagram below:
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/bab100c8-da80-4954-9696-d82fbe94738b)
+
+Here's what you need to do:
+- Login to server and locate hackers_data.txt
+- Craft hping3 command with correct flags and destination address (kali linux) to transfer file as ICMP packets
+- Login to kali and open wireshark (or craft tcpdump commands to dump packets once received)
+- Send ICMP packets through server and simultaneously monitor the packets from kali linux
+
+_Hint: _Depending on your interface's Maximum Transmission Unit (MTU), each packet has a certain limit of data that it can hold without getting fragmented. For ethernet, you can find out this using 
+ifconfig/ip addr commands. Generally it has a value of 1500 for ethernet. However, the actual usable data is:
+
+Maximum ICMP Data=MTU−Ethernet Frame Header−IP Header−ICMP Header
+
+Maximum ICMP Data=1500 bytes−14 bytes−20 bytes−8 bytes
+
+Maximum ICMP Data=1458 bytesMaximum ICMP Data=1458 bytes
+
+The Maximum Transmission Unit (MTU) is the maximum size of a single data unit that can be transmitted over a network.
+
+You should stop the hping3 command when EOF (end of file) prompt is reached
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/6ecbb36c-7364-4d34-9cc1-041f9a6c04ab)
+
+
+**Provide commands**
+
+**Screenshot**
+
+**Inspect received packets from wireshark. Does the packets contain text from the file? Attach screenshots as a proof**
+
+
+Make sure you are inspecting the correct packets in wireshark. And save your file as **hacker_data.pcap** for use in next task
+
+**Inspect the Internet Control Message Protocol packet's Data field (which should be 1458 bytes) to observed the filed in which attached data is stored.**
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/d2910021-7adb-4468-9a6b-b6573436eb00)
+
+
+_Extra Information: _TCPdump is a command-line packet analyzer tool for monitoring and analyzing network traffic on a Unix or Linux system. It captures packets flowing through a network interface and allows users to inspect them in real-time or save them to a file for later analysis. To use TCPdump, you typically specify the network interface to listen on (e.g., eth0), optionally apply filters to capture specific types of traffic, and specify any desired options or output formats. For example, to capture all traffic on interface eth0 and display it on the terminal, you can use the command sudo tcpdump -i eth0.
+
+---
+
+### **B) Pull out (data.data) field from the .pcap file using tshark**
+
+Use **hacker_data.pcap** acquired in previous task to pull out (data.data) field from the .pcap file and dump it into a hexdump.txt file
+
+Use flags -n -q -r with -T fields data.data. Your task is to craft a command which uses tshark to read packets from the file **hacker_data.pcap**, extracts the payload data of each packet in hexadecimal format (data.data), and saves it to the file **hexdump.txt**. The -n flag disables name resolution, -q suppresses unnecessary output, and -T fields specifies the output format.
+
+**Provide command**
+
+**Screenshot of output hexdump.txt file**
+
+Next, copy the contents of the hexdump file and use an online hex to ASCII converter [tool](https://www.rapidtables.com/convert/number/hex-to-ascii.html) to restore contents of the original file.
+
+**Were you able to re-construct the original hackers_data.txt file sent using ICMP packets? What are the contents of file? Briefly explain and attach a screenshot**
+
+---
+
+## Task 4 OPTIONAL????
 
 ### Establish a reverse shell connecton between server and your kali linux
 
@@ -365,226 +423,7 @@ https://github.com/krabelize/icmpdoor?tab=readme-ov-file
 
 ---
 
-## Tools & dependencies used in this task (most of it is pre-installed on kali but not ubuntu)
-Install make
-sudo apt-get install make
-
-Install git
-sudo apt install git
-
-Install gcc
-sudo apt install build-essential
-
-ICMPtunnel
-https://github.com/DhavalKapil/icmptunnel
-
-NMAP
-https://github.com/nmap/nmap
-sudo apt-get install nmap
-
-hping3
-sudo apt install hping3
-
-**A) Run tunnel on server (victim) on port 1234. Then modify the client.sh file on kali linux (attacker)**
-
-```shell
-#Run tunnel on server with:
-sudo ./icmptunnel -s -p 1234
-
-#Active listening using netcat (not relevant. It listens on port 4444)
-nc -lvnp 4444
-
-#Run and remove tun0 interface if needed to start again
-ifconfig -a
-sudo ip link del dev tun0
-```
-
-Replace <gateway_of_attacker> and <interface_of_attacker> with the gateway and network interface values for the Kali Linux machine (attacker). You can find these values using the route -n command on the Kali Linux machine.
-
-```shell
-#!/bin/sh
-
-# Assigining an IP address and mask to 'tun0' interface
-ifconfig tun0 mtu 1472 up 10.0.1.2 netmask 255.255.255.0
-
-# Modifying IP routing tables
-route del default
-# 'server' is the IP address of the proxy server (10.0.0.23 in this case)
-# 'gateway' and 'interface' are obtained from the route -n output
-route add -host 10.0.0.23 gw 0.0.0.0 dev eth0
-route add default gw 10.0.1.1
-```
-### What does it do? It correctly configures the routing tables for ICMP tunnel
-
-This script configures the tun0 interface, deletes the default route, adds a route to the proxy server (10.0.0.23) via the eth0 interface, and sets a new default route via the tun0 interface.
-
-Run this script on your victim machine (server) after starting the icmptunnel server. Adjust the permissions if needed (chmod +x script_name.sh), and then execute it using ./script_name.sh. This should properly configure the routing tables for the ICMP tunnel.
-
-### Can you ping server from attack machine? How about pfSense? What could be wrong?
-
-When you run a tunneling tool like icmptunnel, it encapsulates the traffic within ICMP packets. If the tunnel is working correctly, standard ICMP tools like ping won't work as expected because the ICMP traffic is being used for the tunnel, not for traditional ping responses.
-
-If your tunnel is running properly, the ICMP packets are carrying your payload between the client (attacker) and server, and they won't respond to regular ICMP requests. This behavior is expected when using ICMP tunneling.
-
-===================================
-DOING ATTACK STEP BY STEP
-===================================
-
- o **Attack machine:** Send message to linux kernal to disable loop-back ping: echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all
- Tunnel should not respond to packets to itself (8min)
- 
- ```shell
- echo 1 | sudo tee /proc/sys/net/ipv4/icmp_echo_ignore_all
-```
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/9d7434c6-3fce-4f99-b606-0800734b2ced)
-
-
- o **Server machine:** Run the tunnel server
- ```
-#  sudo ./icmptunnel -s
-# Create tun0
-ubuntu@ubuntu1804:~/cyberII/icmptunnel$ sudo ip tuntap add mode tun tun0
-ubuntu@ubuntu1804:~/cyberII/icmptunnel$ sudo ip link set tun0 up
-
-# Assign interface tun0 IP address
-sudo ip addr add 10.0.1.1/255.255.255.0 dev tun0
-
- ```
-
- o **Attack machine:** Run the tunnel server
- ```
-  sudo ./icmptunnel -s
-# Create tun0
-ubuntu@ubuntu1804:~/cyberII/icmptunnel$ sudo ip tuntap add mode tun tun0
-ubuntu@ubuntu1804:~/cyberII/icmptunnel$ sudo ip link set tun0 up
-
-# Assign interface tun0 IP address
-sudo ip addr add 10.0.1.2/255.255.255.0 dev tun0
-
- ```
-```
- tcpdump -vv -XXX -i tun0 icmp
-```
- 
-
- LLVM [documentation](https://releases.llvm.org/5.0.0/docs/LibFuzzer.html#fuzz-target)
-
- o After creating input variables (example: num1, num2, and operator), the fuzz test should call the target function under test within this file. Sample call to a function named _‘calculator’_: ```calculator(num1, operator, num2)```
-
-**Copy contents of fuzz test file here**
-
-**Screenshot of the fuzz test file**
-
----
-
-**B) Update main**
-
-Write unit test cases within your main file (as a call to calculator function). Carefully choose inputs to ensure all functionalities of the calculator are covered alongside edge test cases.
-
-**Provide a screenshot of your test cases**
-
-**How many test cases did you write? Do you think they are enough for the scope of this project? Explain**
-
----
-
-**C) Run the fuzzer**
-
-By now, `cifuzz` should be correctly integrated with the project and ready to find bugs.
-If you are still experiencing issues, go through [this](https://docs.code-intelligence.com/getting-started/ci-fuzz-cpp-first-bug) tutorial.
-
-
-Run your fuzzer and report your findings.
-
-**The command used to run fuzzer**
-
-**Name of bugs, if found any. What do they represent?**
-
----
-
-**D) Generate a code-coverage report and write a brief summary about what it represents**
-
-Code coverage is an important concept in modern fuzzers and is utilized by `cifuzz`.
-It measures how much of the target program's code is exercised by the generated test cases.
-Cifuzz has an option to generate coverage reports of fuzzer runs.
-Go ahead and generate a report and document what it represents and why is it important.
-
-**The command used to generate code-coverage**
-
-**Screenshot of your code-coverage report**
-
-**Brief Summary**
-
-
----
-
-
-## Task 3
-
-### A) Apply patch fix and fuzz again
-
-Based on your previous fuzzing efforts a bug identified was forwarded to the developer team for a fix.
-The developer team has fixed the reported bug and has created a patch fix for it.
-
-Your task is to do the following:
-* **Download and extract the patch into your project's root directory** Download [Patch File](./files/0001-Updated-calculator-code.tar.xz).
-
-* **Apply the patch using**:
-
-```shell
-git apply --check /path/to/your/patch-file.patch
-git apply /path/to/your/patch-file.patch
-```
-* After successfully applying the patch, run fuzzer again
-
-**What bugs did you discover now? Explain what they represent if found any? Is the bug found in task 2 fixed in this patch?**
-
-**Add screenshot**
-
----
-
-### B) Design a fuzzer job
-
-Your next task is to automate the process of fuzzing for the project calculator.
-The latest version of ProjectX has been packed into Docker by the DevOps team and they have left following note:
-
-      **_Notes from DevOps_**
-      ProjectX now comes packed into a Docker container with a fuzzer integrated. Moreover, we changed the build system from CMake to bazel.
-
-      Newer version of ProjectX contains the following:
-      * All ProjectX C++ files
-      * Project built with bazel instead of CMake
-      * Cifuzz integrated
-      * Fuzzer set to timeout after 10 minutes to save resources
-      * Docker container
-
-
-Here's the GitHub [link](https://github.com/ouspg/ProjectX2) to the latest version.
-
-**Implement [this](https://github.com/ouspg/ProjectX2) project on your return repository and using GitHub actions, design a fuzzing job that does the following:**
-* Triggers for main branch on every pull/commit request
-* Calls the script to build the Dockerfile into a container
-* Runs the Docker container
-
-Test your fuzz job in GitHub actions by making small changes to code such as adding an extra space line.
-Commit changes and this should trigger your workflow to run.
-
-**Investigate workflow run logs**
-
-Inspect workflow run to locate fuzzing results. **Paste screenshots showing all results and fuzzing summary**
-
-If workflow fails to run, try to debug it for errors. You might be doing something wrong. Latest project repository
-provided by DevOps contains a README.md file with steps how to procced.
-
-
-The idea behind fuzz automation is that the fuzzer runs automatically for a specified duration whenever there are code changes.
-Since TechnoTech utilizes GitHub, your fuzzer should trigger on any latest commit.
-Fuzzing results can be gathered from the workflow (actions) log files and can also be exported to an external file by including the appropriate code in your workflow file.
-
-
-
----
-
-## Task 4
+## Task 5
 
 ### Implement CI pipeline and fuzz an existing software or a project w.r.t. automation
 
