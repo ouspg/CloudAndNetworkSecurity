@@ -1,4 +1,4 @@
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/4050c088-6db0-4c73-b03f-de0a5e1c61a9)Cloud and Network Security Lab 1: Network Security
+Cloud and Network Security Lab 1: Network Security
 ====
 
 Responsible person/main contact: Asad Hasan & Lauri Suutari
