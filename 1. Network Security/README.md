@@ -85,9 +85,10 @@ The internal LAN network consists of following machines
 
  * Router & Firewall (pfSense) - to protect the internal LAN network and shield it from outside
 
-**TODO**
+**See network diagram below**
 
-##INSERT NETWORK IMAGE HERE
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/58f7f99a-a9ac-4f80-9e67-653a677156fb)
+
 
 
 
@@ -440,7 +441,10 @@ Here's what you need to understand first:
 Here's what you need to do:
 * Establish a communication channel between your host machine (WAN or other LAN) and HTTP server (internal LAN)
 * Access the web-service running on HTTP server from your host machine
- 
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/525722a4-e00f-40ac-b522-4713a4d98820)
+
+Red lines in the diagram above indicate the required objective to be achieved
 
 There is no restriction to the choice of software or platform that students use for this task. However, utilizing pfSense webGUI is recommend as it has multiple useful options to complete this task such as:
 * Port forwarding
