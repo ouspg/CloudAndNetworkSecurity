@@ -100,7 +100,7 @@ Now that we know the basics of virtual network setup, let’s get into the lab t
 
 The network structure in this lab is built upon terraform. Terraform is a tool for deploying infrastructure as a code. Here, it is used to spawn the network infrastructure resources virtually using code configurations in terraform files (which is already done for you). A set of certain software dependencies are required to achieve this such as Libvirt, QEMU and KVM. Therefore, to make the network structure work, you'll have to follow the guidelines below. The instruction set has been tested on ubuntu/debian-linux as well as arch linux. Install guide for arch linux can be accessed here **TO_DO_ARCH_GUIDE_LINK**
 
-### Install and setup libvirtd and necessary packages for UEFI virtualization
+**Install and setup libvirtd and necessary packages for UEFI virtualization**
 ```
 sudo apt update
 sudo apt-get install qemu-kvm libvirt-daemon-system virt-top libguestfs-tools ovmf
@@ -114,7 +114,7 @@ sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
 ```
 
-### Install terraform
+**Install terraform**
 
 Follow specific instructions for your system
 
@@ -127,18 +127,18 @@ terraform --version
 ```
 
 
-### Install virt-manager for VM accessibility
+**Install virt-manager for VM accessibility**
 ```
 sudo apt-get install virt-install virt-viewer
 sudo apt-get install virt-manager
 ```
 
-### Install qemu and verify the installation
+**Install qemu and verify the installation**
 https://www.qemu.org/download/#linux
 ```
 qemu-system-x86_64 --version
 ```
-### Download the relevant images & place them in the directory containing main.tf
+**Download the relevant images & place them in the directory containing main.tf**
 
 **TO DO**
 GENERATE NEW LINKS
@@ -149,17 +149,17 @@ https://cdimage.kali.org/kali-2023.4/kali-linux-2023.4-qemu-amd64.7z
 
 Move the image to terraform-testing directory and rename it opnsense.qcow2
 
-### Install mkisofs
+**Install mkisofs**
 ```
 sudo apt-get install -y mkisofs
 ```
 
-### Install xsltproc 
+**Install xsltproc **
 ```
 sudo apt-get install xsltproc
 ```
 
-### Initialize default storage pool if it hasn't been created by libvirt
+**Initialize default storage pool if it hasn't been created by libvirt**
 
 ```
 sudo virsh pool-define /dev/stdin <<EOF
@@ -175,18 +175,17 @@ sudo virsh pool-start default
 sudo virsh pool-autostart default
 ```
 
-### Configure user permisions for libvirt to storage pool
+**Configure user permisions for libvirt to storage pool**
 ```
 sudo chown -R $(whoami):libvirt ~/images
 sudo systemctl restart libvirtd
 ```
 
 
-### Using Terraform to deploy the network
+**Using Terraform to deploy the network**
 ```
 export TERRAFORM_LIBVIRT_TEST_DOMAIN_TYPE="qemu"
-terraform init
-terraform apply
+
 ```
 
 ---
@@ -197,7 +196,7 @@ terraform apply
 If you've successfully installed all the required softwares, you're now set to download and clone the network setup from Github and initialize it using terraform.
 Following this, you'll use virtual manager to access the virtual resources spawned by terraform. 
 
-**A) Clone the master branch which contains network configuration for this lab. Go into terraform-testing folder and initialize terraform and deploy the configuration**
+### **A) Clone the master branch which contains network configuration for this lab. Go into terraform-testing folder and initialize terraform and deploy the configuration**
 
 ```shell
 git clone https://github.com/lsuutari19/master_thesis_stuff
@@ -219,7 +218,9 @@ Note: It can take few minutes to deploy the network structure, so be paitent
 
 **Provide screenshot if Apply completed successfully**
 
-**B) Access virtual manager and open virtual machine**s
+---
+
+### **B) Access virtual manager and open virtual machine**s
 
 ```shell
 # Command to access virtual manager
@@ -230,7 +231,9 @@ virt-manager
 
 **Provide screenshot**
 
-**C) Configure LAN Network using pfSense CLI and access webGUI from kali linux**
+---
+
+### **C) Configure LAN Network using pfSense CLI and access webGUI from kali linux**
 
 PfSense boots with default configuration for LAN network. Your task it to configure it correctly and build a LAN network valid for the configuration provided below.
 If done correctly, you should be able to access the pfSense WebGUI from machines on your virtual LAN network (such as kali and ubuntu server).
@@ -295,7 +298,7 @@ _Password:_ pfsense
 
 From your network setup, you know that you're on the network 10.0.0.1/24. Use nmap scan to discover hosts on the network.
 
-**A) How many hosts are present in the internal LAN network? What are their IP addresses?**
+### **A) How many hosts are present in the internal LAN network? What are their IP addresses?**
 
 ```shell
 nmap -sn 10.0.0.1/24
@@ -308,10 +311,13 @@ Nmap scan report for 10.0.0.24
 Host is up (0.00011s latency).
 Nmap done: 256 IP addresses (3 hosts up) scanned in 3.68 seconds
 ```
+---
 
-**B) Now try running the same command from outside the LAN network? Are you able to discover devices inside the internal LAN network? Explain your answer**
+### **B) Now try running the same command from outside the LAN network? Are you able to discover devices inside the internal LAN network? Explain your answer**
 
-**C) Extracting more host info using NMAP**
+---
+
+### **C) Extracting more host info using NMAP**
 
 Use the -PE, -PP, -PM flags of nmap to perform host discovery sending respectively ICMPv4 echo, timestamp, and subnet mask requests. 
 
