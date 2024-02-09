@@ -400,6 +400,8 @@ Use **hacker_data.pcap** acquired in previous task to pull out (data.data) field
 
 Use flags -n -q -r with -T fields data.data. Your task is to craft a command which uses tshark to read packets from the file **hacker_data.pcap**, extracts the payload data of each packet in hexadecimal format (data.data), and saves it to the file **hexdump.txt**. The -n flag disables name resolution, -q suppresses unnecessary output, and -T fields specifies the output format.
 
+tshark document for help [here](https://www.wireshark.org/docs/man-pages/tshark.html)
+
 **Provide command**
 
 **Screenshot of output hexdump.txt file**
