@@ -159,7 +159,9 @@ They have following names:
 DOWNLOAD LINKS [Click here and append filename at the end of link to download that specific image file](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/)
 
 {Go-to _masters_thesis_stuff/terraform-testing/variables.tf_ file}
+
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/c0c11c63-2b2a-414f-bf86-8b55ab9cf34f)
+
 {And make following changes}
 
 {default ='ubuntu-desktop.iso' to default ='linux_server.qcow2'}
