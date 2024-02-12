@@ -162,7 +162,7 @@ DOWNLOAD LINKS [Click here and append filename at the end of link to download th
 
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/c0c11c63-2b2a-414f-bf86-8b55ab9cf34f)
 
-{And make following changes}
+{And make following changes to variable "ubuntu_img_url"}
 
 {default ='ubuntu-desktop.iso' to default ='linux_server.qcow2'}
 
