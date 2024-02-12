@@ -268,14 +268,10 @@ virt-manager
 
 ### **C) Configure LAN Network using pfSense CLI and access webGUI from kali linux**
 
-PfSense boots with default configuration for LAN network. Your task it to configure it correctly and build a LAN network valid for the configuration provided below.
+PfSense boots with default configuration for LAN network. Your task is to configure it correctly and build a LAN network valid for the configuration provided below.
 If done correctly, you should be able to access the pfSense WebGUI from machines on your virtual LAN network (such as kali and ubuntu server).
 
-IMPORTANT: After configuring LAN network using pfSense CLI, you'll have to reboot your kali and ubuntu linux for new network configurations to take effect.
-Simply go to terminal and use
-```shell
-sudo reboot
-```
+IMPORTANT: After configuring LAN network using pfSense CLI, you'll have to reboot your network adapter or kali and ubuntu linux for new network configurations to take effect.
 
 ```
 LAN Network Specifications:
@@ -307,7 +303,7 @@ OPT1 ---> vtnet2
 Proceed to option 2) and use LAN Network Specification guide provided above to build a LAN network.
 This process is easy enough and should allow you to correctly setup the LAN network. Useful [guide](https://docs.netgate.com/pfsense/en/latest/install/assign-interfaces.html)
 
-Next, reboot kali linux for new network configurations to take affect. Alternativel you can also restart your network adapter using:
+Next, reboot kali linux for new network configurations to take affect or you can also restart your network adapter with:
 ```shell
 sudo ip link set eth0 down #replace eth0 with your interface name
 sudo ip link set eth0 up
@@ -317,12 +313,14 @@ sudo ip link set eth0 up
 
 **Access the webGUI from your kali linux. Provide screenshot**
 
-Congratulations if you've successfully accessed the webGUI of pfSense. With this portal, you can configure firewall rules, utilized diagnostic tools, observed network traffic and much more.
+Congratulations if you've successfully accessed the webGUI of pfSense. With this portal, you can configure firewall rules, utilize diagnostic tools, observed network traffic and much more.
 Use following default credentials to login as root
 
 _Username:_ admin
 
 _Password:_ pfsense
+
+**Do a small ping test and observe captured traffic by pfSense using one of it's diagnostic packet capture tools available in webGUI. Add screenshot**
 
 
 ---
@@ -333,9 +331,10 @@ _Password:_ pfsense
 
 ### Host discovery
 
-### Discovering hosts inside the LAN network
+### Discovering hosts inside the LAN network and access the server's webservice from LAN
 
 From your network setup, you know that you're on the network 10.0.0.1/24. Use nmap scan to discover hosts on the network.
+
 
 ### **A) How many hosts are present in the internal LAN network? What are their IP addresses?**
 
@@ -343,9 +342,15 @@ From your network setup, you know that you're on the network 10.0.0.1/24. Use nm
 
 **Screenshot**
 
+The linux server is automatically running an HTTP nginx service. It can be accessed using http://<server_ip_addr> on any web browser.
+
 ---
 
 ### **B) Now try running the same command from outside the LAN network? Are you able to discover devices inside the internal LAN network? Explain your answer**
+
+You can do this step from your host-machine which has internet access. Can it access or discover the LAN network somehow?
+
+What about the webservice running at http://<server_ip_addr>. Can you access it?
 
 ---
 
@@ -355,9 +360,13 @@ Use the -PE, -PP, -PM flags of nmap to perform host discovery sending respective
 
 **Provide command used to do this**
 
-
 **What extra information did you gather using this? Paste screenshot**
 
+### **D) Demonstrate access to web service using your kali linux
+
+As stated earlier, server is present at http://<server_ip_addr> 
+
+**Access the server from kali linux and attach screenshot**
 
 ---
 
@@ -366,7 +375,6 @@ Use the -PE, -PP, -PM flags of nmap to perform host discovery sending respective
 ### File transfer through ICMP Tunneling
 
 In the realm of network adversary tactics, one commonly employed technique is Protocol Tunneling, denoted by MITRE as T1572. This method involves encapsulating data packets within a different protocol, offering a means to obscure malicious traffic and provide encryption for enhanced security and identity protection.
-
 
 When discovering hosts, ICMP is the easiest and fastest way to do it. ICMP stands for Internet Control Message Protocol and is the protocol used by the typical PING command to send packets to hosts and see if they respond back or not.
 You could try to send some ICMP packets and expect responses. The easiest way is just sending an echo request and expect from the response. You can do that using a simple ping or using fping for ranges.
