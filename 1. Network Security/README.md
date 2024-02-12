@@ -212,10 +212,12 @@ export TERRAFORM_LIBVIRT_TEST_DOMAIN_TYPE="qemu"
 
 ### Run the virtual network
 
-If you've successfully installed all the required softwares, you're now set to download and clone the network setup from Github and initialize it using terraform.
+If you've successfully installed all the required softwares, you're now set to deploy the network setup from Github and initialize it using terraform.
 Following this, you'll use virtual manager to access the virtual resources spawned by terraform. 
 
-### **A) Clone the master branch which contains network configuration for this lab. Go into terraform-testing folder and initialize terraform and deploy the configuration**
+### **A) Go into terraform-testing folder and initialize terraform and deploy the configuration**
+
+Clone the master branch if you haven't already and place virtual images in master_thesis_stuff/terraform-testing/images folder. Skip this step if you've done already.
 
 ```shell
 git clone https://github.com/lsuutari19/master_thesis_stuff
@@ -235,7 +237,14 @@ Note: It can take few minutes to deploy the network structure, so be paitent
 
 **How many resources does terraform prompt in the Plan to create/add?**
 
-**Provide screenshot if Apply completed successfully**
+**Provide screenshot**
+
+**Apply completed successfully? Provide screenshot**
+If no then go-back diagnose and fix your errors. Here's a small guide about managing virtual resources spawned by terraform. 
+
+Normally, if terraform deployment fails using 'terraform destroy' is not enough. Some of the virtual resources remain and have to be destroyed/killed manually
+
+
 
 ---
 
