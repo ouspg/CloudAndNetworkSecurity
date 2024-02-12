@@ -240,9 +240,14 @@ Note: It can take few minutes to deploy the network structure, so be paitent
 **Provide screenshot**
 
 **Apply completed successfully? Provide screenshot**
-If no then go-back diagnose and fix your errors. Here's a small guide about managing virtual resources spawned by terraform. 
+If no then go back diagnose and fix your errors. A small guide about [managing virtual resources spawned by terraform](misc/diagnostic_guide.md)
 
-Normally, if terraform deployment fails using 'terraform destroy' is not enough. Some of the virtual resources remain and have to be destroyed/killed manually
+Normally if terraform deployment fails using 'terraform destroy' is not enough. Some of the virtual resources remain and have to be destroyed/killed manually. Moreover,
+terraform state files need to be deleted manually in such cases. They are:
+
+1) terraform.tfstate
+2) terraform.tfstate.backup
+3) terraform.lock.hcl # File used to initialize terraform
 
 
 
