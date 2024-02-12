@@ -320,7 +320,7 @@ _Username:_ admin
 
 _Password:_ pfsense
 
-**Do a small ping test and observe captured traffic by pfSense using one of it's diagnostic packet capture tools available in webGUI. Add screenshot**
+**Do a small ping test and observe captured traffic by pfSense using one of it's diagnostic packet capture tools available in webGUI. Ping test can be between any of router, kali or server. Add screenshot**
 
 
 ---
