@@ -273,11 +273,11 @@ virt-manager
 
 **Provide screenshot**
 
-Login credentials for VMs in following format: <username><password>
+Login credentials for VMs in following format: username:password
 
-Kali linux: <kali><kali>
+Kali linux: kali:kali
 
-Ubuntu server: <Ubuntu><ubuntu>
+Ubuntu server: Ubuntu:ubuntu
 
 ---
 
