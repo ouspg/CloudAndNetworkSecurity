@@ -273,6 +273,12 @@ virt-manager
 
 **Provide screenshot**
 
+Login credentials for VMs in following format: <username><password>
+
+Kali linux: <kali><kali>
+
+Ubuntu server: <Ubuntu><ubuntu>
+
 ---
 
 ### **C) Configure LAN Network using pfSense CLI and access webGUI from kali linux**
