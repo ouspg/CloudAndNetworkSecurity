@@ -1,4 +1,6 @@
-Virsh command is important to play with Virtual manager resources. Always use it with root privilages
+Virsh command is important to play with Virtual manager resources. Always use it with root privilages.
+
+When deleting volumes, use correct path relevant to your volumes.
 
 ### LISTING RESOURCES ####
 
