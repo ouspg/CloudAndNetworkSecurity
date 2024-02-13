@@ -225,12 +225,22 @@ git clone https://github.com/lsuutari19/master_thesis_stuff
 
 Useful commands:
 ```
+# To initialize terraform. It's always the first step in brand new repository
 terraform init
+
+# To validate terraform configuration and look for errors
 terraform validate
+
+# To apply terraform and spawn virtual resources
 terraform apply
+
+# To destroy resources spawned by terraform. Usually done when you have finished playing around with network
 terraform destroy
+
+# Highlights the plane of resources to spawn
 terraform plan
 ```
+
 Note: It can take few minutes to deploy the network structure, so be paitent
 
 **Provide commands used**
