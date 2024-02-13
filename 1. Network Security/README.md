@@ -445,7 +445,7 @@ Hint: The -n flag disables name resolution, -q suppresses unnecessary output, an
 
 tshark document for [help](https://www.wireshark.org/docs/man-pages/tshark.html)
 
-**Provide command* used*
+**Provide command used**
 
 **Screenshot of hexdump.txt file**
 
