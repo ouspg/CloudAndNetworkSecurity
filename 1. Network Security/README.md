@@ -23,7 +23,7 @@ Make yourself familiar with following.
 * **pfSense** - Official documentation of pfSense [here](https://docs.netgate.com/pfsense/en/latest/install/assign-interfaces.html)
 * **wireshark** - Covered in pre-requisite courses. Official documentation [here](https://www.wireshark.org/docs/wsug_html/)
 * 
-* **icmpdoor** - Github repository [here](https://github.com/krabelize/icmpdoor) ????
+
 
 If you feel like your networking knowledge needs a revision, go through these tutorials:
 [Basic tutorial 1](https://www.hackers-arise.com/post/networking-basics-for-hackers-part-1)
@@ -389,7 +389,7 @@ ICMP packets can be modified to include information in their payloads. The data 
 ### **A) Send hackers_data.txt file as ICMP packets to kali linux**
 
 ICMP packets can be used for tunneling other protocols or data across networks. By encapsulating data within the payload of ICMP packets, it's possible to transmit information between endpoints without directly using the protocols typically associated with those endpoints. This technique is sometimes used for evasion or bypassing network filtering. In this task, you'll explicitly use hping3 to send the 
-text file with ICMP packets and observed the received packets through wireshark.
+text file with ICMP packets and observe the received packets through wireshark.
 
 For converting the file into ICMP packets, you'll be using the hping3 (packet crafting tool). How does it work? See diagram below:
 
@@ -399,33 +399,34 @@ Here's what you need to do:
 - Login to server and locate hackers_data.txt
 - Craft hping3 command with correct flags and destination address (kali linux) to transfer file as ICMP packets
 - Login to kali and open wireshark (or craft tcpdump commands to dump packets once received)
-- Send ICMP packets through server and simultaneously monitor the packets from kali linux
+- Send ICMP packets through server and simultaneously monitor and capture the packets from kali linux using wireshark
 
 _Hint: _Depending on your interface's Maximum Transmission Unit (MTU), each packet has a certain limit of data that it can hold without getting fragmented. For ethernet, you can find out this using 
-ifconfig/ip addr commands. Generally it has a value of 1500 for ethernet. However, the actual usable data is:
+ifconfig/ip addr command. Generally it has a value of 1500 for ethernet. However, the actual usable data is:
 
 Maximum ICMP Data=MTU−Ethernet Frame Header−IP Header−ICMP Header
 
 Maximum ICMP Data=1500 bytes−14 bytes−20 bytes−8 bytes
 
-Maximum ICMP Data=1458 bytesMaximum ICMP Data=1458 bytes
+Maximum ICMP Data=1458 bytes
 
 The Maximum Transmission Unit (MTU) is the maximum size of a single data unit that can be transmitted over a network.
 
 You should stop the hping3 command when EOF (end of file) prompt is reached
+
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/6ecbb36c-7364-4d34-9cc1-041f9a6c04ab)
 
 
-**Provide commands**
+**Provide commands used to send modified packets**
 
-**Screenshot**
+**Add screenshot**
 
 **Inspect received packets from wireshark. Does the packets contain text from the file? Attach screenshots as a proof**
 
 
 Make sure you are inspecting the correct packets in wireshark. And save your file as **hacker_data.pcap** for use in next task
 
-**Inspect the Internet Control Message Protocol packet's Data field (which should be 1458 bytes) to observed the filed in which attached data is stored.**
+**Inspect the Internet Control Message Protocol packet's Data field (which should be 1458 bytes) to locate the sub-filed in which attached data is stored.**
 
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/d2910021-7adb-4468-9a6b-b6573436eb00)
 
@@ -438,23 +439,27 @@ _Extra Information: _TCPdump is a command-line packet analyzer tool for monitori
 
 Use **hacker_data.pcap** acquired in previous task to pull out (data.data) field from the .pcap file and dump it into a hexdump.txt file
 
-Use flags -n -q -r with -T fields data.data. Your task is to craft a command which uses tshark to read packets from the file **hacker_data.pcap**, extracts the payload data of each packet in hexadecimal format (data.data), and saves it to the file **hexdump.txt**. The -n flag disables name resolution, -q suppresses unnecessary output, and -T fields specifies the output format.
+Your task is to craft a command which uses tshark to read data packets from the file **hacker_data.pcap**. It should extract the attached data of each packet in hexadecimal format (data.data), and save it to the file **hexdump.txt**. 
 
-tshark document for help [here](https://www.wireshark.org/docs/man-pages/tshark.html)
+Hint: The -n flag disables name resolution, -q suppresses unnecessary output, and -T fields specifies the output format.
 
-**Provide command**
+tshark document for [help](https://www.wireshark.org/docs/man-pages/tshark.html)
 
-**Screenshot of output hexdump.txt file**
+**Provide command* used*
+
+**Screenshot of hexdump.txt file**
 
 Next, copy the contents of the hexdump file and use an online hex to ASCII converter [tool](https://www.rapidtables.com/convert/number/hex-to-ascii.html) to restore contents of the original file.
 
-**Were you able to re-construct the original hackers_data.txt file sent using ICMP packets? What are the contents of file? Briefly explain and attach a screenshot**
+**Were you able to re-construct the original hackers_data.txt file sent using ICMP packets? What are the contents of file? Briefly explain your answer and attach a screenshot**
 
 ---
 
-## Task 4 OPTIONAL????
+## Task 4 C) OPTIONAL???? NOT INCLUDED YET!!! IF THE WORKLOAD OF OVERALL LAB IS LOW, IT CAN BE INCLUDED
 
 ### Establish a reverse shell connecton between server and your kali linux
+
+Tools used in this task: * **icmpdoor** - Github repository [here](https://github.com/krabelize/icmpdoor) ????
 
 In the previous task you discovered how ICMP packets can be used to transfer data despite having a firewall in place. In this task, you'll take this concept one step further and establish a reverse shell session
 between the server (ubuntu) and kali machine. Using reverse shell, you'll extract the server info.
