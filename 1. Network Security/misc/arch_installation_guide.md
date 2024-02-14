@@ -54,7 +54,7 @@ https://www.qemu.org/download/#linux
 sudo pacman -S qemu
 qemu-system-x86_64 --version
 ```
-### Download the relevant images & place them in the directory masters_thesis_stuff/terraform-testing/images**
+### Download the relevant images & place them in the directory _masters_thesis_stuff/terraform-testing/images_
 
 The repository for terraform deploymnet can be cloned using provided link
 
