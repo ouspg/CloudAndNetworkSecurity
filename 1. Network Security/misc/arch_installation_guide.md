@@ -54,12 +54,31 @@ https://www.qemu.org/download/#linux
 sudo pacman -S qemu
 qemu-system-x86_64 --version
 ```
-### download the required opnsense image
-https://github.com/maurice-w/opnsense-vm-images/releases/tag/23.7.11
+### Download the relevant images & place them in the directory masters_thesis_stuff/terraform-testing/images**
 
-(I am currently using the OPNsense-23.7.11-ufs-efi-vm-amd64.qcow2.bz2)
+The repository for terraform deploymnet can be cloned using provided link
 
-Move the image to terraform-testing directory and rename it opnsense.qcow2. Place it next to main.tf file
+```shell
+git clone https://github.com/lsuutari19/master_thesis_stuff
+```
+There are there images that you need to download and place them into directory _masters_thesis_stuff/terraform-testing/images_ 
+
+They have following names:
+
+1) kali-linux-2023.4-qemu-amd64.qcow2
+2) router_pfsense.qcow2
+3) linux_server.qcow2
+
+
+DOWNLOAD LINKS [Click here and append filename at the end of link to download that specific image file](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/)
+
+{Go-to _masters_thesis_stuff/terraform-testing/variables.tf_ file}
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/c0c11c63-2b2a-414f-bf86-8b55ab9cf34f)
+
+{And make following changes to variable "ubuntu_img_url"}
+
+{default ='ubuntu-desktop.iso' to default ='linux_server.qcow2'}
 
 ### Install mkisofs
 ```
