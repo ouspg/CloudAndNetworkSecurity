@@ -4,12 +4,6 @@ This installation instruction is designed for arch linux operating system.
 
 VM Passwords
 
-**OPNsense**
-root:opnsense
-
-**Ubuntu VM**
-ubuntu:linux 
-
 ## Install and setup libvirtd and necessary packages for UEFI virtualization
 ```
 # Update package databases
