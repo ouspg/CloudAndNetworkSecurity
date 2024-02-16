@@ -343,6 +343,8 @@ _Username:_ admin
 
 _Password:_ pfsense
 
+**At this point, WAN interface should be disabled. Do not configure or enable it from webGUI** 
+
 **Do a small ping test and observe captured traffic by pfSense using one of it's diagnostic packet capture tools available in webGUI. Ping test can be between any of router, kali or server. Add screenshot**
 
 
