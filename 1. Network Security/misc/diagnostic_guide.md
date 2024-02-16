@@ -17,7 +17,7 @@ sudo virsh vol-list --pool <pool-name>
 #To list the networks
 sudo virsh net-list
 ```
-### DELETING RESOURCE INSTANCES###
+### DELETING RESOURCE INSTANCES
 
 ```
 #To remove domains you need to undefine them
