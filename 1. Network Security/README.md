@@ -167,7 +167,11 @@ DOWNLOAD LINKS [Click here and append filename at the end of link to download th
 
 {And make following changes to variable "ubuntu_img_url"}
 
-{default ='ubuntu-desktop.iso' to default ='linux_server.qcow2'}
+{default ='ubuntu-desktop.iso' to default ='images/linux_server.qcow2'}
+
+Here's how corrected variable looks
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/202df1fb-facd-49ea-b5dd-df97f8785eca)
 
 
 
