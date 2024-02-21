@@ -97,7 +97,7 @@ The new virtual test network is based on three networks:
 The WAN is your standard computer network. The LAN is the internal network which contains probe machine (kali) protected by pfSense firewall which also
 acts as the default router for this. DMZ is the network which contains HTTP server (Ubuntu) and web-service is accessible via internet through port-forwarding. B
 
-In this lab, students will dive into this virtual setup and play-around to find things out such as discover weaknesses, enhance network and e.t.c.
+In this lab, students will dive into this virtual setup and play-around to find things out such as discover weaknesses, enhance network security and e.t.c.
 
 
 **See the official network diagram as provided by network admins**
@@ -108,128 +108,13 @@ In this lab, students will dive into this virtual setup and play-around to find 
 
 
 
-Now that we know the basics of virtual network setup, let’s get into the lab task. Task 1 is about setting up the network by installing required pre-requisite softwares
-
 ---
 
 ## Task 1
 
 ### Setup Installation 
 
-The network structure in this lab is built upon terraform. Terraform is a tool for deploying infrastructure as a code. Here, it is used to spawn the network infrastructure resources virtually using code configurations in terraform files (which is already done for you). A set of certain software dependencies are required to achieve this such as Libvirt, QEMU and KVM. Therefore, to make the network structure work, you'll have to follow the guidelines below. The instruction set has been tested on ubuntu/debian-linux as well as arch linux. Install guide for arch linux can be accessed [here](misc/arch_installation_guide.md)
 
-**NOTE:** If you plan to setup network within a virtual machine, be mindful of the hard-disk space requirement because image sizes are big:
-
-Kali linux (14.6 gb), Ubuntu server (14.6 gb) and pfSense (1 gb) 
-
-**Install and setup libvirtd and necessary packages for UEFI virtualization**
-```
-sudo apt update
-sudo apt-get install qemu-kvm libvirt-daemon-system virt-top libguestfs-tools ovmf
-sudo adduser $USER libvirt
-sudo usermod -aG libvirt $(whoami)
-```
-
-Start and enable libvirtd
-```
-sudo systemctl start libvirtd
-sudo systemctl enable libvirtd
-```
-
-**Install terraform**
-
-Follow specific instructions for your system
-
-https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
-
-**Verify terraform is accessible and the CLI works**
-```
-which terraform
-terraform --version
-```
-
-
-**Install virt-manager for VM accessibility**
-```
-sudo apt-get install virt-install virt-viewer
-sudo apt-get install virt-manager
-```
-
-**Install qemu and verify the installation**
-https://www.qemu.org/download/#linux
-```
-qemu-system-x86_64 --version
-```
-**Download the relevant images & place them in the directory masters_thesis_stuff/terraform-testing/images**
-
-The repository for terraform deploymnet can be cloned using provided link
-
-```shell
-git clone https://github.com/lsuutari19/master_thesis_stuff
-```
-There are there images that you need to download and place them into directory _masters_thesis_stuff/terraform-testing/images_ 
-
-They have following names:
-
-1) kali-linux-2023.4-qemu-amd64.qcow2
-2) router_pfsense.qcow2
-3) linux_server.qcow2
-
-
-DOWNLOAD LINKS [Click here and append filename at the end of link to download that specific image file](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/)
-
-{Go-to _masters_thesis_stuff/terraform-testing/variables.tf_ file}
-
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/c0c11c63-2b2a-414f-bf86-8b55ab9cf34f)
-
-{And make following changes to variable "ubuntu_img_url"}
-
-{default ='ubuntu-desktop.iso' to default ='images/linux_server.qcow2'}
-
-Here's how corrected variable looks
-
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/202df1fb-facd-49ea-b5dd-df97f8785eca)
-
-
-
-**Install mkisofs**
-```
-sudo apt-get install -y mkisofs
-```
-
-**Install xsltproc **
-```
-sudo apt-get install xsltproc
-```
-
-**Initialize default storage pool if it hasn't been created by libvirt**
-
-```
-sudo virsh pool-define /dev/stdin <<EOF
-<pool type='dir'>
-  <name>default</name>
-  <target>
-    <path>$PWD/images</path>
-  </target>
-</pool>
-EOF
-
-sudo virsh pool-start default
-sudo virsh pool-autostart default
-```
-
-**Configure user permisions for libvirt to storage pool**
-```
-sudo chown -R $(whoami):libvirt ~/images
-sudo systemctl restart libvirtd
-```
-
-
-**Using Terraform to deploy the network**
-```
-export TERRAFORM_LIBVIRT_TEST_DOMAIN_TYPE="qemu"
-
-```
 
 ---
 ## Task 2
