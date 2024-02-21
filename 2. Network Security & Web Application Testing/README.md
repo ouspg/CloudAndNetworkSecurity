@@ -112,7 +112,11 @@ In this lab, students will dive into this virtual setup and play-around to find 
 
 ## Task 1
 
-### Setup Installation 
+### DDoS Attack
+
+https://github.com/CruelDev69/DDoS-Attacker
+https://github.com/Whomrx666/Xdos-server
+
 
 
 
