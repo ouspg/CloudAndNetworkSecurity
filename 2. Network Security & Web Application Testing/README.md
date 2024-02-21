@@ -115,7 +115,10 @@ In this lab, students will dive into this virtual setup and play-around to find 
 ### DDoS Attack
 
 https://github.com/CruelDev69/DDoS-Attacker
+
 https://github.com/Whomrx666/Xdos-server
+
+https://minhcung.me/simulate-a-denial-of-service-attack-bd8d4c834002
 
 
 
