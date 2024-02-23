@@ -244,47 +244,30 @@ _Password:_ pfsense
 ---
 
 
-
 ## Task 3
 
-### Host discovery
+### VPN setup and configuration for remote access
 
-### Discovering hosts inside the LAN network and access the server's webservice from LAN
+Virtual Private Networks (VPNs) have become a core feature of establishing secure connections between devices/networks. (To-Do: write interesting task description related to creating a VPN tunnel so that "employees" can connect to the "company network=internal network" from external networks so they can work remotely.)
 
-From your network setup, you know that you're on the network 10.0.0.1/24. Use nmap scan to discover hosts on the network.
+### **A) Research and describe three different VPN types and their differences.
 
+The most widely used VPN types include personal VPN services, remote access VPNs and site-to-site VPNs. Briefly describe these different VPN types and their differences.
 
-### **A) How many hosts are present in the internal LAN network? What are their IP addresses?**
-
-**Provide commands**
-
-**Screenshot**
-
-The linux server is automatically running an HTTP nginx service. It can be accessed using http://<server_ip_addr> on any web browser.
 
 ---
 
-### **B) Now try running the same command from outside the LAN network? Are you able to discover devices inside the internal LAN network? Explain your answer**
 
-You can do this step from your host-machine which has internet access. Can it access or discover the LAN network somehow?
+### **B) Setup and Configure OpenVPN/Wireguard to allow remote access to the internal network
 
-What about the webservice running at http://<server_ip_addr>. Can you access it?
+Create and document your process of setting up and configuring a OpenVPN/Wireguard VPN solution to access the kali machine in the internal network. Provide images at least of your tunnel setup, OpenVPN servers tab & a successful connection from remote network to internal network.
+
+(To-Do: better description)
 
 ---
 
-### **C) Extracting more host info using NMAP**
 
-Use the -PE, -PP, -PM flags of nmap to perform host discovery sending respectively ICMPv4 echo, timestamp, and subnet mask requests. 
-
-**Provide command used to do this**
-
-**What extra information did you gather using this? Paste screenshot**
-
-### **D) Demonstrate access to web service using your kali linux
-
-As stated earlier, server is present at http://<server_ip_addr> 
-
-**Access the server from kali linux and attach screenshot**
+### **C) What type of tunnel did you create for the VPN connection? What are the differences between split-tunnel & full-tunnel VPN connections?
 
 ---
 
