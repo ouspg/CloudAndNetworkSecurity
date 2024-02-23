@@ -250,7 +250,7 @@ _Password:_ pfsense
 
 Virtual Private Networks (VPNs) have become a core feature of establishing secure connections between devices/networks. (To-Do: write interesting task description related to creating a VPN tunnel so that "employees" can connect to the "company network=internal network" from external networks so they can work remotely.)
 
-### **A) Research and describe three different VPN types and their differences.
+### **A) Research and describe three different VPN types and their differences.**
 
 The most widely used VPN types include personal VPN services, remote access VPNs and site-to-site VPNs. Briefly describe these different VPN types and their differences.
 
@@ -258,7 +258,7 @@ The most widely used VPN types include personal VPN services, remote access VPNs
 ---
 
 
-### **B) Setup and Configure OpenVPN/Wireguard to allow remote access to the internal network
+### **B) Setup and Configure OpenVPN/Wireguard to allow remote access to the internal network**
 
 Create and document your process of setting up and configuring a OpenVPN/Wireguard VPN solution to access the kali machine in the internal network. Provide images at least of your tunnel setup, OpenVPN servers tab & a successful connection from remote network to internal network.
 
@@ -267,7 +267,7 @@ Create and document your process of setting up and configuring a OpenVPN/Wiregua
 ---
 
 
-### **C) What type of tunnel did you create for the VPN connection? What are the differences between split-tunnel & full-tunnel VPN connections?
+### **C) What type of tunnel did you create for the VPN connection? What are the differences between split-tunnel & full-tunnel VPN connections?**
 
 ---
 
