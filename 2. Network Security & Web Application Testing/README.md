@@ -382,6 +382,9 @@ https://github.com/krabelize/icmpdoor?tab=readme-ov-file
 
 ### Accessing HTTP Server from outside LAN
 
+https://www.contradodigital.com/2021/02/19/how-to-host-a-single-website-behind-a-pfsense-firewall/
+
+
 This is a free-form task where you will play around with pfSense firewall webGUI or come up with an alternative solution to access the HTTP server (ubuntu) running on internal virtual LAN from your host computer. 
 
 Here's what you need to understand first:
