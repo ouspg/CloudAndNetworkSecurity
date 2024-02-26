@@ -248,7 +248,8 @@ _Password:_ pfsense
 
 ### VPN setup and configuration for remote access
 
-Virtual Private Networks (VPNs) have become a core feature of establishing secure connections between devices/networks. (To-Do: write interesting task description related to creating a VPN tunnel so that "employees" can connect to the "company network=internal network" from external networks so they can work remotely.)
+Virtual Private Networks (VPNs) have become a core feature of establishing secure connections between devices/networks. Most IT companies of today use these kinds of approaches for remote connections to their internal networks. 
+
 
 ### **A) Research and describe three different VPN types and their differences.**
 
@@ -258,11 +259,16 @@ The most widely used VPN types include personal VPN services, remote access VPNs
 ---
 
 
-### **B) Setup and Configure OpenVPN/Wireguard to allow remote access to the internal network**
+### **B) Setup and Configure OpenVPN to allow remote access to the internal network**
 
-Create and document your process of setting up and configuring a OpenVPN/Wireguard VPN solution to access the kali machine in the internal network. Provide images at least of your tunnel setup, OpenVPN servers tab & a successful connection from remote network to internal network.
+Your task as a cyber security professional is to set up a OpenVPN server to authenticate access to your organization's internal network(s) for users connecting from external networks. The internal company network in this situation consists of the DMZ- and the LAN networks. 
 
-(To-Do: better description)
+The organization that you are setting up the VPN for is named after the first letters of your first name and surname i.e. if your name was Pekka Pouta, it would be PePo, the organization is based in Oulu, Finland, Pohjois-Pohjanmaa. Take this information into account when creating the certificates for OpenVPN.
+
+If you configure and setup the OpenVPN client and server correctly, you should be able to login via the OpenVPN client and be able to access the machines hosted in the company network. 
+
+Create and document your process of setting up and configuring a OpenVPN VPN solution to access the machines in the internal- and DMZ networks. Provide images of at least your OpenVPN Remote Access server creation certificates (with organizational information), OpenVPN servers-, clients tab & a successful connection from remote network (host macihne) to the internal networks (a ping to the Kali machine and a curl to the web server in the DMZ suffice).
+
 
 ---
 
