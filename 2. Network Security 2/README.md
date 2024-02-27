@@ -212,7 +212,10 @@ To complete this task, do the following:
 1) Launch DDoS attack from your host machine using any of the tools provided
 2) Head over to 'States' section under 'Diagnostics' tab and apply 'Interface=WAN' filter to see states originated from WAN
 
-Study states populated and answer following questions
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/517d009d-ad6d-4cad-83bc-6a520577e15d)
+
+
+Study states populated and answer following two questions
 
 **TCP packets originated from <ip_addr1> and destined for <ip_addr_2>. However, as per state table inspection their final destination is 10.3.1.10 (which is internal IP). What is happening here. What is this technique called that's applied here by firewall?**
 
