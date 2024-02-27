@@ -126,14 +126,14 @@ containing new network. This is done for you already. All you have to do is clon
 
 For simplicity, follow the three steps guide below:
 
-1) Clone the new_network setup branch
+**1) Clone the new_network setup branch**
 
 The repository for latest terraform deploymnet can be cloned using provided link
 ```
 git clone -b new_network https://github.com/lsuutari19/master_thesis_stuff **~~TO BE UPDATED~~**
 ```
 
-2) Download and place relevant images into_ master_thesis_stuff/terraform-testing/images_ folder
+**2) Download and place relevant images into _master_thesis_stuff/terraform-testing/images_ folder**
 
 There are there images that you need to download and place into directory _**masters_thesis_stuff/terraform-testing/images**_
 
@@ -147,7 +147,7 @@ The required images for this lab have following names:
 
 DOWNLOAD LINKS [Click here and append filename at the end of link to download that specific image file](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/)
 
-3) Spawn your network
+**3) Spawn your network**
 
 Go-to masters_thesis_stuff/terraform-testing and use following commands to spawn the network
 
@@ -172,9 +172,11 @@ In today's interconnected digital landscape, Distributed Denial of Service (DDoS
 
 In this task, students will launch a DDoS attack on the server hosted in DMZ from outside (WAN). with the knowledge and skills necessary to defend against these disruptive assaults in real-world scenarios.
 
-### **A) Initialize your network setup and access the web-GUI. Install snort**
+### **A) Access web-GUI and install snort**
 
-Using terraform, spawn your virtual network, access virtual machines and open the web-GUI through LAN network (kali linux). 
+Using terraform, spawn your virtual network, access virtual machines and open the web-GUI through LAN network (kali linux). Using package manager provided by pfsense, install snort
+
+### B) Launch DDoS attack and monitor traffic
 
 ```
 # Useful commands
