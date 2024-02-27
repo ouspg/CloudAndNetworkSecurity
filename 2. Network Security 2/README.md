@@ -65,7 +65,7 @@ The provided VM's within terraform has all the required tools preinstalled.  Con
 
 ## NEW NETWORK SETUP FOR THE SECOND LAB
 
-For enhanced security purposes, the network setup for second lab has been upgraded and web-server has been exposed outside to the WAN. Network admins have moved the HTTP server to a new sub-network behind the pfsense firewall. This new sub-network is called [DMZ][https://en.wikipedia.org/wiki/Demilitarized_zone] and it only hosts the HTTP server. Original LAN network remains the same with kali linux. Here are the features of new network as described by network admins:
+For enhanced security purposes, the network setup for second lab has been upgraded and web-server has been exposed outside to the WAN. Network admins have moved the HTTP server to a new sub-network behind the pfsense firewall. This new sub-network is called [DMZ](https://en.wikipedia.org/wiki/Demilitarized_zone) and it only hosts the HTTP server. Original LAN network remains the same with kali linux. Here are the features of new network as described by network admins:
 
 ```
 WAN Network Specifications (vtnet0):
@@ -98,7 +98,7 @@ The new virtual test network is based on three networks:
 3. DMZ
 
 The WAN is your standard computer network. The LAN is the internal network which contains probe machine (kali) protected by pfSense firewall which also
-acts as the default router for this. DMZ is the network which contains HTTP server (Ubuntu) and web-service is accessible via WAN through [port-forwarding][https://www.wundertech.net/pfsense-port-forwarding-setup-guide/]. 
+acts as the default router for this. DMZ is the network which contains HTTP server (Ubuntu) and web-service is accessible via WAN through [port-forwarding](https://www.wundertech.net/pfsense-port-forwarding-setup-guide). 
 
 In this lab, students will dive into this virtual setup and play-around to find things out and perform security tasks.
 
