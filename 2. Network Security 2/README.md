@@ -267,12 +267,12 @@ Create and document your process of setting up and configuring a OpenVPN VPN sol
 
 ## Task 4
 
-### Accessing HTTP Server from outside LAN
+### Open-ended task for highest grade. Secure the given network
 
 https://www.contradodigital.com/2021/02/19/how-to-host-a-single-website-behind-a-pfsense-firewall/
 
 
-This is a free-form task where you will play around with pfSense firewall webGUI or come up with an alternative solution to access the HTTP server (ubuntu) running on internal virtual LAN from your host computer. 
+This is a free-form task where you will play around with the given network structure and make it more secure. You can install any packages, modify any rules and even play around with network assignments.
 
 Here's what you need to understand first:
 * Your host machine is on a WAN network (if it's connected to Wifi) OR a different LAN network (if ethernet network)
@@ -280,22 +280,13 @@ Here's what you need to understand first:
 * HTTP server inside internal LAN behind pfSense is not discoverable to your host machine
 
 Here's what you need to do:
-* Establish a communication channel between your host machine (WAN or other LAN) and HTTP server (internal LAN)
-* Access the web-service running on HTTP server from your host machine
+Would you like to try installing different types of software for better security on this network. How does it fit the given network? How does it improve the security of existing system?
 
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/525722a4-e00f-40ac-b522-4713a4d98820)
-
-Red lines in the diagram above indicate the required objective to be achieved
-
-There is no restriction to the choice of software or platform that students use for this task. However, utilizing pfSense webGUI is recommend as it has multiple useful options to complete this task such as:
-* Port forwarding
-* Firewall rules
-* VPN (OpenVPN)
-
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/fb64c03a-fb78-4eee-806b-55848225f214)
+Would you like to add new firewall rules? What rules will you add? Do you think you need to change network configurations? 
 
 
-The main idea behind this task is to configure firewall to allow host to communicate with ubuntu server. **If you decide to do this task, you'll have to research on your own how it could be achieve and then try to implement it**
+
+**If you decide to do this task, you'll have to research on your own how it could be achieve and then try to implement it**
 
 
 **Document your work properly for this task and include necessary screenshots and commands used**
