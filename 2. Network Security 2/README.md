@@ -60,7 +60,7 @@ The provided VM's within terraform has all the required tools preinstalled.  Con
 
 ## NEW NETWORK SETUP FOR THE SECOND LAB
 
-For enhanced security purposes, the network setup for second lab has been upgraded and web-server has been exposed to the internet. Network admins have moved the HTTP server to a new sub-network behind the pfsense firewall. This new sub-network is called [DMZ][https://en.wikipedia.org/wiki/Demilitarized_zone] and it only hosts the HTTP server. Original LAN network remains the same with kali linux. Here are the features of new network as described by network admins:
+For enhanced security purposes, the network setup for second lab has been upgraded and web-server has been exposed outside to the WAN. Network admins have moved the HTTP server to a new sub-network behind the pfsense firewall. This new sub-network is called [DMZ][https://en.wikipedia.org/wiki/Demilitarized_zone] and it only hosts the HTTP server. Original LAN network remains the same with kali linux. Here are the features of new network as described by network admins:
 
 ```
 WAN Network Specifications (vtnet0):
