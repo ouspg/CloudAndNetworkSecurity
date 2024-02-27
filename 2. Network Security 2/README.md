@@ -35,7 +35,8 @@ Further reading about [networking concepts](https://docs.netgate.com/pfsense/en/
 
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
-Task 1 | 1 | Launch DDoS Attack on server and study traffic | Terraform, virtual manager, wireshark, pfSense, DDoS-Attacker
+Task 0 | - | Setting up new network | Terraform, virtual manager
+Task 1 | 1 | Launch DDoS Attack on server and study traffic | Snort, wireshark, pfSense, DDoS-Attacker
 Task 2 | 3 | Fix security misconfigurations | pfSense,
 Task 3 | 4 | VPN setup and configuration for remote access | pfsense, OpenVPN, wireguard
 Task 4 | 5 | Your own experiment | Open-ended
@@ -116,17 +117,72 @@ In this lab, students will dive into this virtual setup and play-around to find 
 
 ---
 
+## Task 0
+
+### Setting up new network structure
+
+Before, you can start doing the lab tasks for points, you need to spawn your virtual network infrastructure. For this, you require latest terraform configurations and pfsense image
+containing new network. This is done for you already. All you have to do is clone the right terraform configurations and place the right VM images. Afterwards, you can initialize terraform as was in the first lab
+
+For simplicity, follow the three steps guide below:
+
+1) Clone the new_network setup branch
+
+The repository for latest terraform deploymnet can be cloned using provided link
+```
+git clone -b new_network https://github.com/lsuutari19/master_thesis_stuff **~~TO BE UPDATED~~**
+```
+
+2) Download and place relevant images into_ master_thesis_stuff/terraform-testing/images_ folder
+
+There are there images that you need to download and place into directory _**masters_thesis_stuff/terraform-testing/images**_
+
+If you completed lab 1, you can use same kali and ubuntu images and download only the latest pfsense image named _**pfsense_x.qcow2**_
+
+The required images for this lab have following names:
+
+    kali-linux-2023.4-qemu-amd64.qcow2
+    pfsense_x.qcow2
+    linux_server.qcow2
+
+DOWNLOAD LINKS [Click here and append filename at the end of link to download that specific image file](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/)
+
+3) Spawn your network
+
+Go-to masters_thesis_stuff/terraform-testing and use following commands to spawn the network
+
+```
+terraform init
+terraform validate
+terraform apply
+```
+If done correctly, there should be 13 resources spawned.
+
+```
+#Access virtual resources by typing
+virt-manager
+```
+
+
 ## Task 1
 
 ### Launch DDoS Attack on server and study traffic
 
-In today's interconnected digital landscape, Distributed Denial of Service (DDoS) attacks have emerged as a prevalent threat, capable of disrupting online services, causing financial losses, and tarnishing reputations. This section of the lab manual aims to provide a comprehensive introduction to DDoS attacks, exploring their mechanisms, motivations, and impacts. 
+In today's interconnected digital landscape, Distributed Denial of Service (DDoS) attacks have emerged as a prevalent threat, capable of disrupting online services, causing financial losses, and tarnishing reputations. This section of the lab manual aims to provide insights to DDoS attacks, exploring their mechanisms, impacts, and mitigation. 
 
 In this task, students will launch a DDoS attack on the server hosted in DMZ from outside (WAN). with the knowledge and skills necessary to defend against these disruptive assaults in real-world scenarios.
 
-A) Initialize your network setup and access the web-GUI
+### **A) Initialize your network setup and access the web-GUI. Install snort**
+
+Using terraform, spawn your virtual network, access virtual machines and open the web-GUI through LAN network (kali linux). 
+
+```
+# Useful commands
 
 
+Using pfSense web-GUI package manager, install [snort](https://www.snort.org/) 
+
+At this point, you are encouraged to explore your network and VM's
 
 https://github.com/CruelDev69/DDoS-Attacker
 
