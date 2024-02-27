@@ -36,7 +36,7 @@ Further reading about [networking concepts](https://docs.netgate.com/pfsense/en/
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 0 | - | Setting up new network | Terraform, virtual manager
-Task 1 | 1 | Launch DDoS Attack on server and study traffic | Snort, wireshark, pfSense, DDoS-Attacker
+Task 1 | 1 | Launch DDoS Attack on server and study traffic | Snort, wireshark, pfSense, DDoS-Attacker, Xdos-server
 Task 2 | 3 | Fix security misconfigurations | pfSense,
 Task 3 | 4 | VPN setup and configuration for remote access | pfsense, OpenVPN, wireguard
 Task 4 | 5 | Your own experiment | Open-ended
@@ -176,35 +176,47 @@ pfsense web-GUI | admin | pfsense
 
 ### Launch DDoS Attack on server and study traffic
 
-In today's interconnected digital landscape, Distributed Denial of Service (DDoS) attacks have emerged as a prevalent threat, capable of disrupting online services, causing financial losses, and tarnishing reputations. This section of the lab manual aims to provide insights to DDoS attacks, exploring their mechanisms, impacts, and mitigation. 
+In today's interconnected digital landscape, Distributed Denial of Service [DDoS](https://minhcung.me/simulate-a-denial-of-service-attack-bd8d4c834002) attacks have emerged as a prevalent threat, capable of disrupting online services, causing financial losses, and tarnishing reputations. This section of the lab manual aims to provide insights to DDoS attacks, exploring their mechanisms, impacts, and mitigation. 
 
 In this task, students will launch a DDoS attack on the server hosted in DMZ from outside (WAN) and study about skills necessary to defend against these disruptive assaults in real-world scenarios.
 
 ### A) Access web-GUI and install snort
 
-Access virtual machines and open the web-GUI through LAN network's kali linux.
+Access virtual machines and open the web-GUI through LAN network's kali linux. At this point, you are encouraged to explore your network and note down your VMs IP addresses. 
 
 Using pfSense web-GUI package manager, install [snort](https://www.snort.org/) 
 
-**Access snort package manager and provide screenshot**
+**Access snort package manager and provide screenshot. What is snort?**
 
-### B) Launch DDoS attack and monitor traffic
+### B) Launch DDoS attack and monitor snort log entries
 
+Launch a DDoS attack on the server hosted in DMZ from outside (WAN) and study Snort log entries.
 
+Use following two tools turn-by-turn to perform a DDoS attack:
+1. [DDoS-Attacker](https://github.com/CruelDev69/DDoS-Attacker)
+2. [Xdos-server](https://github.com/Whomrx666/Xdos-server)
 
+**Provide command used to launch DDoS attack using DDoS-Attacker**
 
-Using pfSense web-GUI package manager, install [snort](https://www.snort.org/) 
+**What does snort log entries show?**
 
-At this point, you are encouraged to explore your network and VM's
+**Repeat the attack with XDos-server tool. What do you notice in snort log entries now?**
 
-https://github.com/CruelDev69/DDoS-Attacker
+### C) Firewall state table inspection
 
-https://github.com/Whomrx666/Xdos-server
+State tables (read more about them [here](https://docs.trellix.com/bundle/endpoint-security-10.6.0-firewall-product-guide-windows/page/GUID-9023959B-AA8A-43D4-83ED-FF6388BC3A5A.html)) and entries play a crucial role in various networking devices and protocols, facilitating efficient packet processing and decision-making. 
 
-https://minhcung.me/simulate-a-denial-of-service-attack-bd8d4c834002
+In this task, you will explore how states entries are populated in pfsense. This will help you assess the route packets take to reach HTTP servie on DMZ
 
+To complete this task, do the following:
+1) Launch DDoS attack from your host machine using any of the tools provided
+2) Head over to 'States' section under 'Diagnostics' tab and apply 'Interface=WAN' filter to see states originated from WAN
 
+Study states populated and answer following questions
 
+**TCP packets originated from <ip_addr1> and destined for <ip_addr_2>. However, as per state table inspection their final destination is 10.3.1.10 (which is internal IP). What is happening here. What is this technique called that's applied here by firewall?**
+
+**Can state table be overflowed? What happens when they overflow?**
 
 ---
 ## Task 2
