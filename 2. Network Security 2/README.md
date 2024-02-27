@@ -66,7 +66,7 @@ For enhanced security purposes, the network setup for second lab has been upgrad
 WAN Network Specifications (vtnet0):
 The network operates on sub-net mask 255.255.255.0 (/24) with network address: 198.168.122.0
 Provides internet access to LAN Network through pfsense
-By default, internet traffic is disabled on WAN interface unless allowed via configurations
+
 
 LAN Network Specifications (vtnet1):
 Internal LAN Network. Internet enabled via WAN
@@ -83,7 +83,7 @@ Protocol for webGUI: HTTPS
 DMZ (vtnet2):
 The network operates on sub-net mask 255.255.255.0 (/24) with network address: 10.3.1.0
 Restricted and isolated network.
-Web-server hosted at 10.3.1.10 and accessible via LAN & WAN interface 
+Web-server hosted at 10.3.1.10 and accessible via LAN. Also accessible via WAN interface through port-forwarding
 
 ```
 
@@ -93,9 +93,9 @@ The new virtual test network is based on three networks:
 3. DMZ
 
 The WAN is your standard computer network. The LAN is the internal network which contains probe machine (kali) protected by pfSense firewall which also
-acts as the default router for this. DMZ is the network which contains HTTP server (Ubuntu) and web-service is accessible via internet through port-forwarding. B
+acts as the default router for this. DMZ is the network which contains HTTP server (Ubuntu) and web-service is accessible via WAN through [port-forwarding][https://www.wundertech.net/pfsense-port-forwarding-setup-guide/]. 
 
-In this lab, students will dive into this virtual setup and play-around to find things out such as discover weaknesses, enhance network security and e.t.c.
+In this lab, students will dive into this virtual setup and play-around to find things out and perform security tasks.
 
 
 **See the official network diagram as provided by network admins**
