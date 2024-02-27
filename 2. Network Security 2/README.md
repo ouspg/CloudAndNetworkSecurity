@@ -162,7 +162,15 @@ If done correctly, there should be 13 resources spawned.
 #Access virtual resources by typing
 virt-manager
 ```
+See machine's login info below 
 
+Machine|username|password
+-----|:---:|-----------
+Kali| kali| kali
+Ubuntu | ubuntu | ubuntu
+pfsense web-GUI | admin | pfsense
+
+---
 
 ## Task 1
 
@@ -170,16 +178,19 @@ virt-manager
 
 In today's interconnected digital landscape, Distributed Denial of Service (DDoS) attacks have emerged as a prevalent threat, capable of disrupting online services, causing financial losses, and tarnishing reputations. This section of the lab manual aims to provide insights to DDoS attacks, exploring their mechanisms, impacts, and mitigation. 
 
-In this task, students will launch a DDoS attack on the server hosted in DMZ from outside (WAN). with the knowledge and skills necessary to defend against these disruptive assaults in real-world scenarios.
+In this task, students will launch a DDoS attack on the server hosted in DMZ from outside (WAN) and study about skills necessary to defend against these disruptive assaults in real-world scenarios.
 
-### **A) Access web-GUI and install snort**
+### A) Access web-GUI and install snort
 
-Using terraform, spawn your virtual network, access virtual machines and open the web-GUI through LAN network (kali linux). Using package manager provided by pfsense, install snort
+Access virtual machines and open the web-GUI through LAN network's kali linux.
+
+Using pfSense web-GUI package manager, install [snort](https://www.snort.org/) 
+
+**Access snort package manager and provide screenshot**
 
 ### B) Launch DDoS attack and monitor traffic
 
-```
-# Useful commands
+
 
 
 Using pfSense web-GUI package manager, install [snort](https://www.snort.org/) 
