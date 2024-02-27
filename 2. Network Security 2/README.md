@@ -90,6 +90,8 @@ The network operates on sub-net mask 255.255.255.0 (/24) with network address: 1
 Restricted and isolated network.
 Web-server hosted at 10.3.1.10 and accessible via LAN. Also accessible via WAN interface through port-forwarding
 
+IMPORTANT NOTE: WebGUI can be accessed from LAN network with following URL: https://10.0.0.1:444
+
 ```
 
 The new virtual test network is based on three networks:
@@ -116,7 +118,15 @@ In this lab, students will dive into this virtual setup and play-around to find 
 
 ## Task 1
 
-### DDoS Attack
+### Launch DDoS Attack on server and study traffic
+
+In today's interconnected digital landscape, Distributed Denial of Service (DDoS) attacks have emerged as a prevalent threat, capable of disrupting online services, causing financial losses, and tarnishing reputations. This section of the lab manual aims to provide a comprehensive introduction to DDoS attacks, exploring their mechanisms, motivations, and impacts. 
+
+In this task, students will launch a DDoS attack on the server hosted in DMZ from outside (WAN). with the knowledge and skills necessary to defend against these disruptive assaults in real-world scenarios.
+
+A) Initialize your network setup and access the web-GUI
+
+
 
 https://github.com/CruelDev69/DDoS-Attacker
 
