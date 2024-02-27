@@ -9,10 +9,15 @@ This lab is continuation of week 1 network security theme.
 
 A basic understanding of networking is required. GitHub is required to complete this exercise
 
-Make yourself familiar with following tools.
+Make yourself familiar with following:
 
 
-* **nmap** - Host discovery with [nmap](https://nmap.org/book/man-host-discovery.html) nmap on [Wikipedia](https://en.wikipedia.org/wiki/Nmap)
+* **Port Forwards** - [Port forwards with NAT on pfSense]([https://nmap.org/book/man-host-discovery.html](https://docs.netgate.com/pfsense/en/latest/nat/port-forwards.html))
+* **NAT** - NAT guide on zenarmor about pfsense [here](https://www.zenarmor.com/docs/network-security-tutorials/pfsense-network-address-translation-nat-guide)
+
+
+Useful resources from previous lab:
+
 * **terraform** - Basic tutorial about what is terraform [here](https://k21academy.com/terraform-iac/terraform-beginners-guide/)
 * **pfSense** - Official documentation of pfSense [here](https://docs.netgate.com/pfsense/en/latest/install/assign-interfaces.html)
 * **wireshark** - Covered in pre-requisite courses. Official documentation [here](https://www.wireshark.org/docs/wsug_html/)
