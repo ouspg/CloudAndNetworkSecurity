@@ -30,11 +30,10 @@ Further reading about [networking concepts](https://docs.netgate.com/pfsense/en/
 
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
-Task 1 | 1 | Launch DDoS Attack on server and study traffic | Terraform, libvirt, Qemu, KVM
-Task 2 | 2 | Fix security misconfigurations | pfSense, terraform, virtual manager
-Task 3 | 3 | TBD | TBD
-Task 4 | 4 | TBD | wireshark, tshark
-Task 5 | 5 | TBD | Open-ended
+Task 1 | 1 | Launch DDoS Attack on server and study traffic | Terraform, virtual manager, wireshark, pfSense, DDoS-Attacker
+Task 2 | 3 | Fix security misconfigurations | pfSense,
+Task 3 | 4 | VPN setup and configuration for remote access | pfsense, OpenVPN, wireguard
+Task 4 | 5 | Your own experiment | Open-ended
 
 
 Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 5 points per whole exercise.
