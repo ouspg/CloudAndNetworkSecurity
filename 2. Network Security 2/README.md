@@ -105,7 +105,8 @@ In this lab, students will dive into this virtual setup and play-around to find 
 
 **See the official network diagram as provided by network admins**
 
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/a55c5723-482f-4ea4-ad38-58e119389165)
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/c83ef5d6-3768-44cf-895c-fc3fe463d0f9)
+
 
 
 
