@@ -66,10 +66,10 @@ For enhanced security purposes, the network setup for second lab has been upgrad
 WAN Network Specifications (vtnet0):
 The network operates on sub-net mask 255.255.255.0 (/24) with network address: 198.168.122.0
 Provides internet access to LAN Network through pfsense
+By default, internet traffic is disabled on WAN interface unless allowed via configurations
 
 LAN Network Specifications (vtnet1):
-
-Internal LAN Network
+Internal LAN Network. Internet enabled via WAN
 The network operates on sub-net mask 255.255.255.0 (/24) with network address: 10.0.0.0
 
 The IP address range for network is as follows:
@@ -83,7 +83,7 @@ Protocol for webGUI: HTTPS
 DMZ (vtnet2):
 The network operates on sub-net mask 255.255.255.0 (/24) with network address: 10.3.1.0
 Restricted and isolated network.
-Web-server hosted at 10.3.1.10 and accessible with internet through WAN interface 
+Web-server hosted at 10.3.1.10 and accessible via LAN & WAN interface 
 
 ```
 
