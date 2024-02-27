@@ -12,7 +12,7 @@ A basic understanding of networking is required. GitHub is required to complete 
 Make yourself familiar with following:
 
 
-* **Port Forwards** - [Port forwards with NAT on pfSense]([https://nmap.org/book/man-host-discovery.html](https://docs.netgate.com/pfsense/en/latest/nat/port-forwards.html))
+* **Port Forwards** - [Port forwards with NAT on pfSense](https://nmap.org/book/man-host-discovery.html](https://docs.netgate.com/pfsense/en/latest/nat/port-forwards.html)
 * **NAT** - NAT guide on zenarmor about pfsense [here](https://www.zenarmor.com/docs/network-security-tutorials/pfsense-network-address-translation-nat-guide)
 
 
