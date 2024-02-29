@@ -14,6 +14,7 @@ Make yourself familiar with following:
 
 * **Port Forwards** - [Port forwards with NAT on pfSense](https://docs.netgate.com/pfsense/en/latest/nat/port-forwards.html)
 * **NAT** - NAT guide on zenarmor about pfsense [here](https://www.zenarmor.com/docs/network-security-tutorials/pfsense-network-address-translation-nat-guide)
+* **Sharing files between KVM and host machine** - [Guide to creating a mounting point for file share](https://www.debugpoint.com/share-folder-virt-manager/)
 
 
 Useful resources from previous lab:
@@ -224,7 +225,37 @@ Study states populated and answer following two questions
 ---
 ## Task 2
 
-### Fix security misconfigurations
+### Cyberattack recovery
+
+[Incident response](https://www.ibm.com/topics/incident-response) is an important part of blue team side of cybersecurity. This is guided by the organizations [Incident Response Plan](https://www.cisa.gov/sites/default/files/publications/Incident-Response-Plan-Basics_508c.pdf,) (IRP) which is maintained by a computer security incident team (CSIRT) and includes the roles and responsibilities of IRP team members, business continuity plan in case of breach, summary of software and tools that are in place, list of critical network and data recovery processes and the guidelines for communication. The goal of this set of processes is to mitigate and prevent the effects before, during and after potential incidents. Security incidents can be described as any kind of breach that puts the organization's Confidentiality, Integrity or availability at risk.
+
+This section focuses on investigating, remediating and responding to the effects of a cyberattack that has compromised the internal network of your organization.
+
+For this task you need to enable file sharing between the KVM and the host system, and use the Diagnostics/Backup & Restore/Restore Backup option with the file provided at <pfsense_backup_file_location>. Remember to backup your current configuration from the Backup Configuration tab by checking "Include extra data" and "Download configuration as XML", then saving this file in your host machine for future use.
+
+<Image of how to backup>
+ 
+### **A) Identify and fix the firewall misconfigurations
+In this task you focus on investigating and remediating the effects of a cyberattack on the network system.
+
+Figure out what changes have been done to the firewall configuration, this includes different sections of the pfSense WebGUI such as:
+- Interface configurations
+- Firewall NAT & Rules
+- User Manager
+Provide brief description of what these changes affect in the network system and seek to fix the changes to revert the network into a safe state.
+
+
+### **B) Finding the root cause and mitigating it
+After investigating and analyzing the changes in the previous task, you should realize that there is a suspicious account associated in the pfSense that has excessive permissions. In the older versions of pfSense there were vulnerabilities that allowed certain things to happen to make this possible.
+
+Figure out what cybersecurity vulnerability was used to gain these rights, how the vulnerability can be used to gain these rights and seek to provide an explanation of how and why this vulnerability was effective, which versions of pfSense does it affect and how it was fixed in the later versions of pfSense. 
+
+Note: Although the pfSense version currently used is of 2.7.X, in this scenario you can assume the version is older.
+
+
+
+### ** C) Incident Response Report?
+TBD
 
 
 
@@ -243,9 +274,6 @@ Virtual Private Networks (VPNs) have become a core feature of establishing secur
 The most widely used VPN types include personal VPN services, remote access VPNs and site-to-site VPNs. Briefly describe these different VPN types and their differences.
 
 
----
-
-
 ### **B) Setup and Configure OpenVPN to allow remote access to the internal network**
 
 Your task as a cyber security professional is to set up a OpenVPN server to authenticate access to your organization's internal network(s) for users connecting from external networks. The internal company network in this situation consists of the DMZ- and the LAN networks. 
@@ -254,10 +282,15 @@ The organization that you are setting up the VPN for is named after the first le
 
 If you configure and setup the OpenVPN client and server correctly, you should be able to login via the OpenVPN client and be able to access the machines hosted in the company network. 
 
-Create and document your process of setting up and configuring a OpenVPN VPN solution to access the machines in the internal- and DMZ networks. Provide images of at least your OpenVPN Remote Access server creation certificates (with organizational information), OpenVPN servers-, clients tab & a successful connection from remote network (host macihne) to the internal networks (a ping to the Kali machine and a curl to the web server in the DMZ suffice).
+Create and document your process of setting up and configuring a OpenVPN VPN solution to access the machines in the internal- and DMZ networks. Provide images of at least the following:
 
+1. Server creation certificates (with organizational information visible)
+2. OpenVPN WAN rules
+3. OpenVPN Tunnel settings
+4. OpenVPN Client connection establishment
+5. Successful connection from remote network (host machine) to the internal networks (a ping to the kali machine and a curl to the web server in the DMZ suffice)
 
----
+#### You have two options for this task 1. use the OpenVPN installing wizard for the initial setup process and document thoroughly what is happening under the hood when you are creating the VPN connection in addition to the above this option focuses more on your understanding and documentation of the process. Or 2. Manually create all the required interface/firewall rules and provide images of this process, this option focuses more on youre technical solutions.
 
 
 ### **C) What type of tunnel did you create for the VPN connection? What are the differences between split-tunnel & full-tunnel VPN connections?**
