@@ -227,7 +227,7 @@ Study states populated and answer following two questions
 
 ### Cyberattack recovery
 
-[Incident response](https://www.ibm.com/topics/incident-response) is an important part of blue team side of cybersecurity. This is guided by the organizations [Incident Response Plan](https://www.cisa.gov/sites/default/files/publications/Incident-Response-Plan-Basics_508c.pdf,) (IRP) which is maintained by a computer security incident team (CSIRT) and includes the roles and responsibilities of IRP team members, business continuity plan in case of breach, summary of software and tools that are in place, list of critical network and data recovery processes and the guidelines for communication. The goal of this set of processes is to mitigate and prevent the effects before, during and after potential incidents. Security incidents can be described as any kind of breach that puts the organization's Confidentiality, Integrity or availability at risk.
+[Incident response](https://www.ibm.com/topics/incident-response) is an important part of blue team side of cybersecurity. This is guided by the organizations [Incident Response Plan](https://www.cisa.gov/sites/default/files/publications/Incident-Response-Plan-Basics_508c.pdf,) (IRP) which is maintained by a computer security incident team (CSIRT) and includes the roles and responsibilities of IRP team members, business continuity plan in case of breach, summary of software and tools that are in place, list of critical network and data recovery processes and the guidelines for communication. The goal of this set of processes ise to mitigate and prevent the effects before, during and after potential incidents. Security incidents can be described as any kind of breach that puts the organization's Confidentiality, Integrity or availability at risk.
 
 This section focuses on investigating, remediating and responding to the effects of a cyberattack that has compromised the internal network of your organization.
 
@@ -235,26 +235,25 @@ For this task you need to enable file sharing between the KVM and the host syste
 
 <Image of how to backup>
  
-### **A) Identify and fix the firewall misconfigurations
+### A) Identify and fix the firewall misconfigurations
 In this task you focus on investigating and remediating the effects of a cyberattack on the network system.
 
 Figure out what changes have been done to the firewall configuration, this includes different sections of the pfSense WebGUI such as:
 - Interface configurations
 - Firewall NAT & Rules
 - User Manager
-Provide brief description of what these changes affect in the network system and seek to fix the changes to revert the network into a safe state.
+Provide brief description of what these changes affect in the network system particularly between the internal network and the DMZ and seek to fix these changes to revert the network into a safe state.
 
 
-### **B) Finding the root cause and mitigating it
-After investigating and analyzing the changes in the previous task, you should realize that there is a suspicious account associated in the pfSense that has excessive permissions. In the older versions of pfSense there were vulnerabilities that allowed certain things to happen to make this possible.
+### B) Finding the root cause and mitigating it
+After investigating and analyzing the changes in the previous task, you should realize that there is a suspicious account associated in the pfSense that has excessive permissions. In the older versions of pfSense there were vulnerabilities that allowed certain things to happen to get root access if the WebGUI admin was logged in during the attack.
 
 Figure out what cybersecurity vulnerability was used to gain these rights, how the vulnerability can be used to gain these rights and seek to provide an explanation of how and why this vulnerability was effective, which versions of pfSense does it affect and how it was fixed in the later versions of pfSense. 
 
-Note: Although the pfSense version currently used is of 2.7.X, in this scenario you can assume the version is older.
+Note: Although the pfSense version currently used in the KVM is 2.7.X, in this scenario you can assume the vulnerability is related to a version is older.
 
 
-
-### ** C) Incident Response Report?
+### C) Incident Response Report?
 TBD
 
 
@@ -266,15 +265,15 @@ TBD
 
 ### VPN setup and configuration for remote access
 
-Virtual Private Networks (VPNs) have become a core feature of establishing secure connections between devices/networks. Most IT companies of today use these kinds of approaches for remote connections to their internal networks. 
+Virtual Private Networks (VPNs) have become a core feature of establishing secure connections between devices/networks enabling remote users to connect to companies internal networks using encryption and other methodologies to authenticate the user. Most IT companies of today use these kinds of approaches for remote connections to their internal networks.
 
 
-### **A) Research and describe three different VPN types and their differences.**
+### A) Research and describe three different VPN types and their differences.
 
 The most widely used VPN types include personal VPN services, remote access VPNs and site-to-site VPNs. Briefly describe these different VPN types and their differences.
 
 
-### **B) Setup and Configure OpenVPN to allow remote access to the internal network**
+### B) Setup and Configure OpenVPN to allow remote access to the internal network
 
 Your task as a cyber security professional is to set up a OpenVPN server to authenticate access to your organization's internal network(s) for users connecting from external networks. The internal company network in this situation consists of the DMZ- and the LAN networks. 
 
@@ -290,11 +289,10 @@ Create and document your process of setting up and configuring a OpenVPN VPN sol
 4. OpenVPN Client connection establishment
 5. Successful connection from remote network (host machine) to the internal networks (a ping to the kali machine and a curl to the web server in the DMZ suffice)
 
-#### You have two options for this task 1. use the OpenVPN installing wizard for the initial setup process and document thoroughly what is happening under the hood when you are creating the VPN connection in addition to the above this option focuses more on your understanding and documentation of the process. Or 2. Manually create all the required interface/firewall rules and provide images of this process, this option focuses more on youre technical solutions.
+**You have two options for this task 1. use the OpenVPN installing wizard for the initial setup process and document thoroughly what is happening under the hood when you are creating the VPN connection in addition to the above this option focuses more on your understanding and documentation of the process. Or 2. Manually create all the required interface/firewall rules and provide images of this process, this option focuses more on youre technical solutions.**
 
 
-### **C) What type of tunnel did you create for the VPN connection? What are the differences between split-tunnel & full-tunnel VPN connections?**
-
+### C) What type of tunnel did you create for the VPN connection? What are the differences between split-tunnel & full-tunnel VPN connections?
 
 ---
 
