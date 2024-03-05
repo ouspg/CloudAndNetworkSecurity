@@ -310,7 +310,9 @@ Would you like to add new firewall rules? What rules will you add? Do you think 
 Are there any existing rules that could be changed to enhance the security of the system? Could the system be setup differently with more security?
 
 Couple of useful documents for reference:
+
 [pfSense Software Network Address Translation Guide](https://www.zenarmor.com/docs/network-security-tutorials/pfsense-network-address-translation-nat-guide)
+
 [How to Host a Single Website Behind a pfSense Firewall](https://www.contradodigital.com/2021/02/19/how-to-host-a-single-website-behind-a-pfsense-firewall/)
 
 If you go through these reference documents, you'll have a deeper understanding of how the existing network was setup and may also come across ideas to improve it.
