@@ -300,9 +300,6 @@ Create and document your process of setting up and configuring a OpenVPN VPN sol
 
 ### Open-ended task for highest grade. Secure the given network
 
-Some reference tutorials:
-https://www.contradodigital.com/2021/02/19/how-to-host-a-single-website-behind-a-pfsense-firewall/
-
 
 This is a free-form task where you will play around with the given network structure and make it more secure. You can install any packages, modify any rules and even play around with network assignments.
 
