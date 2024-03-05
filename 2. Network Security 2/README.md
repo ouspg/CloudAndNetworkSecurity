@@ -317,14 +317,15 @@ Couple of useful documents for reference:
 
 If you go through these reference documents, you'll have a deeper understanding of how the existing network was setup and may also come across ideas to improve it.
 
-**If you decide to do this task, you'll have to research on your own how it could be achieve and then try to implement it**
+**OPTION 1: Decide yourself what you are going to do and write a brief report on it**
 
+**OPTION 2: If you think given network is secure enough, write a brief report about why is it secure. Use profound examples such as firewall rule xyz helps secure network in abc way**
 
 **Document your work properly for this task and include necessary screenshots and commands used**
 
-**You should state clearly your PLAN, which pathways you took to achieve the objective**
+**You should state clearly your PLAN, which changes and addition to rules and configurations you made. Justify with screenshots**
 
-**Make sure to document proper testing results to showcase success or failure**
+**Make sure to include testing results to showcase success or failure**
 
 **In case of partial implementation, write a brief report on issues and roadblocks encountered. You can still earn some points with failed attempts**
 
