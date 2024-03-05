@@ -300,22 +300,23 @@ Create and document your process of setting up and configuring a OpenVPN VPN sol
 
 ### Open-ended task for highest grade. Secure the given network
 
+Some reference tutorials:
 https://www.contradodigital.com/2021/02/19/how-to-host-a-single-website-behind-a-pfsense-firewall/
 
 
 This is a free-form task where you will play around with the given network structure and make it more secure. You can install any packages, modify any rules and even play around with network assignments.
 
-Here's what you need to understand first:
-* Your host machine is on a WAN network (if it's connected to Wifi) OR a different LAN network (if ethernet network)
-* You've so far configured an internal LAN network using pfSense which cannot be accessed from outside
-* HTTP server inside internal LAN behind pfSense is not discoverable to your host machine
-
-Here's what you need to do:
 Would you like to try installing different types of software for better security on this network. How does it fit the given network? How does it improve the security of existing system?
 
 Would you like to add new firewall rules? What rules will you add? Do you think you need to change network configurations? 
 
+Are there any existing rules that could be changed to enhance the security of the system? Could the system be setup differently with more security?
 
+Couple of useful documents for reference:
+[pfSense Software Network Address Translation Guide](https://www.zenarmor.com/docs/network-security-tutorials/pfsense-network-address-translation-nat-guide)
+[How to Host a Single Website Behind a pfSense Firewall](https://www.contradodigital.com/2021/02/19/how-to-host-a-single-website-behind-a-pfsense-firewall/)
+
+If you go through these reference documents, you'll have a deeper understanding of how the existing network was setup and may also come across ideas to improve it.
 
 **If you decide to do this task, you'll have to research on your own how it could be achieve and then try to implement it**
 
