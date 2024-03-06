@@ -231,7 +231,7 @@ Study states populated and answer following two questions
 
 This section focuses on investigating, remediating and responding to the effects of a cyberattack that has compromised the internal network of your organization.
 
-For this task you need to enable file sharing between the KVM and the host system, and use the Diagnostics/Backup & Restore/Restore Backup option with the file provided at <pfsense_backup_file_location>. Remember to backup your current configuration from the Backup Configuration tab by checking "Include extra data" and "Download configuration as XML", then saving this file in your host machine for future use.
+For this task you need to enable file sharing between the KVM and the host system, and use the Diagnostics/Backup & Restore/Restore Backup option with the file provided at <pfsense_backup_file_location>, this file contains the firewall misconfigurations that you are investigating in this task. Remember to backup your current configuration from the Backup Configuration tab by checking "Include extra data" and "Download configuration as XML", then saving this file in your host machine for future use.
 
 <Image of how to backup>
  
@@ -242,21 +242,16 @@ Figure out what changes have been done to the firewall configuration, this inclu
 - Interface configurations
 - Firewall NAT & Rules
 - User Manager
+
 Provide brief description of what these changes affect in the network system particularly between the internal network and the DMZ and seek to fix these changes to revert the network into a safe state.
 
 
 ### B) Finding the root cause and mitigating it
 After investigating and analyzing the changes in the previous task, you should realize that there is a suspicious account associated in the pfSense that has excessive permissions. In the older versions of pfSense there were vulnerabilities that allowed certain things to happen to get root access if the WebGUI admin was logged in during the attack.
 
-Figure out what cybersecurity vulnerability was used to gain these rights, how the vulnerability can be used to gain these rights and seek to provide an explanation of how and why this vulnerability was effective, which versions of pfSense does it affect and how it was fixed in the later versions of pfSense. 
+Figure out what cybersecurity vulnerability was used to gain these rights, how the vulnerability can be used to gain these rights and seek to provide an explanation of how and why this vulnerability was effective, which versions of pfSense does it affect and how it was fixed in the later versions of pfSense.
 
-Note: Although the pfSense version currently used in the KVM is 2.7.X, in this scenario you can assume the vulnerability is related to a version is older.
-
-
-### C) Incident Response Report?
-TBD
-
-
+Note: Although the pfSense version currently used in the KVM is 2.7.2, in this scenario you can assume the vulnerability is related to version 2.7.0.
 
 ---
 
@@ -293,6 +288,7 @@ Create and document your process of setting up and configuring a OpenVPN VPN sol
 
 
 ### C) What type of tunnel did you create for the VPN connection? What are the differences between split-tunnel & full-tunnel VPN connections?
+
 
 ---
 
