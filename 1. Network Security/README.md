@@ -143,14 +143,14 @@ https://www.qemu.org/download/#linux
 ```
 qemu-system-x86_64 --version
 ```
-**Download the relevant images & place them in the directory masters_thesis_stuff/terraform-testing/images**
+**Download the relevant images & place them in the directory network_sec_platform/images**
 
 The repository for terraform deploymnet can be cloned using provided link
 
 ```shell
-git clone https://github.com/lsuutari19/master_thesis_stuff
+git clone https://github.com/lsuutari19/network_sec_platform
 ```
-There are there images that you need to download and place them into directory _masters_thesis_stuff/terraform-testing/images_ 
+There are there images that you need to download and place them into directory _network_sec_platform/images_ 
 
 They have following names:
 
@@ -161,7 +161,7 @@ They have following names:
 
 DOWNLOAD LINKS [Click here and append filename at the end of link to download that specific image file](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/)
 
-{Go-to _masters_thesis_stuff/terraform-testing/variables.tf_ file}
+{Go-to _network_sec_platform/variables.tf_ file}
 
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/c0c11c63-2b2a-414f-bf86-8b55ab9cf34f)
 
@@ -190,20 +190,20 @@ sudo apt-get install xsltproc
 ```
 sudo virsh pool-define /dev/stdin <<EOF
 <pool type='dir'>
-  <name>default</name>
+  <name>default_pool</name>
   <target>
-    <path>$PWD/images</path>
+    <path>$PWD/volumes</path>
   </target>
 </pool>
 EOF
 
-sudo virsh pool-start default
-sudo virsh pool-autostart default
+sudo virsh pool-start default_pool
+sudo virsh pool-autostart default_pool
 ```
 
 **Configure user permisions for libvirt to storage pool**
 ```
-sudo chown -R $(whoami):libvirt ~/images
+sudo chown -R $(whoami):libvirt ./images
 sudo systemctl restart libvirtd
 ```
 
@@ -222,12 +222,12 @@ export TERRAFORM_LIBVIRT_TEST_DOMAIN_TYPE="qemu"
 If you've successfully installed all the required softwares, you're now set to deploy the network setup from Github and initialize it using terraform.
 Following this, you'll use virtual manager to access the virtual resources spawned by terraform. 
 
-### **A) Go into terraform-testing folder and initialize terraform and deploy the configuration**
+### **A) Go into repository folder and initialize terraform and deploy the configuration**
 
-Clone the master branch if you haven't already and place virtual images in master_thesis_stuff/terraform-testing/images folder. Skip this step if you've done already.
+Clone the master branch if you haven't already and place virtual images in network_sec_platform/images folder. Skip this step if you've done already.
 
 ```shell
-git clone https://github.com/lsuutari19/master_thesis_stuff
+git clone https://github.com/lsuutari19/network_sec_platform
 ```
 
 Useful commands:
@@ -260,10 +260,10 @@ Note: It can take few minutes to deploy the network structure, so be paitent
 If no then go back diagnose and fix your errors. A small guide about [managing virtual resources spawned by terraform](misc/diagnostic_guide.md)
 
 Normally if terraform deployment fails using 'terraform destroy' is not enough. Some of the virtual resources remain and have to be destroyed/killed manually. Moreover,
-terraform state files need to be deleted manually in such cases. They are:
+terraform state files need to be deleted manually in such cases. They are:T
 
 1) terraform.tfstate
-2) terraform.tfstate.backup
+2) terraform.tfstate.backupT
 3) terraform.lock.hcl # File used to initialize terraform
 
 
@@ -285,7 +285,7 @@ Login credentials for VMs in following format: username:password
 
 Kali linux: kali:kali
 
-Ubuntu server: Ubuntu:ubuntu
+Ubuntu server: ubuntu:linux
 
 ---
 

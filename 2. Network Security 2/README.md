@@ -227,7 +227,7 @@ Study states populated and answer following two questions
 
 ### Cyberattack recovery
 
-[Incident response](https://www.ibm.com/topics/incident-response) is an important part of blue team side of cybersecurity. This is guided by the organizations [Incident Response Plan](https://www.cisa.gov/sites/default/files/publications/Incident-Response-Plan-Basics_508c.pdf,) (IRP) which is maintained by a computer security incident team (CSIRT) and includes the roles and responsibilities of IRP team members, business continuity plan in case of breach, summary of software and tools that are in place, list of critical network and data recovery processes and the guidelines for communication. The goal of this set of processes ise to mitigate and prevent the effects before, during and after potential incidents. Security incidents can be described as any kind of breach that puts the organization's Confidentiality, Integrity or availability at risk.
+[Incident response](https://www.ibm.com/topics/incident-response) is an important part of blue team side of cybersecurity. This is guided by the organizations [Incident Response Plan](https://www.cisa.gov/sites/default/files/publications/Incident-Response-Plan-Basics_508c.pdf,) (IRP) which is maintained by a computer security incident team (CSIRT) and includes the roles and responsibilities of IRP team members, business continuity plan in case of breach, summary of software and tools that are in place, list of critical network and data recovery processes and the guidelines for communication. The goal of this set of processes is to mitigate and prevent the effects before, during and after potential incidents. Security incidents can be described as any kind of breach that puts the organization's Confidentiality, Integrity or availability at risk.
 
 This section focuses on investigating, remediating and responding to the effects of a cyberattack that has compromised the internal network of your organization.
 
@@ -243,7 +243,7 @@ Figure out what changes have been done to the firewall configuration, this inclu
 - Firewall NAT & Rules
 - User Manager
 
-Provide brief description of what these changes affect in the network system particularly between the internal network and the DMZ and seek to fix these changes to revert the network into a safe state.
+Provide brief descriptions and images of these changes and what they affect in the network system particularly between the internal network and the DMZ and seek to fix these changes to revert the network into a safe state. Your main objective is to restore access from the Kali machine to the webserver and to remove other changes in the firewall.
 
 
 ### B) Finding the root cause and mitigating it
