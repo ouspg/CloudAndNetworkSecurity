@@ -242,16 +242,22 @@ Figure out what changes have been done to the firewall configuration, this inclu
 - Interface configurations
 - Firewall NAT & Rules
 - User Manager
+- System
 
-Provide brief descriptions and images of these changes and what they affect in the network system particularly between the internal network and the DMZ and seek to fix these changes to revert the network into a safe state. Your main objective is to restore access from the Kali machine to the webserver and to remove other changes in the firewall.
+Provide brief descriptions and images of these changes and what they affect in the network system. 
+Particularly investigate the following and explain the changes related to them:
+- connection between internal network and the DMZ
+- SSH settings and who has been able to SSH into the pfSense system (root & admins should be the only ones with permissions for this) (tip: pfSense keeps logs of certain things)
+
+Your main objective is to restore access from the Kali machine to the webserver and to remove other changes in the firewall.
 
 
 ### B) Finding the root cause and mitigating it
-After investigating and analyzing the changes in the previous task, you should realize that there is a suspicious account associated in the pfSense that has excessive permissions. In the older versions of pfSense there were vulnerabilities that allowed certain things to happen to get root access if the WebGUI admin was logged in during the attack.
+After investigating and analyzing the changes in the previous task, you should realize that there is a suspicious account associated in the pfSense that has excessive permissions. In the older versions of pfSense there were vulnerabilities that allowed certain things to happen to get root access if the WebGUI admin was logged in during the attack with the help of social engineering.
 
 Figure out what cybersecurity vulnerability was used to gain these rights, how the vulnerability can be used to gain these rights and seek to provide an explanation of how and why this vulnerability was effective, which versions of pfSense does it affect and how it was fixed in the later versions of pfSense.
 
-Note: Although the pfSense version currently used in the KVM is 2.7.2, in this scenario you can assume the vulnerability is related to version 2.7.0.
+Note: Although the pfSense version currently used in the KVM is 2.7.2, in this scenario you can assume the vulnerability is related to version 2.7.0. One file relevant to this vulnerability has been reverted to a previous version of pfSense that contains a flag as a hint for what vulnerability this was.
 
 ---
 
