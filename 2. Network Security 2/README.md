@@ -319,9 +319,7 @@ Couple of useful documents for reference:
 
 If you go through these reference documents, you'll have a deeper understanding of how the existing network was setup and may also come across ideas to improve it.
 
-**OPTION 1: Decide yourself what you are going to do and write a brief report on it**
-
-**OPTION 2: If you think given network is secure enough, write a brief report about why is it secure. Use profound examples such as firewall rule xyz helps secure network in abc way**
+**Decide yourself what you are going to do and write a brief report on it**
 
 **Document your work properly for this task and include necessary screenshots and commands used**
 
