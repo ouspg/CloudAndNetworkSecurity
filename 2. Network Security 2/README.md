@@ -233,7 +233,7 @@ Study states populated and answer the following two questions
 
 This section focuses on investigating, remediating and responding to the effects of a cyberattack that has compromised the internal network of your organization.
 
-For this task you need to [enable file sharing between the KVM and the host system](https://www.debugpoint.com/share-folder-virt-manager/), and use the Diagnostics/Backup & Restore/Restore Backup option with the file provided at [pfsense_backup_file_location](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/final_misconf_pfsense.xml), this file contains the firewall misconfigurations that you are investigating in this task. Remember to backup your current configuration from the Backup Configuration tab by checking "Include extra data" and "Download configuration as XML", then saving this file in your host machine for future use.
+For this task you need to [enable file sharing between the KVM and the host system](https://www.debugpoint.com/share-folder-virt-manager/), and use the Diagnostics/Backup & Restore Backup option with the file provided at [pfsense_backup_file_location](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/final_misconf_pfsense.xml). This file contains the firewall misconfigurations that you are investigating in this task. Remember to backup your current configuration from the Backup Configuration tab by checking "Include extra data" and "Download configuration as XML", then saving this file in your host machine for future use.
 
 ![alt text](./misc/backup_restore_guide.png)
  
@@ -252,7 +252,10 @@ Provide brief descriptions and images of these changes and what they affect in t
 Particularly investigate the following and explain the changes related to them:
 - WAN exposure
 - connection between internal network and the DMZ
-- SSH settings and who has been able to SSH into the pfSense system (root & admins should be the only ones with permissions for this) (tip: pfSense keeps logs of certain things)
+- SSH settings and who has been able to SSH into the pfSense system (root & admins should be the only ones with permissions for this)
+
+> [!Tip]
+>  pfSense keeps logs of certain things
 
 Your main objective is to restore access from the Kali machine to the webserver and to remove other changes in the firewall to bring the network back into a safe state.
 
