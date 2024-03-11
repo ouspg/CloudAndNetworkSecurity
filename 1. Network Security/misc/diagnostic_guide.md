@@ -21,19 +21,28 @@ sudo virsh net-list
 
 ```
 #To remove domains you need to undefine them
-sudo virsh undefine kvm-opnsense
-sudo virsh undefine ubuntu-domain
+sudo virsh destroy pfsense-domain
+sudo virsh undefine pfsense-domain --remove-all-storage
+
+sudo virsh destroy ubuntu-domain
+sudo virsh undefine ubuntu-domain --remove-all-storage
+
+sudo virsh destroy kali-domain
+sudo virsh undefine kali-domain --remove-all-storage
 
 #To delete the volumes
-sudo virsh vol-delete /var/lib/libvirt/images/commoninit.iso
-sudo virsh vol-delete /var/lib/libvirt/images/opnsense-qcow2
-sudo virsh vol-delete /var/lib/libvirt/images/ubuntu-commoninit.iso
-sudo virsh vol-delete /var/lib/libvirt/images/ubuntu-qcow2
+sudo virsh vol-delete  $PWD/volumes/pfsense-commoninit.iso
+sudo virsh vol-delete $PWD/volumes/pfsense-volume
+sudo virsh vol-delete $PWD/volumes/ubuntu-commoninit.iso
+sudo virsh vol-delete $PWD/volumes/ubuntu-volume
+sudo virsh vol-delete $PWD/volumes/kali-commoninit.iso
+sudo virsh vol-delete  $PWD/volumes/kali-volume
 
 #To delete networks you also have to undefine them as well
-sudo virsh net-destroy cyber-range-LAN
-sudo virsh net-undefine cyber-range-LAN
-
-sudo virsh net-destroy default_network
-sudo virsh net-undefine default_network
+sudo virsh net-destroy external_network
+sudo virsh net-undefine external_network
+sudo virsh net-destroy internal_network
+sudo virsh net-undefine internal_network
+sudo virsh net-destroy demilitarized_zone
+sudo virsh net-undefine demilitarized_zone
 ```
