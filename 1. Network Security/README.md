@@ -428,7 +428,7 @@ Here's what you need to do:
 - Login to kali and open wireshark (or craft tcpdump commands to dump packets once received)
 - Send ICMP packets through server and simultaneously monitor and capture the packets from kali linux using wireshark
 
-[!Hint] Depending on your interface's Maximum Transmission Unit (MTU), each packet has a certain limit of data that it can hold without getting fragmented. For ethernet, you can find out this using 
+> [!Hint] Depending on your interface's Maximum Transmission Unit (MTU), each packet has a certain limit of data that it can hold without getting fragmented. For ethernet, you can find out this using 
 ifconfig/ip addr command. Generally it has a value of 1500 for ethernet. However, the actual usable data is:
 
 Maximum ICMP Data = MTU − Ethernet_Frame_Header − IP_Header − ICMP_Header
