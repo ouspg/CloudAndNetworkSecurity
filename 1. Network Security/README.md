@@ -226,7 +226,7 @@ Following this, you'll use virtual manager to access the virtual resources spawn
 
 ### **A) Go into repository folder and initialize terraform and deploy the configuration**
 
-Clone the master branch if you haven't already and place virtual images in network_sec_platform/images folder. Skip this step if you've done already.
+Clone the main branch if you haven't already and place virtual images in network_sec_platform/images folder. Skip this step if you've done already.
 
 ```shell
 git clone https://github.com/lsuutari19/network_sec_platform
@@ -252,27 +252,27 @@ terraform plan
 
 Note: It can take few minutes to deploy the network structure, so be paitent
 
-**Provide commands used**
+**Deploy your virtual network. Provide commands used**
 
 **How many resources does terraform prompt in the Plan to create/add?**
 
 **Provide screenshot**
 
-**Apply completed successfully? Provide screenshot**
+**If apply completed successfully it means your virtual network is up. Provide successful screenshot of apply**
 If no then go back diagnose and fix your errors. A small guide about [managing virtual resources spawned by terraform](misc/diagnostic_guide.md)
 
 Normally if terraform deployment fails using 'terraform destroy' is not enough. Some of the virtual resources remain and have to be destroyed/killed manually. Moreover,
-terraform state files need to be deleted manually in such cases. They are:T
+terraform state files need to be deleted manually in such cases. They are:
 
 1) terraform.tfstate
-2) terraform.tfstate.backupT
+2) terraform.tfstate.backup
 3) terraform.lock.hcl # File used to initialize terraform
 
 
 
 ---
 
-### **B) Access virtual manager and open virtual machine**s
+### **B) Access virtual manager and open virtual machines 
 
 ```shell
 # Command to access virtual manager
@@ -296,7 +296,7 @@ Ubuntu server: ubuntu:linux
 PfSense boots with default configuration for LAN network. Your task is to configure it correctly and build a LAN network valid for the configuration provided below.
 If done correctly, you should be able to access the pfSense WebGUI from machines on your virtual LAN network (such as kali and ubuntu server).
 
-IMPORTANT: After configuring LAN network using pfSense CLI, you'll have to reboot your network adapter or kali and ubuntu linux for new network configurations to take effect.
+IMPORTANT: After configuring LAN network using pfSense CLI, you'll have to reboot virtual machine's network adapter or alternatively reboot (kali and ubuntu linux) for new network configurations to take effect.
 
 ```
 LAN Network Specifications:
@@ -328,7 +328,7 @@ OPT1 ---> vtnet2
 Proceed to option 2) and use LAN Network Specification guide provided above to build a LAN network.
 This process is easy enough and should allow you to correctly setup the LAN network. Useful [guide](https://docs.netgate.com/pfsense/en/latest/install/assign-interfaces.html)
 
-Next, reboot kali linux for new network configurations to take affect or you can also restart your network adapter with:
+Next, reboot kali linux for new network configurations to take affect or you can also restart network adapter with:
 ```shell
 sudo ip link set eth0 down #replace eth0 with your interface name
 sudo ip link set eth0 up
@@ -338,7 +338,7 @@ sudo ip link set eth0 up
 
 **Access the webGUI from your kali linux. Provide screenshot**
 
-Congratulations if you've successfully accessed the webGUI of pfSense. With this portal, you can configure firewall rules, utilize diagnostic tools, observed network traffic and much more.
+Congratulations if you've successfully accessed the webGUI of pfSense. With this portal, you can configure firewall rules, utilize diagnostic tools, observe network traffic and much more.
 Use following default credentials to login as root
 
 _Username:_ admin
@@ -365,9 +365,9 @@ From your network setup, you know that you're on the network 10.0.0.1/24. Use nm
 
 ### **A) How many hosts are present in the internal LAN network? What are their IP addresses?**
 
-**Provide commands**
+**Provide commands used**
 
-**Screenshot**
+**Add screenshot**
 
 The linux server is automatically running an HTTP nginx service. It can be accessed using http://<server_ip_addr> on any web browser.
 
@@ -391,7 +391,7 @@ Use the -PE, -PP, -PM flags of nmap to perform host discovery sending respective
 
 ### **D) Demonstrate access to web service using your kali linux
 
-As stated earlier, server is present at http://<server_ip_addr> 
+As stated earlier, ubuntu server is running nginx at http://<server_ip_addr> 
 
 **Access the server from kali linux and attach screenshot**
 
