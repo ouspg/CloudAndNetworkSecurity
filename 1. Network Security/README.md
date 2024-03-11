@@ -7,6 +7,7 @@ Responsible person/main contact: Asad Hasan & Lauri Suutari
 
 * Create a GitHub account if you don't already have one
 * Create your answer repository from the provided link in **TODO**[Moodle space](https://moodle.oulu.fi/course/view.php?id=18470), **as instructed [here](../README.md#instructions)**
+* Exercise is designed to be completed on a linux system
 * Check the instructions on how to download and use the course's Arch Linux virtual machine
     * Instructions are available [here](https://ouspg.org/resources/laboratories/). You will find the download link from the Moodle workspace.
     * If you want to use your own computer, download and install Virtualbox to run the virtual machine. VMWare Player should work also.
@@ -477,21 +478,6 @@ tshark document for [help](https://www.wireshark.org/docs/man-pages/tshark.html)
 Next, copy the contents of the hexdump file and use an online hex to ASCII converter [tool](https://www.rapidtables.com/convert/number/hex-to-ascii.html) to restore contents of the original file.
 
 **Were you able to re-construct the original hackers_data.txt file sent using ICMP packets? What are the contents of file? Briefly explain your answer and attach a screenshot**
-
----
-
-## Task 4 C) OPTIONAL???? NOT INCLUDED YET!!! IF THE WORKLOAD OF OVERALL LAB IS LOW, IT CAN BE INCLUDED
-
-### Establish a reverse shell connecton between server and your kali linux
-
-Tools used in this task: * **icmpdoor** - Github repository [here](https://github.com/krabelize/icmpdoor) ????
-
-In the previous task you discovered how ICMP packets can be used to transfer data despite having a firewall in place. In this task, you'll take this concept one step further and establish a reverse shell session
-between the server (ubuntu) and kali machine. Using reverse shell, you'll extract the server info.
-
-This is a free form task where you can use tool of your choice
-
-https://github.com/krabelize/icmpdoor?tab=readme-ov-file
 
 
 ---
