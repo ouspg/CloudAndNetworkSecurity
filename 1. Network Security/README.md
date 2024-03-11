@@ -469,7 +469,7 @@ Use **hacker_data.pcap** acquired in previous task to pull out (data.data) field
 
 Your task is to craft a command which uses tshark to read data packets from the file **hacker_data.pcap**. It should extract the attached data of each packet in hexadecimal format (data.data), and save it to the file **hexdump.txt**. 
 
-> [!Hint] 
+> [!Tip] 
 > The -n flag disables name resolution, -q suppresses unnecessary output, and -T fields specifies the output format.
 
 tshark document for [help](https://www.wireshark.org/docs/man-pages/tshark.html)
