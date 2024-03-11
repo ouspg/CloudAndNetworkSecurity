@@ -272,7 +272,7 @@ terraform state files need to be deleted manually in such cases. They are:
 
 ---
 
-### **B) Access virtual manager and open virtual machines 
+### B) Access virtual manager and open virtual machines 
 
 ```shell
 # Command to access virtual manager
@@ -389,7 +389,7 @@ Use the -PE, -PP, -PM flags of nmap to perform host discovery sending respective
 
 **What extra information did you gather using this? Paste screenshot**
 
-### **D) Demonstrate access to web service using your kali linux
+### D) Demonstrate access to web service using your kali linux
 
 As stated earlier, ubuntu server is running nginx at http://<server_ip_addr> 
 
