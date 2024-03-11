@@ -104,7 +104,6 @@ The network structure in this lab is built upon terraform. Terraform is a tool f
 
 **NOTE:** If you plan to setup network within a virtual machine, be mindful of the hard-disk space requirement because image sizes are big:
 
-Kali linux (14.6 gb), Ubuntu server (14.6 gb) and pfSense (1 gb) 
 
 **Install and setup libvirtd and necessary packages for UEFI virtualization**
 ```
@@ -144,35 +143,29 @@ https://www.qemu.org/download/#linux
 ```
 qemu-system-x86_64 --version
 ```
+
 **Download the relevant images & place them in the directory network_sec_platform/images**
 
-The repository for terraform deploymnet can be cloned using provided link
+Following table summarizes the required images with download links for this lab:
+
+Image name|Image size|Download Link
+:-:|:-:|:-:
+Kali linux | 14.6 gb | (kali download)[https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/kali-linux-2023.4-qemu-amd64.zip]
+Ubuntu server | 1.8 gb | (server download)[https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/ubuntu_server.qcow2]
+pfSense | 1 gb | (pfsense download)[https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/router_pfsense.qcow2]
+
+The repository for terraform deploymnet can be cloned using the link below
 
 ```shell
 git clone https://github.com/lsuutari19/network_sec_platform
 ```
-There are there images that you need to download and place them into directory _network_sec_platform/images_ 
+There are there images that you need to download (links provided above) and place them into directory _network_sec_platform/images_ 
 
 They have following names:
 
 1) kali-linux-2023.4-qemu-amd64.qcow2
 2) router_pfsense.qcow2
 3) linux_server.qcow2
-
-
-DOWNLOAD LINKS [Click here and append filename at the end of link to download that specific image file](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/)
-
-{Go-to _network_sec_platform/variables.tf_ file}
-
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/c0c11c63-2b2a-414f-bf86-8b55ab9cf34f)
-
-{And make following changes to variable "ubuntu_img_url"}
-
-{default ='ubuntu-desktop.iso' to default ='images/linux_server.qcow2'}
-
-Here's how corrected variable looks
-
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/202df1fb-facd-49ea-b5dd-df97f8785eca)
 
 
 
@@ -186,7 +179,9 @@ sudo apt-get install -y mkisofs
 sudo apt-get install xsltproc
 ```
 
-**Initialize default storage pool if it hasn't been created by libvirt**
+**Initialize default volume storage pool**
+
+Defining this pool to point to ./volumes makes it easier for us to control the resources, also it avoids having to deal with any permission issues. Also keeping all of the resources under "master" directory lets us easily delete all the resources once we are done with the laboratories.
 
 ```
 sudo virsh pool-define /dev/stdin <<EOF
@@ -204,16 +199,19 @@ sudo virsh pool-autostart default_pool
 
 **Configure user permisions for libvirt to storage pool**
 ```
-sudo chown -R $(whoami):libvirt ./images
+sudo chown -R $(whoami):libvirt $PWD/volumes
 sudo systemctl restart libvirtd
 ```
 
 
-**Using Terraform to deploy the network**
+**Provision the platform with Terraform**
 ```
 export TERRAFORM_LIBVIRT_TEST_DOMAIN_TYPE="qemu"
-
+terraform init
+terraform apply
 ```
+
+Running into errors? Read the troubleshoot section (here)[https://github.com/lsuutari19/network_sec_platform?tab=readme-ov-file#troubleshooting]
 
 ---
 ## Task 2
