@@ -278,15 +278,18 @@ After completing this task, you can revert back to the old configurations with t
 
 ### VPN setup and configuration for remote access
 
-Virtual Private Networks (VPNs)[https://en.wikipedia.org/wiki/Virtual_private_network] have become a core feature of establishing secure connections between devices/networks enabling remote users to connect to companies internal networks using encryption and other methodologies to authenticate the user. Most IT companies today use these kinds of approaches for remote connections to their internal networks.
+Virtual Private Networks [VPNs](https://en.wikipedia.org/wiki/Virtual_private_network) have become a core feature of establishing secure connections between devices/networks enabling remote users to connect to companies internal networks using encryption and other methodologies to authenticate the user. Most IT companies today use these kinds of approaches for remote connections to their internal networks.
 
 
-### A) Research and describe three different VPN types and their differences.
+### A) Research and describe how VPNs work
 
-The most widely used VPN types include personal VPN services, remote access VPNs and site-to-site VPNs. Briefly describe these different VPN types and their differences.
+Research how VPNs work and briefly describe how they establish a connection between two devices/networks and how the three most widely used VPN services differ from each other (max 200 words);
+- Personal VPN services
+- Remote access VPN
+- Site-to-site VPN
 
 
-### B) Setup and Configure OpenVPN to allow remote access to the internal network
+### B) Setup and Configure OpenVPN to allow remote access from external network to the internal network
 
 Your task as a cyber security professional is to set up a OpenVPN server to authenticate access to your organization's internal network(s) for users connecting from external networks. The internal company network in this situation consists of the DMZ- and the LAN networks. 
 
