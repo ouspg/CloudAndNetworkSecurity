@@ -165,7 +165,7 @@ They have following names:
 
 1) kali-linux-2023.4-qemu-amd64.qcow2
 2) router_pfsense.qcow2
-3) linux_server.qcow2
+3) ubuntu_server.qcow2
 
 
 
