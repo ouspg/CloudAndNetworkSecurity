@@ -150,9 +150,9 @@ Following table summarizes the required images with download links for this lab:
 
 Image name|Image size|Download Link
 :-:|:-:|:-:
-Kali linux | 14.6 gb | (kali download)[https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/kali-linux-2023.4-qemu-amd64.zip]
-Ubuntu server | 1.8 gb | (server download)[https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/ubuntu_server.qcow2]
-pfSense | 1 gb | (pfsense download)[https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/router_pfsense.qcow2]
+Kali linux | 14.6 gb | [kali download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/kali-linux-2023.4-qemu-amd64.zip)
+Ubuntu server | 1.8 gb | [server download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/ubuntu_server.qcow2)
+pfSense | 1 gb | [pfsense download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/router_pfsense.qcow2)
 
 The repository for terraform deploymnet can be cloned using the link below
 
@@ -211,7 +211,7 @@ terraform init
 terraform apply
 ```
 
-Running into errors? Read the troubleshoot section (here)[https://github.com/lsuutari19/network_sec_platform?tab=readme-ov-file#troubleshooting]
+Running into errors? Read the troubleshoot section [here](https://github.com/lsuutari19/network_sec_platform?tab=readme-ov-file#troubleshooting)
 
 ---
 ## Task 2
