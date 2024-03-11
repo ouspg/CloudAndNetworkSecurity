@@ -127,18 +127,19 @@ containing new network. This is done for you already. All you have to do is clon
 
 For simplicity, follow the three steps guide below:
 
-**1) Clone the new_network setup branch**
+**1) Fetch the new_network setup branch**
 
-The repository for latest terraform deploymnet can be cloned using provided link
+Fetch the lab2 branch and checkout to it.
 ```
-git clone -b new_network https://github.com/lsuutari19/master_thesis_stuff **~~TO BE UPDATED~~**
+git fetch origin lab2
+git checkout lab2
 ```
 
-**2) Download and place relevant images into _master_thesis_stuff/terraform-testing/images_ folder**
+**2) Download and place relevant images into _network_sec_laboratory/images_ folder**
 
-There are there images that you need to download and place into directory _**masters_thesis_stuff/terraform-testing/images**_
+There are images that you need to download and place into the following directory _**network_sec_laboratory/images**_
 
-If you completed lab 1, you can use same kali and ubuntu images and download only the latest pfsense image named _**pfsense_x.qcow2**_
+If you completed lab 1, you can use the same kali and ubuntu images and download only the latest pfsense image named _**pfsense_x.qcow2**_
 
 The required images for this lab have following names:
 
@@ -150,14 +151,14 @@ DOWNLOAD LINKS [Click here and append filename at the end of link to download th
 
 **3) Spawn your network**
 
-Go-to masters_thesis_stuff/terraform-testing and use following commands to spawn the network
+Go-to network_sec_laboratory directory and use following commands to spawn the network
 
 ```
 terraform init
 terraform validate
 terraform apply
 ```
-If done correctly, there should be 13 resources spawned.
+If done correctly, there should be 12 resources spawned.
 
 ```
 #Access virtual resources by typing
@@ -168,7 +169,7 @@ See machine's login info below
 Machine|username|password
 -----|:---:|-----------
 Kali| kali| kali
-Ubuntu | ubuntu | ubuntu
+Ubuntu | ubuntu | linux
 pfsense web-GUI | admin | pfsense
 
 ---
@@ -180,6 +181,8 @@ pfsense web-GUI | admin | pfsense
 In today's interconnected digital landscape, Distributed Denial of Service [DDoS](https://minhcung.me/simulate-a-denial-of-service-attack-bd8d4c834002) attacks have emerged as a prevalent threat, capable of disrupting online services, causing financial losses, and tarnishing reputations. This section of the lab manual aims to provide insights to DDoS attacks, exploring their mechanisms, impacts, and mitigation. 
 
 In this task, students will launch a DDoS attack on the server hosted in DMZ from outside (WAN) and study about skills necessary to defend against these disruptive assaults in real-world scenarios.
+
+
 
 ### A) Access web-GUI and install snort
 
@@ -216,7 +219,7 @@ To complete this task, do the following:
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/517d009d-ad6d-4cad-83bc-6a520577e15d)
 
 
-Study states populated and answer following two questions
+Study states populated and answer the following two questions
 
 **TCP packets originated from <ip_addr1> and destined for <ip_addr_2>. However, as per state table inspection their final destination is 10.3.1.10 (which is internal IP). What is happening here. What is this technique called that's applied here by firewall?**
 
@@ -231,9 +234,10 @@ Study states populated and answer following two questions
 
 This section focuses on investigating, remediating and responding to the effects of a cyberattack that has compromised the internal network of your organization.
 
-For this task you need to enable file sharing between the KVM and the host system, and use the Diagnostics/Backup & Restore/Restore Backup option with the file provided at <pfsense_backup_file_location>, this file contains the firewall misconfigurations that you are investigating in this task. Remember to backup your current configuration from the Backup Configuration tab by checking "Include extra data" and "Download configuration as XML", then saving this file in your host machine for future use.
+For this task you need to [enable file sharing between the KVM and the host system](https://www.debugpoint.com/share-folder-virt-manager/), and use the Diagnostics/Backup & Restore/Restore Backup option with the file provided at [pfsense_backup_file_location](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/final_misconf_pfsense.xml), this file contains the firewall misconfigurations that you are investigating in this task. Remember to backup your current configuration from the Backup Configuration tab by checking "Include extra data" and "Download configuration as XML", then saving this file in your host machine for future use.
 
-<Image of how to backup>
+![alt text](./misc/backup_restore_guide.png)
+ 
  
 ### A) Identify and fix the firewall misconfigurations
 In this task you focus on investigating and remediating the effects of a cyberattack on the network system.
@@ -243,21 +247,27 @@ Figure out what changes have been done to the firewall configuration, this inclu
 - Firewall NAT & Rules
 - User Manager
 - System
+- Status / System Logs
 
-Provide brief descriptions and images of these changes and what they affect in the network system. 
+Provide brief descriptions and images of these changes and what they affect in the network system.
 Particularly investigate the following and explain the changes related to them:
+- WAN exposure
 - connection between internal network and the DMZ
 - SSH settings and who has been able to SSH into the pfSense system (root & admins should be the only ones with permissions for this) (tip: pfSense keeps logs of certain things)
 
-Your main objective is to restore access from the Kali machine to the webserver and to remove other changes in the firewall.
+Your main objective is to restore access from the Kali machine to the webserver and to remove other changes in the firewall to bring the network back into a safe state.
 
 
 ### B) Finding the root cause and mitigating it
-After investigating and analyzing the changes in the previous task, you should realize that there is a suspicious account associated in the pfSense that has excessive permissions. In the older versions of pfSense there were vulnerabilities that allowed certain things to happen to get root access if the WebGUI admin was logged in during the attack with the help of social engineering.
+After investigating and analyzing the changes in the previous task, you should realize that there are suspicious account(s) associated in the pfSense that have excessive permissions. In the older versions of pfSense there were vulnerabilities that allowed certain things to happen to get root access if the WebGUI admin was logged in during the attack with the help of social engineering.
 
-Figure out what cybersecurity vulnerability was used to gain these rights, how the vulnerability can be used to gain these rights and seek to provide an explanation of how and why this vulnerability was effective, which versions of pfSense does it affect and how it was fixed in the later versions of pfSense.
+Figure out what cybersecurity vulnerability was used to gain these rights, how the vulnerability can be used to gain these rights and seek to provide an explanation of how and why this vulnerability was effective, which versions of pfSense does it affect and how it was fixed in the later versions of pfSense. One file relevant to this vulnerability has been reverted to a previous version of pfSense that contains a flag as a hint for what vulnerability this was.
 
-Note: Although the pfSense version currently used in the KVM is 2.7.2, in this scenario you can assume the vulnerability is related to version 2.7.0. One file relevant to this vulnerability has been reverted to a previous version of pfSense that contains a flag as a hint for what vulnerability this was.
+Note: Although the pfSense version currently used in the KVM is 2.7.2, in this scenario you can assume the vulnerability is related to version 2.7.0.
+
+
+After completing this task, you can revert back to the old configurations with the same method as before, but with the configuration you saved or redeploy the system with Terraform.
+
 
 ---
 
@@ -290,10 +300,14 @@ Create and document your process of setting up and configuring a OpenVPN VPN sol
 4. OpenVPN Client connection establishment
 5. Successful connection from remote network (host machine) to the internal networks (a ping to the kali machine and a curl to the web server in the DMZ suffice)
 
-**You have two options for this task 1. use the OpenVPN installing wizard for the initial setup process and document thoroughly what is happening under the hood when you are creating the VPN connection in addition to the above this option focuses more on your understanding and documentation of the process. Or 2. Manually create all the required interface/firewall rules and provide images of this process, this option focuses more on youre technical solutions.**
+**You have two options for this task:** 
+1. Use the OpenVPN installing wizard for the initial setup process and document thoroughly what is happening under the hood when you are creating the VPN connection in addition to the above this option focuses more on your understanding and documentation of the process. 
+2. Manually create all the required interface/firewall rules and provide images of this process, this option focuses more on youre technical solutions.
 
 
-### C) What type of tunnel did you create for the VPN connection? What are the differences between split-tunnel & full-tunnel VPN connections?
+### C) What type of tunnel did you create for the VPN connection?
+
+Briefly explain what kind of tunnel you created for the VPN connection and explain what are the differences between split-tunnel & full-runnel VPN connections.
 
 
 ---
