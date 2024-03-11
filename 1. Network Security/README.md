@@ -159,7 +159,7 @@ The repository for terraform deploymnet can be cloned using the link below
 ```shell
 git clone https://github.com/lsuutari19/network_sec_platform
 ```
-There are there images that you need to download (links provided above) and place them into directory _network_sec_platform/images_ 
+There are three images that you need to download (links provided above) and place them into directory _network_sec_platform/images_ 
 
 They have following names:
 
