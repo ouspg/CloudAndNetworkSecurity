@@ -208,11 +208,12 @@ Use following two tools turn-by-turn to perform a DDoS attack:
 
 State tables (read more about them [here](https://docs.trellix.com/bundle/endpoint-security-10.6.0-firewall-product-guide-windows/page/GUID-9023959B-AA8A-43D4-83ED-FF6388BC3A5A.html)) and entries play a crucial role in various networking devices and protocols, facilitating efficient packet processing and decision-making. 
 
-In this task, you will explore how states entries are populated in pfsense. This will help you assess the route packets take to reach HTTP servie on DMZ
+In this task, you will explore how states entries are populated in pfsense. This will help you assess the route packets take to reach HTTP service on DMZ
 
 To complete this task, do the following:
 1) Launch DDoS attack from your host machine using any of the tools provided
-2) Head over to 'States' section under 'Diagnostics' tab and apply 'Interface=WAN' filter to see states originated from WAN
+2) Access the web-GUI
+3) Head over to 'States' section under 'Diagnostics' tab and apply 'Interface=WAN' filter to see states originated from WAN
 
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/517d009d-ad6d-4cad-83bc-6a520577e15d)
 
