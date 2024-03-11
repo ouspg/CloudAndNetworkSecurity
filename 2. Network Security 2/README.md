@@ -278,7 +278,7 @@ After completing this task, you can revert back to the old configurations with t
 
 ### VPN setup and configuration for remote access
 
-Virtual Private Networks (VPNs) have become a core feature of establishing secure connections between devices/networks enabling remote users to connect to companies internal networks using encryption and other methodologies to authenticate the user. Most IT companies of today use these kinds of approaches for remote connections to their internal networks.
+Virtual Private Networks (VPNs)[https://en.wikipedia.org/wiki/Virtual_private_network] have become a core feature of establishing secure connections between devices/networks enabling remote users to connect to companies internal networks using encryption and other methodologies to authenticate the user. Most IT companies today use these kinds of approaches for remote connections to their internal networks.
 
 
 ### A) Research and describe three different VPN types and their differences.
