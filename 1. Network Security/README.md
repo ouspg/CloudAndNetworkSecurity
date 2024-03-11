@@ -409,7 +409,7 @@ Moreover, you could also use nmap to send other types of ICMP packets (this will
 
 ICMP packets can be modified to include information in their payloads. The data portion of ICMP (Internet Control Message Protocol) packets, known as the payload, can be altered to include additional information beyond what is typically included in standard ICMP packets.In this task, you will perform ICMP tunneling to transfer a .txt file from server (ubuntu linux) to kali linux using hping3.
 
-[hping3 tutorial](https://www.hackers-arise.com/post/port-scanning-and-reconnaissance-with-hping3)
+[hping3 tutorial](https://en.iguru.gr/reconnaissance-sarosi-thyron-hping3/)
 
 ---
 
