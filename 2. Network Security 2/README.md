@@ -135,9 +135,9 @@ git fetch origin lab2
 git checkout lab2
 ```
 
-**2) Download and place relevant images into _network_sec_laboratory/images_ folder**
+**2) Download and place relevant images into _network_sec_platform/images_ folder**
 
-There are images that you need to download and place into the following directory _**network_sec_laboratory/images**_
+There are images that you need to download and place into the following directory _**network_sec_platform/images**_
 
 If you completed lab 1, you can use the same kali and ubuntu images and download only the latest pfsense image named _**pfsense_x.qcow2**_
 
@@ -151,7 +151,7 @@ DOWNLOAD LINKS [Click here and append filename at the end of link to download th
 
 **3) Spawn your network**
 
-Go-to network_sec_laboratory directory and use following commands to spawn the network
+Go-to network_sec_platform directory and use following commands to spawn the network
 
 ```
 terraform init
