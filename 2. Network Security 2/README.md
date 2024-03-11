@@ -290,7 +290,7 @@ The most widely used VPN types include personal VPN services, remote access VPNs
 
 Your task as a cyber security professional is to set up a OpenVPN server to authenticate access to your organization's internal network(s) for users connecting from external networks. The internal company network in this situation consists of the DMZ- and the LAN networks. 
 
-The organization that you are setting up the VPN for is named after the first letters of your first name and surname i.e. if your name was Pekka Pouta, it would be PePo, the organization is based in Oulu, Finland, Pohjois-Pohjanmaa. Take this information into account when creating the certificates for OpenVPN.
+The organization that you are setting up the VPN for is named after the first two letters of your first name and surname i.e. if your name was Pekka Pouta, it would be PePo, the organization is based in Oulu, Finland, Pohjois-Pohjanmaa. Take this information into account when creating the certificates for OpenVPN.
 
 If you configure and setup the OpenVPN client and server correctly, you should be able to login via the OpenVPN client and be able to access the machines hosted in the company network. 
 
@@ -303,13 +303,13 @@ Create and document your process of setting up and configuring a OpenVPN VPN sol
 5. Successful connection from remote network (host machine) to the internal networks (a ping to the kali machine and a curl to the web server in the DMZ suffice)
 
 **You have two options for this task:** 
-1. Use the OpenVPN installing wizard for the initial setup process and document thoroughly what is happening under the hood when you are creating the VPN connection in addition to the above this option focuses more on your understanding and documentation of the process. 
-2. Manually create all the required interface/firewall rules and provide images of this process, this option focuses more on youre technical solutions.
+1. Use the OpenVPN installing wizard for the initial setup process and document thoroughly what is happening under the hood when you are creating the VPN connection. In addition to the above, this option focuses more on your understanding and documentation of the process. 
+2. Manually create all the required interface/firewall rules and provide images of this process. This option focuses more on you're technical solutions.
 
 
 ### C) What type of tunnel did you create for the VPN connection?
 
-Briefly explain what kind of tunnel you created for the VPN connection and explain what are the differences between split-tunnel & full-runnel VPN connections.
+Briefly explain what kind of tunnel you created for the VPN connection and explain what are the differences between split-tunnel & full-tunnel VPN connections.
 
 
 ---
