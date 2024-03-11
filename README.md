@@ -32,8 +32,11 @@ As described earlier, you have to attend five physical lectures to pass the cour
 
 You can get up to 5 points in each lab (A total of 35 points). The grade is determined based on those points. For example, with 9 points you get grade 2.
 
-Total Points 	Total Grade
-9+ 	2
-15+ 	3
-21+ 	4
-27+ 	5
+Total Points|Total Grade
+:-:|:-:
+9+ | 2
+15+ | 3
+21+ | 4
+27+ | 5
+
+<!-- </details> -->
