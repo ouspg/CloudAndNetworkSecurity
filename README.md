@@ -22,7 +22,7 @@ Lectures are handling topics from a high perspective.
 
 Laboratory exercises are thought of as independent packages: containing theory and exercises and going technologically very deep.
 
-To pass this course with grade 1, you have to attend the five physical lectures. Failing to do so results in a written exam based on the lectures missed.
+To pass this course with grade 1, you have to attend all lectures including the five physical lectures. Failing to do so results in a written exam based on the lecture material.
 
 To get a better grade, you have to do some laboratory exercises. All laboratory tasks are optional and total points from those will determine your grade.
 
