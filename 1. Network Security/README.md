@@ -428,14 +428,14 @@ Here's what you need to do:
 - Login to kali and open wireshark (or craft tcpdump commands to dump packets once received)
 - Send ICMP packets through server and simultaneously monitor and capture the packets from kali linux using wireshark
 
-_Hint: _Depending on your interface's Maximum Transmission Unit (MTU), each packet has a certain limit of data that it can hold without getting fragmented. For ethernet, you can find out this using 
+[!Hint] Depending on your interface's Maximum Transmission Unit (MTU), each packet has a certain limit of data that it can hold without getting fragmented. For ethernet, you can find out this using 
 ifconfig/ip addr command. Generally it has a value of 1500 for ethernet. However, the actual usable data is:
 
-Maximum ICMP Data=MTU−Ethernet Frame Header−IP Header−ICMP Header
+Maximum ICMP Data = MTU − Ethernet_Frame_Header − IP_Header − ICMP_Header
 
-Maximum ICMP Data=1500 bytes−14 bytes−20 bytes−8 bytes
+Maximum ICMP Data = 1500bytes − 14bytes − 20bytes − 8bytes
 
-Maximum ICMP Data=1458 bytes
+Maximum ICMP Data = 1458 bytes
 
 The Maximum Transmission Unit (MTU) is the maximum size of a single data unit that can be transmitted over a network.
 
@@ -453,12 +453,12 @@ You should stop the hping3 command when EOF (end of file) prompt is reached
 
 Make sure you are inspecting the correct packets in wireshark. And save your file as **hacker_data.pcap** for use in next task
 
-**Inspect the Internet Control Message Protocol packet's Data field (which should be 1458 bytes) to locate the sub-filed in which attached data is stored.**
+**Inspect the Internet Control Message Protocol packet's Data field (which should be 1458 bytes) to locate the sub-field in which attached data is stored.**
 
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/d2910021-7adb-4468-9a6b-b6573436eb00)
 
 
-_Extra Information: _TCPdump is a command-line packet analyzer tool for monitoring and analyzing network traffic on a Unix or Linux system. It captures packets flowing through a network interface and allows users to inspect them in real-time or save them to a file for later analysis. To use TCPdump, you typically specify the network interface to listen on (e.g., eth0), optionally apply filters to capture specific types of traffic, and specify any desired options or output formats. For example, to capture all traffic on interface eth0 and display it on the terminal, you can use the command sudo tcpdump -i eth0.
+[!Tip] Tcpdump is a command-line packet analyzer tool for monitoring and analyzing network traffic on a Unix or Linux system. It captures packets flowing through a network interface and allows users to inspect them in real-time or save them to a file for later analysis. To use TCPdump, you typically specify the network interface to listen on (e.g., eth0), optionally apply filters to capture specific types of traffic, and specify any desired options or output formats. For example, to capture all traffic on interface eth0 and display it on the terminal, you can use the command sudo tcpdump -i eth0.
 
 ---
 
@@ -468,7 +468,7 @@ Use **hacker_data.pcap** acquired in previous task to pull out (data.data) field
 
 Your task is to craft a command which uses tshark to read data packets from the file **hacker_data.pcap**. It should extract the attached data of each packet in hexadecimal format (data.data), and save it to the file **hexdump.txt**. 
 
-Hint: The -n flag disables name resolution, -q suppresses unnecessary output, and -T fields specifies the output format.
+[!Hint] The -n flag disables name resolution, -q suppresses unnecessary output, and -T fields specifies the output format.
 
 tshark document for [help](https://www.wireshark.org/docs/man-pages/tshark.html)
 
