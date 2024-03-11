@@ -174,7 +174,7 @@ They have following names:
 sudo apt-get install -y mkisofs
 ```
 
-**Install xsltproc **
+**Install xsltproc**
 ```
 sudo apt-get install xsltproc
 ```
