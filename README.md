@@ -28,7 +28,7 @@ To get a better grade, you have to do some laboratory exercises. All laboratory 
 
 ## Grading
 
-As described earlier, you have to attend five physical lectures to pass the course. You can have higher grades by doing lab work.
+As described earlier, you have to attend all lectures to pass the course. You can have higher grades by doing lab work.
 
 You can get up to 5 points in each lab (A total of 35 points). The grade is determined based on those points. For example, with 9 points you get grade 2.
 
