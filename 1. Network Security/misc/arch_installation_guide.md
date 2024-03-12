@@ -64,14 +64,11 @@ git clone https://github.com/lsuutari19/network_sec_platform.git
 There are four images that you need to download and place them into directory network_sec_platform/images_ 
 
 They have following names:
-
-1) kali-linux-2023.4-qemu-amd64.qcow2
-2) router_pfsense.qcow2
-3) linux_server.qcow2
-4) pfsense_x.qcow2 (this is for lab2)
-
-
-DOWNLOAD LINKS [Click here and append filename at the end of link to download that specific image file](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/)
+Image name|Image size|Download Link
+:-:|:-:|:-:
+Kali linux | 14.6 gb | [kali download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/kali-linux-2023.4-qemu-amd64.zip)
+Ubuntu server | 1.8 gb | [server download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/ubuntu_server.qcow2)
+pfSense | 1 gb | [pfsense download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/router_pfsense.qcow2)
 
 ### Install mkisofs
 ```
