@@ -104,7 +104,7 @@ sudo virsh pool-autostart default_pool
 ```
 sudo chown -R $(whoami):libvirt $PWD/volumes
 ```
-Edit /etc/libvirt/qemu.conf file & uncomment user & group, and make the following changes:
+Edit /etc/libvirt/qemu.conf file & uncomment user, group and security_driver, and make the following changes:
 ```
 # Some examples of valid values are:
 #
@@ -116,6 +116,8 @@ user = "<username>"
 # The group for QEMU processes run by the system instance. It can be
 # specified in a similar way to user.
 group = "libvirt"
+...
+security_driver = "none"
 ```
 ```
 sudo systemctl restart libvirtd
