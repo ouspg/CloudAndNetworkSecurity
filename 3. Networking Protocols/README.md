@@ -37,9 +37,9 @@ Further reading about [networking concepts](https://docs.netgate.com/pfsense/en/
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 1 | 1 | HTTP Smuggling | TBD
-Task 2 | 2 | Launch DDoS Attack on server and study traffic | TDB
-Task 3 | 3 | Fix security misconfigurations | ...
-Task 4 | 5 | VPN setup and configuration for remote access | TBD
+Task 2 | 2 | Fuzz testing the TCP/IP stack | TDB
+Task 3 | 3 | Honeypot setup and testing| ...
+Task 4 | 5 | ASN for advanced tasks. FuzzTest rasn | TBD
 
 
 
