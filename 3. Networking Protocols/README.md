@@ -5,9 +5,9 @@ Responsible person/main contact: Niklas Saari, Asad Hasan & Lauri Suutari
 
 ## Preliminary tasks & prerequisites
 
-This lab is continuation of week 1 network security theme. 
+This is the third lab in the series with the theme of Networking Protocols. 
 
-A basic understanding of networking is required. GitHub is required to complete this exercise
+A basic understanding of networking protocols is required. GitHub is required to complete this exercise
 
 Make yourself familiar with following:
 
