@@ -38,7 +38,7 @@ Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 1 | 1 | HTTP Smuggling | TBD
 Task 2 | 2 | Fuzz testing the TCP/IP stack | TDB
-Task 3 | 3 | Honeypot setup and testing| ...
+Task 3 | 3 | TBD| ...
 Task 4 | 5 | ASN for advanced tasks. FuzzTest rasn | TBD
 
 
