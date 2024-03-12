@@ -197,7 +197,7 @@ sudo virsh pool-start default_pool
 sudo virsh pool-autostart default_pool
 ```
 
-**Configure user permisions for libvirt to storage pool**
+**Configure user permisions for qemu + libvirt to storage pool**
 ```
 sudo chown -R $(whoami):libvirt $PWD/volumes
 
