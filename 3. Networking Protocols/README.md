@@ -9,26 +9,13 @@ This is the third lab in the series with the theme of Networking Protocols.
 
 A basic understanding of networking protocols is required. GitHub is required to complete this exercise
 
-Make yourself familiar with following:
+Make yourself familiar with following topics:
 
 
-* **Port Forwards** - [Port forwards with NAT on pfSense](https://docs.netgate.com/pfsense/en/latest/nat/port-forwards.html)
-* **NAT** - NAT guide on zenarmor about pfsense [here](https://www.zenarmor.com/docs/network-security-tutorials/pfsense-network-address-translation-nat-guide)
-* **Sharing files between KVM and host machine** - [Guide to creating a mounting point for file share](https://www.debugpoint.com/share-folder-virt-manager/)
+* **List of networking protocols** - Read about list of networking protocols for OSI model on [Wikipedia](https://en.wikipedia.org/wiki/List_of_network_protocols_(OSI_model))
+* **20 common networking protocols** - Article presenting 20 common networking protocols [here](https://medium.com/@rajeshmamuddu/20-different-network-protocols-commonly-used-in-networking-e98cab90d18d)
+* **OSI Model** - What is OSI Model on [Wikipedia](https://en.wikipedia.org/wiki/OSI_model)
 
-
-Useful resources from previous lab:
-
-* **terraform** - Basic tutorial about what is terraform [here](https://k21academy.com/terraform-iac/terraform-beginners-guide/)
-* **pfSense** - Official documentation of pfSense [here](https://docs.netgate.com/pfsense/en/latest/install/assign-interfaces.html)
-* **wireshark** - Covered in pre-requisite courses. Official documentation [here](https://www.wireshark.org/docs/wsug_html/)
-
-
-If you feel like your networking knowledge needs a revision, go through these tutorials:
-[Basic tutorial 1](https://www.hackers-arise.com/post/networking-basics-for-hackers-part-1)
-[Basic tutorial 2](https://www.hackers-arise.com/post/networking-basics-for-hackers-part-2)
-
-Further reading about [networking concepts](https://docs.netgate.com/pfsense/en/latest/network/index.html)
 
 ## Grading
 
@@ -36,10 +23,10 @@ Further reading about [networking concepts](https://docs.netgate.com/pfsense/en/
 
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
-Task 1 | 1 | HTTP Smuggling | TBD
-Task 2 | 2 | Fuzz testing the TCP/IP stack | TDB
-Task 3 | 3 | TBD| ...
-Task 4 | 5 | ASN for advanced tasks. FuzzTest rasn | TBD
+Task 1 | 1 | HTTP request smuggling | TBD
+Task 2 | 3 | Write code to extract the payload from captured packet | TDB
+Task 3 | 4 | Fuzz testing the TLS/TCP/IP stack| ...
+Task 4 | 5 | Certificate validation | TBD
 
 
 
@@ -51,76 +38,38 @@ Total points accumulated by doing the exercises reflect the overall grade. You c
 
 ## About the lab
 
-* This document contains task descriptions and theory for the second network security lab. If there are any differences between the return template and this file, consider this to be the up-to-date document.
-* **You are encouraged to use your own computer or virtual machine if you want.** This lab uses software and dependencies installed in previous lab. Check the Task 1 "**Setup Installation**" for information on what you need to install from [Lab 1's manual](https://github.com/ouspg/CloudAndNetworkSecurity/tree/main/1.%20Network%20Security) if you haven't . This lab has been made to be completed in a Linux environment and tested to work in debian, ubuntu and the provided Arch Linux virtual machine.
+* This document contains task descriptions and theory for the third cloud and network security lab. If there are any differences between the return template and this file, consider this to be the up-to-date document.
+* **You are encouraged to use your own computer or virtual machine if you want.** TODO ----------------------- TODO
 * __Upper scores for this assignment require that all previous tasks in this assignment have been done as well__, so e.g. in order to get the third point you will have to complete tasks 1, 2 & 3.
 * Check the deadline from Moodle and __remember that you have to return your name (and possibly people you worked together with) and GitHub repository information to Moodle before the deadline.__
 
 
 ## Background
 
-This week’s theme is continuation of network security.
-Tasks are designed to be done with the provided network setup using [terraform](https://en.wikipedia.org/wiki/Terraform_(software)), see the [terraform commands tutorial](https://tecadmin.net/terraform-basic-commands/) for instructions on how to run the network using terraform. The firewall (+router) used in this network is [pfSense](https://docs.netgate.com/pfsense/en/latest/general/index.html).
-The provided VM's within terraform has all the required tools preinstalled.  Contact course assistants if you require any extra tools, they'll install them in a custom image for you and provide instructions how to use it within the setup. 
+This week’s theme is networking protocols.
 
+Tasks are designed to be done using course's provided virtual machine.
 
+Networking protocols are a set of rules and conventions that govern the communication between devices in a computer network. These protocols define how data is formatted, transmitted, received, and interpreted across the network. They facilitate the exchange of information between devices, ensuring compatibility and interoperability.
 
-## NEW NETWORK SETUP FOR THE SECOND LAB
+Key aspects of networking protocols include:
 
-For enhanced security purposes, the network setup for second lab has been upgraded and web-server has been exposed outside to the WAN. Network admins have moved the HTTP server to a new sub-network behind the pfsense firewall. This new sub-network is called [DMZ](https://en.wikipedia.org/wiki/Demilitarized_zone) and it only hosts the HTTP server. Original LAN network remains the same with kali linux. Here are the features of new network as described by network admins:
+    Addressing: Protocols define how devices are identified and addressed on the network. This includes assigning unique addresses, such as IP addresses, to devices to enable communication.
 
-```
-WAN Network Specifications (vtnet0):
-The network operates on sub-net mask 255.255.255.0 (/24) with network address: 198.168.122.0
-Provides internet access to LAN Network through pfsense
+    Routing: Protocols determine how data packets are routed from a source to a destination across the network. This involves selecting the best path for data transmission and managing network congestion.
 
+    Error Handling: Protocols include mechanisms for detecting and correcting errors that may occur during data transmission. This ensures reliable communication between devices.
 
-LAN Network Specifications (vtnet1):
-Internal LAN Network. Internet enabled via WAN
-The network operates on sub-net mask 255.255.255.0 (/24) with network address: 10.0.0.0
-
-The IP address range for network is as follows:
-Start address: 10.0.0.11 (/24)
-End address: 10.0.0.100 (/24)
-
-DHCP Server enabled: Yes
-IPv6: No
-Protocol for webGUI: HTTPS
-
-DMZ (vtnet2):
-The network operates on sub-net mask 255.255.255.0 (/24) with network address: 10.3.1.0
-Restricted and isolated network.
-Web-server hosted at 10.3.1.10 and accessible via LAN. Also accessible via WAN interface through port-forwarding
-
-IMPORTANT NOTE: WebGUI can be accessed from LAN network with following URL: https://10.0.0.1:444
-
-```
-
-The new virtual test network is based on three networks:
-1. WAN
-2. LAN
-3. DMZ
-
-The WAN is your standard computer network. The LAN is the internal network which contains probe machine (kali) protected by pfSense firewall which also
-acts as the default router for this. DMZ is the network which contains HTTP server (Ubuntu) and web-service is accessible via WAN through [port-forwarding](https://www.wundertech.net/pfsense-port-forwarding-setup-guide). 
-
-In this lab, students will dive into this virtual setup and play-around to find things out and perform security tasks.
-
-
-**See the official network diagram as provided by network admins**
-
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/c83ef5d6-3768-44cf-895c-fc3fe463d0f9)
-
-
+    Security: Many protocols incorporate security features to protect data from unauthorized access, interception, or tampering. This includes encryption, authentication, and access control mechanisms.
 
 
 
 
 ---
 
-## Task 0
+## Task 1
 
-### Setting up new network structure
+### HTTP request smuggling
 
 Before, you can start doing the lab tasks for points, you need to spawn your virtual network infrastructure. For this, you require latest terraform configurations and pfsense image
 containing new network. This is done for you already. All you have to do is clone the right terraform configurations and place the right VM images. Afterwards, you can initialize terraform as was in the first lab
