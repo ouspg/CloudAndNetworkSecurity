@@ -34,16 +34,19 @@ Further reading about [networking concepts](https://docs.netgate.com/pfsense/en/
 
 <!-- <details><summary>Details</summary> -->
 
+You are expected to do the assignments **in order**.
+
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 0 | - | Setting up new network | Terraform, virtual manager
 Task 1 | 1 | Launch DDoS Attack on server and study traffic | Snort, wireshark, pfSense, DDoS-Attacker, Xdos-server
-Task 2 | 3 | Fix security misconfigurations | pfSense,
-Task 3 | 4 | VPN setup and configuration for remote access | pfsense, OpenVPN, wireguard
-Task 4 | 5 | Your own experiment | Open-ended
+Task 2 | 2 | Fix security misconfigurations | pfSense,
+Task 3 | 1 | VPN setup and configuration for remote access | pfsense, OpenVPN, wireguard
+Task 4 | 1 | Your own experiment | Open-ended
 
 
-Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 5 points per whole exercise.
+Total points accumulated by doing the exercises reflect the overall grade.
+You can acquire up to 5 points from the whole exercise.
 <!-- </details> -->
 
 ---

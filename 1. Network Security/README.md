@@ -43,16 +43,18 @@ Further reading about [networking concepts](https://docs.netgate.com/pfsense/en/
 
 <!-- <details><summary>Details</summary> -->
 
+You are expected to do the assignments **in order**.
+
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 1 | 1 | Install and setup the network | Terraform, libvirt, Qemu, KVM
-Task 2 | 2 | Run the virtual network | pfSense, terraform, virtual manager
-Task 3 | 3 | Host discovery in LAN | Nmap
-Task 4 | 4 | ICMP Tunneling Attack | Hping3, wireshark, tshark
-Task 5 | 5 | Accessing HTTP Server from outside LAN | Open-ended
+Task 2 | 1 | Run the virtual network | pfSense, terraform, virtual manager
+Task 3 | 1 | Host discovery in LAN | Nmap
+Task 4 | 1 | ICMP Tunneling Attack | Hping3, wireshark, tshark
+Task 5 | 1 | Accessing HTTP Server from outside LAN | Open-ended
 
 
-Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 5 points per whole exercise.
+Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 5 points from the whole exercise.
 <!-- </details> -->
 
 ---
