@@ -26,7 +26,7 @@ You are **not required** to do the tasks in order, but if you skip the second ta
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 1 | 1 | HTTP request smuggling | TBD
-Task 2 | 4 | Implementing TLS 1.3 handshake and fuzz testing it | Programming language of your choice, libFuzzer, libAFL
+Task 2 | 4 | Implementing TLS 1.3 handshake "securely" | Programming language of your choice, libFuzzer, libAFL
 Task 3 | 1 | Fuzz testing exising TLS library (alternative to task 2 with less points) | ...
 Task 4 | 1 | TLS certificate validation | TBD
 
@@ -49,7 +49,7 @@ Total points accumulated by doing the exercises reflect the overall grade. You c
 
 This week’s theme is networking protocols.
 
-Tasks are designed to be done using course's provided virtual machine. **TODO**
+Tasks are designed to be done using the course's provided virtual machine. **TODO**
 
 Networking protocols are a set of rules and conventions that govern the communication between devices in a computer network. These protocols define how data is formatted, transmitted, received, and interpreted across the network. They facilitate the exchange of information between devices, ensuring compatibility and interoperability.
 
@@ -146,7 +146,7 @@ graph LR
     F --> G[Physical Layer]
 ```
 
-All of the protocols are complex, but they share similar problems while having different goals. 
+All of the protocols are complex, but they share similar efficiency and security requirements while having different goals. 
  
  * ASN.1 encodes the application-specific data compactly to be suitable for the usage and parsing of other applications. (Compare it to more efficient  JSON)
  * TLS 1.3. encrypts the session data so that it cannot be eavesdropped on or modified, while also giving some guarantees that the data goes to the intended party.
@@ -157,7 +157,7 @@ To demonstrate the complexity and process of doing them correctly and *maybe mor
 The protocol will be the handshake part of the TLS 1.3 protocol standard, and we will make a minimal client.
 This should also make you more familiar with what it takes to transmit encrypted data over an insecure line so that it might even go to the correct destination, efficiently with binary format.
 
-### TLS 1.3
+### TLS 1.3 handshake
 
 * [RFC 8446 (Section 4. about handshake)](https://datatracker.ietf.org/doc/html/rfc8446)
     * Provided ASN.1 notations about data structures are super useful when implementing the client. Especially, if one consults a friendly LLM.
@@ -169,7 +169,7 @@ In conclusion, TLS 1.3 is much simpler compared to previous versions and support
 For the purpose of this task, it should be doable, and can give us a glance at what protocols could be!
 
 
-Your main guide source should be [https://tls13.xargs.org](https://tls13.xargs.org), (but still, don't just copy the code from there).
+Your main guide source should be [https://tls13.xargs.org](https://tls13.xargs.org), (but still, don't just copy the code from their GitHub).
 
 ### Implementation requirements
 
@@ -185,13 +185,23 @@ Generally, if you want to do something efficiently, you should pick a lower-leve
 Typically, this has meant either the use of C or C++.
 However, with great power comes a great responsibility and the history is filled with memory safety issues. Correct programming is hard and making difficult protocols makes it even harder. 
 
-You will get one bonus point for doing the work with *Rust*; this encourages the usage of memory-safe language, which can produce native performance and other design choices that could reduce the bugs in the software.
+**You will get one bonus point for doing the work with *Rust*; this encourages the usage of memory-safe language, which can produce native performance and it enforces other design choices that could reduce the bugs in the software.**
 
-*If you end up fighting with the Rust compiler, you are just preventing bugs, which would have resulted into software runtime with another programming language.*
+> [!Note]
+> *If you end up fighting with the Rust compiler, you are just preventing bugs, which would have resulted into software runtime with another programming language!*
 
 ### Language list that you should consider
 
 1. Rust (1 bonus point from sufficient implementation)
 2. Other strongly typed memory-safe languages (typically less efficient because of the dynamic memory management) (Swift ([ARC-based](https://en.wikipedia.org/wiki/Automatic_Reference_Counting)), Go, Java, C#, etc.)
 3. Programming C++ with [modern features](https://learn.microsoft.com/en-us/cpp/cpp/welcome-back-to-cpp-modern-cpp?view=msvc-170) (Unique pointers etc.), [Zig](https://ziglang.org/), or other native languages with some memory safety properties. High performance with some risk of memory issues.
-4. Weakly typed scripting languages (Python, Ruby, PHP, JavaScript) or risky languages, C, basic C++, Assembly, **are not recommended this time**. While the scripting languages can provide memory-safe code, they are typically inefficient, and increase the likelihood of other bugs as a result of weak types. 
+4. Weakly typed scripting languages (Python, Ruby, PHP, JavaScript) or risky languages, C, basic C++, and Assembly, **are not recommended this time**. While the scripting languages can provide memory-safe code, they are typically inefficient, and increase the likelihood of other bugs as a result of weak types. 
+
+### Software dependency requirements
+
+You are allowed to use dependencies other than the programming language's standard library as follows if they are not included in the standard library:
+ * To generate cryptographically secure random bits. (e.g [rand](https://docs.rs/rand/latest/rand/) crate in Rust)
+ * To derive the public key from the private key in X25519 protocol (e.g. [curve25519-dalek ](https://github.com/dalek-cryptography/curve25519-dalek/tree/main/x25519-dalek)) crate in Rust) and calculate the shared secret
+ * For parsing the certificates (typically means ASN.1 DER encoding). 
+
+ Other dependencies **are not allowed**.
