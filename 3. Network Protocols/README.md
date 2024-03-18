@@ -109,9 +109,11 @@ ETag: "65cce434-267"
 > [!Note]
 > You can complete this task in pairs! **But not in larger groups**.
 
-> You can fully focus on this task to get up to 6 points by doing it carefully.
+> You can fully focus on this task to get up to 6 points by doing it carefully. But getting good grade requires a lot of work.
 
 > If you want to skip the coding, you can fuzz test existing TLS library and get up to 1 points.
+
+> Certificate validataion on this task can be replaced by doing the final task.
 
 
 Implementing network protocols correctly can be *hard*. They are typically complex and work in a binary, non-text format.
@@ -180,10 +182,11 @@ Minimal TLS client implementation includes the completion of the handshake proce
   * The client should be able to handle the processing of arbitrary input data from the TCP stream
   *  In TLS 1.3, the use of certain extensions is mandatory
   * Mandatory extensions as specified [here.](https://datatracker.ietf.org/doc/html/rfc8446#section-9.2)  (Supported Groups, Extension - Signature Algorithms, Extension - Supported Versions Extension - Key Share ?)
-  * At least `github.com` supports the above ciphers
+  * At least `github.com` supports the above ciphers for testing purposes
+  * You can use Wireshark to debug your implementation
 
-Note that the protocol follows mostly the *tag-length-data* principle. 
-There can be constraints for the size of the tag or length, and **this defines how many bytes the tag or length can take**, while the length itself then defines the amount of subsequent bytes.
+Note that the protocol follows mostly the *tag-length-value* principle. 
+There can be constraints for the size of the tag or length, and **this defines how many bytes the tag or length can take**, while the length itself then defines the number of subsequent bytes.
 
 Additional requirements: 
  * Proper client-side certificate validation (replace the additional certificate validation task with this) (1p)
@@ -235,37 +238,8 @@ They apply a similar ownership principle as the Rust does for every data object 
 You are allowed to use dependencies other than the programming language's standard library as follows if they are not included in the standard library:
  * To generate cryptographically secure random bits. (e.g. [rand](https://docs.rs/rand/latest/rand/) crate in Rust)
  * To derive the public key from the private key in X25519 protocol (e.g. [curve25519-dalek ](https://github.com/dalek-cryptography/curve25519-dalek/tree/main/x25519-dalek) crate in Rust) and calculate the shared secret.
- * For parsing the certificates (typically means ASN.1 DER encoding). 
+ * For parsing the certificates (typically means ASN.1 DER encoding), e.g. [rasn](https://github.com/librasn/rasn) crate in Rust. 
  * For ChaCha20-Poly1305 encryption and EdDSA signatures
 
  Other dependencies **are not allowed**.
 
- ### Notes 
-
- Consider HelloRetryRequest
-
-
- ## Task 3) Alternative
-
- Fuzztesting existing TLS libraries.
-
- Pick one of the following, or something else.
-
- - BoringSSL: a fork of OpenSSL for Chrome/Chromium and Android as well as other Google applications.
-- Botan: a BSD-licensed cryptographic library written in C++.
-- BSAFE Micro Edition Suite: a multi-platform implementation of TLS written in C using a FIPS-validated cryptographic module.
-- BSAFE SSL-J: a TLS library providing both a proprietary API and JSSE API, using FIPS-validated cryptographic module.
-- cryptlib: a portable open source cryptography library (includes TLS/SSL implementation).
-- Delphi programmers may use a library called Indy which utilizes OpenSSL or alternatively ICS which supports TLS 1.3 now.
-- GnuTLS: a free implementation (LGPL licensed).
-- Java Secure Socket Extension (JSSE): the Java API and provider implementation (named SunJSSE).
-- LibreSSL: a fork of OpenSSL by OpenBSD project.
-- MatrixSSL: a dual licensed implementation.
-- Mbed TLS (previously PolarSSL): A tiny SSL library implementation for embedded devices that is designed for ease of use.
-- Network Security Services: FIPS 140 validated open source library.
-- OpenSSL: a free implementation (BSD license with some extensions).
-- Schannel: an implementation of SSL and TLS Microsoft Windows as part of its package.
-- Secure Transport: an implementation of SSL and TLS used in OS X and iOS as part of their packages.
-- wolfSSL (previously CyaSSL): Embedded SSL/TLS Library with a strong focus on speed and size.
-
-Above list is from Wikipedia.
