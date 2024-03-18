@@ -44,7 +44,6 @@ Total points accumulated by doing the exercises reflect the overall grade. You c
 
 * This document contains task descriptions and theory for the third cloud and network security lab. If there are any differences between the return template and this file, consider this to be the up-to-date document.
 * **You are encouraged to use your own computer or virtual machine if you want.** TODO ----------------------- TODO
-* __Upper scores for this assignment require that all previous tasks in this assignment have been done as well__, so e.g. in order to get the third point you will have to complete tasks 1, 2 & 3.
 * Check the deadline from Moodle and __remember that you have to return your name (and possibly people you worked together with) and GitHub repository information to Moodle before the deadline.__
 
 
