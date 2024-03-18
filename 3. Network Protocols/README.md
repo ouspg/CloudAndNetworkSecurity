@@ -74,53 +74,33 @@ Some common examples of networking protcols include: Internet Protocol (IP), Tra
 
 ### HTTP request smuggling
 
-Before, you can start doing the lab tasks for points, you need to spawn your virtual network infrastructure. For this, you require latest terraform configurations and pfsense image
-containing new network. This is done for you already. All you have to do is clone the right terraform configurations and place the right VM images. Afterwards, you can initialize terraform as was in the first lab
 
-For simplicity, follow the three steps guide below:
 
-**1) Fetch the new_network setup branch**
-
-Fetch the lab2 branch and checkout to it.
-```
-git fetch origin lab2
-git checkout lab2
-```
-
-**2) Download and place relevant images into _network_sec_platform/images_ folder**
-
-There are images that you need to download and place into the following directory _**network_sec_platform/images**_
-
-If you completed lab 1, you can use the same kali and ubuntu images and download only the latest pfsense image named _**pfsense_x.qcow2**_
-
-Image name|Image size|Download Link
-:-:|:-:|:-:
-Kali linux | 14.6 gb | [kali download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/kali-linux-2023.4-qemu-amd64.zip)
-Ubuntu server | 1.8 gb | [server download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/ubuntu_server.qcow2)
-pfSense (lab 2) | 1 gb | [pfsense download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/pfsense_x.qcow2)
-
-**3) Spawn your network**
-
-Go-to network_sec_platform directory and use following commands to spawn the network
+The original HTTP get request sent by the user (host).
 
 ```
-terraform init
-terraform validate
-terraform apply
+GET / HTTP/1.1
+Host: 10.3.1.10
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 14 Feb 2024 16:03:00 GMT
+If-None-Match: "65cce434-267"
 ```
-If done correctly, there should be 12 resources spawned.
+In response, the server sends back following to the user.
 
 ```
-#Access virtual resources by typing
-virt-manager
+HTTP/1.1 304 Not Modified
+Server: nginx/1.25.4
+Date: Mon, 18 Mar 2024 11:54:22 GMT
+Last-Modified: Wed, 14 Feb 2024 16:03:00 GMT
+Connection: keep-alive
+ETag: "65cce434-267"
 ```
-See machine's login info below 
 
-Machine|username|password
------|:---:|-----------
-Kali| kali| kali
-Ubuntu | ubuntu | linux
-pfsense web-GUI | admin | pfsense
 
 ---
 
