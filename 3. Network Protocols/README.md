@@ -243,3 +243,24 @@ You are allowed to use dependencies other than the programming language's standa
 
  Other dependencies **are not allowed**.
 
+---
+## Task 3
+
+
+
+---
+## Task 4 TLS certificate validation
+> [!Note]
+> If you completed the client implementation to a sufficient level in task 2, you do not need to complete this task to receive full credits for this weeks laboratory.
+
+Certificate validation is an ongoing problem with TLS implementations, lots of libraries implement this, but the issue is that certificate validation is usually optional in TLS and the configuration of certificate validation in different TLS libraries can be very difficult. When validating certificates, it should be checked who has issued the certificate, to whom is it issued to and that the certificate has been properly signed. Especially self signed certificates should not just be accepted without validation as these can be easily created on the go. A good example of improper certificate validations are [OpenSSL](https://www.openssl.org/) and [WolfSSL](https://www.wolfssl.com/) libraries where the validation isn't even enabled by default.
+
+To complete this task you should understand how TLS certificates work and how they are (or aren't) validated on the server side. The following links contain sufficient information to get started with this task: 
+[DEF CON 31 - certmitm Automatic Exploitation of TLS Certificate Validation Vulns - Aapo Oksman](https://www.youtube.com/watch?v=w_l2q_Gyqfo)
+[Presentation slides of certmitm](https://media.defcon.org/DEF%20CON%2031/DEF%20CON%2031%20presentations/Aapo%20Oksman%20-%20certmitm%20automatic%20exploitation%20of%20TLS%20certificate%20validation%20vulnerabilities.pdf)
+[certmitm demo](https://www.youtube.com/watch?v=h0HeTBfKLhQ)
+
+You are free to use tools of your choice to complete this task, however we highly suggest getting started with Aapo Oksman's [certmitm](https://github.com/aapooksman/certmitm) tool. For full credit you should demonstrate the usage of your tool of choice on multiple different application types such as; mobile applications, web applications, games and/or other software to see if they are implementing certificate validation properly. You should create different kind of certificates to test with such as: self-signed certificates, real certificates with replaced keys and CA issued certificates.
+
+
+
