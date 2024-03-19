@@ -258,9 +258,15 @@ Certificate validation is an ongoing problem with TLS implementations, lots of l
 To complete this task you should understand how TLS works and how the certificates are (or aren't) validated on the server side. The following links contain sufficient information to get started with this task:
 * [DEF CON 31 - certmitm Automatic Exploitation of TLS Certificate Validation Vulns - Aapo Oksman](https://www.youtube.com/watch?v=w_l2q_Gyqfo)
 * [Presentation slides of certmitm](https://media.defcon.org/DEF%20CON%2031/DEF%20CON%2031%20presentations/Aapo%20Oksman%20-%20certmitm%20automatic%20exploitation%20of%20TLS%20certificate%20validation%20vulnerabilities.pdf)
+* [Exploiting insecure Certificate Validation in iOS](https://www.youtube.com/watch?v=bWidokJKuUc)
 * [certmitm demo](https://www.youtube.com/watch?v=h0HeTBfKLhQ)
 
-You are free to use **tools of your choice** to complete this task, however we highly suggest getting started with Aapo Oksman's [certmitm](https://github.com/aapooksman/certmitm) tool. For full credit you should demonstrate the usage of your tool of choice on **multiple different application types** such as; mobile applications, web applications, games and/or other software to see if they are implementing certificate validation properly. You should create/acquire different kind of certificates to test with such as: self-signed certificates, real certificates with replaced keys and CA issued certificates.
+You are free to use **tools of your choice** to complete this task, however we highly suggest getting started with Aapo Oksman's [certmitm](https://github.com/aapooksman/certmitm) tool. For full credit you should demonstrate the usage of your tool of choice on **multiple different application types** such as; mobile applications, web applications, games and/or other software to see if they are implementing certificate validation properly. You should create/acquire different kind of certificates to test with such as: self-signed certificates, real certificates with replaced keys and CA issued certificates. Sometimes the best thing you can do after a failed certificate validation is to retry a couple times to see if you can get further.
 
-
+The overall process should look like the following:
+1. Acquire/create certificates
+2. Run a proxy to intercept TLS connections
+3. Use a tool to test if the certificates get validated
+4. Connect clients through the proxy 
+5. Report your results
 
