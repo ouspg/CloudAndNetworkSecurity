@@ -337,11 +337,11 @@ To complete this task you should understand how TLS works and how the certificat
 * [Exploiting insecure Certificate Validation in iOS](https://www.youtube.com/watch?v=bWidokJKuUc)
 * [certmitm demo](https://www.youtube.com/watch?v=h0HeTBfKLhQ)
 
-You are free to use **tools of your choice** to complete this task, however we highly suggest getting started with Aapo Oksman's [certmitm](https://github.com/aapooksman/certmitm) tool. For full credit you should demonstrate the usage of your tool of choice on **multiple different application types** such as; mobile applications, web applications, games and/or other software to see if they are implementing certificate validation properly. You should create/acquire different kind of certificates to test with such as: self-signed certificates, real certificates with replaced keys and CA issued certificates. Sometimes the best thing you can do after a failed certificate validation is to retry a couple times to see if you can get further.
+You are free to use **tools of your choice** to complete this task, however we highly suggest getting started with Aapo Oksman's [certmitm](https://github.com/aapooksman/certmitm) tool. For full credit you should demonstrate the usage of your tool of choice on **multiple different application types** such as; mobile applications, web applications, games and/or other software to see if they are implementing certificate validation properly. You should create/acquire different kind of certificates to test with such as: self-signed certificates, real certificates with replaced keys and CA issued certificates. It is important to note that there is no one right way to complete this task, you could for example route your browser traffic through the proxy or use your laptop as a hotspot that routes mobile devices traffic through the proxy. Sometimes the best thing you can do after a failed certificate validation is to retry a couple times to see if you can get further.
 
 The overall process should look like the following:
 1. Acquire/create certificates
 2. Run a proxy to intercept TLS connections
-3. Use a tool to test if the certificates get validated
-4. Connect clients through the proxy 
+3. Connect clients through the proxy
+4. Use a tool to test if the certificates get validated 
 5. Report your results
