@@ -261,7 +261,7 @@ You are allowed to use dependencies other than the programming language's standa
 
  Other dependencies **are not allowed**.
 
-## Debugging tips for the handshake protocol
+### Debugging tips for the handshake protocol
 
 You can use `openssl` to form a TLS connection with specific parameters.
 This can help us to understand, what the correct process looks like, on top of the other material.
@@ -318,6 +318,10 @@ Transport Layer Security
 
 Wireshark is capable of showing what specific part from the `ClientHello` structure was invalid.
 
+### Certificate validation
+
+> "The most dangerous code in the world: validating SSL certificates in non-browser
+software." [Georgiev, Martin, et al.](https://dl.acm.org/doi/10.1145/2382196.2382204)
 
 ---
 ## Task 3
