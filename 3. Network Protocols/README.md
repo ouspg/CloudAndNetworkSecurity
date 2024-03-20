@@ -24,14 +24,21 @@ This time we note the challenges of the practical implementation, which might no
 
 <!-- <details><summary>Details</summary> -->
 
-You are **not required** to do the tasks in order, but if you skip the second task, you need to do the third one differently.
+You are **not required** to do the tasks in order, but if you do the second task, you shouldn't do the task 3 or 4.
+
+As a result, there are two different paths to do the exercises this week.
+ * In both cases, you can do the task 1, and then
+    * Do task 2 completely and ignore the rest. With very good implementation you might get even more than 6 points.
+    * Or, do the tasks 3 and 4, but not that many points are available. Task 2 covers also the topics of tasks 3 and 4.
+
+
 
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 1 | 1 | HTTP request smuggling | TBD
-Task 2 | 6 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, libFuzzer, libAFL
-Task 3 | 1 | Fuzz testing exising TLS library (alternative to task 2 with less points) | ...
-Task 4 | 1 | TLS certificate validation | TBD
+Task 2 | 6 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
+Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alternative to task 2 with less points) | AFL++, radamsa, other fuzzing tools
+Task 4 | 1 | TLS certificate validation | certmitm, mitmproxy, Wireshark
 
 
 Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 5 points from the whole exercise.
@@ -107,13 +114,11 @@ ETag: "65cce434-267"
 ## Task 2: Implementing TLS 1.3 client from scratch (up to 6 points)
 
 > [!Note]
-> You can complete this task in pairs! **But not in larger groups**.
+> You can complete this task in pairs! **But not in larger groups**. The workload assumes that you have friendly LLMs available, such as ChatGPT, [Phind](https://www.phind.com) or [GitHub Copilot](https://docs.github.com/en/copilot/quickstart).
 
-> You can fully focus on this task to get up to 6 points by doing it carefully. But getting good grade requires a lot of work.
+> You can fully focus on this task to get up to 6 points by doing it carefully. But be warned, getting a maximum grade requires a lot of work.
 
-> If you want to skip the coding, you can fuzz test existing TLS library and get up to 1 points.
-
-> Certificate validataion on this task can be replaced by doing the final task.
+> If you want to skip the coding, you have another path with similar goal. You can fuzz test existing TLS library and get up to 1 points. Additionally, there is an additional certificate validation task which replaces the same part of this task. As result, this offers two points.
 
 
 Implementing network protocols correctly can be *hard*. They are typically complex and work in a binary, non-text format.
@@ -144,6 +149,9 @@ To demonstrate the complexity and process of doing them correctly and *maybe eve
 
 This should also make you more familiar with what it takes to transmit encrypted data over an insecure line so that it might even go to the correct destination, efficiently with binary protocols.
 
+> [!Important]
+> **This is for educational purposes only. In general, you should not write your TLS library yourself on byte level.**
+
 ### TLS 1.3 Handshake Protocol
 
 * [RFC 8446](https://datatracker.ietf.org/doc/html/rfc8446)
@@ -160,7 +168,8 @@ In conclusion, TLS 1.3 is much simpler compared to previous versions and support
 For the purpose of this task, it should be doable, and can give us a glance at what protocols could be!
 
 
-Your main guide source should be [https://tls13.xargs.org](https://tls13.xargs.org), (but still, don't just copy the code from their GitHub).
+Your main guide source should be the standard and [https://tls13.xargs.org](https://tls13.xargs.org).
+The provided Rust project will help the implementation of other programming languages too, if you decide so. 
 
 During the handshake, both the client and server agree on the cipher suite as follows.
 
@@ -169,29 +178,38 @@ During the handshake, both the client and server agree on the cipher suite as fo
 * Symmetric encryption algorithm (e.g., AES-GCM, ChaCha20-Poly1305)
 * The hash function for message authentication and PRFs (e.g., SHA-256)
 
-The overall cipher suite is pre-defined for the task.
+The priority of the cipher suites is pre-defined for the task.
 
 ### Implementation requirements
 
 > [!Important]
 > You should implement *a client*, with minimal working features to complete TLS 1.3 handshake, while also noting the error handling. Or more, if you decide so, to replace other tasks from this week.
 
-Minimal TLS client implementation includes the completion of the handshake process with following features:
-  * Key exchange with X25519 and signatures with EdDSA (Elliptic Curve Diffie-Hellman key exchange using Curve25519 and Edwards-Curve Digital Signature Algorithm based on the same curve)
-  * ChaCha20-Poly1305 as a symmetric algorithm
-  * The client should be able to handle the processing of arbitrary input data from the TCP stream
+Minimal TLS client implementation includes the completion of the handshake process with the following features:
+  * Key exchange with X25519 and signatures with EdDSA (Elliptic Curve Diffie-Hellman key exchange using Curve25519 and Edwards-Curve Digital Signature Algorithm based on the same curve).
+  * ChaCha20-Poly1305 as a symmetric algorithm.
+  * The client should be able to handle the processing of arbitrary input data from the TCP stream.
   *  In TLS 1.3, the use of certain extensions is mandatory
-  * Mandatory extensions as specified [here.](https://datatracker.ietf.org/doc/html/rfc8446#section-9.2)  (Supported Groups, Extension - Signature Algorithms, Extension - Supported Versions Extension - Key Share ?)
-  * At least `github.com` supports the above ciphers for testing purposes
-  * You can use Wireshark to debug your implementation
+  * Mandatory extensions as specified [here.](https://datatracker.ietf.org/doc/html/rfc8446#section-9.2) The sample Rust project has most of them implemented with `as_bytes` mapper. The extensions required are
+    * Supported Versions (describes the used TLS version)
+    * Server Name (What is the DNS of the server we want to connect)
+    * Signature Algorithms (What method to use to sign the data)
+    * Supported Groups (Key negotiation algorithm)
+    * Key Share (Public keys)
+  * At least `cloudflare.com` supports the above ciphers for testing purposes.
+  * You can and *should* use Wireshark to debug your implementation.
 
 Note that the protocol follows mostly the *tag-length-value* principle. 
 There can be constraints for the size of the tag or length, and **this defines how many bytes the tag or length can take**, while the length itself then defines the number of subsequent bytes.
 
+The sample project provides the *encoding* part for the above, but not the *decoding* part. Decoding means mapping arbitrary binary data to correct data structures. This the part where the typical security problems arise.
+
+
 Additional requirements: 
  * Proper client-side certificate validation (replace the additional certificate validation task with this) (1p)
 
-**One extra point** on showcasing the decrypted TLS 1.3 data from the server that supports this client.
+**One extra point** on showcasing the decrypted TLS 1.3 application data from the server that supports this client.
+    * In practice, you send TLS 1.3 encrypted application data, for example to `cloudflare.com`. The application data contains 
 
 
 > You are alloved to consult a friendly LLM, but note that the code it provides might not be correct and can include bugs! You are not allowed to directly copy-paste some existing implementation, even though the LLM is likely providing code samples based on those.
@@ -216,12 +234,12 @@ Use of Rust with sufficient implementation | 1 |
 Minimal handshake implementation from above | 2 |
 Fuzz testing the implementation with the help of fuzzing libraries | 1 |
 Proper client-side certificate validation | 1 |
-Decrypt content from TLS 1.3 server with your client | 1 |
+Decrypt application content from TLS 1.3 server with your client | 1 |
 
 
 ### Language list that you should consider
 
-1. Rust (1 bonus point from sufficient implementation, and we offer [a starter project](rust_example).)
+1. Rust (1 bonus point from sufficient implementation, and we offer [a starter project](rust_example), with a lot of working functionality, to compensate for the initial difficulty of the language.)
 2. Other strongly typed memory-safe languages (typically less efficient because of the dynamic memory management) (Swift ([ARC-based](https://en.wikipedia.org/wiki/Automatic_Reference_Counting)), Go, Java, C#, etc.)
 3. Programming C++ with [modern features](https://learn.microsoft.com/en-us/cpp/cpp/welcome-back-to-cpp-modern-cpp?view=msvc-170) (Unique pointers etc.), [Zig](https://ziglang.org/), or other native languages with some memory safety properties. High performance and control-level with some risk of memory issues.
 4. Weakly typed scripting languages (Python, Ruby, PHP, JavaScript) or risky languages, C, basic C++, and Assembly, **are not allowed this time**. While the scripting languages can provide memory-safe code, they are typically inefficient, and increase the likelihood of other bugs as a result of weak types. 
@@ -242,6 +260,64 @@ You are allowed to use dependencies other than the programming language's standa
  * For ChaCha20-Poly1305 encryption and EdDSA signatures
 
  Other dependencies **are not allowed**.
+
+## Debugging tips for the handshake protocol
+
+You can use `openssl` to form a TLS connection with specific parameters.
+This can help us to understand, what the correct process looks like, on top of the other material.
+Let's say, we want to force TLS 1.3 version and get the handshake data. We can use the following command:
+
+```bash
+openssl s_client -connect cloudflare.com:443 -tls1_3 -ciphersuites TLS_CHACHA20_POLY1305_SHA256 -msg -tlsextdebug
+```
+
+However, not all the data is well segmented.
+The content of `ClientHello` is a single hex dump, and that does not help us to see, for example, what extensions our client sets by default.
+
+For that, Wireshark is very useful. It can format every byte from the TLS handshake protocol and can help us to get, for example, test data from known functioning TLS libraries, or **it can help us to understand what goes wrong with our own TLS implementation**.
+
+Here is an example look for TLS 1.3 ClientHello structure for `github.com` in Wireshark:
+
+```text
+Frame 3130: 310 bytes on wire (2480 bits), 310 bytes captured (2480 bits) on interface en0, id 0
+Ethernet II, Src: Apple_b6:f2:a5 (5c:e9:1e:b6:f2:a5), Dst: ASUSTekCOMPU_0c:7f:24 (2c:fd:a1:0c:7f:24)
+Internet Protocol Version 4, Src: 192.168.1.146, Dst: 140.82.121.4
+Transmission Control Protocol, Src Port: 62639, Dst Port: 443, Seq: 1, Ack: 1, Len: 244
+Transport Layer Security
+    TLSv1.3 Record Layer: Handshake Protocol: Client Hello
+        Content Type: Handshake (22)
+        Version: TLS 1.0 (0x0301)
+        Length: 239
+        Handshake Protocol: Client Hello
+            Handshake Type: Client Hello (1)
+            Length: 235
+            Version: TLS 1.2 (0x0303)
+            Random: 162b6eeae2555ea320e205eda9c5d5f6cbe17806a7b4922cbcf06bcb6a44d43b
+            Session ID Length: 32
+            Session ID: 648ae57da16d9b9891a3a03b423a35c55bd38ae7563bfe9ac40044f29870785e
+            Cipher Suites Length: 2
+            Cipher Suites (1 suite)
+            Compression Methods Length: 1
+            Compression Methods (1 method)
+            Extensions Length: 160
+            Extension: server_name (len=15) name=github.com
+            Extension: ec_point_formats (len=4)
+            Extension: supported_groups (len=22)
+            Extension: session_ticket (len=0)
+            Extension: encrypt_then_mac (len=0)
+            Extension: extended_master_secret (len=0)
+            Extension: signature_algorithms (len=36)
+            Extension: supported_versions (len=3) TLS 1.3
+            Extension: psk_key_exchange_modes (len=2)
+            Extension: key_share (len=38) x25519
+            [JA4: t13d011000_58070c528ac8_3eb3b556ea2c]
+            [JA4_r: t13d011000_1303_000a,000b,000d,0016,0017,0023,002b,002d,0033_0403,0503,0603,0807,0808,081a,081b,081c,0809,080a,080b,0804,0805,0806,0401,0501,0601]
+            [JA3 Fullstring: 771,4867,0-11-10-35-22-23-13-43-45-51,29-23-30-25-24-256-257-258-259-260,0-1-2]
+            [JA3: 482d93134dde169bf71e5da09c7715a8]
+```
+
+Wireshark is capable of showing what specific part from the `ClientHello` structure was invalid.
+
 
 ---
 ## Task 3
@@ -269,4 +345,3 @@ The overall process should look like the following:
 3. Use a tool to test if the certificates get validated
 4. Connect clients through the proxy 
 5. Report your results
-
