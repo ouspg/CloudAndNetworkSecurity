@@ -338,6 +338,8 @@ To complete this task you should understand how TLS works and how the certificat
 * [certmitm demo](https://www.youtube.com/watch?v=h0HeTBfKLhQ)
 
 You are free to use **tools of your choice** to complete this task, however we highly suggest getting started with Aapo Oksman's [certmitm](https://github.com/aapooksman/certmitm) tool. For full credit you should demonstrate the usage of your tool of choice on **multiple different application types** such as; mobile applications, web applications, games and/or other software to see if they are implementing certificate validation properly. You should create/acquire different kind of certificates to test with such as: self-signed certificates, real certificates with replaced keys and CA issued certificates. It is important to note that there is no one right way to complete this task, you could for example route your browser traffic through the proxy or use your laptop as a hotspot that routes mobile devices traffic through the proxy. Sometimes the best thing you can do after a failed certificate validation is to retry a couple times to see if you can get further.
+> [!Warning]
+> Although this isnt illegal as you are just finding out potential vulnerabilities, not exploiting them, you shouldn't test this on Riot Games applications. As per [Aapo Oksman's iOS demo](https://www.youtube.com/watch?v=bWidokJKuUc), their response to his vulnerability findings was "in theory it may be possible (to exploit this), but we would detect it and kick you or mark it as suspicious for investigation...this finding will not be fixed since there is compensathing controls.". 
 
 The overall process should look like the following:
 1. Acquire/create certificates
