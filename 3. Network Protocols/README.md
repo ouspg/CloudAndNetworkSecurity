@@ -171,6 +171,10 @@ In this part, you'll demonstrate a similar smuggled request exploiting the TE.CL
     back-end server interpret and process the request. This discrepancy can lead to security vulnerabilities, allowing attackers 
     to bypass access controls or gain access to restricted resources.
 
+
+**Command used**
+**Screenshot of result**
+
 >[!TIP]
 > When using curl to make HTTP requests, you can change the request method using the -X flag followed by the desired HTTP method (e.g., GET, POST, PUT, DELETE, etc.). When changing the request method with -X, it's important to also include the -i flag to view the response headers. This allows you to verify that the server responds as expected to the specified request method. Using -X and -i flags together provides visibility into how the server responds to different request methods, which is essential for debugging and testing purposes.
 
