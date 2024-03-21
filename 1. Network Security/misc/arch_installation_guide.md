@@ -134,16 +134,17 @@ Note: the ubuntu-domain takes a minute to start due to the nature of the cloud i
 ```
 
 
-# Troubleshooting:
+**Notes:**
+- The ubuntu-domain takes a minute to start due to the nature of the cloud images and their preconfigurations.
+- On a lot of OS's SELinux/apparmor messes up with the permissions for libvirt, uncomment and change /etc/libvirt/qemu.conf user and group: https://ostechnix.com/solved-cannot-access-storage-file-permission-denied-error-in-kvm-libvirt/
+- To make sure networks autostart after a shutdown of hostmachine you can run
 ```
-General problems with first deployment:
-solution:
-run the cleanup.sh script
-
-NOTE: After first successful deployment, do not use the cleanup.sh anymore, instead use terraform destroy!!
-
+  virsh net-autostart internal_network && virsh net-autostart external_network && virsh net-autostart demilitarized_zone
 ```
 
+- Running into errors? Read the troubleshoot section [here](https://github.com/lsuutari19/network_sec_platform?tab=readme-ov-file#troubleshooting)
+
+- Virsh [commands](https://download.libvirt.org/virshcmdref/html-single/) are useful for troubleshooting as well, particularly the net-, pool- & volume (list, destroy, undefine)
 
 ```
 problem:
