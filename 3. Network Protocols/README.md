@@ -28,7 +28,8 @@ You are **not required** to do the tasks in order, but if you do the second task
 
 As a result, there are two different paths to do the exercises this week.
  * In both cases, you can do the task 1, and then
-    * Do task 2 completely and ignore the rest. With very good implementation you might get even more than 6 points.
+    * Do task 2 completely and ignore the rest. With very good implementation you might get even more than 7 points.
+    *This task will give the most points on the course and can compensate for other weeks*.
     * Or, do the tasks 3 and 4, but not that many points are available. Task 2 covers also the topics of tasks 3 and 4.
 
 
@@ -36,12 +37,12 @@ As a result, there are two different paths to do the exercises this week.
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 1 | 1 | HTTP request smuggling | Wireshark, curl
-Task 2 | 6 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
+Task 2 | 7 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
 Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alternative to task 2 with less points) | AFL++, radamsa, other fuzzing tools
 Task 4 | 1 | TLS certificate validation | certmitm, mitmproxy, Wireshark
 
 
-Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 5 points from the whole exercise.
+Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 7 points from the whole exercise (Combination of Task 1 and Task 2).
 <!-- </details> -->
 
 ---
@@ -127,7 +128,10 @@ ETag: "65cce434-267"
 ## Task 2: Implementing TLS 1.3 client from scratch (up to 6 points)
 
 > [!Note]
-> You can complete this task in pairs! **But not in larger groups**. The workload assumes that you have friendly LLMs available, such as ChatGPT, [Phind](https://www.phind.com) or [GitHub Copilot](https://docs.github.com/en/copilot/quickstart).
+> You can complete this task in pairs! **But not in larger groups**. Remember to mention your pair. The workload assumes that you have friendly LLMs available, such as ChatGPT, [Phind](https://www.phind.com) or [GitHub Copilot](https://docs.github.com/en/copilot/quickstart).
+
+> [!Note]
+> You can work on this task until the end of the course, if you want to, but it is recommended to do in time.
 
 > You can fully focus on this task to get up to 6 points by doing it carefully. But be warned, getting a maximum grade requires a lot of work.
 
@@ -137,6 +141,8 @@ ETag: "65cce434-267"
 Implementing network protocols correctly can be *hard*. They are typically complex and work in a binary, non-text format.
 This is because of the performance reasons, error correction and the minimized addition of overhead to the total bandwidth usage. They must follow strict standards to be compatible with different hardware and software systems.
 Protocols must be designed to handle arbitrary data and then parse and process them correctly while doing it fast. They must be fault-tolerant if they encounter incorrect data.
+
+> A huge part from the all security problems are related to faulty implementations of these protocols, or incorrect use of them.
 
 If we look at the network OSI model structure, we can see many different protocols on different layers for different purposes. 
 In the following example graph, the application is transmitting ASN.1 binary encoded data as TLS 1.3 encrypted over TCP/IP protocol. 
@@ -168,7 +174,7 @@ This should also make you more familiar with what it takes to transmit encrypted
 ### TLS 1.3 Handshake Protocol
 
 * [RFC 8446](https://datatracker.ietf.org/doc/html/rfc8446)
-    * Provided ASN.1 notations about data structures are super useful when implementing the client. Especially, if one consults a friendly LLM. The Rust starter project has already most of them.
+    * Provided ASN.1 notations about data structures are super useful when implementing the client. Especially, if one consults a friendly LLM. *The Rust starter project has already most of them.*
     * You *will need to* read this standard to understand the protocol.
 
 * Transport Layer Security [in Wikipedia](https://en.wikipedia.org/wiki/Transport_Layer_Security)
@@ -180,8 +186,7 @@ In conclusion, TLS 1.3 is much simpler compared to previous versions and support
 
 For the purpose of this task, it should be doable, and can give us a glance at what protocols could be!
 
-
-Your main guide source should be the standard and [https://tls13.xargs.org](https://tls13.xargs.org).
+To get a good overview of the standard and the handshake process at the byte level, check [https://tls13.xargs.org](https://tls13.xargs.org).
 The provided Rust project will help the implementation of other programming languages too, if you decide so. 
 
 During the handshake, both the client and server agree on the cipher suite as follows.
@@ -191,9 +196,9 @@ During the handshake, both the client and server agree on the cipher suite as fo
 * Symmetric encryption algorithm (e.g., AES-GCM, ChaCha20-Poly1305)
 * The hash function for message authentication and PRFs (e.g., SHA-256)
 
-The priority of the cipher suites is pre-defined for the task.
+The priority and availability of the cipher suites are pre-defined for the task.
 
-### Implementation requirements
+### Implementation requirements (3p)
 
 > [!Important]
 > You should implement *a client*, with minimal working features to complete TLS 1.3 handshake, while also noting the error handling. Or more, if you decide so, to replace other tasks from this week.
@@ -201,7 +206,7 @@ The priority of the cipher suites is pre-defined for the task.
 Minimal TLS client implementation includes the completion of the handshake process with the following features:
   * Key exchange with X25519 and signatures with EdDSA (Elliptic Curve Diffie-Hellman key exchange using Curve25519 and Edwards-Curve Digital Signature Algorithm based on the same curve).
   * ChaCha20-Poly1305 as a symmetric algorithm.
-  * The client should be able to handle the processing of arbitrary input data from the TCP stream.
+  * The client should be able to handle the processing of arbitrary input data from the TCP stream. We get some guarantees with fuzz testing which provides one additional point.
   *  In TLS 1.3, the use of certain extensions is mandatory
   * Mandatory extensions as specified [here.](https://datatracker.ietf.org/doc/html/rfc8446#section-9.2) The sample Rust project has most of them implemented with `as_bytes` mapper. The extensions required are
     * Supported Versions (describes the used TLS version)
@@ -215,24 +220,49 @@ Minimal TLS client implementation includes the completion of the handshake proce
 Note that the protocol follows mostly the *tag-length-value* principle. 
 There can be constraints for the size of the tag or length, and **this defines how many bytes the tag or length can take**, while the length itself then defines the number of subsequent bytes.
 
-The sample project provides the *encoding* part for the above, but not the *decoding* part. Decoding means mapping arbitrary binary data to correct data structures. This the part where the typical security problems arise.
+The sample project provides the *encoding* part for the above, but not the *decoding* part. Decoding means mapping arbitrary binary data to correct data structures. This is the part where the typical security problems arise and you should focus on.
+
+### Certificate validation (1p)
+
+> "The most dangerous code in the world: validating SSL certificates in non-browser
+software." [Georgiev, Martin, et al.](https://dl.acm.org/doi/10.1145/2382196.2382204)
+
+To make sure that you are messaging with the claimed entity, you need to validate certificates.
+
+You can additionally do a proper client-side certificate validation to get an additional point. In practice, this means: 
+  * Verify that the server-provided certificate is authentic and issued by a trusted entity (Certificate Authority, CA). Check the certificate chain.
+  * Verify that this certificate belongs to the domain you are connecting to.
+  * Verify that the certificate has not expired.
+  * Verify that this certificate is not revoked. (OPTIONAL, can give additional points)
 
 
-Additional requirements: 
- * Proper client-side certificate validation (replace the additional certificate validation task with this) (1p)
+This will replace the final task.
 
-**One extra point** on showcasing the decrypted TLS 1.3 application data from the server that supports this client.
-    * In practice, you send TLS 1.3 encrypted application data, for example to `cloudflare.com`. The application data contains 
+### The decryption of the application data content (1p)
+
+You can get **one point** for showcasing the decrypted TLS 1.3 application data from the server that supports this client.
+To demonstrate this, you will send TLS 1.3 encrypted application data, for example to `cloudflare.com`. The application data contains an HTTP GET request to path `/robots.txt`.
+
+```http
+GET /robots.txt HTTP/1.1
+Host: cloudflare.com
+Connection: close
+```
+
+
+Typically, this means sending the following raw string as application data payload in the TLS record over TCP:
+
+```text
+GET /robots.txt HTTP/1.1\r\nHost: cloudflare.com\r\nConnection: close\r\n\r\n
+```
+
+The server will then send the data in response, wrapped in the TLS record again.
 
 
 > You are alloved to consult a friendly LLM, but note that the code it provides might not be correct and can include bugs! You are not allowed to directly copy-paste some existing implementation, even though the LLM is likely providing code samples based on those.
 
 
-You must implement it with a strongly typed programming language of your choice.
 
-Generally, if you want to do something efficiently, you should pick a lower-level programming language.
-Typically, this has meant either the use of C or C++.
-However, with great power comes a great responsibility and the history is filled with memory safety issues. Correct programming is hard and making difficult protocols makes it even harder. 
 
 **You will get one bonus point for doing the work with *Rust*; this encourages the usage of memory-safe language, which can produce native performance and it enforces other design choices that could reduce the bugs in the software.**
 
@@ -244,21 +274,26 @@ Overall grading table for this task:
 Description |Points|
 -----|:---:|
 Use of Rust with sufficient implementation | 1 |
-Minimal handshake implementation from above | 2 |
-Fuzz testing the implementation with the help of fuzzing libraries | 1 |
-Proper client-side certificate validation | 1 |
+Minimal handshake implementation from above | 3 |
+Fuzz testing the implementation with the help of fuzzing libraries | 1+ |
+Proper client-side certificate validation | 1+ |
 Decrypt application content from TLS 1.3 server with your client | 1 |
 
 
 ### Language list that you should consider
+
+You must implement it with a strongly typed programming language of your choice.
+We hope that you do it with Rust and the provided sample project. It has many things done already and will introduce you to some modern tooling.
+
+Generally, if you want to do something efficiently, you should pick a lower-level programming language.
+Typically, this has meant either the use of C or C++.
+However, with great power comes a great responsibility and the history is filled with memory safety issues. Correct programming is hard and making difficult protocols makes it even harder. 
 
 1. Rust (1 bonus point from sufficient implementation, and we offer [a starter project](rust_example), with a lot of working functionality, to compensate for the initial difficulty of the language.)
 2. Other strongly typed memory-safe languages (typically less efficient because of the dynamic memory management) (Swift ([ARC-based](https://en.wikipedia.org/wiki/Automatic_Reference_Counting)), Go, Java, C#, etc.)
 3. Programming C++ with [modern features](https://learn.microsoft.com/en-us/cpp/cpp/welcome-back-to-cpp-modern-cpp?view=msvc-170) (Unique pointers etc.), [Zig](https://ziglang.org/), or other native languages with some memory safety properties. High performance and control-level with some risk of memory issues.
 4. Weakly typed scripting languages (Python, Ruby, PHP, JavaScript) or risky languages, C, basic C++, and Assembly, **are not allowed this time**. While the scripting languages can provide memory-safe code, they are typically inefficient, and increase the likelihood of other bugs as a result of weak types. 
 
-
-For Rust, check [the starter project](rust_example).
 
 If you decide to use C++, **you must use modern pointers**. We don't like memory bugs.
 The use of modern pointers does not guarantee it, but they reduce them significantly.
@@ -270,6 +305,7 @@ You are allowed to use dependencies other than the programming language's standa
  * To generate cryptographically secure random bits. (e.g. [rand](https://docs.rs/rand/latest/rand/) crate in Rust)
  * To derive the public key from the private key in X25519 protocol (e.g. [curve25519-dalek ](https://github.com/dalek-cryptography/curve25519-dalek/tree/main/x25519-dalek) crate in Rust) and calculate the shared secret.
  * For parsing the certificates (typically means ASN.1 DER encoding), e.g. [rasn](https://github.com/librasn/rasn) crate in Rust. 
+ * To verify the certificate chain
  * For ChaCha20-Poly1305 encryption and EdDSA signatures
 
  Other dependencies **are not allowed**.
@@ -281,7 +317,7 @@ This can help us to understand, what the correct process looks like, on top of t
 Let's say, we want to force TLS 1.3 version and get the handshake data. We can use the following command:
 
 ```bash
-openssl s_client -connect cloudflare.com:443 -tls1_3 -ciphersuites TLS_CHACHA20_POLY1305_SHA256 -msg -tlsextdebug
+openssl s_client -connect github.com:443 -tls1_3 -ciphersuites TLS_CHACHA20_POLY1305_SHA256 -msg -tlsextdebug
 ```
 
 However, not all the data is well segmented.
@@ -331,12 +367,6 @@ Transport Layer Security
 
 Wireshark is capable of showing what specific part from the `ClientHello` structure was invalid.
 
-### Certificate validation
-
-> "The most dangerous code in the world: validating SSL certificates in non-browser
-software." [Georgiev, Martin, et al.](https://dl.acm.org/doi/10.1145/2382196.2382204)
-
----
 ## Task 3
 
 
