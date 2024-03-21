@@ -124,7 +124,7 @@ As a next step, start wireshark and set it to capture traffic on loopback interf
 
 **Add screenshot of successfully traversing /admin path on the website**
 
-**Capture HTTP packets from wireshark when you access /home and /admin paths on the website. Add screenshots**
+**Study HTTP packets registered when you access /home and /admin paths on the website. Add screenshots**
 
 **What are the most important headers in your HTTP packets. Explain your reasoning**
 
