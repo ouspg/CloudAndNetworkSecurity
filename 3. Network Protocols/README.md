@@ -173,6 +173,7 @@ In this part, you'll demonstrate a similar smuggled request exploiting the TE.CL
 
 
 **Command used**
+
 **Screenshot of result**
 
 >[!TIP]
