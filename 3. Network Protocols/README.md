@@ -82,7 +82,7 @@ Some common examples of networking protcols include: Internet Protocol (IP), Tra
 
 ### HTTP request smuggling
 
-HTTP Request Smuggling is a technique used to manipulate the interpretation of HTTP requests by exploiting inconsistencies in the way front-end and back-end servers or proxies handle requests. By carefully crafting malicious requests, an attacker can cause the front-end and back-end servers to interpret the request differently, leading to various security vulnerabilities such as cache poisoning, session fixation, and bypassing security controls. Read more about this technique on [Port Swagger](https://portswigger.net/web-security/request-smuggling)
+HTTP Request Smuggling is a technique used to manipulate the interpretation of HTTP requests by exploiting inconsistencies in the way front-end and back-end servers or proxies handle requests. By carefully crafting malicious requests, an attacker can cause the front-end and back-end servers to interpret the request differently, leading to various security vulnerabilities such as cache poisoning, session fixation, and bypassing security controls. Read more about this technique on [Port Swigger](https://portswigger.net/web-security/request-smuggling)
 
 ### A) How do HTTP request smuggling vulnerabilities arise? What's the difference between CL.TE, TE.CL, and TE.TE techniques 
 
@@ -109,43 +109,60 @@ python app.py
 ```
 
 Website uses a front-end reverse proxy server and a back-end server to handle requests.
-Website has two paths only accessible at the loopback address (127.0.0.1):
+Website has two paths only accessible at the loopback address and port 5000 (127.0.0.1):
 1. /home
 2. /admin
+
+For example, to access home path, you would enter http://127.0.0.1:5000/home in your browser
 
 Figure below shows website architecture. 
 
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/6ecbd9ec-1183-4707-b051-cf662ad9dd65)
 
+As a next step, start wireshark and set it to capture traffic on loopback interface. Run the website
 
-You'll demonstrate an HTTP request smuggling in upcoming task
+**Add screenshot of successfully accesing /admin path**
 
-### C) Craft HTTP smuggling curl command to extract two responses from back-end server using one request to front-end server
+**Capture HTTP packets from wireshark when you access /home and /admin paths. Provide screenshot**
 
-The original HTTP get request sent by the user (host).
 
-```
-GET / HTTP/1.1
-Host: 10.3.1.10
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-If-Modified-Since: Wed, 14 Feb 2024 16:03:00 GMT
-If-None-Match: "65cce434-267"
-```
-In response, the server sends back following to the user.
+In the next part, you'll perform an HTTP request smuggling attack. For this you need to understand the most important headers in the HTTP packet.
+
+**What are the most important headers in your HTTP packets. Explain your reasoning**
+
+### C) Craft a custom HTTP packet that performs request smuggling using curl tool.
+
+### Using HTTP request smuggling to bypass front-end security
+
+To simulate the scenario where the front-end reverse proxy interprets the request differently from the back-end server, we can use a combination of Content-Length and Transfer-Encoding headers in a curl command. The aim is to trick the front-end reverse proxy into treating the request as two separate requests while the back-end server processes both the POST and GET requests sequentially. For example, consider following HTTP packet:
 
 ```
-HTTP/1.1 304 Not Modified
-Server: nginx/1.25.4
-Date: Mon, 18 Mar 2024 11:54:22 GMT
-Last-Modified: Wed, 14 Feb 2024 16:03:00 GMT
-Connection: keep-alive
-ETag: "65cce434-267"
+POST /home HTTP/1.1
+Host: vulnerable-website.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 62
+Transfer-Encoding: chunked
+
+0
+
+GET /admin HTTP/1.1
+Host: vulnerable-website.com
+Foo: xGET /home HTTP/1.1
+Host: vulnerable-website.com
+
 ```
+The front-end server sees two requests here, both for /home, and so the requests are forwarded to the back-end server. However, the back-end server sees one request for /home and one request for /admin. It assumes (as always) that the requests have passed through the front-end controls, and so grants access to the /admin. [Above example](https://portswigger.net/web-security/request-smuggling/exploiting) taken from PortSwigger.
+
+In this part, you'll demonstrate a similar smuggled request. Your objective is to craft a curl command which creates a custom HTTP packet and sends it to website.
+
+    The first part of the command initiates a POST request to the /home endpoint with the character 'a' as the payload. This request is formatted to include both Content-Length and Transfer-Encoding: chunked headers.
+    The second part of the command initiates a GET request to the /admin endpoint with an empty body. This request also includes the Content-Length: 0 header.
+    By combining these requests in a specific way, we aim to exploit differences in how the front-end reverse proxy and the back-end server interpret and process the request. The front-end reverse proxy may interpret the request as two separate requests because of Content-Length and Transfer-Encoding: chunked headers, while the back-end server processes both requests sequentially.
+    This discrepancy can lead to security vulnerabilities, allowing attackers to bypass access controls or gain access to restricted resources.
+
+
+
+
 
 
 ---
