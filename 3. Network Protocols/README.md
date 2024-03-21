@@ -163,10 +163,13 @@ In this part, you'll demonstrate a similar smuggled request exploiting the TE.CL
 
 **Craft a curl command which creates a custom HTTP packet and send it to the website to smuggle the /admin webpage HTML body**
 
-    The first part of the command initiates a POST request to the /home endpoint with the character 'a' as the payload. This request is formatted to include both Content-Length and Transfer-Encoding: chunked headers.
-    The second part of the command initiates a GET request to the /admin endpoint with an empty body. This request also includes the Content-Length: 0 header.
-    By combining these requests in a specific way, we aim to exploit differences in how the front-end reverse proxy and the back-end server interpret and process the request.
-    This discrepancy can lead to security vulnerabilities, allowing attackers to bypass access controls or gain access to restricted resources.
+    1.) The first part of the command initiates a POST request to the /home endpoint with the character 'a' as the payload. 
+        This request is formatted to include both Content-Length and Transfer-Encoding: chunked headers.
+    2.) The second part of the command initiates a GET request to the /admin endpoint with an empty body. 
+        This request also includes the Content-Length: 0 header.
+    By combining these requests in a specific way, we aim to exploit differences in how the front-end reverse proxy and the 
+    back-end server interpret and process the request. This discrepancy can lead to security vulnerabilities, allowing attackers 
+    to bypass access controls or gain access to restricted resources.
 
 >[!TIP]
 > When using curl to make HTTP requests, you can change the request method using the -X flag followed by the desired HTTP method (e.g., GET, POST, PUT, DELETE, etc.). When changing the request method with -X, it's important to also include the -i flag to view the response headers. This allows you to verify that the server responds as expected to the specified request method. Using -X and -i flags together provides visibility into how the server responds to different request methods, which is essential for debugging and testing purposes.
