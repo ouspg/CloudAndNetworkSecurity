@@ -232,14 +232,18 @@ sudo systemctl restart libvirtd
 ```
 
 
-**Provision the platform with Terraform**
+### Provision the platform with Terraform
 ```
 export TERRAFORM_LIBVIRT_TEST_DOMAIN_TYPE="qemu"
 terraform init
 terraform apply
-
-Note: the ubuntu-domain takes a minute to start due to the nature of the cloud images and their preconfigurations.
-
+```
+**Notes:**
+- The ubuntu-domain takes a minute to start due to the nature of the cloud images and their preconfigurations.
+- On a lot of OS's SELinux/apparmor messes up with the permissions for libvirt, uncomment and change /etc/libvirt/qemu.conf user and group: https://ostechnix.com/solved-cannot-access-storage-file-permission-denied-error-in-kvm-libvirt/
+- To make sure networks autostart after a shutdown of hostmachine you can run
+```
+  virsh net-autostart internal_network && virsh net-autostart external_network && virsh net-autostart demilitarized_zone
 ```
 
 - Running into errors? Read the troubleshoot section [here](https://github.com/lsuutari19/network_sec_platform?tab=readme-ov-file#troubleshooting)
