@@ -31,6 +31,7 @@ Make yourself familiar with following.
 * **ICMP** - [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol)
 * **pfSense** - Official documentation of pfSense [here](https://docs.netgate.com/pfsense/en/latest/install/assign-interfaces.html)
 * **wireshark** - Covered in pre-requisite courses. Official documentation [here](https://www.wireshark.org/docs/wsug_html/)
+* **virsh commands** - Important ones are related to vol-, pool-, net-destroy/undefine/list [libvirt documentation](https://download.libvirt.org/virshcmdref/html-single/)
 
 
 If you feel like your networking knowledge needs a revision, go through these tutorials:
@@ -242,6 +243,7 @@ Note: the ubuntu-domain takes a minute to start due to the nature of the cloud i
 ```
 
 Running into errors? Read the troubleshoot section [here](https://github.com/lsuutari19/network_sec_platform?tab=readme-ov-file#troubleshooting)
+Virsh [commands](https://download.libvirt.org/virshcmdref/html-single/) are useful for troubleshooting as well, particularly the net-, pool- & volume (list, destroy, undefine)
 
 ---
 ## Task 2
