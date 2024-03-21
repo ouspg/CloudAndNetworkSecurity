@@ -37,7 +37,7 @@ As a result, there are two different paths to do the exercises this week.
 
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
-Task 1 | 1 | HTTP request smuggling | Wireshark, curl
+Task 1 | 1 | HTTP request smuggling | Wireshark, curl, python, flask
 Task 2 | 7 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
 Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alternative to task 2 with less points) | AFL++, radamsa, other fuzzing tools
 Task 4 | 1 | TLS certificate validation | certmitm, mitmproxy, Wireshark
