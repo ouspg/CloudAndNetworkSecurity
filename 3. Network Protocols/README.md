@@ -119,45 +119,51 @@ Figure below shows website architecture.
 
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/6ecbd9ec-1183-4707-b051-cf662ad9dd65)
 
-As a next step, start wireshark and set it to capture traffic on loopback interface. Run the website
+As a next step, start wireshark and set it to capture traffic on loopback interface. Run the website and capture packets
 
-**Add screenshot of successfully accesing /admin path**
+**Add screenshot of successfully traversing /admin path on the website**
 
-**Capture HTTP packets from wireshark when you access /home and /admin paths. Provide screenshot**
+**Capture HTTP packets from wireshark when you access /home and /admin paths on the website. Add screenshots**
 
 
 In the next part, you'll perform an HTTP request smuggling attack. For this you need to understand the most important headers in the HTTP packet.
 
 **What are the most important headers in your HTTP packets. Explain your reasoning**
 
-### C) Craft a custom HTTP packet that performs request smuggling using curl tool.
+### C) Craft a custom HTTP packet that performs request smuggling using curl tool with TE.CL technique.
 
-### Using HTTP request smuggling to bypass front-end security
+### Using HTTP request smuggling to bypass front-end security for TE.CL website configuration
 
-To simulate the scenario where the front-end reverse proxy interprets the request differently from the back-end server, we can use a combination of Content-Length and Transfer-Encoding headers in a curl command. The aim is to trick the front-end reverse proxy into treating the request as two separate requests while the back-end server processes both the POST and GET requests sequentially. For example, consider following HTTP packet:
+To simulate the scenario where the front-end reverse proxy interprets the request differently from the back-end server, we can use a combination of Content-Length and Transfer-Encoding headers in a single packet using curl command. The aim is to trick the front-end reverse proxy into treating the request based on "Transfer-Encoding" header while the back-end server processes the request based on "Content-Length" header. For example, consider following HTTP packet:
 
 ```
 POST /home HTTP/1.1
 Host: vulnerable-website.com
 Content-Type: application/x-www-form-urlencoded
-Content-Length: 62
+Content-Length: 10
 Transfer-Encoding: chunked
+
+a
+GET /admin HTTP/1.1
+Host: vulnerable-website.com
+Content-Length: 0
 
 0
 
-GET /admin HTTP/1.1
-Host: vulnerable-website.com
-Foo: xGET /home HTTP/1.1
-Host: vulnerable-website.com
-
 ```
-The front-end server sees two requests here, both for /home, and so the requests are forwarded to the back-end server. However, the back-end server sees one request for /home and one request for /admin. It assumes (as always) that the requests have passed through the front-end controls, and so grants access to the /admin. [Above example](https://portswigger.net/web-security/request-smuggling/exploiting) taken from PortSwigger.
+If you craft and send a packet like this to the webserver, the front-end server sees "Transfer-Encoding: chunked" indicating that the request body is sent in a series of chunks. However, the Content-Length header contradicts this, suggesting a fixed content length of 10 bytes. The front-end server is now confused and prioritizes one header over the other to handle the request based on its specific configuration. Current front-end configuration prioritizes "Transfer-Encoding: chunked" header and only parses the POST /home request.
 
-In this part, you'll demonstrate a similar smuggled request. Your objective is to craft a curl command which creates a custom HTTP packet and sends it to website.
+The back-end server will also parse the request headers and see both Transfer-Encoding: chunked and Content-Length headers. Similar to the front-end server, it may need to decide how to handle the conflicting headers. Since, it's configured to prioritize "Content-Length" header, it will receive the POST request with the body 'a' (sent in a single chunk) and process it accordingly. After processing the POST request, the back-end server will see the remaining part of the request, which is the GET request to /admin with an empty body. This will return two responses using just one POST /home request exploiting the inherent TE.CL configuration vulnerability in the website.
+
+Why it happens? The back-end server sees one request for /home and one request for /admin. It assumes (as always) that the requests have passed through the front-end controls (who interpreted request as only one request to /home), and so grants access to the /admin. [A similar example](https://portswigger.net/web-security/request-smuggling/exploiting) can be studied from PortSwigger.
+
+In this part, you'll demonstrate a similar smuggled request exploiting the TE.CL vulnerability. 
+
+Craft a curl command which creates a custom HTTP packet and send it to website to smuggle the /admin webpage HTML body
 
     The first part of the command initiates a POST request to the /home endpoint with the character 'a' as the payload. This request is formatted to include both Content-Length and Transfer-Encoding: chunked headers.
     The second part of the command initiates a GET request to the /admin endpoint with an empty body. This request also includes the Content-Length: 0 header.
-    By combining these requests in a specific way, we aim to exploit differences in how the front-end reverse proxy and the back-end server interpret and process the request. The front-end reverse proxy may interpret the request as two separate requests because of Content-Length and Transfer-Encoding: chunked headers, while the back-end server processes both requests sequentially.
+    By combining these requests in a specific way, we aim to exploit differences in how the front-end reverse proxy and the back-end server interpret and process the request.
     This discrepancy can lead to security vulnerabilities, allowing attackers to bypass access controls or gain access to restricted resources.
 
 
