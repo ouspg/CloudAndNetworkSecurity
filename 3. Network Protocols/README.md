@@ -82,9 +82,26 @@ Some common examples of networking protcols include: Internet Protocol (IP), Tra
 
 ### HTTP request smuggling
 
+HTTP Request Smuggling is a technique used to manipulate the interpretation of HTTP requests by exploiting inconsistencies in the way front-end and back-end servers or proxies handle requests. By carefully crafting malicious requests, an attacker can cause the front-end and back-end servers to interpret the request differently, leading to various security vulnerabilities such as cache poisoning, session fixation, and bypassing security controls. Read more about this technique on (Port Swagger)[https://portswigger.net/web-security/request-smuggling]
 
+### A) How do HTTP request smuggling vulnerabilities arise? What's the difference between CL.TE, TE.CL, and TE.TE techniques 
 
-A local website to demonstrate this request smuggling technique has been setup. It uses a front-end proxy server and a back-end server to handle requests.
+Your first task is to study HTTP request smuggling and write a detailed paragraph about how HTTP request smuggling vulnerabilities arise and differences between CL.TE, TE.CL, and TE.TE HTTP request smuggling techniques.
+
+Useful resources: (link 1)[https://paper.seebug.org/1049/] (research article)[https://www.hindawi.com/journals/scn/2022/3121177/]
+
+### B) Setup webserver and capture HTTP traffic associated with the website using Wireshark
+
+A local website to demonstrate this request smuggling technique has been setup. Download the zip file from (here)[] 
+
+```
+# Instructions to setup web-server
+# Navigate to app.py
+# Use command below to run the webserver
+python app.py
+```
+
+It uses a front-end proxy server and a back-end server to handle requests.
 Website has two paths only:
 1. /home
 2. /admin
@@ -93,9 +110,9 @@ See figure below to understand website architecture. You'll demonstrate an HTTP 
 
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/6ecbd9ec-1183-4707-b051-cf662ad9dd65)
 
-## A) Setup webserver and capture HTTP traffic associated with this website's request using Wireshark
 
-## B) Craft HTTP smuggling curl command to extract two responses from back-end server using one request to front-end server
+
+### C) Craft HTTP smuggling curl command to extract two responses from back-end server using one request to front-end server
 
 The original HTTP get request sent by the user (host).
 
