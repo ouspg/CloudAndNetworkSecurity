@@ -410,7 +410,7 @@ What about the webservice running at http://<server_ip_addr>. Can you access it?
 
 ### **C) Extracting more host info using NMAP**
 
-Use the -PE, -PP, -PM flags of nmap to perform host discovery sending respectively ICMPv4 echo, timestamp, and subnet mask requests. 
+Use the -PE, -PM, -PP flags of nmap to perform host discovery sending respectively ICMPv4 echo, timestamp, and subnet mask requests. 
 
 **Provide command used to do this**
 
