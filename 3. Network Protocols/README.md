@@ -14,6 +14,7 @@ Make yourself familiar with the following topics:
 * **List of networking protocols** - Read about the list of networking protocols for the OSI model on [Wikipedia](https://en.wikipedia.org/wiki/List_of_network_protocols_(OSI_model))
 * **20 common networking protocols** - Article presenting 20 common networking protocols [here](https://medium.com/@rajeshmamuddu/20-different-network-protocols-commonly-used-in-networking-e98cab90d18d)
 * **OSI Model** - What is the OSI Model on [Wikipedia](https://en.wikipedia.org/wiki/OSI_model)
+* **curl** - Useful curl tutorial [here](https://blog.hubspot.com/website/curl-command)
 * Especially, [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) is the topic of this week!
 
 TLS protocol from a cryptographic perspective is handled in more depth in cryptographic systems and weakness - course.
@@ -109,7 +110,7 @@ python app.py
 ```
 
 Website uses a front-end reverse proxy server and a back-end server to handle requests.
-Website has two paths only accessible at the loopback address and port 5000 (127.0.0.1):
+Website has two paths accessible at the loopback IP address 127.0.0.1 and port 5000:
 1. /home
 2. /admin
 
@@ -125,10 +126,11 @@ As a next step, start wireshark and set it to capture traffic on loopback interf
 
 **Capture HTTP packets from wireshark when you access /home and /admin paths on the website. Add screenshots**
 
+**What are the most important headers in your HTTP packets. Explain your reasoning**
 
 In the next part, you'll perform an HTTP request smuggling attack. For this you need to understand the most important headers in the HTTP packet.
 
-**What are the most important headers in your HTTP packets. Explain your reasoning**
+
 
 ### C) Craft a custom HTTP packet that performs request smuggling using curl tool with TE.CL technique.
 
@@ -159,14 +161,15 @@ Why it happens? The back-end server sees one request for /home and one request f
 
 In this part, you'll demonstrate a similar smuggled request exploiting the TE.CL vulnerability. 
 
-Craft a curl command which creates a custom HTTP packet and send it to website to smuggle the /admin webpage HTML body
+**Craft a curl command which creates a custom HTTP packet and send it to the website to smuggle the /admin webpage HTML body**
 
     The first part of the command initiates a POST request to the /home endpoint with the character 'a' as the payload. This request is formatted to include both Content-Length and Transfer-Encoding: chunked headers.
     The second part of the command initiates a GET request to the /admin endpoint with an empty body. This request also includes the Content-Length: 0 header.
     By combining these requests in a specific way, we aim to exploit differences in how the front-end reverse proxy and the back-end server interpret and process the request.
     This discrepancy can lead to security vulnerabilities, allowing attackers to bypass access controls or gain access to restricted resources.
 
-
+>[!TIP]
+> When using curl to make HTTP requests, you can change the request method using the -X flag followed by the desired HTTP method (e.g., GET, POST, PUT, DELETE, etc.). When changing the request method with -X, it's important to also include the -i flag to view the response headers. This allows you to verify that the server responds as expected to the specified request method. Using -X and -i flags together provides visibility into how the server responds to different request methods, which is essential for debugging and testing purposes.
 
 
 
