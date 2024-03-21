@@ -35,7 +35,7 @@ As a result, there are two different paths to do the exercises this week.
 
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
-Task 1 | 1 | HTTP request smuggling | TBD
+Task 1 | 1 | HTTP request smuggling | Wireshark, curl
 Task 2 | 6 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
 Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alternative to task 2 with less points) | AFL++, radamsa, other fuzzing tools
 Task 4 | 1 | TLS certificate validation | certmitm, mitmproxy, Wireshark
@@ -82,6 +82,19 @@ Some common examples of networking protcols include: Internet Protocol (IP), Tra
 ### HTTP request smuggling
 
 
+
+A local website to demonstrate this request smuggling technique has been setup. It uses a front-end proxy server and a back-end server to handle requests.
+Website has two paths only:
+1. /home
+2. /admin
+
+See figure below to understand website architecture. You'll demonstrate an HTTP request smuggling in upcoming task
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/6ecbd9ec-1183-4707-b051-cf662ad9dd65)
+
+## A) Setup webserver and capture HTTP traffic associated with this website's request using Wireshark
+
+## B) Craft HTTP smuggling curl command to extract two responses from back-end server using one request to front-end server
 
 The original HTTP get request sent by the user (host).
 
