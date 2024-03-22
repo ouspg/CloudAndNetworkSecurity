@@ -40,7 +40,7 @@ Task #|Points|Description|Tools
 Task 1 | 1 | HTTP request smuggling | Wireshark, curl, python, flask
 Task 2 | 7 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
 Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alternative to task 2 with less points) | AFL++, radamsa, other fuzzing tools
-Task 4 | 1 | TLS certificate validation | certmitm, mitmproxy, Wireshark
+Task 4 | 1-2 | TLS certificate validation | certmitm, mitmproxy, Wireshark
 
 
 Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 7 points from the whole exercise (Combination of Task 1 and Task 2).
@@ -462,7 +462,7 @@ The overall process should look like the following:
 > [!Note]
 > In situations where you dont seem to be able to install/run software the best thing you can do is retrying again!
 
-### WLAN certificate Validation
+### WLAN certificate Validation (1p)
 On this task you will be provided a Raspberry Pi, which you are to set up to work as a Wi-Fi hotspot for other devices. The following video demonstrates this task:
 * [Exploiting insecure Certificate Validation in iOS](https://www.youtube.com/watch?v=bWidokJKuUc)
 
