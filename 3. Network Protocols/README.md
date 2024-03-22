@@ -463,9 +463,9 @@ The overall process should look like the following:
 > In situations where you dont seem to be able to install/run software the best thing you can do is retrying again!
 
 ### WLAN certificate Validation (1p)
-On this task you will be provided a Raspberry Pi, which you are to set up to work as a Wi-Fi hotspot for other devices. The following video demonstrates this task:
+On this task you will be provided a Raspberry Pi, which you are to set up to work as a Wi-Fi hotspot for other devices and then use certmitm to analyze applications on your device. The following video demonstrates this task:
 * [Exploiting insecure Certificate Validation in iOS](https://www.youtube.com/watch?v=bWidokJKuUc)
 
 Turning your Raspberry Pi into a Wi-Fi hotspot involves; flashing the Raspberry PI with a fresh OS (setup SSH here), installing necessary updates and packages, configuring the device to work as an access point for your other external device, verifying the connection and that WLAN interface is up.
 
-After this you should git clone/copy (scp) the [certmitm](https://github.com/aapooksman/certmitm) into the Raspberry Pi machine (and the certificates as in the previous task), create a rule that preroutes the tcp traffic on the WLAN interface on ports 443 and redirects them to port 9900 and then setup certmitm to listen to this port like in the Local Certificate Validation task. If successful and your phone is able to connect to the internet via the Raspberry Pi Wi-Fi then you should start getting data from certmitm and analyze these results.
+After this you should git clone/copy (scp) the [certmitm](https://github.com/aapooksman/certmitm) into the Raspberry Pi machine (and the certificates as in the previous task), update the pyOpenSSL package, create a rule that preroutes the tcp traffic on the WLAN interface on ports 443 and redirects them to port 9900 and then setup certmitm to listen to this port like in the Local Certificate Validation task. If successful and your phone is able to connect to the internet via the Raspberry Pi Wi-Fi then you should start getting data from certmitm and analyze these results.
