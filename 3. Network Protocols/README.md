@@ -516,9 +516,9 @@ graph TD;
     subgraph "Raspberry Pi"
         pi((Raspberry Pi))
         wifi(Wi-Fi Hotspot)
-    end
-    subgraph "CertMITM"
-        certmitm((CertMITM))
+        subgraph "CertMITM"
+            certmitm((CertMITM))
+        end
     end
     phone((Phone)) --> wifi
     laptop((Laptop)) --> wifi
