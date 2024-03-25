@@ -491,7 +491,11 @@ To get full credit for this task you need to test **installing atleast 5 new app
 On this task you will be provided a Raspberry Pi, and a SD card that has all the configurations set up to work as a Wi-Fi hotspot. The following video demonstrates this task:
 * [Exploiting insecure Certificate Validation in iOS](https://www.youtube.com/watch?v=bWidokJKuUc)
 
-First you need to connect another device to the same network or open SSH port on your router for connection to the device (or connect the device to a monitor), then ssh into the system by running `ssh ouspg@raspberrypi.local`, the password is `ouspg`. After doing this you need to set the built-in Wi-FI module to broadcast a hotspot network via executing the following command on the Raspberry Pi:
+To begin with you have 2 options:
+- Connect your Raspberry Pi into a monitor or
+- Connect another device to the same network or open SSH port on your router for connection to the device from another network, then ssh into the system by running `ssh ouspg@raspberrypi.local`, the password is `ouspg`.
+
+After doing this you need to set the built-in Wi-FI module to broadcast a hotspot network by executing the following command on the Raspberry Pi:
 ```console
 sudo nmcli device wifi hotspot ssid <hotspot name> password <hotspot password> ifname wlan0
 ```
