@@ -507,5 +507,32 @@ After this you should git clone/copy (scp) the [certmitm](https://github.com/aap
 The following image shows the high level idea in this task:
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/8c841d06-766e-4097-b694-b5c29db7acff)
 
+```mermaid
+graph TD;
+    subgraph "External Network"
+        subgraph "Internet"
+            end
+        end
+    subgraph "Raspberry Pi"
+        pi((Raspberry Pi))
+        wifi(Wi-Fi Hotspot)
+    end
+    subgraph "CertMITM"
+        certmitm((CertMITM))
+    end
+    phone((Phone)) --> wifi
+    laptop((Laptop)) --> wifi
+    wifi --> pi
+    pi -->|Port 443| certmitm
+    pi -->|Other Ports| Internet
+    certmitm --> Internet
+    style phone fill:#88C5CC,stroke:#333,stroke-width:2px;
+    style laptop fill:#88C5CC,stroke:#333,stroke-width:2px;
+    style wifi fill:#FFC857,stroke:#333,stroke-width:2px;
+    style pi fill:#6C567B,stroke:#333,stroke-width:2px;
+    style certmitm fill:#6C567B,stroke:#333,stroke-width:2px;
+```
+
+
 
 
