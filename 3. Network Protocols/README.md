@@ -450,7 +450,7 @@ To complete this task you should understand how TLS works and how the certificat
 
 ### Local Certificate Validation (1p) 
 
-You are free to use **tools of your choice** to complete this task, however we highly suggest getting started with Aapo Oksman's [certmitm](https://github.com/aapooksman/certmitm) tool. For full credit you should demonstrate the usage of your tool of choice on **multiple different application types** such as; mobile applications, web applications, games and/or other software to see if they are implementing certificate validation properly.
+You are free to use **tools of your choice** to complete this task, however we highly suggest getting started with Aapo Oksman's [certmitm](https://github.com/aapooksman/certmitm) tool.
 
 You can use any machine for this task, but it is suggested to run it on a VM
 
@@ -478,6 +478,11 @@ sudo iptables -t nat -A OUTPUT -p tcp --dport 443 -m <second user> ! --mark 1 -j
 If successful certmitm should start producing data like the following:
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/6a425e28-23ed-441f-bf5e-263dcbc5eedb)
 
+To get full credit for this task you need to test installing atleast **5 new applications/packages, try out 5 internet connected applications and test native applications that should include TLS validation**. Provide the file created by certmitm in your github return repository under week 3 and answer the following questions:
+- Describe the data that is most commonly outputted by certmitm
+- Did you find any interesting outputs, if so describe what could have caused them
+- Did you find any serious vulnerabilities (red text, these could just be random errors too), if so what caused them
+- Bonus: use a throwaway account if you're brave enough to test the Riot Games Wild Rifts game ;)
 
 > [!Note]
 > In situations where you dont seem to be able to install/run software the best thing you can do is retrying again!
