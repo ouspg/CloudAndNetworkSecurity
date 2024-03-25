@@ -473,14 +473,29 @@ If successful certmitm should start producing data like the following:
 > In situations where you dont seem to be able to install/run software the best thing you can do is retrying again!
 
 ### WLAN certificate Validation (1p)
-On this task you will be provided a Raspberry Pi, which you are to set up to work as a Wi-Fi hotspot for other devices and then use certmitm to analyze applications on your device. The following video demonstrates this task:
+On this task you will be provided a Raspberry Pi, and a SD card that has all the configurations set up to work as a Wi-Fi hotspot. The following video demonstrates this task:
 * [Exploiting insecure Certificate Validation in iOS](https://www.youtube.com/watch?v=bWidokJKuUc)
 
-Turning your Raspberry Pi into a Wi-Fi hotspot involves; flashing the Raspberry PI with a fresh OS (setup SSH here), installing necessary updates and packages, configuring the device to work as an access point for your other external device, verifying the connection and that WLAN interface is up.
+First you need to connect another device to the same network or open SSH port on your router for connection to the device (or connect the device to a monitor), then ssh into the system by running `ssh ouspg@raspberrypi.local`, the password is `ouspg`. After doing this you need to set the built-in Wi-FI module to broadcast a hotspot network via executing the following command on the Raspberry Pi:
+```bash
+   $ sudo nmcli device wifi hotspot ssid <hotspot name> password <hotspot password> ifname wlan0
+```
+At this point you should be able to connect to the broadcasted Wi-Fi network via another device such as a mobile phone by using the hotspot name and hotspot password you set up. Then you need to configure the Raspberry Pi's wlan0 interface to preroute tcp traffic from port 443 to port 9900 via the following command:
+```bash
+   $ sudo iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 443 -j REDIRECT --to-port 9900
+```
+Then startup the certmitm, open different applications such as App store, games etc and observe the results that the certmitm outputs via:
+```bash
+   $ python3 certmitm.py --listen 9900 --workdir testing --verbose --show-data
+```
+
+#### The following describes how you can setup your own Raspberry Pi for this task:
+Turning your Raspberry Pi into a Wi-Fi hotspot involves; flashing the Raspberry PI with a fresh OS (setup SSH & hostname here), installing necessary updates and packages, configuring the device to work as an access point for your other external device (raspi-config), verifying the connection and that WLAN interface is up.
 
 After this you should git clone/copy (scp) the [certmitm](https://github.com/aapooksman/certmitm) into the Raspberry Pi machine (and the certificates as in the previous task), update the pyOpenSSL package, create a rule that preroutes the tcp traffic on the WLAN interface on ports 443 and redirects them to port 9900 and then setup certmitm to listen to this port like in the Local Certificate Validation task. If successful and your phone is able to connect to the internet via the Raspberry Pi Wi-Fi then you should start getting data from certmitm and analyze these results.
 
 The following image shows the high level idea in this task:
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/8c841d06-766e-4097-b694-b5c29db7acff)
+
 
 
