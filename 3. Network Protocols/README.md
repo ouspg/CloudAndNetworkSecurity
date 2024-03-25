@@ -478,7 +478,7 @@ sudo iptables -t nat -A OUTPUT -p tcp --dport 443 -m <second user> ! --mark 1 -j
 If successful certmitm should start producing data like the following:
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/6a425e28-23ed-441f-bf5e-263dcbc5eedb)
 
-To get full credit for this task you need to test installing atleast **5 new applications/packages, try out 5 internet connected applications and test native applications that should include TLS validation**. Provide the file created by certmitm in your github return repository under week 3 and answer the following questions:
+To get full credit for this task you need to test **installing atleast 5 new applications/packages, try out 5 internet connected applications and test native applications that should include TLS validation**. Provide the file created by certmitm in your github return repository under week 3 and answer the following questions:
 - Describe the data that is most commonly outputted by certmitm
 - Did you find any interesting outputs, if so describe what could have caused them
 - Did you find any serious vulnerabilities (red text, these could just be random errors too), if so what caused them
@@ -508,6 +508,8 @@ python3 certmitm.py --listen 9900 --workdir testing --verbose --show-data
 Turning your Raspberry Pi into a Wi-Fi hotspot involves; flashing the Raspberry PI with a fresh OS (setup SSH & hostname here), installing necessary updates and packages, configuring the device to work as an access point for your other external device (raspi-config), verifying the connection and that WLAN interface is up.
 
 After this you should git clone/copy (scp) the [certmitm](https://github.com/aapooksman/certmitm) into the Raspberry Pi machine (and the certificates as in the previous task), update the pyOpenSSL package, create a rule that preroutes the tcp traffic on the WLAN interface on ports 443 and redirects them to port 9900 and then setup certmitm to listen to this port like in the Local Certificate Validation task. If successful and your phone is able to connect to the internet via the Raspberry Pi Wi-Fi then you should start getting data from certmitm and analyze these results.
+
+**To get full credit for this task you need to complete the same requirements as in the previous task**
 
 The following chart shows the high level idea in this task:
 
