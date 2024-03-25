@@ -105,6 +105,10 @@ The internal LAN network consists of following machines
 
 Now that we know the basics of virtual network setup, let’s get into the lab task. Task 1 is about setting up the network by installing required pre-requisite softwares
 
+>[!Note]
+>* **Sharing files between KVM and host machine** - [Guide to creating a mounting point for file share](https://www.debugpoint.com/share-folder-virt-manager/)
+
+
 ---
 
 ## Task 1
