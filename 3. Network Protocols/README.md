@@ -504,8 +504,7 @@ Turning your Raspberry Pi into a Wi-Fi hotspot involves; flashing the Raspberry 
 
 After this you should git clone/copy (scp) the [certmitm](https://github.com/aapooksman/certmitm) into the Raspberry Pi machine (and the certificates as in the previous task), update the pyOpenSSL package, create a rule that preroutes the tcp traffic on the WLAN interface on ports 443 and redirects them to port 9900 and then setup certmitm to listen to this port like in the Local Certificate Validation task. If successful and your phone is able to connect to the internet via the Raspberry Pi Wi-Fi then you should start getting data from certmitm and analyze these results.
 
-The following image shows the high level idea in this task:
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/8c841d06-766e-4097-b694-b5c29db7acff)
+The following chart shows the high level idea in this task:
 
 ```mermaid
 graph TD;
@@ -514,7 +513,6 @@ graph TD;
             end
         end
     subgraph "Raspberry Pi"
-        pi((Raspberry Pi))
         wifi(Wi-Fi Hotspot)
         subgraph "CertMITM"
             certmitm((CertMITM))
@@ -522,14 +520,12 @@ graph TD;
     end
     phone((Phone)) --> wifi
     laptop((Laptop)) --> wifi
-    wifi --> pi
-    pi -->|Port 443| certmitm
-    pi -->|Other Ports| Internet
+    wifi -->|Port 443| certmitm
+    wifi -->|Other Ports| Internet
     certmitm --> Internet
     style phone fill:#88C5CC,stroke:#333,stroke-width:2px;
     style laptop fill:#88C5CC,stroke:#333,stroke-width:2px;
     style wifi fill:#FFC857,stroke:#333,stroke-width:2px;
-    style pi fill:#6C567B,stroke:#333,stroke-width:2px;
     style certmitm fill:#6C567B,stroke:#333,stroke-width:2px;
 ```
 
