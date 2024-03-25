@@ -40,10 +40,10 @@ Task #|Points|Description|Tools
 Task 1 | 1 | HTTP request smuggling | Wireshark, curl, python, flask
 Task 2 | 7 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
 Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alternative to task 2 with less points) | AFL++, radamsa, other fuzzing tools
-Task 4 | 1-2 | TLS certificate validation | certmitm, mitmproxy, Wireshark
+Task 4 | 1-2 | TLS certificate validation | certmitm,  Wireshark
 
 
-Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 7 points from the whole exercise (Combination of Task 1 and Task 2).
+Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 8 points from the whole exercise (Combination of Task 1 and Task 2).
 <!-- </details> -->
 
 ---
@@ -184,7 +184,7 @@ In this part, you'll demonstrate a similar smuggled request exploiting the TE.CL
 
 ---
 
-## Task 2: Implementing TLS 1.3 client from scratch (up to 6 points)
+## Task 2: Implementing TLS 1.3 client from scratch (up to 7 points)
 
 > [!Note]
 > You can complete this task in pairs! **But not in larger groups**. Remember to mention your pair. The workload assumes that you have friendly LLMs available, such as ChatGPT, [Phind](https://www.phind.com) or [GitHub Copilot](https://docs.github.com/en/copilot/quickstart).
@@ -192,7 +192,7 @@ In this part, you'll demonstrate a similar smuggled request exploiting the TE.CL
 > [!Note]
 > You can work on this task until the end of the course, if you want to, but it is recommended to do in time.
 
-> You can fully focus on this task to get up to 6 points by doing it carefully. But be warned, getting a maximum grade requires a lot of work.
+> You can fully focus on this task to get up to 7 points by doing it carefully. But be warned, getting a maximum grade requires a lot of work.
 
 > If you want to skip the coding, you have another path with similar goal. You can fuzz test existing TLS library and get up to 1 points. Additionally, there is an additional certificate validation task which replaces the same part of this task. As result, this offers two points.
 
@@ -256,6 +256,7 @@ During the handshake, both the client and server agree on the cipher suite as fo
 * The hash function for message authentication and PRFs (e.g., SHA-256)
 
 The priority and availability of the cipher suites are pre-defined for the task.
+
 
 ### Implementation requirements (3p)
 
@@ -350,7 +351,7 @@ However, with great power comes a great responsibility and the history is filled
 
 1. Rust (1 bonus point from sufficient implementation, and we offer [a starter project](rust_example), with a lot of working functionality, to compensate for the initial difficulty of the language.)
 2. Other strongly typed memory-safe languages (typically less efficient because of the dynamic memory management) (Swift ([ARC-based](https://en.wikipedia.org/wiki/Automatic_Reference_Counting)), Go, Java, C#, etc.)
-3. Programming C++ with [modern features](https://learn.microsoft.com/en-us/cpp/cpp/welcome-back-to-cpp-modern-cpp?view=msvc-170) (Unique pointers etc.), [Zig](https://ziglang.org/), or other native languages with some memory safety properties. High performance and control-level with some risk of memory issues.
+3. Programming C++ with [modern features](https://learn.microsoft.com/en-us/cpp/cpp/welcome-back-to-cpp-modern-cpp?view=msvc-170) (Unique pointers etc.), [Zig](https://ziglang.org/), or other native languages with some memory safety properties. High performance and control level with some risk of memory issues.
 4. Weakly typed scripting languages (Python, Ruby, PHP, JavaScript) or risky languages, C, basic C++, and Assembly, **are not allowed this time**. While the scripting languages can provide memory-safe code, they are typically inefficient, and increase the likelihood of other bugs as a result of weak types. 
 
 
@@ -426,12 +427,14 @@ Transport Layer Security
 
 Wireshark is capable of showing what specific part from the `ClientHello` structure was invalid.
 
-## Task 3
+## Task 3: Fuzz testing existing network protocol library or parser (1p)
+
+We assume that you have already fuzz-tested something on the previous courses or that you are familiar with the topic.
 
 
 
 ---
-## Task 4 TLS certificate validation
+## Task 4:  TLS certificate validation (up to 2 points)
 > [!Note]
 > If you completed the client-side implementation to a sufficient level in task 2, you do not need to complete this task to receive full credits for this weeks laboratory.
 
