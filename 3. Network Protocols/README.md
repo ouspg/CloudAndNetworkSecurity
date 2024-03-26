@@ -481,8 +481,12 @@ If successful certmitm should start producing data like the following:
 To get full credit for this task you need to test **installing atleast 5 new applications/packages, try out 5 internet connected applications and test native applications that should include TLS validation**. Provide the file created by certmitm in your github return repository under week 3 and answer the following questions:
 - Describe the data that is most commonly outputted by certmitm
 - Did you find any interesting outputs, if so describe what could have caused them
-- Did you find any serious vulnerabilities (red text, these could just be random errors too), if so what caused them
-- Bonus: use a throwaway account if you're brave enough to test the Riot Games Wild Rifts game ;)
+- Did you find any critical vulnerabilities (example below), if so what caused them
+- Bonus: use a throwaway account, if you're brave enough to test the Riot Games Wild Rifts game ;)
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/55354ef1-6083-4154-9b89-412b844bea4a)
+
+
+
 
 > [!Note]
 > In situations where you dont seem to be able to install/run software the best thing you can do is retrying again!
