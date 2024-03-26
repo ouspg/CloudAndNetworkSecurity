@@ -536,13 +536,14 @@ graph TD;
         wifi(Wi-Fi Hotspot)
         subgraph "CertMITM"
             certmitm((CertMITM))
+            
         end
     end
-    phone((Phone)) --> wifi
-    laptop((Laptop)) --> wifi
-    wifi -->|Port 443| certmitm
-    wifi -->|Other Ports| Internet
-    certmitm --> Internet
+    phone((Phone)) <--> wifi
+    laptop((Laptop)) <--> wifi
+    wifi <-->|Port 443| certmitm
+    wifi <-->|Other Ports| Internet
+    certmitm <--> Internet
     style phone fill:#88C5CC,stroke:#333,stroke-width:2px;
     style laptop fill:#88C5CC,stroke:#333,stroke-width:2px;
     style wifi fill:#FFC857,stroke:#333,stroke-width:2px;
