@@ -500,7 +500,10 @@ To begin with you have 2 options:
 - Connect your Raspberry Pi into a monitor or
 - Connect another device to the same network or open SSH port on your router for connection to the device from another network, then ssh into the system by running `ssh ouspg@raspberrypi.local`, the password is `ouspg`.
 
-After doing this you need to set the built-in Wi-FI module to broadcast a hotspot network by executing the following command on the Raspberry Pi:
+After doing this you need to enable routing and set the built-in Wi-FI module to broadcast a hotspot network by executing the following command on the Raspberry Pi:
+```console
+sudo sysctl -w net.ipv4.ip_forward=1
+```
 ```console
 sudo nmcli device wifi hotspot ssid <hotspot name> password <hotspot password> ifname wlan0
 ```
