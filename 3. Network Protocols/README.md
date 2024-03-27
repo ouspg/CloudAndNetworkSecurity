@@ -551,7 +551,7 @@ To begin with you have 3 options:
 
 >[!Note]
 >If you are going with the 3rd option, you will need to enable internet connection sharing on the laptop to the ethernet that rasp is connected to and reboot the laptop for the raspberry to get an IP address and connection to the internet.
->Third option is what will be used in the laboratory session
+>**Third option is what will be used in the laboratory session**
 
 After doing this you need to enable routing and set the built-in Wi-FI module to broadcast a hotspot network by executing the following command on the Raspberry Pi:
 ```console
