@@ -96,9 +96,11 @@ Useful resources:
 1. [Seebug article](https://paper.seebug.org/1049/)
 2. [Research article](https://www.hindawi.com/journals/scn/2022/3121177/)
 
-### B) Setup webservers, access webpages and capture HTTP traffic associated with the website using Wireshark
+### B) Setup webservers, access webpages and capture associated HTTP traffic using Wireshark
 
 A local website to demonstrate this request smuggling technique has been setup. Download the zip file from [here](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/http-website-lab3.zip)
+
+#### Install
 
 ```
 ### Instructions to setup web-server ###
@@ -113,8 +115,21 @@ sudo apt install docker-compose
 sudo docker-compose up
 ```
 
+#### Check
+
+```
+# Run the provided check.sh shell script
+chmod +x check.sh;./check.sh|grep HTTP
+HTTP/1.1 200 OK
+HTTP/1.1 200 OK
+HTTP/1.1 200 OK
+HTTP/1.1 200 OK
+
+# 4 HTTP code 200 means your setup is working perfectly!
+```
+
 Website uses a front-end reverse proxy server (ATS) and two back-end servers called LNMP & LAMP to handle requests. Based on internal domain name header sent as part of
-HTTP packet or port number, ATS is able to distinguish LNMP & LAMP requests and fetch appropriate resources.
+HTTP packet or port number, ATS is able to distinguish LNMP & LAMP requests and fetch appropriate resource.
 
 We have 3 HTTP actors, each one on a local port:
 
@@ -124,20 +139,20 @@ We have 3 HTTP actors, each one on a local port:
 
 For example, to access HTTP actor LAMP, you would enter http://127.0.0.1:9011/home in your browser
 
-Figure below shows website architecture. 
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/886bbd3c-a52a-4307-a162-c5542f2672c9)
+Figure below shows the architecture. 
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/112da1e5-294b-4ece-8a0d-2c7a72eacafb)
 
 
 
-As a next step, start wireshark and set it to capture traffic on loopback interface. Run the website and capture packets
 
-**Add screenshot of successfully traversing /admin path on the website**
 
-**Study HTTP packets registered when you access /home and /admin paths on the website. Add screenshots**
+As a next step, start wireshark and set it to capture traffic on loopback interface. Run each HTTP actor and capture packets
 
-**What are the most important headers in your HTTP packets. Explain your reasoning**
+**Add screenshot of successfully accessing LAMP HTTP resource**
 
-In the next part, you'll perform an HTTP request smuggling attack. For this you need to understand the most important headers in the HTTP packet.
+**Study HTTP packets registered when you access LAMP & LARP resources. Copy/paste contents of one such packet and explain what this packet is doing**
+
+In the next part, you'll perform an actual HTTP request smuggling attack. For this you need to understand the most important headers in the HTTP packet.
 
 
 
