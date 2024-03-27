@@ -127,7 +127,7 @@ HTTP/1.1 200 OK
 # 4 HTTP code 200 means your setup is working perfectly!
 ```
 
-Website uses a front-end reverse proxy server ([ATS](https://trafficserver.apache.org)) and two back-end servers called LNMP & LAMP to handle requests. Based on internal domain name header sent as part of
+The setup uses a front-end reverse proxy server ([ATS](https://trafficserver.apache.org)) and two back-end servers called LNMP & LAMP to handle requests. Based on internal domain name header sent as part of
 HTTP packet or port number, ATS is able to distinguish LNMP & LAMP requests and fetch appropriate resource.
 
 We have 3 HTTP actors, each one on a local port:
