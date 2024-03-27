@@ -15,6 +15,7 @@ Make yourself familiar with the following topics:
 * **20 common networking protocols** - Article presenting 20 common networking protocols [here](https://medium.com/@rajeshmamuddu/20-different-network-protocols-commonly-used-in-networking-e98cab90d18d)
 * **OSI Model** - What is the OSI Model on [Wikipedia](https://en.wikipedia.org/wiki/OSI_model)
 * **curl** - Useful curl tutorial [here](https://blog.hubspot.com/website/curl-command)
+* **netcat** - Introductory netcat [tutorial](https://www.geeksforgeeks.org/introduction-to-netcat/)
 * Especially, [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) is the topic of this week!
 
 TLS protocol from a cryptographic perspective is handled in more depth in cryptographic systems and weakness - course.
