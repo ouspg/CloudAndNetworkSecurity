@@ -160,9 +160,9 @@ In the next part, you'll perform an actual HTTP request smuggling attack. For th
 #### Information on the vulnerability
 
 CVE states in [numerous announces](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-23452) that Apache HTTP server is vulnerable to HTTP request smuggling attacks. This can be verified by
-going to the official [cve](https://cve.mitre.org/) website and searching for the right results.
+going to the official [cve](https://cve.mitre.org/) website and search for the corresponding results.
 
-In our current ATS 7.1.2, if a request causes a 400 error, the established TCP link will not be closed.
+In our current ATS 7.1.2 deployment, if a request causes a 400 error, the established TCP link will not be closed.
 
 In the CVE announce (2018-08-28), there were numerous impacted ATS versions (6.0.0 to 6.2.2 and 7.0.0 to 7.1.3) carrying this vulnerability.
 In this task we'll learn how to exploit this vulnerability using HTTP smuggling technique.
