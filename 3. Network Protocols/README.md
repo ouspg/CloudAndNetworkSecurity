@@ -478,12 +478,12 @@ sudo iptables -t nat -A OUTPUT -p tcp --dport 443 -m <second user> ! --mark 1 -j
 If successful certmitm should start producing data like the following:
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/6a425e28-23ed-441f-bf5e-263dcbc5eedb)
 
-To get full credit for this task you need to test **installing atleast 5 new applications/packages, try out 5 internet connected applications and test native applications that should include TLS validation**. Provide the file created by certmitm in your github return repository under week 3 and answer the following questions:
+To get full credit for this task you need to test **installing atleast 5 new applications/packages, try out 5 internet connected applications and test native applications that should include TLS validation**. Provide the file created by certmitm in your github return repository under week 3 and answer the following questions thoroughly, we expect good detailed answers for full credit:
+- Describe what certmitm is doing in this usecase scenario, the video above desribes it in defail
 - Describe the data that is most commonly outputted by certmitm
 - Did you find any interesting outputs, if so describe what could have caused them
 - Did you find any critical vulnerabilities (example below), if so what caused them
 - Provide the output files of your chosen tool under this weeks returnables in a directory named outputs (with the given tool the output files are in /certmitm/outputs/ path)
-- Bonus: use a throwaway account, if you're brave enough to test the Riot Games Wild Rifts game ;)
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/55354ef1-6083-4154-9b89-412b844bea4a)
 
 
@@ -523,6 +523,7 @@ After this you should git clone/copy (scp) the [certmitm](https://github.com/lsu
 
 **To get full credit for this task you need to complete the same requirements as in the previous task as well as:**
 - Provide the output files of your chosen tool under when intercepting wlan under this weeks returnables in a directory named wlan_outputs (with the given tool the output files are in /certmitm/outputs/ path)
+- Bonus: use a throwaway account, if you're brave enough to test the Riot Games Wild Rifts game ;)
 
 The following chart shows the high level idea in this task:
 
