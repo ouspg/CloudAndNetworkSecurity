@@ -37,7 +37,7 @@ As a result, there are two different paths to do the exercises this week.
 
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
-Task 1 | 1 | HTTP request smuggling | Wireshark, curl, docker, netcat
+Task 1 | 1 | HTTP request smuggling | Wireshark, curl, docker-compose, netcat
 Task 2 | 7 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
 Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alternative to task 2 with less points) | AFL++, radamsa, other fuzzing tools
 Task 4 | 1-2 | TLS certificate validation | certmitm,  Wireshark
@@ -128,7 +128,7 @@ HTTP/1.1 200 OK
 # 4 HTTP code 200 means your setup is working perfectly!
 ```
 
-Website uses a front-end reverse proxy server (ATS) and two back-end servers called LNMP & LAMP to handle requests. Based on internal domain name header sent as part of
+Website uses a front-end reverse proxy server ([ATS](https://trafficserver.apache.org)) and two back-end servers called LNMP & LAMP to handle requests. Based on internal domain name header sent as part of
 HTTP packet or port number, ATS is able to distinguish LNMP & LAMP requests and fetch appropriate resource.
 
 We have 3 HTTP actors, each one on a local port:
@@ -156,11 +156,75 @@ In the next part, you'll perform an actual HTTP request smuggling attack. For th
 
 
 
-### C) Craft a custom HTTP packet that performs request smuggling using curl tool with TE.CL technique.
+### C) Exploiting HTTP request smuggling vulnerability 
 
-### Using HTTP request smuggling to bypass front-end security for TE.CL website configuration
+#### Information on the vulnerability
 
-To simulate the scenario where the front-end reverse proxy interprets the request differently from the back-end server, we can use a combination of Content-Length and Transfer-Encoding headers in a single packet using curl command. The aim is to trick the front-end reverse proxy into treating the request based on "Transfer-Encoding" header while the back-end server processes the request based on "Content-Length" header. For example, consider following HTTP packet:
+CVE states in [numerous announces](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-23452) that Apache HTTP server is vulnerable to HTTP request smuggling attacks. This can be verified by
+going to the official [cve](https://cve.mitre.org/) website and searching for the right results.
+
+In our current ATS 7.1.2, if a request causes a 400 error, the established TCP link will not be closed.
+
+In the CVE announce (2018-08-28), there were numerous impacted ATS versions (6.0.0 to 6.2.2 and 7.0.0 to 7.1.3) carrying this vulnerability.
+In this task we'll learn how to exploit this vulnerability using HTTP smuggling technique.
+
+Useful reference: Section 4.3.2 Second Patch on [seebug paper](https://paper.seebug.org/1049/#431-first-patch)
+
+#### Generating two 400 responses
+
+In-order to exploit the vulnerability 'if a request causes a 400 error, the established TCP link will not be closed', we can craft and send two requests. Technically, both should return
+400 error response. However, with correct HTTP request smuggling a 400 response and a 200 response can also be captured in Wireshark (indicating successfull request smuggling attack)
+
+To demonstrate this, use netcat to execute:
+
+```
+printf 'GET / HTTP/1.1\r\n'\
+'Host: lnmp.com\r\n'\
+'aa: \0GET /2333 HTTP/1.1\r\n'\
+'Host: lnmp.com\r\n'\
+'\r\n'\
+| nc 127.0.0.1 9010
+
+# OR THIS (OR ANY CUSTOM VARIATIONS) ALL WOULD RESULTS IN TWO 400 response
+
+printf 'GET / HTTP/1.1\r\n'\
+'Host: lnmp.com\r\n'\
+'aa: \0GET / HTTP/1.1\r\n'\
+'Host: lnmp.com\r\n'\
+'\r\n'\
+| nc 127.0.0.1 9010
+```
+
+**Demonstrate two 400 responses. Add screenshot**
+
+>[!TIP]
+> Netcat can be piped with prinf statement to send custom HTTP packets in raw form to the desired destination
+> Curl can be used with flags -i and -X followed by request method and headers (+data) to send custom HTTP packets and see the output
+
+### Exploiting the vulnerability
+
+In the previous part, you get two 400 responses. However, with correct HTTP smuggling you can make the second response 200 OK
+and extract the html information from the back-end server. This is because in ATS 7.1.2 , if a request causes a 400 error, 
+the established TCP link will not be closed which leaves a margin for careful HTTP smuggling request to extract 
+important information and bypass the second request directly to back-end. 
+
+**Modify the netcat query provided above to successfully perform
+the HTTP request smuggling attack and extract lnmp.com html body as second response**
+
+>[Hint!]
+> When ATS parses a HTTP request, if it encounters NULL, it will cause a truncation operation. 
+The one request we send is two requests for the ATS server. Therefore, both of them gets resolved
+> The first part is processed by ATS and the second part is forwarded to back-end
+> The specific name for this type of smuggling attack is called 'HTTP Request Splitting' and it falls under the category of HTTP request smuggling
+
+Return following:
+**1. Screenshot of 400 response followed by 200 response
+2. Screenshot of second request successfully extracting LNMP html body
+3. Netcat query**
+
+>[Note!]
+> An alternate way to do this is by sending custom packets either through Burpsuite or curl command but they are not part of this tutorial.
+> Correct solution using burpsuite or curl is also accepted but not recommended for beginners
 
 ```
 POST /home HTTP/1.1
