@@ -61,8 +61,6 @@ Total points accumulated by doing the exercises reflect the overall grade. You c
 
 This week’s theme is networking protocols.
 
-Tasks are designed to be done using the course's provided virtual machine. **TODO**
-
 Networking protocols are a set of rules and conventions that govern the communication between devices in a computer network. These protocols define how data is formatted, transmitted, received, and interpreted across the network. They facilitate the exchange of information between devices, ensuring compatibility and interoperability.
 
 Key aspects of networking protocols include:
