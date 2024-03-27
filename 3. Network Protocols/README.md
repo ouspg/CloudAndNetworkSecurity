@@ -211,7 +211,7 @@ important information and bypass the second request directly to back-end.
 **Modify the netcat query provided above to successfully perform
 the HTTP request smuggling attack and extract lnmp.com html body as second response**
 
->[!Hint]
+>[!Tip]
 > When ATS parses a HTTP request, if it encounters NULL, it will cause a truncation operation. 
 The one request we send is two requests for the ATS server. Therefore, both of them gets resolved
 > The first part is processed by ATS and the second part is forwarded to back-end
@@ -225,49 +225,6 @@ Return following:
 >[!Note]
 > An alternate way to do this is by sending custom packets either through Burpsuite or curl command but they are not part of this tutorial.
 > Correct solution using burpsuite or curl is also accepted but not recommended for beginners
-
-```
-POST /home HTTP/1.1
-Host: vulnerable-website.com
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 10
-Transfer-Encoding: chunked
-
-a
-GET /admin HTTP/1.1
-Host: vulnerable-website.com
-Content-Length: 0
-
-0
-
-```
-If you craft and send a packet like this to the webserver, the front-end server sees "Transfer-Encoding: chunked" indicating that the request body is sent in a series of chunks. However, the Content-Length header contradicts this, suggesting a fixed content length of 10 bytes. The front-end server is now confused and prioritizes one header over the other to handle the request based on its specific configuration. Current front-end configuration prioritizes "Transfer-Encoding: chunked" header and only parses the POST /home request.
-
-The back-end server will also parse the request headers and see both Transfer-Encoding: chunked and Content-Length headers. Similar to the front-end server, it may need to decide how to handle the conflicting headers. Since, it's configured to prioritize "Content-Length" header, it will receive the POST request with the body 'a' (sent in a single chunk) and process it accordingly. After processing the POST request, the back-end server will see the remaining part of the request, which is the GET request to /admin with an empty body. This will return two responses using just one POST /home request exploiting the inherent TE.CL configuration vulnerability in the website.
-
-Why it happens? The back-end server sees one request for /home and one request for /admin. It assumes (as always) that the requests have passed through the front-end controls (who interpreted request as only one request to /home), and so grants access to the /admin. [A similar example](https://portswigger.net/web-security/request-smuggling/exploiting) can be studied from PortSwigger.
-
-In this part, you'll demonstrate a similar smuggled request exploiting the TE.CL vulnerability. 
-
-**Craft a curl command which creates a custom HTTP packet and send it to the website to smuggle the /admin webpage HTML body**
-
-    1.) The first part of the command initiates a POST request to the /home endpoint with the character 'a' as the payload. 
-        This request is formatted to include both Content-Length and Transfer-Encoding: chunked headers.
-    2.) The second part of the command initiates a GET request to the /admin endpoint with an empty body. 
-        This request also includes the Content-Length: 0 header.
-    By combining these requests in a specific way, we aim to exploit differences in how the front-end reverse proxy and the 
-    back-end server interpret and process the request. This discrepancy can lead to security vulnerabilities, allowing attackers 
-    to bypass access controls or gain access to restricted resources.
-
-
-**Command used**
-
-**Screenshot of result**
-
->[!TIP]
-> When using curl to make HTTP requests, you can change the request method using the -X flag followed by the desired HTTP method (e.g., GET, POST, PUT, DELETE, etc.). When changing the request method with -X, it's important to also include the -i flag to view the response headers. This allows you to verify that the server responds as expected to the specified request method. Using -X and -i flags together provides visibility into how the server responds to different request methods, which is essential for debugging and testing purposes.
-
-
 
 
 ---
