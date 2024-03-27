@@ -137,7 +137,7 @@ We have 3 HTTP actors, each one on a local port:
     127.0.0.1:9011 : LAMP (internally listening on port 80)
     127.0.0.1:9012 : LNMP (internally listening on port 80)
 
-For example, to access HTTP actor LAMP, you would enter http://127.0.0.1:9011/home in your browser
+For example, to access HTTP actor LAMP, you would enter http://127.0.0.1:9011 in your browser
 
 Figure below shows the architecture. 
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/112da1e5-294b-4ece-8a0d-2c7a72eacafb)
