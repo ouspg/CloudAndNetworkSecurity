@@ -213,11 +213,12 @@ the HTTP request smuggling attack and extract lnmp.com html body as second respo
 
 >[!Tip]
 > When ATS parses a HTTP request, if it encounters NULL, it will cause a truncation operation. 
-The one request we send is two requests for the ATS server. Therefore, both of them gets resolved
-> The first part is processed by ATS and the second part is forwarded to back-end
-> The specific name for this type of smuggling attack is called 'HTTP Request Splitting' and it falls under the category of HTTP request smuggling
+The one request we send is two requests for the ATS server. Therefore, both of them gets resolved.
+> The first part is processed by ATS and the second part is forwarded to back-end.
+> Specific name for this type of smuggling attack is called 'HTTP Request Splitting' and it falls under the category of HTTP request smuggling.
 
 Return following:
+
 **1. Screenshot of 400 response followed by 200 response**
 
 **2. Screenshot of second request successfully extracting LNMP html body**
