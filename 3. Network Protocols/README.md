@@ -37,7 +37,7 @@ As a result, there are two different paths to do the exercises this week.
 
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
-Task 1 | 1 | HTTP request smuggling | Wireshark, curl, python, flask
+Task 1 | 1 | HTTP request smuggling | Wireshark, curl, docker, netcat
 Task 2 | 7 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
 Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alternative to task 2 with less points) | AFL++, radamsa, other fuzzing tools
 Task 4 | 1-2 | TLS certificate validation | certmitm,  Wireshark
@@ -52,7 +52,7 @@ Total points accumulated by doing the exercises reflect the overall grade. You c
 ## About the lab
 
 * This document contains task descriptions and theory for the third cloud and network security lab. If there are any differences between the return template and this file, consider this to be the up-to-date document.
-* **You are encouraged to use your own computer or virtual machine if you want.** TODO ----------------------- TODO
+* **You are encouraged to use your own computer or virtual machine if you want. However, the use of virtual kali linux is recommended
 * Check the deadline from Moodle and __remember that you have to return your name (and possibly people you worked together with) and GitHub repository information to Moodle before the deadline.__
 
 
@@ -85,40 +85,49 @@ Some common examples of networking protcols include: Internet Protocol (IP), Tra
 
 HTTP Request Smuggling is a technique used to manipulate the interpretation of HTTP requests by exploiting inconsistencies in the way front-end and back-end servers or proxies handle requests. By carefully crafting malicious requests, an attacker can cause the front-end and back-end servers to interpret the request differently, leading to various security vulnerabilities such as cache poisoning, session fixation, and bypassing security controls. Read more about this technique on [Port Swigger](https://portswigger.net/web-security/request-smuggling)
 
+
 ### A) How do HTTP request smuggling vulnerabilities arise? What's the difference between CL.TE, TE.CL, and TE.TE techniques 
 
-Your first task is to study HTTP request smuggling and write a detailed paragraph about how HTTP request smuggling vulnerabilities arise and differences between CL.TE, TE.CL, and TE.TE HTTP request smuggling techniques. Also, answer the following sub-question
+Your first task is to study HTTP request smuggling and write a detailed paragraph about how HTTP request smuggling vulnerabilities arise and differences between CL.TE, TE.CL, and TE.TE HTTP request smuggling techniques. Furthermore, answer the following sub-question
 
 **In which version of HTTP is this vulnerability present? Why is it present in this specific HTTP version? How is the mechanism different?**
 
-Useful resources: [link 1](https://paper.seebug.org/1049/) [research article](https://www.hindawi.com/journals/scn/2022/3121177/)
+Useful resources: 
+1. [Seebug article](https://paper.seebug.org/1049/)
+2. [Research article](https://www.hindawi.com/journals/scn/2022/3121177/)
 
-### B) Setup webserver and capture HTTP traffic associated with the website using Wireshark
+### B) Setup webservers, access webpages and capture HTTP traffic associated with the website using Wireshark
 
-A local website to demonstrate this request smuggling technique has been setup. Download the zip file from [here](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/http_website.zip) 
+A local website to demonstrate this request smuggling technique has been setup. Download the zip file from [here](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/http-website-lab3.zip)
 
 ```
 ### Instructions to setup web-server ###
-# Install dependencies
+# Install dependencies (docker & docker-compose)
 sudo apt update
-sudo apt install python
-sudo pip install Flask
+sudo apt install docker.io
+sudo apt install docker-compose
 
-# Navigate to folder http_website/app.py
-# Use python command to run the webserver. Make sure you have python and flask installed
-python app.py
+# Navigate to folder http-website-lab3/
+# Use docker-compose up to run the webserver. Make sure you have docker and docker-compose installed
+# Be paitent, first build can take 10-15 minutes for the process to complete 
+sudo docker-compose up
 ```
 
-Website uses a front-end reverse proxy server and a back-end server to handle requests.
-Website has two paths accessible at the loopback IP address 127.0.0.1 and port 5000:
-1. /home
-2. /admin
+Website uses a front-end reverse proxy server (ATS) and two back-end servers called LNMP & LAMP to handle requests. Based on internal domain name header sent as part of
+HTTP packet or port number, ATS is able to distinguish LNMP & LAMP requests and fetch appropriate resources.
 
-For example, to access home path, you would enter http://127.0.0.1:5000/home in your browser
+We have 3 HTTP actors, each one on a local port:
+
+    127.0.0.1:9010 : ATS 7.1.2 (internally listening on port 8080)
+    127.0.0.1:9011 : LAMP (internally listening on port 80)
+    127.0.0.1:9012 : LNMP (internally listening on port 80)
+
+For example, to access HTTP actor LAMP, you would enter http://127.0.0.1:9011/home in your browser
 
 Figure below shows website architecture. 
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/886bbd3c-a52a-4307-a162-c5542f2672c9)
 
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/6ecbd9ec-1183-4707-b051-cf662ad9dd65)
+
 
 As a next step, start wireshark and set it to capture traffic on loopback interface. Run the website and capture packets
 
