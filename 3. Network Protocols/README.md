@@ -198,6 +198,7 @@ printf 'GET / HTTP/1.1\r\n'\
 
 >[!TIP]
 > Netcat can be piped with prinf statement to send custom HTTP packets in raw form to the desired destination
+>
 > Curl can be used with flags -i and -X followed by request method and headers (+data) to send custom HTTP packets and see the output
 
 ### Exploiting the vulnerability
@@ -210,7 +211,7 @@ important information and bypass the second request directly to back-end.
 **Modify the netcat query provided above to successfully perform
 the HTTP request smuggling attack and extract lnmp.com html body as second response**
 
->[Hint!]
+>[!Hint]
 > When ATS parses a HTTP request, if it encounters NULL, it will cause a truncation operation. 
 The one request we send is two requests for the ATS server. Therefore, both of them gets resolved
 > The first part is processed by ATS and the second part is forwarded to back-end
@@ -221,7 +222,7 @@ Return following:
 2. Screenshot of second request successfully extracting LNMP html body
 3. Netcat query**
 
->[Note!]
+>[!Note]
 > An alternate way to do this is by sending custom packets either through Burpsuite or curl command but they are not part of this tutorial.
 > Correct solution using burpsuite or curl is also accepted but not recommended for beginners
 
