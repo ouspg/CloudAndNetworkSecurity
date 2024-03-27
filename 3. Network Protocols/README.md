@@ -167,7 +167,7 @@ In our current ATS 7.1.2 deployment, if a request causes a 400 error, the establ
 In the CVE announce (2018-08-28), there were numerous impacted ATS versions (6.0.0 to 6.2.2 and 7.0.0 to 7.1.3) carrying this vulnerability.
 In this task we'll learn how to exploit this vulnerability using HTTP smuggling technique.
 
-Useful reference: Section 4.3.2 Second Patch on [seebug paper](https://paper.seebug.org/1049/#431-first-patch)
+Useful reference: [Section 4.3.2 Second Patch](https://paper.seebug.org/1049/#432-second-patch) on seebug paper
 
 #### Generating two 400 responses
 
