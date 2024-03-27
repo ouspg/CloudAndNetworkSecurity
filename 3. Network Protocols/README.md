@@ -218,9 +218,11 @@ The one request we send is two requests for the ATS server. Therefore, both of t
 > The specific name for this type of smuggling attack is called 'HTTP Request Splitting' and it falls under the category of HTTP request smuggling
 
 Return following:
-**1. Screenshot of 400 response followed by 200 response
-2. Screenshot of second request successfully extracting LNMP html body
-3. Netcat query**
+**1. Screenshot of 400 response followed by 200 response**
+
+**2. Screenshot of second request successfully extracting LNMP html body**
+
+**3. Netcat command**
 
 >[!Note]
 > An alternate way to do this is by sending custom packets either through Burpsuite or curl command but they are not part of this tutorial.
