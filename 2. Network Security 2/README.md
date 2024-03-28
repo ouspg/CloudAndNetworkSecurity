@@ -187,7 +187,7 @@ pfsense web-GUI | admin | pfsense
 
 In today's interconnected digital landscape, Distributed Denial of Service [DDoS](https://minhcung.me/simulate-a-denial-of-service-attack-bd8d4c834002) attacks have emerged as a prevalent threat, capable of disrupting online services, causing financial losses, and tarnishing reputations. This section of the lab manual aims to provide insights to DDoS attacks, exploring their mechanisms, impacts, and mitigation. 
 
-In this task, students will launch a DDoS attack on the server hosted in DMZ from outside (WAN) and study about skills necessary to defend against these disruptive assaults in real-world scenarios.
+In this task, students will launch a DDoS attack on the server hosted in DMZ from inside (LAN) and study about skills necessary to defend against these disruptive assaults in real-world scenarios.
 
 
 
