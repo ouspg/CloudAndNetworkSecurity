@@ -39,7 +39,7 @@ As a result, there are two different paths to do the exercises this week.
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 1 | 1 | HTTP request smuggling | Wireshark, curl, docker-compose, netcat
-Task 2 | 7 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
+Task 2 | 8 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
 Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alternative to task 2 with less points) | AFL++, radamsa, other fuzzing tools
 Task 4 | 1-2 | TLS certificate validation | certmitm,  Wireshark
 
@@ -96,10 +96,15 @@ Useful resources:
 
 ### B) Setup webservers, access webpages and capture associated HTTP traffic using Wireshark
 
-A local website to demonstrate this request smuggling technique has been setup. Download the zip file from [here](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/http-website-lab3.zip)
+The exercise environment is based on the GitHub user ZeddYu's [HTTP Smuggling Lab 2.](https://github.com/ZeddYu/HTTP-Smuggling-Lab/tree/master/lab2)
+
+Download the zip file from [here](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/http-website-lab3.zip)
 
 
 You need Docker and Docker Compose. These are pre-installed for the course VM.
+
+Extract the zip file, and in that directory, run `docker-compose up`.
+
 For a Debian-based Linux, check the instructions below.
 
 
@@ -251,9 +256,7 @@ Return following:
 > [!Note]
 > You can work on this task until the end of the course, if you want to, but it is recommended to do in time.
 
-> You can fully focus on this task to get up to 7 points by doing it carefully. But be warned, getting a maximum grade requires a lot of work.
-
-> If you want to skip the coding, you have another path with similar goal. You can fuzz test existing TLS library and get up to 1 points. Additionally, there is an additional certificate validation task which replaces the same part of this task. As result, this offers two points.
+> You can fully focus on this task to get up to 7 points by doing it carefully. But be warned, getting a maximum grade requires a lot of work. If you want to skip the coding, you have another path with similars goals on task 3 and task 4.
 
 
 Implementing network protocols correctly can be *hard*. They are typically complex and work in a binary, non-text format.
@@ -305,7 +308,7 @@ In conclusion, TLS 1.3 is much simpler compared to previous versions and support
 For the purpose of this task, it should be doable, and can give us a glance at what protocols could be!
 
 To get a good overview of the standard and the handshake process at the byte level, check [https://tls13.xargs.org](https://tls13.xargs.org).
-The provided Rust project will help the implementation of other programming languages too, if you decide so. 
+[The provided Rust project](https://github.com/ouspg/tls13tutorial/) will help the implementation of other programming languages too, if you decide so. 
 
 During the handshake, both the client and server agree on the cipher suite as follows.
 
@@ -316,8 +319,7 @@ During the handshake, both the client and server agree on the cipher suite as fo
 
 The priority and availability of the cipher suites are pre-defined for the task.
 
-
-### Implementation requirements (3p)
+### Implementation requirements (4p)
 
 > [!Important]
 > You should implement *a client*, with minimal working features to complete TLS 1.3 handshake, while also noting the error handling. Or more, if you decide so, to replace other tasks from this week.
@@ -339,7 +341,7 @@ Minimal TLS client implementation includes the completion of the handshake proce
 Note that the protocol follows mostly the *tag-length-value* principle. 
 There can be constraints for the size of the tag or length, and **this defines how many bytes the tag or length can take**, while the length itself then defines the number of subsequent bytes.
 
-The sample project provides the *encoding* part for the above, but not the *decoding* part, other than a couple of partial examples. Decoding means mapping arbitrary binary data to correct data structures. This is the part where the typical security problems arise and you should focus on.
+[The sample project](https://github.com/ouspg/tls13tutorial/) provides the *encoding* part for the above, but not the *decoding* part, other than a couple of partial examples. Decoding means mapping arbitrary binary data to correct data structures. This is the part where the typical security problems arise and you should focus on.
 
 ### Certificate validation (1p)
 
@@ -378,31 +380,15 @@ GET /robots.txt HTTP/1.1\r\nHost: cloudflare.com\r\nConnection: close\r\n\r\n
 The server will then send the data in response, wrapped in the TLS record again.
 
 
-> You are alloved to consult a friendly LLM, but note that the code it provides might not be correct and can include bugs! You are not allowed to directly copy-paste some existing implementation, even though the LLM is likely providing code samples based on those.
-
-
-
+### Language list that you should consider
 
 **You will get one bonus point for doing the work with *Rust*; this encourages the usage of memory-safe language, which can produce native performance and it enforces other design choices that could reduce the bugs in the software.**
 
 > [!Note]
 > *If you end up fighting with the Rust compiler, you are just preventing bugs, which would have resulted into software runtime with another programming language!*
 
-Overall grading table for this task:
-
-Description |Points|
------|:---:|
-Use of Rust with sufficient implementation | 1 |
-Minimal handshake implementation from above | 3 |
-Fuzz testing the implementation with the help of fuzzing libraries | 1+ |
-Proper client-side certificate validation | 1+ |
-Decrypt application content from TLS 1.3 server with your client | 1 |
-
-
-### Language list that you should consider
-
-You must implement it with a strongly typed programming language of your choice.
-We hope that you do it with Rust and the provided sample project. It has many things done already and will introduce you to some modern tooling.
+Otherwise, you must implement it with a strongly typed programming language of your choice.
+We hope that you do it with Rust and the provided [sample project](https://github.com/ouspg/tls13tutorial). It has many things done already and will introduce you to some modern tooling.
 
 Generally, if you want to do something efficiently, you should pick a lower-level programming language.
 Typically, this has meant either the use of C or C++.
@@ -417,6 +403,8 @@ However, with great power comes a great responsibility and the history is filled
 If you decide to use C++, **you must use modern pointers**. We don't like memory bugs.
 The use of modern pointers does not guarantee it, but they reduce them significantly.
 They apply a similar ownership principle as the Rust does for every data object by default.
+
+> You are alloved to consult a friendly LLM, but note that the code it provides might not be correct and can include bugs! You are not allowed to directly copy-paste some existing implementation, even though the LLM is likely providing code samples based on those.
 
 ### Software dependency requirements
 
@@ -487,11 +475,42 @@ Transport Layer Security
 
 Wireshark is capable of showing what specific part from the `ClientHello` structure was invalid.
 
+### Overall grading table for this task
+
+Description |Points|
+-----|:---:|
+Use of Rust with sufficient implementation | 1 |
+Minimal handshake implementation from above | 4 |
+Fuzz testing the implementation with the help of fuzzing libraries | 1+ |
+Proper client-side certificate validation | 1+ |
+Decrypt application content from TLS 1.3 server with your client | 1 |
+
 ## Task 3: Fuzz testing existing network protocol library or parser (1p)
 
-We assume that you have already fuzz-tested something on the previous courses or that you are familiar with the topic.
+We assume that you have already fuzz-tested something on the previous courses or that you are familiar with the topic otherwise.
+Some well-known CLI-oriented fuzzers:
+  * [`AFLplusplus`](https://github.com/AFLplusplus/AFLplusplus)
+  * [`radamsa`](https://gitlab.com/akihe/radamsa)
+  * [`hongfuzz`](https://github.com/google/honggfuzz)
+  * [`ffuf`](https://github.com/ffuf/ffuf)
+
+You are free to test some network protocols in this task.
+
+We recommend testing some of the existing TLS libraries. See a list for example from [Wikipedia](https://en.wikipedia.org/wiki/Transport_Layer_Security#Libraries).
+Another interesting scenario would be to fuzz test some specific network protocol from Wireshark/tshark and see if it can parse them without crashing or other memory issues. 
+
+Your task is the following:
+ * Compile the code, with instrumentation if your fuzzer supports coverage-guided fuzzing.
+ * Compile the code with [AddressSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html) to make the program crash early when there are memory issues, if it is native code.
+ * Fuzz test different interfaces. For example, you can try to fuzz test `openssl`'s certificate parsing and reading of public and private keys. 
 
 
+Some fuzzing material is available [here.](https://github.com/secfigo/Awesome-Fuzzing)
+You can use some of them as an example and reproduce their work. You can also look for the internet for other blog posts and try to reproduce their work, as long as it is related to network protocols.
+
+If you want to go the deep end, check the fuzzing of the [TCP/IP stack](https://media.ccc.de/v/37c3-12235-fuzzing_the_tcp_ip_stack).
+
+> Report the findings and process you had to do. You are not required to find something. However, try to test different input interfaces with fuzzing, or try to make the fuzzer to focus on specific part of the target by providing valid sample inputs.
 
 ---
 ## Task 4:  TLS certificate validation (up to 2 points)
