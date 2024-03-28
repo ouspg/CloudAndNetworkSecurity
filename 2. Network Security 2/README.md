@@ -201,7 +201,7 @@ Using pfSense web-GUI package manager, install [snort](https://www.snort.org/)
 
 ### B) Launch DDoS attack and monitor snort log entries
 
-Launch a DDoS attack on the server hosted in DMZ from outside (WAN) and study Snort log entries.
+Launch a DDoS attack on the server hosted in DMZ from kali (LAN) and study Snort log entries.
 
 Use following two tools turn-by-turn to perform a DDoS attack:
 1. [DDoS-Attacker](https://github.com/CruelDev69/DDoS-Attacker)
@@ -220,18 +220,27 @@ State tables (read more about them [here](https://docs.trellix.com/bundle/endpoi
 In this task, you will explore how states entries are populated in pfsense. This will help you assess the route packets take to reach HTTP service on DMZ
 
 To complete this task, do the following:
-1) Launch DDoS attack from your host machine using any of the tools provided
+1) Launch DDoS attack from your kali machine (LAN) using any of the tools provided
 2) Access the web-GUI
-3) Head over to 'States' section under 'Diagnostics' tab and apply 'Interface=WAN' filter to see states originated from WAN
+3) Head over to 'States' section under 'Diagnostics' tab and apply 'Interface=LAN' filter to see states originated from LAN
 
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/517d009d-ad6d-4cad-83bc-6a520577e15d)
 
+Study states populated and answer the following question:
 
-Study states populated and answer the following two questions
+**What is a firewall state table? How are the state table entries populated for LAN interface?**
 
-**TCP packets originated from <ip_addr1> and destined for <ip_addr_2>. However, as per state table inspection their final destination is 10.3.1.10 (which is internal IP). What is happening here. What is this technique called that's applied here by firewall?**
+Next, send a ping packet to the WAN interface address using the pfsense webGUI and study the states table on WAN interface
 
-**Can state table be overflowed? What happens when they overflow?**
+You can send ping packets using the diagnostic menu on the webGUI of pfsense
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/9812e526-fea7-4da8-8686-0e988b004f3e)
+
+Study states populated for WAN interface and answer following two questions:
+
+**What is happening in the state table for WAN interface. What is the technique called that's applied here by firewall to route packets on WAN interface?**
+
+**Can state table be overflowed in general? What happens when they overflow?**
 
 ---
 ## Task 2
