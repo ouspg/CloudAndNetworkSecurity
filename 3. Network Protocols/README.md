@@ -52,8 +52,7 @@ Total points accumulated by doing the exercises reflect the overall grade. You c
 
 ## About the lab
 
-* This document contains task descriptions and theory for the third cloud and network security lab. If there are any differences between the return template and this file, consider this to be the up-to-date document.
-* **You are encouraged to use your own computer or virtual machine if you want. However, the use of virtual kali linux is recommended
+* **You are encouraged to use your own computer or virtual machine if you want.** However, the use of a Linux machine is necessary. 
 * Check the deadline from Moodle and __remember that you have to return your name (and possibly people you worked together with) and GitHub repository information to Moodle before the deadline.__
 
 
@@ -87,7 +86,7 @@ HTTP Request Smuggling is a technique used to manipulate the interpretation of H
 
 ### A) How do HTTP request smuggling vulnerabilities arise? What's the difference between CL.TE, TE.CL, and TE.TE techniques 
 
-Your first task is to study HTTP request smuggling and write a detailed paragraph about how HTTP request smuggling vulnerabilities arise and differences between CL.TE, TE.CL, and TE.TE HTTP request smuggling techniques. Furthermore, answer the following sub-question
+Your first task is to study HTTP request smuggling and write a detailed paragraph about how HTTP request smuggling vulnerabilities arise and the differences between CL.TE, TE.CL, and TE.TE HTTP requests smuggling techniques. Furthermore, answer the following sub-question
 
 **In which version of HTTP is this vulnerability present? Why is it present in this specific HTTP version? How is the mechanism different?**
 
@@ -99,20 +98,32 @@ Useful resources:
 
 A local website to demonstrate this request smuggling technique has been setup. Download the zip file from [here](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/http-website-lab3.zip)
 
-#### Install
+
+You need Docker and Docker Compose. These are pre-installed for the course VM.
+For a Debian-based Linux, check the instructions below.
+
+
+<details>
+
+<summary>Debian installation instructions</summary>
 
 ```
 ### Instructions to setup web-server ###
 # Install dependencies (docker & docker-compose)
 sudo apt update
-sudo apt install docker.io
-sudo apt install docker-compose
+sudo apt install docker.io docker-compose
 
 # Navigate to folder http-website-lab3/
 # Use docker-compose up to run the webserver. Make sure you have docker and docker-compose installed
 # Be paitent, first build can take 10-15 minutes for the process to complete 
-sudo docker-compose up
+docker-compose up
 ```
+If you are having permission issues, check that your current user belongs to the `docker` group.
+
+</details>
+
+
+
 
 #### Check
 
@@ -127,8 +138,8 @@ HTTP/1.1 200 OK
 # 4 HTTP code 200 means your setup is working perfectly!
 ```
 
-The setup uses a front-end reverse proxy server ([ATS](https://trafficserver.apache.org)) and two back-end servers called LNMP & LAMP to handle requests. Based on internal domain name header sent as part of
-HTTP packet or port number, ATS is able to distinguish between LNMP & LAMP requests and fetch appropriate resource.
+The setup uses a front-end reverse proxy server ([ATS](https://trafficserver.apache.org)) and two back-end servers called LNMP & LAMP to handle requests. Based on the internal domain name header sent as part of
+HTTP packet or port number, ATS is able to distinguish between LNMP & LAMP requests and fetch appropriate resources.
 
 We have 3 HTTP actors, each one on a local port:
 
@@ -145,13 +156,13 @@ Figure below shows the architecture.
 
 
 
-As a next step, start wireshark and set it to capture traffic on loopback interface. Run each HTTP actor and capture packets
+As a next step, start Wireshark and set it to capture traffic on loopback interface. Run each HTTP actor and capture packets
 
-**Add screenshot of successfully accessing LAMP HTTP resource**
+**Add a screenshot of successfully accessing LAMP HTTP resource**
 
-**Study HTTP packets registered when you access LAMP & LNMP resources. Copy/paste contents of one such packet and explain what this packet is doing**
+**Study HTTP packets registered when you access LAMP & LNMP resources. Copy/paste the contents of one such packet and explain what this packet is doing**
 
-In the next part, you'll perform an actual HTTP request smuggling attack. For this you need to understand the most important headers in the HTTP packet.
+In the next part, you'll perform an actual HTTP request smuggling attack. For this, you need to understand the most important headers in the HTTP packet.
 
 
 
@@ -159,20 +170,20 @@ In the next part, you'll perform an actual HTTP request smuggling attack. For th
 
 #### Information on the vulnerability
 
-CVE states in [numerous announces](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-23452) that Apache HTTP server is vulnerable to HTTP request smuggling attacks. This can be verified by
+CVE states in [numerous announces](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-23452) that the Apache HTTP server is vulnerable to HTTP request smuggling attacks. This can be verified by
 going to the official [cve](https://cve.mitre.org/) website and search for the corresponding results.
 
 In our current ATS 7.1.2 deployment, if a request causes a 400 error, the established TCP link will not be closed.
 
-In the CVE announce (2018-08-28), there were numerous impacted ATS versions (6.0.0 to 6.2.2 and 7.0.0 to 7.1.3) carrying this vulnerability.
-In this task we'll learn how to exploit this vulnerability using HTTP smuggling technique.
+In the CVE announcement (2018-08-28), there were numerous impacted ATS versions (6.0.0 to 6.2.2 and 7.0.0 to 7.1.3) carrying this vulnerability.
+In this task, we'll learn how to exploit this vulnerability using the HTTP smuggling technique.
 
 Useful reference: [Section 4.3.2 Second Patch](https://paper.seebug.org/1049/#432-second-patch) on seebug paper
 
 #### Generating two 400 responses
 
 In-order to exploit the vulnerability 'if a request causes a 400 error, the established TCP link will not be closed', we can craft and send two requests. Technically, both should return
-400 error response. However, with correct HTTP request smuggling a 400 response and a 200 response can also be captured in Wireshark (indicating successfull request smuggling attack)
+a 400 error response. However, with correct HTTP request smuggling a 400 response and a 200 response can also be captured in Wireshark (indicating a successful request smuggling attack)
 
 To demonstrate this, use netcat to execute:
 
@@ -203,13 +214,13 @@ printf 'GET / HTTP/1.1\r\n'\
 
 ### Exploiting the vulnerability
 
-In the previous part, you get two 400 responses. However, with correct HTTP smuggling you can make the second response 200 OK
+In the previous part, you get two 400 responses. However, with correct HTTP smuggling, you can make the second response 200 OK
 and extract the html information from the back-end server. This is because in ATS 7.1.2 , if a request causes a 400 error, 
 the established TCP link will not be closed which leaves a margin for careful HTTP smuggling request to extract 
-important information and bypass the second request directly to back-end. 
+important information and bypass the second request directly to the back-end. 
 
 **Modify the netcat query provided above to successfully perform
-the HTTP request smuggling attack and extract lnmp.com html body as second response**
+the HTTP request smuggling attack and extract `lnmp.com` html body as the second response**
 
 >[!Tip]
 > When ATS parses a HTTP request, if it encounters NULL, it will cause a truncation operation. 
@@ -219,9 +230,9 @@ The one request we send is two requests for the ATS server. Therefore, both of t
 
 Return following:
 
-**1. Screenshot of 400 response followed by 200 response**
+**1. Screenshot of the 400 response followed by 200 response**
 
-**2. Screenshot of second request successfully extracting LNMP html body**
+**2. Screenshot of the second request successfully extracting LNMP html body**
 
 **3. Netcat command**
 
@@ -281,7 +292,7 @@ This should also make you more familiar with what it takes to transmit encrypted
 ### TLS 1.3 Handshake Protocol
 
 * [RFC 8446](https://datatracker.ietf.org/doc/html/rfc8446)
-    * Provided ASN.1 notations about data structures are super useful when implementing the client. Especially, if one consults a friendly LLM. *The Rust starter project has already most of them.*
+    * Provided ASN.1 notations about data structures are super useful when implementing the client. Especially, if one consults a friendly LLM. *The Rust Starter project has already most of them.*
     * You *will need to* read this standard to understand the protocol.
 
 * Transport Layer Security [in Wikipedia](https://en.wikipedia.org/wiki/Transport_Layer_Security)
