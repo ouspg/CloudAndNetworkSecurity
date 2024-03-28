@@ -313,7 +313,7 @@ The priority and availability of the cipher suites are pre-defined for the task.
 
 Minimal TLS client implementation includes the completion of the handshake process with the following features:
   * Key exchange with X25519 and signatures with EdDSA (Elliptic Curve Diffie-Hellman key exchange using Curve25519 and Edwards-Curve Digital Signature Algorithm based on the same curve).
-  * ChaCha20-Poly1305 as a symmetric algorithm.
+  * ChaCha20-Poly1305 as a symmetric algorithm and cipher suite.
   * The client should be able to handle the processing of arbitrary input data from the TCP stream. We get some guarantees with fuzz testing which provides one additional point.
   *  In TLS 1.3, the use of certain extensions is mandatory
   * Mandatory extensions as specified [here.](https://datatracker.ietf.org/doc/html/rfc8446#section-9.2) The sample Rust project has most of them implemented with `as_bytes` mapper. The extensions required are
@@ -328,7 +328,7 @@ Minimal TLS client implementation includes the completion of the handshake proce
 Note that the protocol follows mostly the *tag-length-value* principle. 
 There can be constraints for the size of the tag or length, and **this defines how many bytes the tag or length can take**, while the length itself then defines the number of subsequent bytes.
 
-The sample project provides the *encoding* part for the above, but not the *decoding* part. Decoding means mapping arbitrary binary data to correct data structures. This is the part where the typical security problems arise and you should focus on.
+The sample project provides the *encoding* part for the above, but not the *decoding* part, other than a couple of partial examples. Decoding means mapping arbitrary binary data to correct data structures. This is the part where the typical security problems arise and you should focus on.
 
 ### Certificate validation (1p)
 
@@ -417,6 +417,7 @@ You are allowed to use dependencies other than the programming language's standa
  * For ChaCha20-Poly1305 encryption and EdDSA signatures
 
  Other dependencies **are not allowed**.
+ Especially, you are not allowed to use the existing byte-parsing libraries.
 
 ### Debugging tips for the handshake protocol
 
