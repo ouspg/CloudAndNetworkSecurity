@@ -72,7 +72,7 @@ Key aspects of networking protocols include:
 
 4) Security: Many protocols incorporate security features to protect data from unauthorized access, interception, or tampering. This includes encryption, authentication, and access control mechanisms.
 
-Some common examples of networking protcols include: Internet Protocol (IP), Transmission Control Protocol (TCP) and Hypertext Transfer Protocol (HTTP).
+Some common examples of networking protocols include; Internet Protocol (IP), Transmission Control Protocol (TCP) and Hypertext Transfer Protocol (HTTP).
 
 
 ---
@@ -248,15 +248,15 @@ Return following:
 
 ---
 
-## Task 2: Implementing TLS 1.3 client from scratch (up to 7 points)
+## Task 2: Implementing TLS 1.3 client from scratch (up to 8 points)
 
 > [!Note]
-> You can complete this task in pairs! **But not in larger groups**. Remember to mention your pair. The workload assumes that you have friendly LLMs available, such as ChatGPT, [Phind](https://www.phind.com) or [GitHub Copilot](https://docs.github.com/en/copilot/quickstart).
+> You can complete this task in pairs! **But not in larger groups**. Remember to mention your pair. The workload assumes that you have friendly LLMs available, such as ChatGPT, [Phind](https://www.phind.com) or [GitHub Copilot](https://docs.github.com/en/copilot/quickstart). Especially GitHub Copilot is useful for this task, so this is a good chance to try it out.
 
 > [!Note]
 > You can work on this task until the end of the course, if you want to, but it is recommended to do in time.
 
-> You can fully focus on this task to get up to 7 points by doing it carefully. But be warned, getting a maximum grade requires a lot of work. If you want to skip the coding, you have another path with similars goals on task 3 and task 4.
+> You can fully focus on this task to get up to 8 points by doing it carefully. But be warned, getting a maximum grade requires a lot of work. If you want to skip the coding, you have another path with similars goals on task 3 and task 4.
 
 
 Implementing network protocols correctly can be *hard*. They are typically complex and work in a binary, non-text format.
@@ -327,7 +327,6 @@ The priority and availability of the cipher suites are pre-defined for the task.
 Minimal TLS client implementation includes the completion of the handshake process with the following features:
   * Key exchange with X25519 and signatures with EdDSA (Elliptic Curve Diffie-Hellman key exchange using Curve25519 and Edwards-Curve Digital Signature Algorithm based on the same curve).
   * ChaCha20-Poly1305 as a symmetric algorithm and cipher suite.
-  * The client should be able to handle the processing of arbitrary input data from the TCP stream. We get some guarantees with fuzz testing which provides one additional point.
   *  In TLS 1.3, the use of certain extensions is mandatory
   * Mandatory extensions as specified [here.](https://datatracker.ietf.org/doc/html/rfc8446#section-9.2) The sample Rust project has most of them implemented with `as_bytes` mapper. The extensions required are
     * Supported Versions (describes the used TLS version)
@@ -343,7 +342,16 @@ There can be constraints for the size of the tag or length, and **this defines h
 
 [The sample project](https://github.com/ouspg/tls13tutorial/) provides the *encoding* part for the above, but not the *decoding* part, other than a couple of partial examples. Decoding means mapping arbitrary binary data to correct data structures. This is the part where the typical security problems arise and you should focus on.
 
-### Certificate validation (1p)
+### Functional testing and fuzzing (1p+)
+
+The client should be able to handle the processing of arbitrary input data from the TCP stream. We get some guarantees with fuzz testing which provides one additional point.
+
+To ensure the validity of encoding the data structures and handling some typical error scenarios, you should add some functional testing for the project.
+
+You are expected to integrate some fuzzing library into your project.
+In the provided Rust project, there is relevant documentation. 
+
+### Certificate validation (1p+)
 
 > "The most dangerous code in the world: validating SSL certificates in non-browser
 software." [Georgiev, Martin, et al.](https://dl.acm.org/doi/10.1145/2382196.2382204)
@@ -413,10 +421,10 @@ You are allowed to use dependencies other than the programming language's standa
  * To derive the public key from the private key in X25519 protocol (e.g. [curve25519-dalek ](https://github.com/dalek-cryptography/curve25519-dalek/tree/main/x25519-dalek) crate in Rust) and calculate the shared secret.
  * For parsing the certificates (typically means ASN.1 DER encoding), e.g. [rasn](https://github.com/librasn/rasn) crate in Rust. 
  * To verify the certificate chain
- * For ChaCha20-Poly1305 encryption and EdDSA signatures
+ * For ChaCha20-Poly1305 encryption and EdDSA signatures (e.g. [ChaCha20Poly1305](https://github.com/RustCrypto/AEADs/tree/master/chacha20poly1305) and [ed25519-dalek](https://github.com/dalek-cryptography/curve25519-dalek/tree/main/ed25519-dalek) crates in Rust)
 
  Other dependencies **are not allowed**.
- Especially, you are not allowed to use the existing byte-parsing libraries.
+ Especially, you are not allowed to use the existing byte-parsing libraries. The above is already included in the starter project.
 
 ### Debugging tips for the handshake protocol
 
