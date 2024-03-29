@@ -14,7 +14,10 @@ Make yourself familiar with following:
 
 * **Port Forwards** - [Port forwards with NAT on pfSense](https://docs.netgate.com/pfsense/en/latest/nat/port-forwards.html)
 * **NAT** - NAT guide on zenarmor about pfsense [here](https://www.zenarmor.com/docs/network-security-tutorials/pfsense-network-address-translation-nat-guide)
-* **Sharing files between KVM and host machine** - [Guide to creating a mounting point for file share](https://www.debugpoint.com/share-folder-virt-manager/)
+* **Sharing files between KVM and host machine** - [Guide to creating a mounting point for file share](https://www.debugpoint.com/share-folder-virt-manager
+
+>[!Note]
+> Refer to the troubleshooting guide at network_sec_platform github repo for issues with mounting a share point
 
 
 Useful resources from previous lab:
