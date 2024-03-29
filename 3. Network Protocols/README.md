@@ -41,10 +41,10 @@ Task #|Points|Description|Tools
 Task 1 | 1 | HTTP request smuggling | Wireshark, curl, docker-compose, netcat
 Task 2 | 8 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
 Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alternative to task 2 with less points) | AFL++, radamsa, other fuzzing tools
-Task 4 | 1-2 | TLS certificate validation | certmitm,  Wireshark
+Task 4 | 2 | TLS certificate validation | certmitm,  Wireshark
 
 
-Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 8 points from the whole exercise (Combination of Task 1 and Task 2).
+Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 9 points from the whole exercise (Combination of Task 1 and Task 2).
 <!-- </details> -->
 
 ---
@@ -328,13 +328,8 @@ Minimal TLS client implementation includes the completion of the handshake proce
   * Key exchange with X25519 and signatures with EdDSA (Elliptic Curve Diffie-Hellman key exchange using Curve25519 and Edwards-Curve Digital Signature Algorithm based on the same curve).
   * ChaCha20-Poly1305 as a symmetric algorithm and cipher suite.
   *  In TLS 1.3, the use of certain extensions is mandatory
-  * Mandatory extensions as specified [here.](https://datatracker.ietf.org/doc/html/rfc8446#section-9.2) The sample Rust project has most of them implemented with `as_bytes` mapper. The extensions required are
-    * Supported Versions (describes the used TLS version)
-    * Server Name (What is the DNS of the server we want to connect)
-    * Signature Algorithms (What method to use to sign the data)
-    * Supported Groups (Key negotiation algorithm)
-    * Key Share (Public keys)
-  * At least `cloudflare.com` supports the above ciphers for testing purposes.
+  * Mandatory extensions as specified [here.](https://datatracker.ietf.org/doc/html/rfc8446#section-9.2) The sample Rust project has most of them implemented with `as_bytes` mapper. You can also get a good overview of the extensions required by the client from the visualization of https://tls13.xargs.org. 
+  * At least `cloudflare.com` and `google.com` support the above ciphers for testing purposes.
   * You can and *should* use Wireshark to debug your implementation.
 
 Note that the protocol follows mostly the *tag-length-value* principle. 
@@ -349,7 +344,13 @@ The client should be able to handle the processing of arbitrary input data from 
 To ensure the validity of encoding the data structures and handling some typical error scenarios, you should add some functional testing for the project.
 
 You are expected to integrate some fuzzing library into your project.
-In the provided Rust project, there is relevant documentation. 
+In the provided Rust project, there is a relevant documentation.
+
+Some common libraries for fuzzing:
+  * [libFuzzer](https://llvm.org/docs/LibFuzzer.html)
+  * [LibAFL](https://github.com/AFLplusplus/LibAFL)
+  
+You can find bindings for above for different programming languages.
 
 ### Certificate validation (1p+)
 
