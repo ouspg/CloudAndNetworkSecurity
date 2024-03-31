@@ -39,12 +39,12 @@ As a result, there are two different paths to do the exercises this week.
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 1 | 1 | HTTP request smuggling | Wireshark, curl, docker-compose, netcat
-Task 2 | 8 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
+Task 2 | 9 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
 Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alternative to task 2 with less points) | AFL++, radamsa, other fuzzing tools
 Task 4 | 2 | TLS certificate validation | certmitm,  Wireshark
 
 
-Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 9 points from the whole exercise (Combination of Task 1 and Task 2).
+Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 10 points from the whole exercise (Combination of Task 1 and Task 2).
 <!-- </details> -->
 
 ---
@@ -248,7 +248,7 @@ Return following:
 
 ---
 
-## Task 2: Implementing TLS 1.3 client from scratch (up to 8 points)
+## Task 2: Implementing TLS 1.3 client from scratch (up to 9 points)
 
 > [!Note]
 > You can complete this task in pairs! **But not in larger groups**. Remember to mention your pair. The workload assumes that you have friendly LLMs available, such as ChatGPT, [Phind](https://www.phind.com) or [GitHub Copilot](https://docs.github.com/en/copilot/quickstart). Especially GitHub Copilot is useful for this task, so this is a good chance to try it out.
@@ -256,7 +256,7 @@ Return following:
 > [!Note]
 > You can work on this task until the end of the course, if you want to, but it is recommended to do in time.
 
-> You can fully focus on this task to get up to 8 points by doing it carefully. But be warned, getting a maximum grade requires a lot of work. If you want to skip the coding, you have another path with similars goals on task 3 and task 4.
+> You can fully focus on this task to get up to 9 points by doing it carefully. But be warned, getting a maximum grade requires a lot of work. If you want to skip the coding, you have another path with similars goals on task 3 and task 4.
 
 
 Implementing network protocols correctly can be *hard*. They are typically complex and work in a binary, non-text format.
@@ -337,7 +337,7 @@ There can be constraints for the size of the tag or length, and **this defines h
 
 [The sample project](https://github.com/ouspg/tls13tutorial/) provides the *encoding* part for the above, but not the *decoding* part, other than a couple of partial examples. Decoding means mapping arbitrary binary data to correct data structures. This is the part where the typical security problems arise and you should focus on.
 
-### Functional testing and fuzzing (1p+)
+### Functional testing and fuzzing (2p+)
 
 The client should be able to handle the processing of arbitrary input data from the TCP stream. We get some guarantees with fuzz testing which provides one additional point.
 
@@ -423,6 +423,7 @@ You are allowed to use dependencies other than the programming language's standa
  * For parsing the certificates (typically means ASN.1 DER encoding), e.g. [rasn](https://github.com/librasn/rasn) crate in Rust. 
  * To verify the certificate chain
  * For ChaCha20-Poly1305 encryption and EdDSA signatures (e.g. [ChaCha20Poly1305](https://github.com/RustCrypto/AEADs/tree/master/chacha20poly1305) and [ed25519-dalek](https://github.com/dalek-cryptography/curve25519-dalek/tree/main/ed25519-dalek) crates in Rust)
+ * For key derivation (e.g. HKDF with SHA256)
 
  Other dependencies **are not allowed**.
  Especially, you are not allowed to use the existing byte-parsing libraries. The above is already included in the starter project.
@@ -486,11 +487,14 @@ Wireshark is capable of showing what specific part from the `ClientHello` struct
 
 ### Overall grading table for this task
 
+Be warned that grading is based on the Rust starter project.
+It has already a lot of existing code, so in other programming languages, you probably need to do more work.
+
 Description |Points|
 -----|:---:|
 Use of Rust with sufficient implementation | 1 |
 Minimal handshake implementation from above | 4 |
-Fuzz testing the implementation with the help of fuzzing libraries | 1+ |
+Functional and fuzz testing the implementation with the help of fuzzing libraries | 2+ |
 Proper client-side certificate validation | 1+ |
 Decrypt application content from TLS 1.3 server with your client | 1 |
 
