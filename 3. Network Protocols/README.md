@@ -41,7 +41,7 @@ Task #|Points|Description|Tools
 Task 1 | 1 | HTTP request smuggling | Wireshark, curl, docker-compose, netcat
 Task 2 | 9 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
 Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alternative to task 2 with less points) | AFL++, radamsa, other fuzzing tools
-Task 4 | 2 | TLS certificate validation | certmitm,  Wireshark
+Task 4 | 2 | TLS certificate validation | certmitm
 
 
 Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 10 points from the whole exercise (Combination of Task 1 and Task 2).
@@ -571,7 +571,7 @@ python3 certmitm.py --listen 9900 --workdir testing --verbose --log-output --sho
 If successful certmitm should start producing data like the following:
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/6a425e28-23ed-441f-bf5e-263dcbc5eedb)
 
-To get full credit for this task you need to test **installing atleast 5 new applications/packages, try out 5 internet connected applications and test native applications that should include TLS validation**. Provide the file created by certmitm in your github return repository under week 3 and answer the following questions thoroughly, we expect good detailed answers for full credit:
+To get full credit for this task you need to test **installing atleast 5 new applications/packages, try out 5 internet connected applications, browse the internet and test native applications that should include TLS validation**. Provide the file created by certmitm in your github return repository under week 3 and answer the following questions thoroughly, we expect good detailed answers for full credit:
 - Describe what certmitm is doing in this usecase scenario, the video above desribes it in defail
 - Describe the data that is most commonly outputted by certmitm
 - Did you find any interesting outputs, if so describe what could have caused them
