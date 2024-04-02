@@ -30,7 +30,7 @@ You are **not required** to do the tasks in order, but if you do the second task
 
 As a result, there are two different paths to do the exercises this week.
  * In both cases, you can do the task 1, and then
-    * Do task 2 completely and ignore the rest. With very good implementation you might get even more than 7 points.
+    * Do task 2 completely and ignore the rest. With very good implementation you might get even more than 9 points.
     *This task will give the most points on the course and can compensate for other weeks*.
     * Or, do the tasks 3 and 4, but not that many points are available. Task 2 covers also the topics of tasks 3 and 4.
 
