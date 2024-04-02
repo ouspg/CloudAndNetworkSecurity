@@ -529,6 +529,7 @@ If you want to go the deep end, check the fuzzing of the [TCP/IP stack](https://
 ## Task 4:  TLS certificate validation (up to 2 points)
 > [!Note]
 > If you completed the client-side implementation to a sufficient level in task 2, you do not need to complete this task to receive full credits for this weeks laboratory.
+> Course staff provided certificate and key can be found from the [moodle](https://moodle.oulu.fi/mod/assign/view.php?id=1153869&forceview=1)
 
 Certificate validation is an ongoing problem with TLS implementations, lots of libraries implement this, but the issue is that certificate validation is usually optional for the client in TLS and the configuration of certificate validation in different TLS libraries can be very difficult. When validating certificates, it should be checked who has issued the certificate, to whom is it issued to and that the certificate has been properly signed. Especially self signed certificates should not just be accepted without validation as these can be easily created on the go. A good example of improper certificate validations are [OpenSSL](https://www.openssl.org/) and [WolfSSL](https://www.wolfssl.com/) libraries where the validation isn't even enabled by default.
 
