@@ -76,3 +76,9 @@ Common cloud security technologies and protocols include Identity and Access Man
 
 ### A) TODO 
 
+### B) Surf the internet to find major cloud provisioning platforms. Highlight key security aspects of two of these cloud service providers
+
+### C) Pick two points from part B) and explain what could go wrong if those security measures were not in place. Describe with imaginery scenarios.
+
+
+
