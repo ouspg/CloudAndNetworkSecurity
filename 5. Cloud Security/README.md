@@ -81,4 +81,25 @@ Common cloud security technologies and protocols include Identity and Access Man
 ### C) Pick two points from part B) and explain what could go wrong if those security measures were not in place. Describe with imaginery scenarios.
 
 
+## Task 2
+This task involves intentionally vulnerable Kubernetes deployments and services that you are to exploit using multitude of tools such as Gobuster, Dirbuster, git-dumper and a tool to access the database from outside the Kubernetes cluster. The idea is to get deeper and deeper into the system as you progress through the stages and use the information found during the task to find different flags. This task can be completed on both Linux and Windows machines, but it is easier to use the tools with an UNIX operating system.
+
+You can read more about the tools used during this task at:
+**Kind**
+**Gobuster**
+**Dirbuster**
+**git-dumper**
+
+### Finding hidden endpoints
+
+### Acquiring environment credentials
+
+### Getting access to the database
+
+### Acquiring additional information with git-dumper
+
+### Accessing the database with superuser credentials from outside the Kubernetes Cluster
+
+
+
 
