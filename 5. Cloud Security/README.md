@@ -82,10 +82,10 @@ Common cloud security technologies and protocols include Identity and Access Man
 
 
 ## Task 2
-This task involves intentionally vulnerable Kubernetes deployments and services that you are to exploit using multitude of tools such as Gobuster, Dirbuster, git-dumper and a tool to access the database from outside the Kubernetes cluster. The idea is to get deeper and deeper into the system as you progress through the stages and use the information found during the task to find different flags. This task can be completed on both Linux and Windows machines, but it is easier to use the tools with an UNIX operating system. You can use any tool of your choise for managing the Kubernetes cluster, but the course staff recommends using Kind for this as it is what the task is developed with. Follow this (link)[https://kind.sigs.k8s.io/] for instructions in installing Kind to your machine
+This task involves intentionally vulnerable Kubernetes deployments and services that you are to exploit using multitude of tools such as Gobuster, Dirbuster, git-dumper and a tool to access the database from outside the Kubernetes cluster. The idea is to get deeper and deeper into the system as you progress through the stages and use the information found during the task to find different flags. This task can be completed on both Linux and Windows machines, but it is easier to use the tools with an UNIX operating system. You can use any tool of your choise for managing the Kubernetes cluster, but the course staff recommends using Kind for this as it is what the task is developed with. Follow this [link](https://kind.sigs.k8s.io/) for instructions in installing Kind to your machine
 
 You can read more about the tools used during this task at:
-* **Kind** - (Kind documentation)[https://kind.sigs.k8s.io/docs/]
+* **Kind** - [Kind documentation](https://kind.sigs.k8s.io/docs/)
 * **Gobuster**
 * **Dirbuster**
 * **git-dumper**
