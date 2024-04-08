@@ -90,6 +90,8 @@ You can read more about the tools used during this task at:
 * **Dirbuster**
 * **git-dumper**
 
+### Setting up the environment
+
 ### Finding hidden endpoints
 
 ### Acquiring environment credentials
