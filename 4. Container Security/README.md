@@ -21,8 +21,8 @@ Core concepts are also handled in lecture.
 
 ## Grading
 
->> [!Note]
->> You can get task 1 and task 2 automatically graded in Moodle. No need to return anything in GitHub for those, if you don't want to. If you think you did something correctly, but not getting the correct answer, you can return to GitHub to get partial grade.
+> [!Note]
+> You can get task 1 and task 2 automatically graded in Moodle. No need to return anything in GitHub for those, if you don't want to. If you think you did something correctly, but not getting the correct answer, you can return to GitHub to get partial grade.
 
 <!-- <details><summary>Details</summary> -->
 
