@@ -1,11 +1,11 @@
-Cloud and Network Security Lab 5: ______
+Cloud and Network Security Lab 5: Cloud Security
 ====
 
 Responsible person/main contact: Niklas Saari, Asad Hasan & Lauri Suutari
 
 ## Preliminary tasks & prerequisites
 
-This is the fifth lab in the series with the theme of ______. 
+This is the fifth lab in the series with the theme of Cloud Security. 
 You should return the tasks to GitHub.
 
 Make yourself familiar with the following topics:
@@ -24,7 +24,7 @@ Make yourself familiar with the following topics:
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 1 | 1 | 
-Task 2 | 2 | Insecure endpoints, git and environment variables 
+Task 2 | 1 | Insecure endpoints, git and environment variables | fluff, psql
 Task 3 | 1 | 
 Task 4 | 2 | 
 
@@ -66,12 +66,32 @@ Some common examples of networking protocols include; Internet Protocol (IP), Tr
 
 ---
 ## Task 2
-This task involves intentionally vulnerable Kubernetes deployments and services that you are to exploit using multitude of tools such as Gobuster, Dirbuster, git-dumper and a tool to access the database from outside the Kubernetes cluster. The idea is to get deeper and deeper into the system as you progress through the stages and use the information found during the task to find different flags. This task can be completed on both Linux and Windows machines, but it is easier to use the tools with an UNIX operating system.
+This task involves intentionally vulnerable Kubernetes deployments and services that you are to exploit using Fluff and a tool to access the database from outside the Kubernetes cluster. The idea is to get deeper and deeper into the system as you progress through the stages and use the information found during the task to find different flags. This task can be completed on both Linux and Windows machines, but it is easier to use the tools with an UNIX operating system. And there is a direct script for deployment on Linux machines.
 
 You can read more about the tools used during this task at:
-**Gobuster**
-**Dirbuster**
-**git-dumper**
+**kind**
+**helm**
+**fluff**
+
+### Deploying the laboratory environment
+First make sure that you have installed Docker, Helm and Go on your machine.
+Then you can run the following command to install Kind:
+```bash
+go install sigs.k8s.io/kind@v0.22.0
+```
+After you have successfully installed the forementioned software, you can then run the 
+``
+./deploy.sh
+``
+script from the repository root to deploy all the Kubernetes resources.
+Wait for the Kubernetes pods to be in Running and READY states, this should take a couple minutes maximum, you can monitor this with:
+```bash
+kubectl get pods
+```
+When you have all the pods in a Running and READY state, you can then use the following script to portforward the necessary resources for access on the 127.0.0.1:
+```bash
+./access.sh
+```
 
 ### Finding hidden endpoints
 
