@@ -96,11 +96,11 @@ Then you can run the following command to install Kind:
 ```bash
 go install sigs.k8s.io/kind@v0.22.0
 ```
-After you have successfully installed the forementioned software, you can then run the 
+After you have successfully installed the forementioned software, you can then run the:
 ```bash
 ./deploy.sh
 ```
-script from the repository root to deploy all the Kubernetes resources.
+script from the CloudAndNetworkSecurity/5. Cloud Security/ directory to deploy all the Kubernetes resources.
 Wait for the Kubernetes pods to be in Running and READY states, this should take a couple minutes maximum, you can monitor this with:
 ```bash
 kubectl get pods
