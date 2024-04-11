@@ -205,6 +205,41 @@ When operating with `curl`, [the Docker Engine API](https://docs.docker.com/engi
 > You will be provided with a Jupyter Notebook instance, which has some volume mount and permission issues. Find the flag from the parent instance which runs the Jupyter Notebook.
 
 
+<details>
+
+<summary>If you want to run the same instance locally, see below.</summary>
+
+Note that there isn't a flag on your host system, where the escape would lead in this scenario.
+
+```dockerfile
+FROM quay.io/jupyter/minimal-notebook:latest
+USER jovyan
+
+RUN echo 'unset HISTFILE' >> /home/jovyan/.bashrc
+
+USER root
+
+RUN groupadd -g 121 docker && usermod -aG docker jovyan
+
+RUN echo 'unset HISTFILE' > /etc/profile.d/disable.history.sh
+```
+
+Build the image:
+
+```cmd
+docker build -t jupyterchallenge .
+```
+
+Then, start as 
+```cmd
+docker run -v /var/run/docker.sock:/var/run/docker.sock -p 8888:8888 jupyterchallenge
+```
+Then go to localhost:8888 in the browser.
+
+</details>
+
+
+
 ## Task 3: Sofware Bill of Materials (SBOM) in containers (2p)
 
 [A “software bill of materials” (SBOM)](https://www.cisa.gov/sbom) is used as a key building block in software security and software supply chain risk management.
