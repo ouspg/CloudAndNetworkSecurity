@@ -110,6 +110,7 @@ When you have all the pods in a Running and READY state, you can then use the fo
 ./access.sh
 ```
 Confirm that you can access the url: http://localhost:1230
+If you managed to access the url, then you have successfully deployed the laboratory environment! :boom:
 
 ### Finding hidden endpoints
 
