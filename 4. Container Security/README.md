@@ -301,7 +301,7 @@ Are the decent debugging capabilities to use minimal containers regardless? Thin
 
 ### Task 3D) From scratch and reproducible (1p bonus or alternative for the final task)
 
-> ![Warning]
+> [!Warning]
 > Nix uses a bit complicated concepts, so this might a bit harder task and mostly intended as bonus task. Task is mostly reference to as "good to know".
 
 Making minimal or reproducible container images without specific package managers or build systems (such as [Bazel](https://github.com/bazelbuild/bazel) or [Earthly](https://github.com/earthly/earthly)) is a very difficult and unstable process when the application gets more complex.
