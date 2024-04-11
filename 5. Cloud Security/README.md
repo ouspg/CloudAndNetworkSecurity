@@ -27,7 +27,7 @@ You are expected to do the assignments in order. Upper scores for this assignmen
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 1 | 1 | Explain cloud security concepts. Provide theoretical scenario and ask how would they improve security of the cloud | TBD
-Task 2 | 1 | Setup environment. Spawn required resources. Misconfiguration task | TBD
+Task 2 | 1 | Setup environment. Spawn required resources. Insecure endpoints and environment variables | TBD
 Task 3 | 1 | Another misconfiguration task | TBD
 Task 4 | 1-2 | Misconfigured SAML/Oauth2 | TBD
 
@@ -83,7 +83,7 @@ Common cloud security technologies and protocols include Identity and Access Man
 ---
 
 ## Task 2
-This task involves intentionally vulnerable Kubernetes deployments and services that you are to exploit using multitude of tools such as Gobuster, Dirbuster, git-dumper and a tool to access the database from outside the Kubernetes cluster. The idea is to get deeper and deeper into the system as you progress through the stages and use the information found during the task to find different flags. This task can be completed on both Linux and Windows machines, but it is easier to use the tools with an UNIX operating system, and there is a shell scripts for creating the environment in bash. You can use any tool of your choise for managing the Kubernetes cluster, but the course staff recommends using Kind for this as it is what the task is developed with. 
+This task involves intentionally vulnerable Kubernetes deployments and services that you are to exploit using multitude of tools such as Fluff and a tool to access the database from outside the Kubernetes cluster. The idea is to get deeper and deeper into the system as you progress through the stages and use the information found during the task to find different flags. This task can be completed on both Linux and Windows machines, but it is easier to use the tools with an UNIX operating system, and there is a shell scripts for creating the environment in bash. You can use any tool of your choise for managing the Kubernetes cluster, but the course staff recommends using Kind for this as it is what the task is developed with. 
 
 You can read more about the tools used during this task at:
 * **kind**
