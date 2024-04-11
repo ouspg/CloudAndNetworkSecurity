@@ -82,15 +82,33 @@ Common cloud security technologies and protocols include Identity and Access Man
 
 
 ## Task 2
-This task involves intentionally vulnerable Kubernetes deployments and services that you are to exploit using multitude of tools such as Gobuster, Dirbuster, git-dumper and a tool to access the database from outside the Kubernetes cluster. The idea is to get deeper and deeper into the system as you progress through the stages and use the information found during the task to find different flags. This task can be completed on both Linux and Windows machines, but it is easier to use the tools with an UNIX operating system. You can use any tool of your choise for managing the Kubernetes cluster, but the course staff recommends using Kind for this as it is what the task is developed with. Follow this [link](https://kind.sigs.k8s.io/) for instructions in installing Kind to your machine
+This task involves intentionally vulnerable Kubernetes deployments and services that you are to exploit using multitude of tools such as Gobuster, Dirbuster, git-dumper and a tool to access the database from outside the Kubernetes cluster. The idea is to get deeper and deeper into the system as you progress through the stages and use the information found during the task to find different flags. This task can be completed on both Linux and Windows machines, but it is easier to use the tools with an UNIX operating system, and there is a shell scripts for creating the environment in bash. You can use any tool of your choise for managing the Kubernetes cluster, but the course staff recommends using Kind for this as it is what the task is developed with. 
 
 You can read more about the tools used during this task at:
-* **Kind** - [Kind documentation](https://kind.sigs.k8s.io/docs/)
-* **Gobuster**
-* **Dirbuster**
-* **git-dumper**
+**kind**
+**helm**
+**fluff**
 
-### Setting up the environment
+### Deploying the laboratory environment
+First make sure that you have installed Docker, Helm and Go on your machine.
+Then you can run the following command to install Kind:
+```bash
+go install sigs.k8s.io/kind@v0.22.0
+```
+After you have successfully installed the forementioned software, you can then run the 
+``
+./deploy.sh
+``
+script from the repository root to deploy all the Kubernetes resources.
+Wait for the Kubernetes pods to be in Running and READY states, this should take a couple minutes maximum, you can monitor this with:
+```bash
+kubectl get pods
+```
+When you have all the pods in a Running and READY state, you can then use the following script to portforward the necessary resources for access on the 127.0.0.1:
+```bash
+./access.sh
+```
+Confirm that you can access the url: http://localhost:1230
 
 ### Finding hidden endpoints
 
@@ -100,7 +118,9 @@ You can read more about the tools used during this task at:
 
 ### Acquiring additional information with git-dumper
 
-### Accessing the database with superuser credentials from outside the Kubernetes Cluster
+### Accessing the database with superuser credentials from remote
+
+
 
 
 
