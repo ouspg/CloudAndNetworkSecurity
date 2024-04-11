@@ -264,7 +264,7 @@ The `:debug` tag of the distroless images is useful if you are missing some libr
 Make always sure that `curl` indeed works and can form TLS connections into some websites.
 We don't care if the compression or extra protocols are not supported.
 
-When you make a statically linked build, the `syft` tool should output something like following:
+When you make a statically linked build, the `syft` tool should output something like the following:
 ```sh
 └:: » syft curltest
  ✔ Loaded image                                                                                                                                                                      curltest:latest
@@ -381,6 +381,8 @@ On this task, we use AppArmor instead of SELinux.
 
 > [!Note]
 > To be able to do this task, your Linux machine must have AppArmor enabled.
+
+For the course VM, check [AppArmor in Arch Wiki](https://wiki.archlinux.org/title/AppArmor).
 
 ### Task 4A) Identify default AppArmor and Seccomp profiles (0.25p)
 
