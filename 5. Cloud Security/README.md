@@ -91,7 +91,7 @@ You can read more about the tools used during this task at:
 * **fluff**
 
 ### Deploying the laboratory environment
-First make sure that you have installed Docker, Helm and Go on your machine.
+First make sure that you have installed Docker, Helm and Go on your machine. Make also sure to have your Docker engine or Docker desktop running.
 Then you can run the following command to install Kind:
 ```bash
 go install sigs.k8s.io/kind@v0.22.0
