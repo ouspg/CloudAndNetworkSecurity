@@ -11,7 +11,7 @@ You should return the tasks to GitHub.
 Make yourself familiar with the following topics:
 
 
-* **Kubernetes** - Read about kubernates on [Wikipedia](https://en.wikipedia.org/wiki/Kubernetes)
+* **Kubernetes** - Read about Kubernetes on [Wikipedia](https://en.wikipedia.org/wiki/Kubernetes)
 * TODO
 * TODO
 
@@ -83,12 +83,15 @@ Common cloud security technologies and protocols include Identity and Access Man
 ---
 
 ## Task 2
+>[Note]
+> Create Short introduction on environment variables & cloud development
+
 This task involves intentionally vulnerable Kubernetes deployments and services that you are to exploit using multitude of tools such as Fluff and a tool to access the database from outside the Kubernetes cluster. The idea is to get deeper and deeper into the system as you progress through the stages and use the information found during the task to find different flags. This task can be completed on both Linux and Windows machines, but it is easier to use the tools with an UNIX operating system, and there is a shell scripts for creating the environment in bash. You can use any tool of your choise for managing the Kubernetes cluster, but the course staff recommends using Kind for this as it is what the task is developed with. 
 
 You can read more about the tools used during this task at:
-* **kind**
-* **helm**
-* **fluff**
+* **Kind**
+* **Helm**
+* **Fuff**
 
 ### Deploying the laboratory environment
 First make sure that you have installed Docker, Helm and Go on your machine. Make also sure to have your Docker engine or Docker desktop running.
@@ -113,14 +116,19 @@ Confirm that you can access the url: http://localhost:1230
 If you managed to access the url, then you have successfully deployed the laboratory environment! :boom:
 
 ### Finding hidden endpoints
+There are some hidden endpoints in the web application, your first task is to find these endpoints. You can use Fuff or gobuster for finding these endpoints. The course staff has provided you a wordlist for using these tools in this repository. 
 
-### Acquiring environment credentials
+Documentate how many endpoints you found and describe if there is anything interesting in those endpoints and if they could be potentially exploited.
 
 ### Getting access to the database
+You should have found an endpoint that points to a database and another that lists the internal filesystem of the pod running the web application, but it seems there is some files hidden when accessing the endpoint directly via the front end. Your next task is to find environment variables from the filesystem that could be used to access the database endpoint, one instance in the database contains a flag.
 
-### Acquiring additional information with git-dumper
+You should find two flags during this process. Document your process and include the flags.
 
 ### Accessing the database with superuser credentials from remote
+It seems you have gained access to one table in the database that the frontend points to previously, now your task is to access the database with the admin credentials from outside the Kubernetes cluster. For this you need to find a suitable client to connect into the database, you can extract more information about the database with the kubectl commands to figure out which kind of client you need for this.
+
+Provide the command you used to access the database from outside the Kubernetes cluster and the flag that is found in another table in the database.
 
 
 
