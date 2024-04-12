@@ -108,7 +108,7 @@ Wait for the Kubernetes pods to be in Running and READY states, this should take
 ```bash
 kubectl get pods
 ```
-When you have all the pods in a Running and READY state, you can then use the following script to portforward the necessary resources for access on the 127.0.0.1:
+When you have all the pods in a **Running** and **READY X/X** states, you can then use the following script to portforward the necessary resources for access on the 127.0.0.1:
 ```bash
 ./access.sh
 ```
