@@ -1,118 +1,53 @@
-Cloud and Network Security Lab 5: Cloud Security
-====
+#  IC00AJ73-3001 Cyber Security II: Cloud and Network Security
 
-Responsible person/main contact: Niklas Saari, Asad Hasan & Lauri Suutari
+Exercises for the course IC00AJ73-3001 Cyber Security II: Cloud and Network Security at the University of Oulu.
 
-## Preliminary tasks & prerequisites
+This course handles key concepts and principles in cloud and network security. Especially in the topics of
 
-This is the fifth lab in the series with the theme of Cloud Security. 
-You should return the tasks to GitHub.
+    Network security and the use of firewalls
+    Network traffic analysis and VPN
+    Networking protocols and protocol fuzzing
+    Container security
+    Cloud security
+    Digital forensics & incident response
+    Security of internet
 
-Make yourself familiar with the following topics:
+The course is organized by Oulu University Secure Programming Group (OUSPG)
 
+## Practicalities
 
-* **Cloud Standard Protocols** -
-* **Kubernetes** -
-* **Endpoint search** - 
+The course has seven laboratory exercises
 
+Lectures are handling topics from a high perspective.
+
+Laboratory exercises are thought of as independent packages: containing theory and exercises and going technologically very deep.
+
+To pass this course with grade 1, you have to attend all lectures including the five physical lectures. Failing to do so results in a written exam based on the lectures missed.
+
+To get a better grade, you have to do some laboratory exercises. All laboratory tasks are optional and total points from those will determine your grade.
 
 ## Grading
 
-<!-- <details><summary>Details</summary> -->
+As described earlier, you have to attend all lectures to pass the course. You can have higher grades by doing lab work.
 
+You can get up to 5 points in each lab (A total of 35 points). The grade is determined based on those points. For example, with 9 points you get grade 2.
 
-Task #|Points|Description|Tools
------|:---:|-----------|-----
-Task 1 | 1 | 
-Task 2 | 1 | Insecure endpoints, git and environment variables | fluff, psql
-Task 3 | 1 | 
-Task 4 | 2 | 
+Total Points|Total Grade
+:-:|:-:
+9+ | 2
+15+ | 3
+21+ | 4
+27+ | 5
 
-
-Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 10 points from the whole exercise (Combination of Task 1 and Task 2).
 <!-- </details> -->
 
----
+## Getting started
 
-
-## About the lab
-
-* **You are encouraged to use your own computer or virtual machine if you want.** However, the use of a Linux machine is necessary. 
-* Check the deadline from Moodle and __remember that you have to return your name (and possibly people you worked together with) and GitHub repository information to Moodle before the deadline.__
-
-
-## Background
-
-This week’s theme is networking protocols.
-
-Networking protocols are a set of rules and conventions that govern the communication between devices in a computer network. These protocols define how data is formatted, transmitted, received, and interpreted across the network. They facilitate the exchange of information between devices, ensuring compatibility and interoperability.
-
-Key aspects of networking protocols include:
-
-1) Addressing: Protocols define how devices are identified and addressed on the network. This includes assigning unique addresses, such as IP addresses, to devices to enable communication.
-
-2) Routing: Protocols determine how data packets are routed from a source to a destination across the network. This involves selecting the best path for data transmission and managing network congestion.
-
-3) Error Handling: Protocols include mechanisms for detecting and correcting errors that may occur during data transmission. This ensures reliable communication between devices.
-
-4) Security: Many protocols incorporate security features to protect data from unauthorized access, interception, or tampering. This includes encryption, authentication, and access control mechanisms.
-
-Some common examples of networking protocols include; Internet Protocol (IP), Transmission Control Protocol (TCP) and Hypertext Transfer Protocol (HTTP).
-
-
----
-
-## Task 1
-
----
-## Task 2
-This task involves intentionally vulnerable Kubernetes deployments and services that you are to exploit using Fluff and a tool to access the database from outside the Kubernetes cluster. The idea is to get deeper and deeper into the system as you progress through the stages and use the information found during the task to find different flags. This task can be completed on both Linux and Windows machines, but it is easier to use the tools with an UNIX operating system. And there is a direct script for deployment on Linux machines.
-
-You can read more about the tools used during this task at:
-**kind**
-**helm**
-**fluff**
-
-### Deploying the laboratory environment
-First make sure that you have installed Docker, Helm and Go on your machine.
-Then you can run the following command to install Kind:
-```bash
-go install sigs.k8s.io/kind@v0.22.0
-```
-After you have successfully installed the forementioned software, you can then run the 
-``
-./deploy.sh
-``
-script from the repository root to deploy all the Kubernetes resources.
-Wait for the Kubernetes pods to be in Running and READY states, this should take a couple minutes maximum, you can monitor this with:
-```bash
-kubectl get pods
-```
-When you have all the pods in a Running and READY state, you can then use the following script to portforward the necessary resources for access on the 127.0.0.1:
-```bash
-./access.sh
-```
-
-### Finding hidden endpoints
-
-### Acquiring environment credentials
-
-### Getting access to the database
-
-### Acquiring additional information with git-dumper
-
-### Accessing the database with superuser credentials from remote
-
-
-### 
-
-
----
-## Task 3
-
----
-## Task 4
-
-
-
-
+    - Enroll in the course
+    - Find the course's Moodle page from the University's Moodle
+    - Find a link where you can receive and create a private repository containing all the return template folders. 
+    You are expected to answer for given templates and store your actual work in this repository.
+    - Create a GitHub account, if you don't have one already, and create this private repository from the link.
+    - Complete as many tasks as you wish and update your repository accordingly. 
+    Check the grading table found in each lab instructions on what you have to complete to earn the grade of your choosing
+    - Push your changes to your repository before the deadline, and return the link to your repository to the corresponding return box of the lab in Moodle.
