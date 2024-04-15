@@ -224,21 +224,21 @@ Exploit the standard command injection vulnerability using a semicolon to gain a
 
 To obtain full marks, add required screenshots and commands
 
-**Provide command used to access container. Add screenshot**
+1. **Provide command used to access container. Add screenshot**
 
-**List all directories inside the container and gather container information. Add screenshot**
+2. **List all directories inside the container and gather container information. Add screenshot**
 
-After gathering system information, download the appropriate docker binary to the container
+3. After gathering system information, download the appropriate docker binary to the container
 
-**Provide command used to download the binary. Explain your command and where is it storing the downloaded file**
+  **Provide command used to download the binary. Explain your command and where is it storing the downloaded file**
 
-Extract the binary so that it can be used to talk to the UNIX socket.
+4. Extract the binary so that it can be used to talk to the UNIX socket.
 
-**Provide command used to extract the binary**
+  **Provide command used to extract the binary**
 
-Access the host system by running the relevant docker commands and passing docker.sock UNIX socket. Tutorial contains enough hints.
+5. Access the host system by running the relevant docker commands and passing docker.sock UNIX socket. Tutorial contains enough hints.
 
-**Provide command used**
+  **Provide command used**
 
 If you've performed the exploitation correctly, you should be able to see list of container images in the host system
 
