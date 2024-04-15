@@ -160,7 +160,8 @@ Useful resources:
 1. Main website of Kubernetes Goat. Click [here](https://madhuakula.com/kubernetes-goat/docs/)
 2. Github of Kubernetes Goat. Click [here](https://github.com/madhuakula/kubernetes-goat)
 
-You'll use the deployment from task 2 to complete these tutorials.
+>[!Important]
+> You'll use the deployment from task 2 to complete these tutorials.
 
 ### A) Perform tutorial SSRF in the Kubernetes (K8S) world
 
