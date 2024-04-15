@@ -28,7 +28,7 @@ Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 1 | 1 | Explain cloud security concepts. Provide theoretical scenario and ask how would they improve security of the cloud | TBD
 Task 2 | 1 | Setup environment. Spawn required resources. Insecure endpoints and environment variables | TBD
-Task 3 | 1 | Another misconfiguration task | TBD
+Task 3 | 1 | Perform Kubernetes Goat tutorials | TBD
 Task 4 | 1-2 | Misconfigured SAML/Oauth2 | TBD
 
 
@@ -149,6 +149,43 @@ Provide the command you used to access the database from outside the Kubernetes 
 ---
 
 ## Task 3
+
+### Perform Kubernetes Goat tutorials
+
+In this task, you'll complete three Kubernetes Goat tutorials and answer key questions. 
+
+As stated on the official website: "Kubernetes Goat is an interactive Kubernetes security learning playground. It has intentionally vulnerable by design scenarios to showcase the common misconfigurations, real-world vulnerabilities, and security issues in Kubernetes clusters, containers, and cloud native environments."
+
+Useful resources:
+1. Main website of Kubernetes Goat. Click [here](https://madhuakula.com/kubernetes-goat/docs/)
+2. Github of Kubernetes Goat. Click [here](https://github.com/madhuakula/kubernetes-goat)
+
+You'll use the deployment from task 2 to complete these tutorials.
+
+### A) Perform tutorial SSRF in the Kubernetes (K8S) world
+
+Tutorial can be accessed here: https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-3/ssrf-in-the-kubernetes-world/welcome/
+
+To get started with the scenario, navigate to http://127.0.0.1:1232
+
+To complete this scenario you need to obtain the k8s-goat-FLAG flag value in the metadata secrets.
+
+To obtain full marks, add required screenshots and answer questions in the end
+
+Add following screenshots as your answer:
+1. When you query the port 5000 in the same container http://127.0.0.1:5000 with method GET
+2. When you query http://metadata-db with method GET
+3. When you guery http://metadata-db/latest/secrets/kubernetes-goat with method GET
+
+Copy paste your flag and decode it. 
+
+**Provide command used** 
+
+**Copy paste your decoded flag**
+
+What do you understand about Server-Side Request Forgery (SSRF) in kubernetes world after completing this tutorial?
+
+
 
 
 
