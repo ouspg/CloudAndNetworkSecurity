@@ -163,7 +163,7 @@ Useful resources:
 >[!Important]
 > You'll use the deployment from task 2 to complete these tutorials.
 
-### A) Perform tutorial SSRF in the Kubernetes (K8S) world
+### A) Perform tutorial: SSRF in the Kubernetes (K8S) world
 
 Tutorial can be accessed here: https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-3/ssrf-in-the-kubernetes-world/welcome/
 
@@ -184,9 +184,32 @@ Copy paste your flag and decode it.
 
 **Copy paste your decoded flag**
 
-What do you understand about Server-Side Request Forgery (SSRF) in kubernetes world after completing this tutorial?
+**What do you understand about Server-Side Request Forgery (SSRF) in kubernetes world after completing this tutorial?**
 
+### B) Perform tutorial: Docker CIS benchmarks analysis
 
+Tutorial can be accessed here: https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-5/docker-cis-benchmarks-in-kubernetes-containers/welcome/
+
+To get started with the scenario, you can deploy the Docker CIS benchmarks DaemonSet using the following command. Notice that this command is slightly different from the tutorial.
+
+```
+kubectl apply -f deployments/docker-bench/docker-bench-security.yaml
+```
+
+To exec into the pod, run the following command. Make sure to replace the pod name wih correct one
+```
+kubectl exec -it docker-bench-security-xxxxx -- sh
+```
+
+The goal of this scenario is to perform the Docker CIS benchmark audit and obtain the results from the audit.
+
+To obtain full marks, add required screenshots and answer questions in the end
+
+Add following screenshots as your answer:
+1. When you execute 'sh docker-bench-security.sh'
+2. When you obtain final benchmark results
+
+**Why Docker CIS benchmarks is useful? How could it help imporve the overall security of the cloud structure?**
 
 
 
