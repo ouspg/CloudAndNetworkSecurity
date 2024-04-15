@@ -165,7 +165,7 @@ Useful resources:
 
 ### A) Perform tutorial: SSRF in the Kubernetes (K8S) world
 
-Tutorial can be accessed here: https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-3/ssrf-in-the-kubernetes-world/welcome/
+Tutorial can be accessed [here](https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-3/ssrf-in-the-kubernetes-world/welcome/)
 
 To get started with the scenario, navigate to http://127.0.0.1:1232
 
@@ -188,7 +188,7 @@ Copy paste your flag and decode it.
 
 ### B) Perform tutorial: Docker CIS benchmarks analysis
 
-Tutorial can be accessed here: https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-5/docker-cis-benchmarks-in-kubernetes-containers/welcome/
+Tutorial can be accessed [here](https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-5/docker-cis-benchmarks-in-kubernetes-containers/welcome/)
 
 To get started with the scenario, you can deploy the Docker CIS benchmarks DaemonSet using the following command. Notice that this command is slightly different from the tutorial.
 
@@ -209,7 +209,11 @@ Add following screenshots as your answer:
 1. When you execute 'sh docker-bench-security.sh'
 2. When you obtain final benchmark results
 
-**Why Docker CIS benchmarks is useful? How could it help imporve the overall security of the cloud structure?**
+**Why Docker CIS benchmarks is useful? How could it help imporve the overall security of the cloud infrastructure?**
+
+### C) Perform tutorial: DIND (docker-in-docker) exploitation
+
+Tutorial can be accessed [here](https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-2/docker-in-docker-exploitation-in-kubernetes-containers/welcome/)
 
 
 
