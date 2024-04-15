@@ -115,7 +115,7 @@ When you have all the pods in a **Running** and **READY X/X** states, you can th
 Confirm that you can access the url: http://localhost:1230
 If you managed to access the url, then you have successfully deployed the laboratory environment! :boom:
 
->[Note]
+>[!Note]
 > You can delete all the resources by the command running "kind delete cluster --name kind-cloudsec"
 
 ### Finding hidden endpoints
