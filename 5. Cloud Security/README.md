@@ -74,11 +74,24 @@ Common cloud security technologies and protocols include Identity and Access Man
 
 
 
-### A) TODO 
+### A) What is the basic concept of cloud security?
 
-### B) Surf the internet to find major cloud provisioning platforms. Highlight key security aspects of two of these cloud service providers
+Answer should be no more than a sentence.
 
-### C) Pick two points from part B) and explain what could go wrong if those security measures were not in place. Describe with imaginery scenarios.
+### B) What are the key components of cloud security?
+
+Write a paragraph with max word limit of 200 words
+
+### C) Surf the internet to find major cloud provisioning platforms. Highlight key security aspects of two of these cloud service providers
+
+Write a paragraph with max word limit of 200 words
+
+### D) Pick two points from part B) and explain what could go wrong if those security measures were not in place. Describe with imaginery scenarios.
+
+Write a paragraph with max word limit of 200 words
+
+>[!Note]
+> Short and to-the-point answers (within prescribed limits) in this task will get you full marks!
 
 ---
 
@@ -132,6 +145,10 @@ You should find two flags during this process. Document your process and include
 It seems you have gained access to one table in the database that the frontend points to previously, now your task is to access the database with the admin credentials from outside the Kubernetes cluster. For this you need to find a suitable client to connect into the database, you can extract more information about the database with the kubectl commands to figure out which kind of client you need for this.
 
 Provide the command you used to access the database from outside the Kubernetes cluster and the flag that is found in another table in the database.
+
+---
+
+## Task 3
 
 
 
