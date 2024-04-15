@@ -162,6 +162,7 @@ Useful resources:
 
 >[!Important]
 > You'll use the deployment from task 2 to complete these tutorials.
+> Provided tutorials are one way to complete the tasks. You can try different approaches and commands too.
 
 ### A) Perform tutorial: SSRF in the Kubernetes (K8S) world
 
@@ -215,8 +216,33 @@ Add following screenshots as your answer:
 
 Tutorial can be accessed [here](https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-2/docker-in-docker-exploitation-in-kubernetes-containers/welcome/)
 
+To get started with the scenario, navigate to http://127.0.0.1:1231
 
+The goal of this scenario is to escape out of the running docker container to the host system where the container is running and able to access and perform actions on the host system.
 
+Exploit the standard command injection vulnerability using a semicolon to gain access to the running docker.
 
+To obtain full marks, add required screenshots and commands
 
+**Provide command used to access container. Add screenshot**
+
+**List all directories inside the container and gather container information. Add screenshot**
+
+After gathering system information, download the appropriate docker binary to the container
+
+**Provide command used to download the binary. Explain your command and where is it storing the downloaded file**
+
+Extract the binary so that it can be used to talk to the UNIX socket.
+
+**Provide command used to extract the binary**
+
+Access the host system by running the relevant docker commands and passing docker.sock UNIX socket. Tutorial contains enough hints.
+
+**Provide command used**
+
+If you've performed the exploitation correctly, you should be able to see list of container images in the host system
+
+**Add screnshot and copy paste contents about different container images**
+
+**What did you learn about DIND (docker-in-docker) exploitation using this tutorial?**
 
