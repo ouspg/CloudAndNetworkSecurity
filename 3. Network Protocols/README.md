@@ -602,9 +602,17 @@ After doing this you need to enable routing and set the built-in Wi-FI module to
 ```console
 sudo sysctl -w net.ipv4.ip_forward=1
 ```
+You can set the built-in Wi-Fi module to broadcast a hotspot via the GUI by creating a new wireless hotspot:
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/dc6a6e4b-2777-4ad6-943b-c1b39aef8c3e)
+If you want to do this on a Raspberry Pi 4, you should get a VNC viewer and connect to the raspberrypi.local from that software for remote GUI. [Guide for this](https://www.makeuseof.com/how-to-remotely-access-raspberry-pi-from-pc/)
+
+Or by console via (You get the hotspot UUID via 'nmcli connection'):
 ```console
 sudo nmcli device wifi hotspot ssid <hotspot name> password <hotspot password> ifname wlan0
+sudo nmcli connection modify <hotspot UUID> connection.autoconnect yes connection.autoconnect-priority 100
 ```
+
+
 At this point you should be able to connect to the broadcasted Wi-Fi network via another device such as a mobile phone by using the hotspot name and hotspot password you set up. Then you need to configure the Raspberry Pi's wlan0 interface to preroute tcp traffic from port 443 to port 9900 via the following command:
 ```console
 sudo iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 443 -j REDIRECT --to-port 9900
