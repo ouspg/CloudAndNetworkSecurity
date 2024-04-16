@@ -96,15 +96,14 @@ Write a paragraph with max word limit of 200 words
 ---
 
 ## Task 2
->[!Note]
-> Create Short introduction on environment variables & cloud development
+In cloud development, environment variables play a crucial role in configuring and customizing applications and services deployed in cloud environments. Environment variables are dynamic values that can affect the behavior of software applications without changing their codebase. They provide a flexible and portable way to manage configuration settings across different deployment environments, such as development, testing and production.
 
 This task involves intentionally vulnerable Kubernetes deployments and services that you are to exploit using multitude of tools such as Fluff and a tool to access the database from outside the Kubernetes cluster. The idea is to get deeper and deeper into the system as you progress through the stages and use the information found during the task to find different flags. This task can be completed on both Linux and Windows machines, but it is easier to use the tools with an UNIX operating system, and there is a shell scripts for creating the environment in bash. You can use any tool of your choise for managing the Kubernetes cluster, but the course staff recommends using Kind for this as it is what the task is developed with. 
 
 You can read more about the tools used during this task at:
-* **Kind**
-* **Helm**
-* **Fuff**
+* **Kind** - [Kind documentation](https://kind.sigs.k8s.io/)
+* **Helm** - [Helm documentation](https://helm.sh/docs/)
+* **Fuff** - [Fuff github repo](https://github.com/ffuf/ffuf)
 
 ### Deploying the laboratory environment
 First make sure that you have installed Docker, Helm and Go on your machine. Make also sure to have your Docker engine or Docker desktop running.
@@ -131,7 +130,7 @@ If you managed to access the url, then you have successfully deployed the labora
 **provide the screenshot of accessing the http://localhost:1230 url**
 
 >[!Note]
-> You can delete all the resources by the command running "kind delete cluster --name kind-cloudsec"
+> You can delete all the resources later by running the command "kind delete cluster --name kind-cloudsec"
 
 ### Finding hidden endpoints
 There are some hidden endpoints in the web application, your first task is to find these endpoints. You can use Fuff or gobuster for finding these endpoints. The course staff has provided you a wordlist for using these tools in this repository. 
