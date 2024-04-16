@@ -128,6 +128,8 @@ When you have all the pods in a **Running** and **READY X/X** states, you can th
 Confirm that you can access the url: http://localhost:1230
 If you managed to access the url, then you have successfully deployed the laboratory environment! :boom:
 
+**provide the screenshot of accessing the http://localhost:1230 url**
+
 >[!Note]
 > You can delete all the resources by the command running "kind delete cluster --name kind-cloudsec"
 
@@ -135,6 +137,8 @@ If you managed to access the url, then you have successfully deployed the labora
 There are some hidden endpoints in the web application, your first task is to find these endpoints. You can use Fuff or gobuster for finding these endpoints. The course staff has provided you a wordlist for using these tools in this repository. 
 
 Documentate how many endpoints you found and describe if there is anything interesting in those endpoints and if they could be potentially exploited.
+
+**provide the commands used to find hidden endpoints**
 
 ### Getting access to the database
 You should have found an endpoint that points to a database and another that lists the internal filesystem of the pod running the web application, but it seems there is some files hidden when accessing the endpoint directly via the front end. Your next task is to find environment variables from the filesystem that could be used to access the database endpoint, one instance in the database contains a flag.
@@ -144,7 +148,7 @@ You should find two flags during this process. Document your process and include
 ### Accessing the database with superuser credentials from remote
 It seems you have gained access to one table in the database that the frontend points to previously, now your task is to access the database with the admin credentials from outside the Kubernetes cluster. For this you need to find a suitable client to connect into the database, you can extract more information about the database with the kubectl commands to figure out which kind of client you need for this.
 
-Provide the command you used to access the database from outside the Kubernetes cluster and the flag that is found in another table in the database.
+**Provide the command you used to access the database from outside the Kubernetes cluster and the flag that is found in another table in the database.**
 
 ---
 
