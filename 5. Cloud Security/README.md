@@ -169,7 +169,7 @@ When you have all the pods in a **Running** and **READY X/X** states, you can th
 Confirm that you can access the URL: http://localhost:1230
 If you managed to access the URL, then you have successfully deployed the laboratory environment! :boom:
 
-## Getting DNS to work
+### Getting DNS to work
 
 1. Identify the cluster IP
 2. Modify the `/etc/hosts` file as follows, based on the cluster IP (127.0.0.1 example works for Kind)
