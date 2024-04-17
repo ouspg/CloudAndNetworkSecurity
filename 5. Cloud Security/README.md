@@ -200,7 +200,7 @@ Document how many endpoints you found and describe if there is anything interest
 You should have found an endpoint that points to a database and another that lists the internal filesystem of the pod running the web application.
 However, it seems there are some files hidden when accessing the endpoint directly via the front end. Your next task is to find environment variables from the filesystem that could be used to access the database endpoint, one instance in the database contains a flag.
 
-You should find two flags during this process. Document your process and include the flags.
+**You should find two flags during this process. Document your process and include the flags.**
 
 ### Accessing the database with superuser credentials from remote
 
