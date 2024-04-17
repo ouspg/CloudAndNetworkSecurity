@@ -48,7 +48,6 @@ helm repo update
 # Add new Kubernetes deployments here
 kubectl apply -k deployments/wordpress/
 kubectl apply -f deployments/
-kubectl apply -f deployments/ingress.yaml
 
 # Patch for Kind to make Ingress accessible from host
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
