@@ -154,7 +154,7 @@ After you have successfully installed the forementioned software, you can then r
 ```
 
 script from the CloudAndNetworkSecurity/5. Cloud Security/ directory to deploy all the Kubernetes resources.
-Wait for the Kubernetes pods to be in Running and READY states, this should take a couple of minutes at maximum.
+Wait for the Kubernetes pods to be in Running and READY states, this should take 10-15 minutes at maximum depending on how powerful your machine is.
 You can monitor this with:
 
 ```bash
@@ -169,7 +169,20 @@ When you have all the pods in a **Running** and **READY X/X** states, you can th
 Confirm that you can access the URL: http://localhost:1230
 If you managed to access the URL, then you have successfully deployed the laboratory environment! :boom:
 
-**provide the screenshot of accessing the http://localhost:1230  URL**
+## Getting DNS to work
+
+1. Identify the cluster IP
+2. Modify the `/etc/hosts` file as follows, based on the cluster IP (127.0.0.1 example works for Kind)
+
+```text
+127.0.0.1 keycloak.kyber.local
+127.0.0.1 blog.kyber.local
+127.0.0.1 company.kyber.local
+127.0.0.1 system-monitor.kyber.local
+127.0.0.1 health.kyber.local
+127.0.0.1 internal-proxy.kyber.local
+```
+**provide the screenshot of accessing the http://localhost:1230 and keycloak.kuber.local URL**
 
 >[!Note]
 > You can delete all the resources later by running the command "kind delete cluster --name kind-cloudsec"
@@ -180,7 +193,7 @@ There are some hidden endpoints in the web application, your first task is to fi
 
 Document how many endpoints you found and describe if there is anything interesting in those endpoints and if they could be potentially exploited.
 
-> **Provide the commands used to find hidden endpoints.**
+**Provide the commands used to find hidden endpoints.**
 
 ### Getting access to the database
 
