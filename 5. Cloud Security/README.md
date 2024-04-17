@@ -182,7 +182,7 @@ If you managed to access the URL, then you have successfully deployed the labora
 127.0.0.1 health.kyber.local
 127.0.0.1 internal-proxy.kyber.local
 ```
-**provide the screenshot of accessing the http://localhost:1230 and keycloak.kuber.local URL**
+**provide the screenshot of accessing the http://localhost:1230 and keycloak.kyber.local URL**
 
 >[!Note]
 > You can delete all the resources later by running the command "kind delete cluster --name kind-cloudsec"
