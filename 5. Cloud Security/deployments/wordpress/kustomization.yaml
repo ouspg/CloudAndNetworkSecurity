@@ -1,0 +1,20 @@
+secretGenerator:
+- name: mysql-password
+  literals:
+  - password=Mysql.Root2021@
+- name: mysql-user
+  literals:
+  - username=userwp
+- name: mysql-user-password
+  literals:
+  - passworduser=Mysql.User2021@
+- name: mysql-database
+  literals:
+  - database=multitenant_wp
+resources:
+  - mysql-deployment.yaml
+  - wordpress-deployment.yaml
+  - mysql-pv-claim.yaml
+  - wordpress-pv-claim.yaml
+  - mysql-configmap.yaml
+  - wp-cli.yaml
