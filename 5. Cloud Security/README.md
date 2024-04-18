@@ -344,24 +344,27 @@ The workflow is something like the following:
 
 ### Task 4B) Implementing the flow by yourself (1p)
 
+> [!Note]
+> Basic implementation for this task takes only few lines of code in practice. Do not be too intimidated!
+
 Now, we will continue with the web application from task 2, which uses the [Flask](https://flask.palletsprojects.com/en/3.0.x/) framework internally.
 You should add a new client in Keycloak for it.
-Since Flask uses server-side rendering to provide the client in the browser for the end-user, we have strong assumptions that we can keep the client secret as secret, and get the token by using POST method.
+Since Flask uses server-side rendering to provide the client in the browser for the end-user, we have strong assumptions that we can keep the client secret as a secret, and get the token by using the POST method.
 
 We try to keep this task rather simple; we just want to finish the flow somewhat correctly and obtain the authentication token, which can be used to access content from some resource server on behalf of the end-user (we don't access).
-You want just get some profile information from the Keycloak server as part of the JWT token.
+You want just to get some profile information from the Keycloak server as part of the JWT token.
 
 You should get pretty far by following the request flow [here.](https://curity.io/resources/learn/openid-code-flow/)
-The flow is rather short and you need [only the requests library](https://requests.readthedocs.io/en/latest/) to complete the flow.
-You need to modify `login` and `callback` routes on the Flask server. 
+The flow is rather short and you need [only the requests library](https://requests.readthedocs.io/en/latest/) on top of Flask and some std libraries to complete the flow.
 
-You are mainly interested in the `login.html` template, which is located in the folder [flask/templates/](flask/templates) and modifying the `login` route.
+In short, you need to modify `login` and `callback` routes on the Flask server. 
+Note that the initial URL for the authorization server needs to be generated first and it will be passed to `login.html` template.
+If you have created the client configuration correctly for the Keycloak server, you should get started from the initial response.
 
-
-You can find partial source code and other things in the [flask](flask) directory. Note that this is not the complete code that was used in task 2. The database use is not included.
+You can find partial source code and other things in the [flask](flask) directory. Note that this is not the complete code that was used in task 2. The database usage is not included.
 
 > [!Note]
-> Open browser in private mode to see that you indeed need to enter the credentials and it redirects back to your Flask app!
+> Open browser in private mode to see that you indeed need to enter the credentials and it redirects back to your Flask app! You can try the same user as you did with Wordpress.
 
 ### Development environment
 
@@ -378,7 +381,7 @@ python app.py
 ```
 Find the new app from http://localhost:3000
 
-### Task 4C) Make small security analysis for your implementation (0.5p)
+### Task 4C) Make a small security analysis for your implementation (0.5p)
 
 Check the common issues from [PortSwigger on OAuth 2.0 implementations](https://portswigger.net/web-security/oauth).
 
@@ -386,6 +389,6 @@ Do you think that your Python implementation was good? What issues there are?
 
 What is the role of state and nonce in the flow?
 
-How would use of Proof Key for Code Exchange (PKCE) improve the security?
+How would the use of Proof Key for Code Exchange (PKCE) improve security?
 
 It was originally intended for mobile use only, but it appeared to be good for general use, and [OAuth 2.1 will make it mandatory](https://oauth.net/2.1/). Explain the benefits and potential risk scenarios it is mitigating.
