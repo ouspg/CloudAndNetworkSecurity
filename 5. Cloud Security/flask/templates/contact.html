@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/contact.css') }}">
+{% endblock %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<div class="container">
+    <h1>Contact Us</h1>
+    <p>Have questions or need assistance? Fill out the form below to get in touch with our team.</p>
+    <form>
+        <input type="text" name="name" placeholder="Your Name" required><br>
+        <input type="text" name="email" placeholder="Your Email" required><br>
+        <textarea name="message" placeholder="Your Message" required></textarea><br>
+        <input type="submit" value="Send Message">
+    </form>
+</div>
+{% endblock %}

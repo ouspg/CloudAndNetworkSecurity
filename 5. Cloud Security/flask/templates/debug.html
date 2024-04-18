@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>List of Files</h1>
+<ul>
+    {% for file in files %}
+    {% if not file.startswith('.') and file != 'app.py' %}
+    <li><a href="{{ url_for('serve_file', filename=file) }}">{{ file }}</a></li>
+    {% endif %}
+    {% endfor %}
+</ul>
+{% endblock %}
