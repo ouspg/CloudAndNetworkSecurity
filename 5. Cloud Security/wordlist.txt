@@ -1637,6 +1637,7 @@ discover
 disclaimer
 directions
 dh
+debug
 devtest
 deploy.sh
 departments.php
