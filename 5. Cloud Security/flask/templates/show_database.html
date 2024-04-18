@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<nav>
+    <a href="/database">Log out of database</a>
+</nav>
+<h1>Data Display</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Regional Member</th>
+            <th>Year</th>
+            <th>Inflation</th>
+            <th>Unit of Measurement</th>
+            <th>Subregion</th>
+            <th>Country Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        {% if row[0] != 'Kajaani' %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

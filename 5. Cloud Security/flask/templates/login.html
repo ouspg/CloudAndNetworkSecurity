@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/contact.css') }}">
+{% endblock %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<div class="container">
+    <h1>Login</h1>
+    <h2>FANCY LOGIN UNDER CONSTRUCTION</h2>
+    <a id="big-button" href="{{ keycloak_login }}"><button> Login with Keycloak from here ^^ </button></a>
+</div>
+{% endblock %}
