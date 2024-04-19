@@ -303,8 +303,8 @@ See some documentation about the flow below.
 
 The cluster has a well-known open-source Identity and Access Management (IAM) system [Keycloak](https://www.keycloak.org/) deployed. 
 It is not configured to work with any of the services yet, but there are two potential use cases.
-  * Web application from task 2 in address https://company.cyber.local
-  * WordPress blog in address https://blog.cyber.local
+  * Web application from task 2 in address https://company.kyber.local
+  * WordPress blog in address https://blog.kyber.local
 
 Both Keycloak and WordPress can be configured correctly to use OpenID Connect just by using their web GUI, and that is a good starting point to try out the protocol.
 
