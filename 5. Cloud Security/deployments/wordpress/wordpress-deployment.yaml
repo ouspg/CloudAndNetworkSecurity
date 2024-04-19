@@ -28,6 +28,10 @@ spec:
         app: wordpress
         tier: web
     spec:
+      hostAliases:
+      - ip: "10.96.186.81"
+        hostnames:
+        - "keycloak.kyber.local"
       containers:
       - image: wordpress:php8.1-apache
         name: wordpress

@@ -60,5 +60,9 @@ kubectl exec $WP_CLI_POD -- wp core install --url=https://blog.kyber.local --tit
 # OpenID Connect plugin
 kubectl exec $WP_CLI_POD -- wp plugin install miniorange-login-with-eve-online-google-facebook --activate
 
+# Make internal service for controller to make Ingress work internally
+kubectl expose deployment -n ingress-nginx ingress-nginx-controller --name ingress-internal-service --port 443 --cluster-ip="10.96.186.81"
+# Verify: kubectl get services --all-namespaces
+
 echo "All the Kubernetes resources have been deployed"
 echo "Wait for the pods to be in running and in READY state before executing ./access.sh"
