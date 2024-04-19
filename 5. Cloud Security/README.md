@@ -381,6 +381,8 @@ python app.py
 ```
 Find the new app from http://localhost:3000
 
+> Return the modified source code and add the screenshot of success!
+
 ### Task 4C) Make a small security analysis for your implementation (0.5p)
 
 Check the common issues from [PortSwigger on OAuth 2.0 implementations](https://portswigger.net/web-security/oauth).
