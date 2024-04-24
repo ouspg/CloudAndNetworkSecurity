@@ -87,15 +87,15 @@ This lab does not require any specific Linux distribution to be used.
 You are required to install quite many tools yourself, so anything you can install them on is good enough.
 You can find most tools if not all as Arch Linux packages for the course VM.
 
-All memory and image dumps are available as a download.
+All memory and image dumps are available as a direct download.
 The link is provided in Moodle.
 
 ## Important reminder
 
 This lab features tasks that are a little similar to tasks in CTF challenges.
-There is a specified type of information hidden in somewhere and it is up to you to figure it out.
+There is a specified type of information hidden somewhere and it is up to you to figure it out.
 
-Basically, this means that this lab may be harder than the others,
+This means that this lab may be harder than some of the others,
 instructions and directions where you should go are more unclear than in the other labs and changes of tool usage problems and other irritating errors are higher than in the other labs.
 
 Other labs might have had simple tutorials/instructions on how to use certain tools during them.
@@ -105,7 +105,7 @@ There may or may not be multiple ways to solve each task.
 You must use your own judgment to determine what ways could or should be pursued to gain success.
 Independent thinking/researching of problems and creative problem-solving are highly encouraged.
 
-You are required to install all needed tools yourself and if there happens to be some problems with them - well, hopefully, Google and your good troubleshooting skills can help you then.
+You are required to install all needed tools yourself and if there happen to be some problems with them - well, hopefully, Google and your good troubleshooting skills can help you then.
 
 Consider yourself to be properly informed after reading this.
 
@@ -114,7 +114,7 @@ If you still want to take this challenge, good luck. You might really need it to
 
 # Tasks
 
-Read task instructions carefully before starting to work to have a clear picture about what you are supposed to do.
+Read task instructions carefully before starting to work to have a clear picture of what you are supposed to do.
 
 Every task should clearly state what you are expected to do and return.
 
@@ -122,32 +122,36 @@ Every task should clearly state what you are expected to do and return.
 
 ## Task 1
 
-Welcome to the imaginary day of digital forensic investigator. This task has highly fictional backstory which tries to give meaningful context to tasks. Notice that also any task or skill you will be using might or might not be useful in real life, because this lab does not equal to any official digital forensic training. Also, because this story is purely fictional, any possible connections to the real life events or people are coincidental.
+Welcome to the imaginary day of a digital forensic investigator.
+This task has a highly fictional backstory that tries to give meaningful context to tasks. Notice that also any task or skill you will be using might or might not be useful in real life, because this lab does not equal any official digital forensic training.
+Also, because this story is purely fictional, any possible connections to real-life events or people are coincidental.
 
-Story starts here.
+The story starts here.
 
-Mallory is notorious member of criminal underworld. He is known for illegal items trade, and he is rumored to have multiple shady contacts supplying him with high-quality "stuff", which have made him easy to gain foothold of black market.
+Mallory is a notorious member of the criminal underworld. He is known for illegal items trade, and he is rumored to have multiple shady contacts supplying him with high-quality "stuff", which has made him easy to gain a foothold in the black market.
 
-Mallory has also reputation of being faster talker than thinker.
+Mallory has also a reputation for being a faster talker than a thinker.
 
-Mallory have been successful in his criminal activities lately, giving large influx of money and letting him expand his network, which have made him one of the "big players" of criminal underworld.
+Mallory has been successful in his criminal activities lately, giving large influx of money and letting him expand his network, which has made him one of the "big players" of the criminal underworld.
 
-Unfortunately for him, also law enforcement at national level agencies have noticed his success. Mallory has reputation of being faster talker than thinker and because rumors spread fast, becoming known by law enforcement was only matter of time.
+Unfortunately for him, also law enforcement at national level agencies have noticed his success. Mallory has a reputation for being a faster talker than a thinker and because rumors spread fast, becoming known by law enforcement was only a matter of time.
 
-Big wheels start to turn, and large surveillance operation against Mallory and his minions was started started. After 3 months of fruitless efforts intel from trusted source appears: Mallorys gang is going to do drug deal next day.
+Big wheels start to turn, and a large surveillance operation against Mallory and his minions starts. After 3 months of fruitless efforts, intel from a trusted source appears: Mallory's gang is going to do a drug deal in next day.
 
-Intel turns out to be correct and leading investigator decides that this is correct moment to strike. This would not be major victory, because only couple of Mallorys men would be caught red-handed, but it still could result Mallorys conviction if enough evidence is found about his involvement. Situation is not optimal, but small success is better than fruitless waiting of 3 months.
+Intel turns out to be correct and the leading investigator decides that this is a correct moment to strike. This would not be a major victory, because only a couple of Mallory's men would be caught red-handed, but it still could result in Mallory's conviction if enough evidence is found about his involvement. The situation is not optimal, but small success is better than fruitless waiting of 3 months.
 
-Moment to strike has come: Special units of police crash into the place of meeting and find 2 of Mallorys crooks with huge stash of illegal weapons and drugs. Simultaneously multiple carefully coordinated house raids are performed to all known members of Mallorys gang, including Mallorys home himself.
+The moment to strike has come: Special units of police crash into the place of the meeting and find 2 of Mallory's crooks with a huge stash of illegal weapons and drugs. Simultaneously multiple carefully coordinated house raids are performed on all known members of Mallory's gang, including Mallory's home himself.
 
-Mallory is caught by surprise when police storms into his apartment and immediately arrests him.
-Police officers start to search Mallorys apartment and technician begins to investigate Mallorys computer which is turned on and logged on. After discussing with leading investigator, technician decides to start with dumping volatile memory of computer to his external hard drive.
-Next to Mallorys computer is ordinary USB-memory stick. That stick is securely bagged to the evidence box for later inspection.
+Mallory is caught by surprise when police storm into his apartment and immediately arrest him.
 
-But Mallory has some brutal surprise for digital forensic technician: Just as memory dump from volatile memory is secured to investigators external drive, Mallorys computer starts to smoke and soon catches on fire explosively. Technician grabs his drive containing memory dump and runs out of apartment because toxic smoke from melting components is starting to spread fastly.
-Apartment is evacuated in hurry and human casualties are avoided, but Mallorys improvised dead-man-switch - timed incendiary bomb inside computer which he supposedly managed to trigger when he heard police breaking in - has rendered whole machine unsalvageable.
+Police officers start to search Mallory's apartment and the technician begins to investigate Mallory's computer which is turned on and logged on. 
+After discussing with the leading investigator, the technician decides to start dumping the volatile memory of the computer into his external hard drive.
+Next to Mallory's computer is an ordinary USB memory stick. That stick is securely bagged into the evidence box for later inspection.
 
-Investigators know that there was so much critical information gone with Mallorys computer, and any hope they have left lies in single memory dump of Mallorys machine and ordinary USB memory stick.
+But Mallory has some brutal surprise for the digital forensic technician: Just as the memory dump from volatile memory is secured to the investigator's external drive, Mallory's computer starts to smoke and soon catches on fire explosively. The technician grabs his drive containing a memory dump and runs out of the apartment because toxic smoke from melting components is starting to spread quickly.
+The apartment is evacuated in a hurry and human casualties are avoided, but Mallory's improvised dead-man-switch - timed incendiary bomb inside the computer which he supposedly managed to trigger when he heard police breaking in - has rendered the whole machine unsalvageable.
+
+Investigators know that there was so much critical information gone with Mallory's computer and any hope they have left lies in a single memory dump of Mallory's machine and an ordinary USB memory stick.
 
 ### Inspecting memory with Volatility 3
 
@@ -163,35 +167,36 @@ Investigators know that there was so much critical information gone with Mallory
 > 
 > *Mallory: I want to check different locations before I-, uh- I mean I like hiking too.*
 
-While exact location remains unknown, intel gathered from other sources suggests that Mallorys organization has been using codenames for those 2 caches: *LAKE* and *COAST*. Leading investigator suspects that those codenames are most likely describing also the places themselves. Leading investigator also suspects, that hidden caches are mostly located not too far from city and those should not require too long distance to be travelled by foot. Also caches can not obviously be located on densely populated areas.
+While the exact location remains unknown, intel gathered from other sources suggests that Mallor's organization has been using codenames for those 2 caches: *LAKE* and *COAST*. The leading investigator suspects that those codenames are most likely describing also the places themselves.
+The leading investigator also suspects, that hidden caches are mostly located not too far from the city and those should not require a too long distance to be traveled by foot. Also, caches can not obviously be located in densely populated areas.
 
 Your first task is to find 2 different GPS locations where police officers should start for looking hidden stashes.
 
 > *Leading investigator: There is problem with gathering Mallorys emails*
 > 
-> *You: How so? In this case we have court order for service provider to give us access to Mallorys email-account.*
+> *You: How so? In this case we have a court order for service provider to give us access to Mallorys email-account.*
 > 
-> *Leading investigator: Yes we do, but seems like they all have gone on holiday or something. I did not succeed connecting to anybody who could give us access right now. Typical corporate bureaucracy in action...*
+> *Leading investigator: Yes we do, but seems like they all have gone on holiday or something. I did not succeed on connecting to anybody who could give us access right now. Typical corporate bureaucracy in action...*
 > 
 > *You: Oh. That's bad. But eventually we will get it.*
 > 
-> *Leading investigator: Yes we will. But this is urgent because any useful intel we could get from his email might be irrelevant next week because word about Mallorys arrest is spreading and his contacts are going to flee any moment with hidden caches.*
+> *Leading investigator: Yes we will. But this is urgent because any useful intel we could get from his email might be irrelevant next week because word about Mallory's arrest is spreading and his contacts are going to flee any moment with hidden caches.*
 > 
 > *You: I see. So we have only this memory dump right now. I'll see what I can do.*
 
-Intel from unconfirmed sources says that there is rumors about Mallory having also third hidden cache. Nothing about it is known but its codename: *FOREST*
+Intel from unconfirmed sources says that there are rumors about Mallory having also a third hidden cache. Nothing about it is known but its codename: *FOREST*
 
-Your second task is to retrieve any email exchange of Mallory and his criminal partner. Extract content of the messages and solve location of third hidden cache.
+Your second task is to retrieve any email exchange between Mallory and his criminal partner. Extract the content of the messages and solve the location of the third hidden cache.
 
-Fill your answers and reasoning to the return template.
+> Fill your answers and reasoning as a mark of completion this task.
 
 #### Hints and links
 
-Volatility is tool for volatile memory inspection.
+Volatility is a tool for volatile memory inspection.
 
-Find out what browser Mallory is using and then search for URLs which you want to find from its process memory.
+Find out what browser Mallory is using and then search for URLs that you want to find from its process memory.
 
-Similar approach can be used to e-mail task: Determine what program Mallory is using for mail and start digging the process memory of it.
+A similar approach can be used in the e-mail task: Determine what program Mallory is using for mail and start digging into the process memory of it.
 
 * [Volatility 3 documentation](https://volatility3.readthedocs.io/en/latest/)
   * Volatility 3 identifies the memory profile automatically
@@ -201,35 +206,41 @@ Similar approach can be used to e-mail task: Determine what program Mallory is u
 * Foremost can extract files of a specified type from other files, for example, memory dumps of processes.
 
 
+> [!Note]
+> The story continues as bonus task later if you are willing to dig into disk forensics and steganography!
+
+
 ## Task 2: Analyzing a DDoS attack
 
 Your next task is to make an analysis and report of the real-world DDoS attack.
 
-There was a real DDoS campaing in Finland some years ago, and this tasks gives you the target server's log file.
-
+There was a real DDoS campaign in Finland some years ago, and this task gives you the one target server's log file.
  A specific kind of malware was responsible for creating a botnet, which used to cause this DDoS attack.
- Malware was mostly spread by YouTube advertising. 
+ Malware was mostly spread by YouTube advertising (you can analyse it in the Hardware&Software security course). 
+
+More about the case [is available here.](https://www.tamperelainen.fi/paikalliset/1590735)
+
  
  You will find the server log file in the same place as the memory dumps of earlier tasks.
 
-After unzipping log, you may find out that opening log file (which contains over 6 million lines of data) may crash regular text editor so you most likely have to utilize other tools to initial investigation of log file. Commands `grep`, `less`, `sort`, `cut`, `awk` and `uniq` might be helpful.
+After unzipping the log, you may find out that opening the log file (which contains over 6 million lines of data) may crash the regular text editor so you most likely have to utilize other tools to initially investigate of log file. Commands `grep`, `less`, `sort`, `cut`, `awk` and `uniq` might be helpful.
 
-Calculate next things from attack: Start time(s) and end time(s) (different parts in attack can exist), attack intensity charts/tables (requests per second and per minute) and IP addresses (bots) participating attack and analysis of them (times new bots entered in, how many bots were total, request counts per bot).
+Estimate the following things from the attack: Start time(s) and end time(s) (different parts in the attack can exist), attack intensity charts/tables (requests per second and per minute) and IP addresses (bots) participating attack and analysis of them (times new bots entered in, how many bots were total, request counts per bot).
 
-Feel free to use any tool/scripting language/existing solution to calculate your analysis.
+Analyze how the server was burdened. Obviously, by sending an overload of requests to it, but why just that kind of request was used? You do not know the inner workings of the server, but make educated guesses based on what you see and know.
 
-Analyze how server was burdened. Obviously by sending overload of requests to it, but why just that kind of request was used? You do not know inner workings of server, but make educated guess based on what you see and know.
+Can you find the person who hypothetically was behind the whole attack? That person made one mistake, and his/her IP address could be reasoned out from the logs. That got them caught in the end.
 
-Can you find person who hypothetically was behind the whole attack? That person made one mistake, and his/hers IP address could be reasoned out from the logs.
+You can use existing log analysis tools if you fail to do the task with the Unix tools, but you are not likely to get the full points.
 
 ### What to return
 
-Your carefully thought out analysis of attack containing **at least** next items:
-* Careful analysis of attack start/end time, intensities and bots participating it (analysis targets described above). Your style of reporting is free-formed, but depth and quality of analysis is expected to be sufficient.
-* Well-reasoned explanation why certain type of request were used in DDoS attack.
+Your carefully thought-out analysis of the attack contains **at least** the following items:
+* Careful analysis of attack start/end time, intensities and bots participating in it (analysis targets described above). Your style of reporting is free-formed, but the depth and quality of analysis are expected to be sufficient.
+Well-reasoned explanation of why certain types of requests were used in DDoS attacks.
 * IP address which points towards the real person controlling the botnet, and reasoning why you ended up to that conclusion.
 
-Fill your answers to the return template.
+> Fill in your answers to the return template.
 
 ## Task 3: TBA
 
@@ -239,7 +250,7 @@ TBA
 
 ## Bonus task: Data recovery & steganography
 
-The story continues with Mallory from the task 1.
+The story continues with Mallory from task 1.
 
 ### A) Data hiding & password recovery (0.5p)
 
@@ -257,34 +268,34 @@ The story continues with Mallory from the task 1.
 > 
 > *Interrogator: Sure.*
 
-Technical investigator attaches Mallorys memory stick to his machine by using write-blocker device. Stick seems to be empty and freshly formatted as Mallory implied. Technical investigator utilizes his tools to create raw disk-dump of that USB-stick and then gives it to you.
+The technical investigator attaches Mallory's memory stick to his machine by using a write-blocker device. Stick seems to be empty and freshly formatted as Mallory implied. Technical investigator utilizes his tools to create a raw disk dump of that USB stick and then gives it to you.
 
 Your task is next:
 * Recover RTF and PDF documents (1 RTF, 2 PDFs)
-  * You must independently utilize your skills, creativity and hints from memory dump to decrypt PDF document content
+  * You must independently utilize your skills, creativity and hints from the memory dump to decrypt PDF document content
 
 #### Hints and links
 
-Carve out deleted documents from disk and proceed on your task as you see fit.
+Carve out deleted documents from the disk and proceed with your task as you see fit.
 
 Useful tools and utilities
-* `foremost`, common tool for recovering files
-* `scalpel`, another tool based on foremost
+* `foremost`, a common tool for recovering files
+* `scalpel`, another tool based on the foremost
   * Learn to use custom configuring of it to carve files that foremost can not
 * Any hex editors/readers (for example Ghex and hexdump) for investigating raw memory
 * `hashcat`
   * Utility for recovering passwords, high amount of features for different situations
 * `rockyou.txt`
   * Enormous collection of commonly used passwords
-* `pdf2john.py` is utility for extracting hash information from PDF files
+* `pdf2john.py` is a utility for extracting hash information from PDF files
 
 Some hints:
-* Scalpel might sometimes produce broken files, try with another configurations or foremost
-* Some PDF-readers might not handle AES-256 encrypted PDF well. They claim that the password is incorrect even when it is not. Try with another PDF-capable program (for example with internet browser).
+* Scalpel might sometimes produce broken files, so try with other configurations or foremost
+* Some PDF readers might not handle AES-256 encrypted PDF well. They claim that the password is incorrect even when it is not. Try with another PDF-capable program (for example with an internet browser).
 * Hashcat might require some other libraries to be installed before it runs correctly
 * Feel free to utilize any other tool you can find to solve these tasks
-* Files with strong encryption and long enough passwords are unfeasible to be bruteforced
-* Mallory might have kept some unnecessary file clutter on his USB-stick just to annoy anybody else who happens to read it.
+* Files with strong encryption and long enough passwords are unfeasible to be brute-forced
+* Mallory might have kept some unnecessary file clutter on his USB stick just to annoy anybody else who happens to read it.
 * [File slack space](https://www.google.com/search?q=file+slack+space)
 
 
@@ -314,34 +325,35 @@ Some hints:
 > 
 > *You: I'll see what I can do*
 
-Your task is to find 4 different suspicious images, and then extract the clear-text of the messages hidden into them. 
+Your task is to find 4 different suspicious images, and then extract the clear text of the messages hidden in them. 
 
 #### Hints and links
 
-Steganography is practice of concealing actual information inside innocuous-looking information.
+Steganography is the practice of concealing actual information inside innocuous-looking information.
 
-First problem is to identify image which is holding secret information, second problem is to find how to extract it.
+The first problem is to identify the image which is holding secret information, second problem is to find how to extract it.
 
 Useful info
-* [Useful overview to steganography](https://en.wikipedia.org/wiki/Steganography)
+* [Useful overview of steganography](https://en.wikipedia.org/wiki/Steganography)
 * Useful command line commands: `strings`, `hexdump`, `foremost`, `binwalk`
 * [StegExpose](https://github.com/b3dk7/StegExpose) - Tool for detecting LSB steganography
 * [zsteg](https://github.com/zed-0xff/zsteg) - Tool for detecting and extracting steganography
-* steghide and its counterpart [StegCracker](https://github.com/Paradoxis/StegCracker)
+* steghide and its counterpart [StegSeek](https://github.com/RickdeJager/stegseek)
 
 Hints:
-* Simplest form of hiding text in image is simply writing it straight to the image data, as plain text or encoded text (2 images)
+* The simplest form of hiding text in an image is simply writing it straight to the image data, as plain text or encoded text (2 images)
   * Tools like `strings` and `hexdump` are useful in these cases
-  * Somebody could encode their message before injecting it to the image file, so you must decode it too
+  * Somebody could encode their message before injecting it into the image file, so you must decode it too
 * More advanced image steganography includes modification of least-significant-bits (LSB) of PNG images (1 image)
-  * Statistical tools exists to detect if image is tampered somehow
+  * Statistical tools exist to detect if the image is tampered with somehow
   * Tools like StegExpose and zsteg can detect and extract LSB-hidden information from images
-* It is possible to include file into another file (1 image)
-  * Obviously it makes file bigger than it should be
-  * Tools like foremost and/or binwalk can detect this kind of file-in-file tampering
-  * Image steganography tool `steghide` can encrypt and hide information to image very efficiently
-    * That tool has counter named `StegCracker`, which bruteforces information hidden with `steghide` out of the image (but you have to provide wordlist for it)
-  * Last hint for this target comes from interrogation log:
+* It is possible to include the file in another file (1 image)
+  * Obviously, it makes the file bigger than it should be
+  * Tools like `foremost` and/or `binwalk` can detect this kind of file-in-file tampering
+  * Image steganography tool `steghide` can encrypt and hide information in images very efficiently
+    * That tool has a counter named `StegCracker`, which brute forces information hidden with `steghide` out of the image (but you have to provide a wordlist for it)
+  * The last hint for this target comes from the interrogation log:
+
 > *Interrogator: By the way, if you hid your secret data to image with some tool supporting encryption, would you use some leetspeak version of your own name as password? Like `m4lL0rY`*
 > 
 > *Mallory: H-h-haha, of couse not - I am not obviously that stupid!*
