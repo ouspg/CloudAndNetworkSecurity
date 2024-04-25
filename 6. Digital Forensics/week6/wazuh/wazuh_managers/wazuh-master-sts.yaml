@@ -7,6 +7,19 @@
 
 # Wazuh master StatefulSet
 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ossec-decoders
+data:
+  local_decoder.xml: |
+    <?xml version="1.0"?>
+    <decoders>
+      <decoder name="local_decoder_example">
+          <program_name>local_decoder_example</program_name>
+      </decoder>
+    </decoders>
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -37,6 +50,9 @@ spec:
         - name: wazuh-authd-pass
           secret:
             secretName: wazuh-authd-pass
+        - name: ossec-config
+          configMap:
+            name: ossec-decoders
       securityContext:
         fsGroup: 101
       containers:
@@ -103,6 +119,8 @@ spec:
             - name: wazuh-manager-master
               mountPath: /var/lib/filebeat
               subPath: filebeat/var/lib/filebeat
+            - name: ossec-config
+              mountPath: /var/ossec/etc/decoders
           ports:
             - containerPort: 1515
               name: registration

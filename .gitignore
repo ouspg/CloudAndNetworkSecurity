@@ -1,3 +1,5 @@
 .idea
 .vscode
 dev
+*.pem
+*.csr

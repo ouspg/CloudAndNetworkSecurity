@@ -242,9 +242,145 @@ Well-reasoned explanation of why certain types of requests were used in DDoS att
 
 > Fill in your answers to the return template.
 
-## Task 3: TBA
+## Task 3: XDR and SIEM protection
 
-TBA
+Wazuh is a free and open source platform used for threat prevention, detection, and response. It is capable of protecting workloads across on-premises, virtualized, containerized, and cloud-based environments. It unifies extended detection and response (XDR) and security information and event management (SIEM) protection for endpoints and cloud workloads. SIEM focuses on monitoring log data from various sources in the network whereas XDR covers a broader range of security telemetry data such as; endpoint data, network traffic and cloud based environments.
+
+Wazuh solution consists of an endpoint security agent, deployed to the monitored systems, and a management server, which collects and analyzes data gathered by the agents' endpoints. Besides, Wazuh has been fully integrated with the Elastic Stack, providing a search engine and data visualization tool that allows users to navigate through their security alerts. Because of its large coverage and adaptability to different environments, Wazuh has become one of the go-to services for SIEM & XDR protection in cloud-based environments.
+
+Understanding the skills of configuring security monitoring systems such as Wazuh, creating custom alerting rules, and analyzing generated alerts is crucial for cloud security and the cyber security industry for several reasons such as:
+
+* Cloud environments have vast attack surfaces and are constantly changing, being able to detect potential security threats is essential, proactive threat detection and alerting mechanisms allow organizations to identify and respond to security incidents before they escalate.
+* Implementing effective alerting mechanisms and demonstrating the ability to analyze generated alerts helps organizations meet compliance and [regulatory requirements](https://documentation.wazuh.com/current/compliance/index.html) to avoid potential penalties and/or legal consequences.
+
+The following image shows the important components and how they communicate with each other to form this service, in the first part of this task we are focusing on the endpoint side of things and in the other tasks the central component configuration will become crucial as well.
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/e03e3de9-741a-4a46-b0af-d9e9a27b4683)
+
+Wazuh has great documentation about different ways of its usage, you can find more about it here:
+* https://documentation.wazuh.com/current/index.html
+
+### A) Host system & Docker monitoring (1p)
+In this task you will explore the capabilities of Wazuh by creating a basic log auditing system for the host machine. The course staff has provided you with the required Kubernetes deployment files to easily launch the Wazuh server on your machine, these files can be found in:
+```
+CloudAndNetworkSecurity/6. Digital Forensics/week6/
+```
+Contrary to last week, this week's deployment has been optimized for minikube version of Kubernetes, you can find information about downloading this from:
+https://minikube.sigs.k8s.io/docs/start/
+
+To launch the Wazuh server simply run "minikube start" and the deploy_week6.sh shell script, which will create the required services for Wazuh. These services are called wazuh-indexer, wazuh-dashboard, wazuh-cluster, wazuh and wazuh-workers. Wazuh-indexer service handles the communication between indexer nodes which are used by the API to read and write alerts, dashboard contains the frontend side of Wazuh, wazuh service handles the authentication of wazuh agents and wazuh-workers is the reporting service of this tool.
+
+Example of successful deployment of pods:
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/1c656c9d-b29c-473f-a605-079c9fc95b66)
+
+
+Example of successful deployment of services:
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/756253e6-f681-4dec-adab-67ab2373a811)
+
+
+Once you have successfully launched the Kubernetes services and theyre in READY and Running states (this can take a bit), you need to open certain ports in the cluster to access the Wazuh dashboard in the host machine and to create agents. The important ports are following:
+
+* 443 Wazuh web user interface
+* 55000 Wazuh server RESTful API
+* 1514 (TCP/UDP) The agent connecion service
+* 1515 (UDP) The agent enrollment service
+
+You can do this using the kubectl port-forward command or the minikube service command. (Keep in mind Wazuh resources are in the wazuh namespace)
+>[!Note]
+>Keep in mind to what port the services are port-forwarded to on the host machine, you will need this port for later when configuring the agent to connect to the Wazuh server, you will need to edit the ossec.conf to use the port assigned by minikube. If you use kubectl you can define the ports to their respective ones (1514:1514, 1515:1515 ... etc), but minikube service will automatically assign some random ports which will need to be kept in mind when connecting the agent.
+
+Example of Minikube service output:
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/ce632966-88ed-4894-9ce3-2ac72c8e90fc)
+
+
+Once you have opened the ports and gained access to the Wazuh dashboard at https://<wazuh_server_ip>:<port> (for example https://localhost:8443) you can log in to the admin with the following credentials: admin:SecretPassword, after this if you navigate to Modules/Security Events you should see the following (without data):
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/e072a066-39de-4496-b342-ae50a2da7a75)
+
+
+Your task now is to install and configure a Wazuh agent to monitor your host machine and to audit logs from Docker and to analyze the data that is sent to the Wazuh server. You can deploy agents easily by navigating to the Agents page in the Wazuh dashboard and following the instructions to deploying a new agent with the packages related to your system.
+
+Example of Wazuh agent deployment in the dashboard:
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/f536191f-18ed-4703-bb74-57ecd5efdfea)
+
+
+You can find out more information about configuring the agent and Wazuh server to audit Docker containers from:
+https://documentation.wazuh.com/current/user-manual/capabilities/container-security/index.html
+
+If you encounter issues with registering an agent or in general you can look for the logs generated by the Wazuh Kubernetes pods in the wazuh namespace, you can use the default kubectl commands to see the logs for example:
+``` 
+kubectl logs wazuh-dashboard-949b86888-27dhj -n wazuh
+```
+
+Once you have successfully deployed the agent you should see an active agent in the Wazuh dashboard
+:
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/3a1e13d1-5b3e-457e-b74e-22dede9dd964)
+
+Now configure the agent by editing the [ossec.conf](https://documentation.wazuh.com/current/user-manual/reference/ossec-conf/index.html) file, this can be found in Linux systems from /var/ossec/etc/ossec.conf . After this you should start seeing logs from Docker when deploying containers in the Docker listener section of Wazuh dashboard. Now play around, see if you can get the agent to audit logs from other applications in your system and/or running commands in the docker containers, particularly using sudo and/or installing packages in them.
+
+
+Example of Docker logs in the Wazuh dashboard:
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/98e83a52-fa50-4f4b-8ed0-c2de6fe0bc8e)
+
+
+**Document your process of deploying, configuring the agent and provide images of the dashboard and logs generated by the agent**
+
+**What kind of different logs did you get the Wazuh agent to audit?**
+
+**What kind of MITRE ATT&CKS did you get?**
+
+
+### B) Create monitor for Wazuh against potential attacks (1p)
+
+This task focuses on simulating attacks and configuring the server and agent to react to these potential threats. This allows the student to gain experience in setting up a security monitoring system and to configure it to specific needs. 
+
+In the first task the server side of Wazuh was preconfigured for you during the deployment. This task requires you to edit the deployment files for this week as you need to be able to edit the wazuh manager during deployment to ensure the server gets the required configurations initialized. You also may need to configure the local Wazuh agent to output new logs to the Wazuh server. The configuration you make should demonstrate an alert that is caused by some kind of attack on the target machine (where agent is running). 
+
+You can find more information and ideas from the Wazuh documentation:
+* https://documentation.wazuh.com/current/proof-of-concept-guide/index.html
+
+To edit the Wazuh server's ossec config, you can make changes to the file at: week6/wazuh/wazuh_managers/wazuh_conf/master.conf 
+
+There is an example in week6/wazuh_managers/wazuh-master-sts.yaml about how to initialize a custom local_decoder.xml file located in /var/ossec/etc/decoders, in essence you need to create a Kubernetes ConfigMap for the file you want to edit in the Kubernetes wazuh-manager-master-0 pod for it to take effect in the server side of Wazuh, you also need to instruct the wazuh-manager-master StatefulSet to use this configmap in the volumes and volumeMounts sections of the yaml.
+
+You can use the following command to interact with pods (change the <pod_name> accordingly):
+```
+kubectl exec -it <pod_name> -n wazuh -- /bin/bash
+```
+
+Example of a ossec-decoder configmap:
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/18da1d55-e349-455b-8e45-736fd2e7c4cf)
+
+Example of volumes change for wazuh-manager-master:
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/c93f6811-5b89-421a-a346-fc95e29cad92)
+
+Example of volumeMounts change for wazuh-manager-master:
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/8b81b9fb-3506-438c-b0bc-738108d42746)
+
+
+There are multitude of options to choose for new monitors in the following links:
+* https://documentation.wazuh.com/current/cloud-security/monitoring.html
+* https://documentation.wazuh.com/current/user-manual/index.html
+* https://documentation.wazuh.com/current/user-manual/api/use-cases.html
+* https://documentation.wazuh.com/current/user-manual/capabilities/container-security/use-cases.html
+
+You are free to chooce what kind of "attacks" you are creating an alerting/monitoring rules, but some good ideas that could be implemented are:
+* Detecting an SQL injection attack
+* Detecting a shellshock attack
+* Monitoring GitHub audit logs
+
+>[!Note]
+>Make sure to censor any important data such as APIKEYs!
+
+**To get full points for this section, you need to provide the .yaml files that you edit for the Kubernetes deployments, provide your wazuh agent's /var/ossec/etc/ossec.conf file, provide images of the new logs, alerts shown in the Wazuh dashboard, explain what the new monitor is logging and how you simulated an attack.**
 
 
 
