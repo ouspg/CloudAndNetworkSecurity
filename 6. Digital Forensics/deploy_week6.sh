@@ -38,6 +38,6 @@ bash week6/wazuh/certs/dashboard_http/generate_certs.sh
 
 kubectl apply -f week6/local-env/storage-class.yaml
 kubectl apply -k week6/local-env/
-# 
-# echo "All the Kubernetes resources have been deployed"
-# echo "Wait for the pods to be in running and in READY state before executing ./access.sh"
+
+echo "All the Kubernetes resources have been deployed"
+echo "Wait for the pods to be in running and in READY state before executing ./access.sh"
