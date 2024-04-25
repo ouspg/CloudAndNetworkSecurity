@@ -9,4 +9,8 @@ Iodine: https://gist.github.com/nukeador/7483958
 
 
 
-Link for dnscat2 tutorial guide: https://www.hackingarticles.in/dnscat2-application-layer-cc/
+Links for dnscat2 tutorial guides: 
+
+https://www.hackingarticles.in/dnscat2-application-layer-cc/
+
+https://www.whitelist1.com/2017/10/dns-tunneling-with-dnscat2.html
