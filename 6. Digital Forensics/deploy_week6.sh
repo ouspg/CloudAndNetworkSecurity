@@ -29,16 +29,15 @@ helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.git
 helm repo add jetstack https://charts.jetstack.io
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.7.1 --set installCRDs=true
 helm repo update
-
+ 
 chmod +x week6/wazuh/certs/indexer_cluster/generate_certs.sh
 chmod +x week6/wazuh/certs/dashboard_http/generate_certs.sh
-. week6/wazuh/certs/indexer_cluster/generate_certs.sh
-cd -
-. week6/wazuh/certs/dashboard_http/generate_certs.sh
-cd -
+
+bash week6/wazuh/certs/indexer_cluster/generate_certs.sh
+bash week6/wazuh/certs/dashboard_http/generate_certs.sh
 
 kubectl apply -f week6/local-env/storage-class.yaml
 kubectl apply -k week6/local-env/
-
-echo "All the Kubernetes resources have been deployed"
-echo "Wait for the pods to be in running and in READY state before executing ./access.sh"
+# 
+# echo "All the Kubernetes resources have been deployed"
+# echo "Wait for the pods to be in running and in READY state before executing ./access.sh"
