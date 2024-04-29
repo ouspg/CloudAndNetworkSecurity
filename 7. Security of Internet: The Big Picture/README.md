@@ -17,6 +17,32 @@ https://www.hackingarticles.in/dnscat2-application-layer-cc/
 
 https://www.whitelist1.com/2017/10/dns-tunneling-with-dnscat2.html
 
+# Task 3 (W.I.P):
+This task will focus on the contents of the previous lecture, particularly the one provided in [moodle](https://moodle.oulu.fi/pluginfile.php/2289617/mod_resource/content/1/Luento%207B%20internet.pdf)
+You aren't expected to create any code in this task, instead this will focus on the theoretical side of things in an academic perspective concerning Autonomous System(s) with the focus on creating a visualization of the information you gather. You are free to use any resources found online,
+but the previously mentioned lecture slides provide a good starting point and links to good resources. Cite the resources properly that you used during this task.
+
+### A) Autonomous Systems in general 0.15p
+- Clarify Relationship: Explain whether an ISP's network is equivalent to an AS and explore the nuances of ISP and AS structures.
+- Use bgp.tools or similar tools to find out the AS associated with the your current IP address
+- What routing protocols are used to exchange routing information between ASs?
+
+### B) Autonomous Systems from Finland's (And from Nordic countries') perspective 0.20p
+- Determine the number of ASs in Finland using bgp.tools or similar resources.
+- What are the major ISPs and ASs in the region?
+- Where are the major IXPs located? How do they facilitate traffic exchange?
+- What is the overall structure of the internet infrastructure in Finland/Nordics? (Centralized, distributed, mesh-like)
+- Look for reliable sources of information on Finnish AS numbers, such as national telecom authorities, internet registries or academic research papers.
+
+### C) Create a visualization of the information you have gathered in the B) part 0.50p
+- Utilize bgp.tools: Use the bgp.tools website and its API to gather data on Finnish AS numbers, routing tables, and internet structure.
+- Ensure that the visualization addresses key questions posed in Teemu's lecture, providing insights into AS relationships, routing efficiency, and network structure.
+
+### D) Potential threats 0.15p
+- Explain whether IP addresses alone are sufficient for making routing decisions and explore the role of routing algorithms/protocols in optimizing network performance and reliability.
+- Discuss DNS Vulnerabilities: Explain potential threats if an attacker gains access to a DNS server and how DNS can be exploited as a tool for malicious activities.
+
+
 
 
 # Task 4
