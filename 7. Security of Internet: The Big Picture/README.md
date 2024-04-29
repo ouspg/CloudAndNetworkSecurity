@@ -34,12 +34,9 @@ Utilize a tool such as bgp.tools or similar to find out the AS associated with *
 Return a quick summary of the questions asked
 ```
 
-### B) Autonomous Systems from Finland's (And from Nordic countries') perspective (0.20p)
-- Determine the number of ASs in Finland using bgp.tools or similar resources.
-- What are the major ISPs and ASs in the region?
-- Where are the major IXPs located? How do they facilitate traffic exchange?
-- What is the overall structure of the internet infrastructure in Finland/Nordics? (Centralized, distributed, mesh-like)
-- Look for reliable sources of information on Finnish AS numbers, such as national telecom authorities, internet registries or academic research papers.
+### B) Autonomous Systems from Finland's perspective (0.20p)
+Determine the number of ASs in Finland using bgp.tools or similar resources. What are the major ISPs and ASs in the region? Where are the major IXPs located and how do they facilitate traffic exchange? What is the overall structure of the internet infrastructure in Finland/Nordics? (Centralized, distributed, mesh-like)
+Look for reliable sources of information on Finnish AS numbers, such as national telecom authorities, internet registries or academic research papers.
 
 ```
 Return a quick summary of the questions asked and cite your sources
