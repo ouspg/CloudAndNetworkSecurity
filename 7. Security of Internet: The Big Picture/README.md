@@ -50,5 +50,16 @@ pypy -m pip install wheel --upgrade
 pypy -m pip install numpy --config-settings=setup-args="-Dallow-noblas=true"
 pypy -m pip install bgpy_pkg
 
+git clone https://github.com/jfuruness/bgpy_pkg
+cd bgpy_pkg/
+pypy3 -m pip install .
+
 ```
 
+Add /opt/pypy/bin to the PATH:
+You can add the directory containing the bgpy script to your PATH environment variable. This allows you to execute the bgpy command from any directory without specifying its full path.
+
+You can add /opt/pypy/bin to your PATH by running the following command:
+```
+export PATH=$PATH:/opt/pypy/bin
+```
