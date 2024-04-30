@@ -125,6 +125,17 @@ Gao Rexford algorithm. Tell about it
 
 What are annoucements. How is the simulator propagating announcements in BGPy. Describe in your own words.
 
+#### Info
+
+From a high level, when we traceback from an AS, we start at a specific AS. For the most specific prefix at that AS, we then look at the next hop along the AS path. We then look up that AS in ASGraph, and recursively repeat this process.
+
+We do this from each AS. When we traceback, there are three final possible outcomes, defined in the enum Outcomes
+
+    ATTACKER_SUCCESS: The traffic on the data plane reached the attacker
+    VICTIM_SUCCESS: The traffic on the data plane reaches the victim aka the legitimate origin of the announcement
+    DISCONNECTED: The traffic does not reach either the attacker or the victim
+
+
 ### About the dataset
 
 The 'serial-1' directory contains AS relationships inferred from BGP
