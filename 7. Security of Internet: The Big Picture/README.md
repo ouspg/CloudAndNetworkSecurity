@@ -119,3 +119,38 @@ You can add /opt/pypy/bin to your PATH by running the following command:
 ```
 export PATH=$PATH:/opt/pypy/bin
 ```
+
+### About the dataset
+
+The 'serial-1' directory contains AS relationships inferred from BGP
+data using a method similar to the method described in "AS
+Relationships, Customer Cones, and Validation" published in IMC 2013
+(http://www.caida.org/publications/papers/2013/asrank/).  The serial-1
+directory also contains provider-peer customer cones inferred for each
+AS, as well as the raw BGP routes that we extracted paths from for
+inferring relationships.  The README file in the serial-1 directory
+further describes this data set.
+
+The 'serial-2' directory combines the 'serial-1' data with relationships
+inferred from Ark traceroute data, and multi-lateral peering
+(http://www.caida.org/publications/papers/2013/inferring_multilateral_peering/).
+The README file in the serial-2 directory further describes this data
+set.
+
+We disabled public access to 2020-02 and 2020-03 data since some of
+the links were not calculated correctly, therefore producing errors in
+customer cone and ranks.
+
+------------------------
+Acceptable Use Agreement
+------------------------
+
+Access to these data is subject to the terms of the following CAIDA Acceptable Use Agreement (AUA) for Publicy Accessible Datasets.
+https://www.caida.org/about/legal/aua/public_aua/
+
+When referencing this data (as required by the AUA), please use:
+
+    The CAIDA AS Relationships Dataset, <date range used>
+    https://www.caida.org/catalog/datasets/as-relationships/
+You are required to notify CAIDA when you make a publication using these data. Please report your publication by completing the form at
+https://www.caida.org/catalog/datasets/publications/report-publication/  or by emailing us at data-info@caida.org
