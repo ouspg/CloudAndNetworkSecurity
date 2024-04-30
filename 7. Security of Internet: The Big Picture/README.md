@@ -89,7 +89,7 @@ Before you proceed, this task has two options. First option is guided and based 
 
 This simulator has been tested to work with kali linux. Follow the install instructions below and proceed to lab tasks
 
-## BGP Installation not really! Actually MISS YOU a little **insert kisses**
+## BGP Installation
 
 Steps for kali linux
 
