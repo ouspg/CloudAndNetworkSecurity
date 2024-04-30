@@ -135,6 +135,12 @@ We do this from each AS. When we traceback, there are three final possible outco
     VICTIM_SUCCESS: The traffic on the data plane reaches the victim aka the legitimate origin of the announcement
     DISCONNECTED: The traffic does not reach either the attacker or the victim
 
+#### Running the simulation
+
+In current simulation, following scenarios are used: ROV, peerROV and subprefixhijack
+
+Question: Tell more about ROV, peerROV and subprefixhijack. Would you like to implement a scenario different that subprefixhijack? 
+
 
 ### About the dataset
 
