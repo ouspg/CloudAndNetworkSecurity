@@ -44,14 +44,14 @@ Determine the number of ASs in Finland using bgp.tools or similar resources. Wha
 Look for reliable sources of information on Finnish AS numbers, such as national telecom authorities, internet registries or academic research papers.
 
 ```
-Return a quick summary of the questions asked and cite your sources
+Return a quick summary of the questions asked
 ```
 
 ### C) Create a visualization of the information you have gathered in the previous part (0.50p)
 Use the bgp.tools website and its API (and/or other tools) to gather data on Finnish AS numbers, routing tables, and internet structure. Ensure that the visualization addresses key questions posed in Teemu's lecture, providing insights into AS relationships, routing efficiency, and network structure.
 
 ```
-Return a quick summary of the questions asked and cite your sources,
+Return a quick summary of the questions asked
 and provide the visualization you created.
 ```
 
