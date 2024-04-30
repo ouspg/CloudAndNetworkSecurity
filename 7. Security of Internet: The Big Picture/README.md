@@ -93,7 +93,7 @@ This simulator has been tested to work with kali linux. Follow the install instr
 
 1) Install pypy on kali linux from [official website](https://www.pypy.org/download.html)
 
-2) Extract the package and move to folder /opt/pypy
+2) Extract the package and rename the folder from pypy3.10-v7.x.xx-linux64 to pypy. Move to folder /opt/pypy
 ```
 mv pypy-<version>-<architecture> /opt/pypy
 ```
@@ -112,7 +112,7 @@ Now pypy refers to pypy3 because of this symbolic representation!
 
 So far, we have setup pypy in kali linux. Next steps are to install dependencies and the simulator itself
 
-5) Install dependencies
+5) Install dependencies and bgpy_pkg
 ```
 sudo apt-get install -y graphviz libjpeg-dev zlib1g-dev
 pypy -m pip install pip --upgrade
@@ -120,21 +120,26 @@ pypy -m pip install wheel --upgrade
 
 # Command below take some minutes, so be patient!
 pypy -m pip install numpy --config-settings=setup-args="-Dallow-noblas=true"
-
+pypy -m pip install bgpy_pkg
 ```
 6) Clone BGP simulator repo
 ```
 git clone https://github.com/jfuruness/bgpy_pkg
 cd bgpy_pkg/
-pypy -m pip install .
 ```
-7) Add /opt/pypy/bin to the PATH:
+7) Add /opt/pypy/bin to the PATH (optional):
 You can add the directory containing the bgpy script to your PATH environment variable. This allows you to execute the bgpy command from any directory without specifying its full path.
 
 You can add /opt/pypy/bin to your PATH by running the following command:
 ```
 export PATH=$PATH:/opt/pypy/bin
 ```
+---
+
+After following the installation steps above you can run the default simulation located at 'bgpy_pkg/__main__.py'
+
+This will generate graphs for you as well
+
 ### Questions
 
 Gao Rexford algorithm. Tell about it
