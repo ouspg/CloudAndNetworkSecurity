@@ -67,6 +67,8 @@ Return a quick summary of the questions asked
 
 # Task 4
 
+The Internet is an interconnection of autonomous systems (AS) which use Border Gateway Protocol (BGP) to exchange routing or reachability information. BGP relies on trust among network operators to secure their systems well and to send correct data since there is no built-in validation in this protoco
+
 ## BGP Installation
 
 Steps for kali linux
