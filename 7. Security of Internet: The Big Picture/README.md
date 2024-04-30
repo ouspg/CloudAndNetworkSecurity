@@ -65,19 +65,31 @@ Return a quick summary of the questions asked
 
 
 
-# Task 4 (W.I.P)
+## Task 4 (W.I.P)
+
+# Performing Border Gateway Protocol (BGP) simulation
 
 The Internet is an interconnection of autonomous systems (AS) which use Border Gateway Protocol (BGP) to exchange routing or reachability information. BGP relies on trust among network operators to secure their systems well and to send correct data since there is no built-in validation in this protocol.
 
-Based on RFC, BGP has three fundamental vulnerabilities:
-Vulnerabilities of BGP
+The Border Gateway Protocol (BGP), utilized for exchanging routing information among autonomous systems (AS) within the Internet, lacks inherent mechanisms to ensure the integrity, authenticity, and authority of transmitted data. Specifically:
 
-1 No internal mechanism to protect the integrity and source authenticity of BGP
-messages
-2 No mechanism specified to validate the authority of an AS to announce NLRI
-3 No mechanism to verify the authenticity of the attributes of a BGP update message
+    1. BGP lacks internal safeguards to protect the integrity and authenticity of its messages.
+    2. It lacks a specified mechanism to validate the authority of an AS to announce Network Layer Reachability Information (NLRI).
+    3. BGP does not provide a means to verify the authenticity of attributes within update messages.
 
-## BGP Installation
+To address these vulnerabilities, Resource Public Key Infrastructure (RPKI) and Route Origin Validation (ROV) have been introduced as supplementary measures to enhance BGP security.
+
+In this task students explore more about BGP and AS by implementing and performing a simulation.
+
+Useful article on prefix hijacking: click [here](https://www.catchpoint.com/blog/bgp-vulnerabilities)
+
+Before you proceed, this task has two options. First option is guided and based on [bgpy](https://github.com/jfuruness/bgpy_pkg) which is an extendable BGP simulator that can be used for security simulations for attack and defense. Second option is free-form where students get to select a BGP simulator/visualizer of their choice and implement it. 
+
+## Option 1: Guided BGP simulation with BGPY simulator
+
+This simulator has been tested to work with kali linux. Follow the install instructions below and proceed to lab tasks
+
+## BGP Installation not really! Actually MISS YOU a little **insert kisses**
 
 Steps for kali linux
 
