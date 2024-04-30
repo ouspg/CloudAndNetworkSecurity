@@ -19,22 +19,27 @@ https://www.whitelist1.com/2017/10/dns-tunneling-with-dnscat2.html
 
 ## Task 3 (W.I.P):
 This task will focus on the contents of the previous lecture, particularly the one provided in [moodle](https://moodle.oulu.fi/pluginfile.php/2289617/mod_resource/content/1/Luento%207B%20internet.pdf).
-You aren't expected to create any code in this task, instead this will focus on the theoretical side of things in an academic perspective concerning Autonomous System(s) with the focus on creating a visualization of the information you gather. You are allowed to use AI in this task, but you do need to back up the information you provide with relevant sources. Create a list of links to the sources you used to complete this task and **cite them properly** as if this was a small scientific article.
+You aren't expected to create any code in this task, instead this will focus on the theoretical side of things in an academic perspective concerning the internet, Autonomous System(s), BGPs and more with the focus on creating a visualization of the information you gather. 
+
+You are allowed to use AI in this task, but you do need to back up the information you provide with relevant sources. Create a list of links to the sources you used to complete this task and **cite them properly** as if this was a small scientific article.
 
 You are free to use any resources found online,
 but the previously mentioned lecture slides provide a good starting point and links to good resources.
 
 Ensure that the answers you provide are under 200 words per section.
 
-### A) Autonomous Systems in general (0.15p)
-Briefly summarize what ASs are and their core features. Explain whether an ISP's network is equivalent to an AS and describe the structures behind ISP and AS and what routing protocols are used to exchange routing information between ASs.
+### A) Structure of the internet in general (0.15p)
+Briefly summarize how the network is divided - AS, service providers, national network isolation efforts and the dark web.
+
+What are ASs and what are is their core function in the bigger picture. Explain whether an ISP's network is equivalent to an AS and describe the structures behind ISP and AS. Summarize what routing protocols are used to exchange routing information between ASs and how these protocols work.
+
 Utilize a tool such as bgp.tools or similar to find out the ASs and upstreams about **your current IP address**, did you find any other information from the tool?
 
 ```
 Return a quick summary of the questions asked
 ```
 
-### B) Autonomous Systems from Finland's perspective (0.20p)
+### B) Structure of the internet from Finland's perspective (0.20p)
 Determine the number of ASs in Finland using bgp.tools or similar resources. What are the major ISPs and ASs in the region? Where are the major IXPs located and how do they facilitate traffic exchange? What is the overall structure of the internet infrastructure in Finland/Nordics? (Centralized, distributed, mesh-like)
 Look for reliable sources of information on Finnish AS numbers, such as national telecom authorities, internet registries or academic research papers.
 
