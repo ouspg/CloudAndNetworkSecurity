@@ -123,6 +123,8 @@ export PATH=$PATH:/opt/pypy/bin
 
 Gao Rexford algorithm. Tell about it
 
+What are annoucements. How is the simulator propagating announcements in BGPy. Describe in your own words.
+
 ### About the dataset
 
 The 'serial-1' directory contains AS relationships inferred from BGP
