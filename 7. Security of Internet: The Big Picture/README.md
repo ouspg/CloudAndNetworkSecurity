@@ -118,16 +118,15 @@ sudo apt-get install -y graphviz libjpeg-dev zlib1g-dev
 pypy -m pip install pip --upgrade
 pypy -m pip install wheel --upgrade
 
-# Commands below take some minutes, so be patient!
+# Command below take some minutes, so be patient!
 pypy -m pip install numpy --config-settings=setup-args="-Dallow-noblas=true"
-pypy -m pip install bgpy_pkg
+
 ```
 6) Clone BGP simulator repo
 ```
 git clone https://github.com/jfuruness/bgpy_pkg
 cd bgpy_pkg/
-pypy3 -m pip install .
-
+pypy -m pip install .
 ```
 7) Add /opt/pypy/bin to the PATH:
 You can add the directory containing the bgpy script to your PATH environment variable. This allows you to execute the bgpy command from any directory without specifying its full path.
