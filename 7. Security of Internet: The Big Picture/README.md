@@ -136,9 +136,7 @@ export PATH=$PATH:/opt/pypy/bin
 ```
 ---
 
-After following the installation steps above you can run the default simulation located at 'bgpy_pkg/__main__.py'
-
-This will generate graphs for you as well
+After following the installation steps above you can run the default simulation by running the main python file in bgpy_pkg/. This generates simulation graphs for as well. Parameters can be changed in main file to implement different use cases and scenarios. Your next task is to study the bgpy_pkg [tutorial](https://github.com/jfuruness/bgpy_pkg/wiki/Tutorial) in full and perform a custom simulation of your choosing while also answering the questions below.
 
 ### Questions
 
