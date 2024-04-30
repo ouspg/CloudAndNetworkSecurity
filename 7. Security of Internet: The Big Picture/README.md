@@ -19,16 +19,16 @@ https://www.whitelist1.com/2017/10/dns-tunneling-with-dnscat2.html
 
 ## Task 3 (W.I.P):
 This task will focus on the contents of the previous lecture, particularly the one provided in [moodle](https://moodle.oulu.fi/pluginfile.php/2289617/mod_resource/content/1/Luento%207B%20internet.pdf).
-You aren't expected to create any code in this task, instead this will focus on the theoretical side of things in an academic perspective concerning Autonomous System(s) with the focus on creating a visualization of the information you gather. 
+You aren't expected to create any code in this task, instead this will focus on the theoretical side of things in an academic perspective concerning Autonomous System(s) with the focus on creating a visualization of the information you gather. You are allowed to use AI in this task, but you do need to back up the information you provide with relevant sources. Create a list of links to the sources you used to complete this task and **cite them properly** as if this was a small scientific article.
 
 You are free to use any resources found online,
-but the previously mentioned lecture slides provide a good starting point and links to good resources. Cite the sources properly that you used during this task.
+but the previously mentioned lecture slides provide a good starting point and links to good resources.
 
 Ensure that the answers you provide are under 200 words per section.
 
 ### A) Autonomous Systems in general (0.15p)
 Briefly summarize what ASs are and their core features. Explain whether an ISP's network is equivalent to an AS and describe the structures behind ISP and AS and what routing protocols are used to exchange routing information between ASs.
-Utilize a tool such as bgp.tools or similar to find out the AS associated with **your current IP address**.
+Utilize a tool such as bgp.tools or similar to find out the ASs and upstreams about **your current IP address**, did you find any other information from the tool?
 
 ```
 Return a quick summary of the questions asked
@@ -46,11 +46,12 @@ Return a quick summary of the questions asked and cite your sources
 Use the bgp.tools website and its API (and/or other tools) to gather data on Finnish AS numbers, routing tables, and internet structure. Ensure that the visualization addresses key questions posed in Teemu's lecture, providing insights into AS relationships, routing efficiency, and network structure.
 
 ```
-Return a quick summary of the questions asked and cite your sources, and provide the visualization you created.
+Return a quick summary of the questions asked and cite your sources,
+and provide the visualization you created.
 ```
 
 ### D) Potential threats (0.15p)
-Explain whether IP addresses alone are sufficient for making routing decisions and explore the role of routing algorithms/protocols in optimizing network performance and reliability. Explain potential threats if an attacker gains access to a DNS server and how DNS can be exploited as a tool for malicious activities.
+Explain whether IP addresses alone are sufficient for making routing decisions and explore the role of routing algorithms/protocols in optimizing network performance and reliability. Explain potential threats if an attacker gains access to a DNS server and how DNS can be exploited for malicious activities.
 
 ```
 Return a quick summary of the questions asked
