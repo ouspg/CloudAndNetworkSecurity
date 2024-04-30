@@ -67,7 +67,15 @@ Return a quick summary of the questions asked
 
 # Task 4
 
-The Internet is an interconnection of autonomous systems (AS) which use Border Gateway Protocol (BGP) to exchange routing or reachability information. BGP relies on trust among network operators to secure their systems well and to send correct data since there is no built-in validation in this protoco
+The Internet is an interconnection of autonomous systems (AS) which use Border Gateway Protocol (BGP) to exchange routing or reachability information. BGP relies on trust among network operators to secure their systems well and to send correct data since there is no built-in validation in this protocol.
+
+Based on RFC, BGP has three fundamental vulnerabilities:
+Vulnerabilities of BGP
+
+1 No internal mechanism to protect the integrity and source authenticity of BGP
+messages
+2 No mechanism specified to validate the authority of an AS to announce NLRI
+3 No mechanism to verify the authenticity of the attributes of a BGP update message
 
 ## BGP Installation
 
