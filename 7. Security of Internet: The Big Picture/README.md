@@ -65,7 +65,7 @@ Return a quick summary of the questions asked
 
 
 
-# Task 4
+# Task 4 (W.I.P)
 
 The Internet is an interconnection of autonomous systems (AS) which use Border Gateway Protocol (BGP) to exchange routing or reachability information. BGP relies on trust among network operators to secure their systems well and to send correct data since there is no built-in validation in this protocol.
 
@@ -119,6 +119,9 @@ You can add /opt/pypy/bin to your PATH by running the following command:
 ```
 export PATH=$PATH:/opt/pypy/bin
 ```
+### Questions
+
+Gao Rexford algorithm. Tell about it
 
 ### About the dataset
 
