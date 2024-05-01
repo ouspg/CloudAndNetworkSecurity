@@ -1,4 +1,4 @@
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/7392c6a8-47e1-4aa9-99fd-a7a8d88c2ebd)Cloud and Network Security Lab 7: Security of Internet: The Big Picture
+Cloud and Network Security Lab 7: Security of Internet: The Big Picture
 ====
 
 Responsible person/main contact: Asad Hasan & Lauri Suutari
@@ -16,11 +16,12 @@ Make yourself familiar with the following topics:
 * DNScat2 official reposiotry on [Github](https://github.com/iagox86/dnscat2)
 * DNScat2 [comprehensive guide](https://www.hackingarticles.in/dnscat2-application-layer-cc/)
 * DNS tunneling with DNScat2 [tutorial](https://www.whitelist1.com/2017/10/dns-tunneling-with-dnscat2.html)
+* BGP simulator bgpy_pkg on [Github](https://github.com/jfuruness/bgpy_pkg)
 
 ### Important Notice
 
 Lab structure from week 1 is used in task 1 and 2. If you face difficulties in setting up lab 1 network structure, refer to lab 1 manual here [TODO]. Alternatively,
-you can perform task 2 using two virtual machines (one acting as victim and other as server) in virtual box. 
+you can perform task 2 using two virtual machines (one acting as a victim and other as server) in virtual box. However, instructions for this will not be provided and you'll have to implement on your own.
 
 
 ## Grading
