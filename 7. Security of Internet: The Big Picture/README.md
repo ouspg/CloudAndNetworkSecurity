@@ -16,6 +16,7 @@ Make yourself familiar with the following topics:
 * DNScat2 official reposiotry on [Github](https://github.com/iagox86/dnscat2)
 * DNScat2 [comprehensive guide](https://www.hackingarticles.in/dnscat2-application-layer-cc/)
 * DNS tunneling with DNScat2 [tutorial](https://www.whitelist1.com/2017/10/dns-tunneling-with-dnscat2.html)
+* BGP in a nutshell [guide](https://blog.j2sw.com/networking/border-gateway-protocol-bgp-in-a-nutshell/)
 * BGP simulator bgpy_pkg on [Github](https://github.com/jfuruness/bgpy_pkg)
 
 ### Important Notice
@@ -85,8 +86,24 @@ At first, take a glance at initial state of DNS resolver's cache and make some n
 
 **In context of "DNS Resolver Infrastructure Cache Stats" what does an entry with Zone = youtube.com represent? Explain the record by taking real values as example**
 
+**Attach screenshot of DNS Resolver cache**
 
+---
 
+## Task 2
+
+### DNS Tunneling
+
+" DNS was originally made for name resolution and not for data transfer, so it’s often not seen as a malicious communications and data exfiltration threat. Because DNS is a well-established and trusted protocol, hackers know that organizations rarely analyze DNS packets for malicious activity. DNS has less attention and most organizations focus resources on analyzing web or email traffic where they believe attacks often take place. In reality, diligent endpoint monitoring is required to find and prevent DNS tunneling.
+
+Furthermore, tunneling toolkits have become an industry and are wildly available on the Internet, so hackers don’t really need technical sophistication to implement DNS tunneling attacks. "
+
+Source: Read more [here](https://www.cynet.com/attack-techniques-hands-on/how-hackers-use-dns-tunneling-to-own-your-network/#_edn2)
+
+For tunneling to work, a client-server model is used. Client is typically behind the organization’s security controls and the server is located somewhere on the Internet. Since this is a client-server model, any type of traffic can be sent over the tunnel. Dnscat2 is also a client-server application. Dnscat2 functions more like command and control software and also encrypts the transmitted data.
+
+>[!Note]
+> In this task students will perform DNS tunneling attack with DNScat2 using lab 1's network structure.
 
 ---
 
