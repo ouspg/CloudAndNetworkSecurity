@@ -180,8 +180,7 @@ Return a quick summary of the questions asked
 ```
 
 ### B) Structure of the internet from Finland's perspective (0.20p)
-Determine the number of ASs in Finland using bgp.tools or similar resources. What are the major ISPs and ASs in the region? Where are the major IXPs located and how do they facilitate traffic exchange? What is the overall structure of the internet infrastructure in Finland/Nordics? (Centralized, distributed, mesh-like)
-Look for reliable sources of information on Finnish AS numbers, such as national telecom authorities, internet registries or academic research papers.
+Determine the number of ASs in Finland using [bgp.tool api](https://bgp.tools/kb/api) or similar resources. What are the major ISPs and ASs in the region? Where are the major IXPs located and how do they facilitate traffic exchange? What is the overall structure of the internet infrastructure in Finland/Nordics? (Centralized, distributed, mesh-like). Look for reliable sources of information on Finnish AS numbers, such as national telecom authorities, internet registries or academic research papers.
 
 ```
 Return a quick summary of the questions asked
@@ -247,7 +246,7 @@ In your return make sure to explain all necessary steps, commands and code adjus
 
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/107e1e55-e626-4499-a1eb-9d61912fdb57)
 
-![!Tip]
+>[!Tip]
 > Going through the complete github tutorial and repository itself will help answer the questions above
 
 ## Option 2: BGP Simulator or Visualizer of your own choice
