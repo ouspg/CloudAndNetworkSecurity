@@ -22,7 +22,7 @@ Make yourself familiar with the following topics:
 ### Important Notice
 
 Lab structure from week 1 is used in task 1 and 2. If you face difficulties in setting up lab 1 network structure, refer to lab 1 manual here [TODO]. Alternatively,
-you can perform task 2 using two virtual machines (one acting as a victim and other as server) in virtual box. However, instructions for this will not be provided and you'll have to implement on your own.
+you can perform task 2 using two virtual machines (one acting as a victim and other as server) in virtual box. However, instructions for this will not be provided and you'll have to implement on your own. This is a good option if you do not have a decent machine running a Linux and it avoids nested virtualization and the issues related to it.
 
 
 ## Grading
@@ -107,7 +107,10 @@ For tunneling to work, a client-server model is used. Client is typically behind
 
 ---
 
-## Task 3 (W.I.P):
+## Task 3
+
+### Internet, Autonomous System(s), BGPs: The big picture
+
 This task will focus on the contents of the previous lecture, particularly the one provided in [moodle](https://moodle.oulu.fi/pluginfile.php/2289617/mod_resource/content/1/Luento%207B%20internet.pdf).
 You aren't expected to create any code in this task, instead this will focus on the theoretical side of things in an academic perspective concerning the internet, Autonomous System(s), BGPs and more with the focus on creating a visualization of the information you gather. 
 
@@ -116,7 +119,7 @@ You are allowed to use AI in this task, but you do need to back up the informati
 You are free to use any resources found online,
 but the previously mentioned lecture slides provide a good starting point and links to good resources.
 
-Ensure that the answers you provide are under 200 words per section.
+**Ensure that the answers you provide are under 200 words per section.**
 
 ### A) Structure of the internet in general (0.15p)
 Briefly summarize how the network is divided - AS, service providers, national network isolation efforts and the dark web.
