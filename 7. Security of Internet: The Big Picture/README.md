@@ -21,8 +21,8 @@ Make yourself familiar with the following topics:
 
 ### Important Notice
 
-Lab structure from week 1 is used in task 1 and 2. If you face difficulties in setting up lab 1 network structure, refer to lab 1 manual here [TODO]. Alternatively,
-you can perform task 2 using two virtual machines (one acting as a victim and other as server) in virtual box. However, instructions for this will not be provided and you'll have to implement on your own. This is a good option if you do not have a decent machine running a Linux and it avoids nested virtualization and the issues related to it.
+Lab structure from week 1 is used in task 1 and 2. If you face difficulties in setting up lab 1 network structure, refer to [lab 1 manual](https://github.com/ouspg/CloudAndNetworkSecurity/tree/main/1.%20Network%20Security). Alternatively,
+you can perform task 2 using two virtual machines (one acting as a victim and other as server) in virtual box. However, instructions for this are not provided and you'll have to implement on your own. This is a good option if you do not have a decent machine running a Linux and it avoids nested virtualization and the issues related to it.
 
 
 ## Grading
@@ -52,9 +52,9 @@ DNS is a widely used term nowdays. In this task, you'll study network traffic lo
 
 ### A) Analyze traffic log files for DNS entries
 
-Two traffic log files are provided in different format. Both files contain the same network traffic but one of them is a _.pcap_ and the other is _.txt _. The only difference between these two files is that _.pcap_ requires a software that supports _.pcap_ format for analysis where _.txt _ file can be analyzed used command-line or any text editor. 
+Two traffic log files are provided in different format. Both files contain the same network traffic but one of them is a _.pcap_ and the other is _.txt _. The only difference between these two files is that _.pcap_ requires a software that supports _.pcap_ for analysis where _.txt _ file can be analyzed used command-line or any text editor. 
 
-TODO INSERT Download links
+Log files can be download from [misc folder](https://github.com/ouspg/CloudAndNetworkSecurity/tree/main/7.%20Security%20of%20Internet%3A%20The%20Big%20Picture/misc)
 
 First answer the following questions:
 
