@@ -1,21 +1,93 @@
-# CloudAndNetworkSecurity
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/7392c6a8-47e1-4aa9-99fd-a7a8d88c2ebd)Cloud and Network Security Lab 7: Security of Internet: The Big Picture
+====
+
+Responsible person/main contact: Asad Hasan & Lauri Suutari
+
+
+## Preliminary tasks & prerequisites
+
+This is the seventh and the final lab in the series with the theme of Security of Internet. 
+You should return the tasks to GitHub.
+
+Make yourself familiar with the following topics:
+
+* DNS on [wikipedia](https://en.wikipedia.org/wiki/Domain_Name_System)
+* List of [DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+* DNScat2 official reposiotry on [Github](https://github.com/iagox86/dnscat2)
+* DNScat2 [comprehensive guide](https://www.hackingarticles.in/dnscat2-application-layer-cc/)
+* DNS tunneling with DNScat2 [tutorial](https://www.whitelist1.com/2017/10/dns-tunneling-with-dnscat2.html)
+
+### Important Notice
+
+Lab structure from week 1 is used in task 1 and 2. If you face difficulties in setting up lab 1 network structure, refer to lab 1 manual here [TODO]. Alternatively,
+you can perform task 2 using two virtual machines (one acting as victim and other as server) in virtual box. 
+
+
+## Grading
+
+<!-- <details><summary>Details</summary> -->
+
+The order of the tasks is mandatory. For example, to gain points from Task 3, Task 1 and 2 should be completed.
+
+Task #|Points|Description|Tools
+-----|:---:|-----------|-----
+Task 1 | 1 | Study traffic logs for DNS records and study pfsense's DNS resolver cache | wireshark or command-line, pfSense, Terraform
+Task 2 | 1 | DNS tunneling | DNScat2, Terraform
+Task 3 | 1 | Internet, Autonomous System(s) and BGPs: The Big Picture | No specific tools. Based on lecture 6
+Task 4 | 2 | Performing Border Gateway Protocl (BGP) simulation | Free-form. However, bgpy_pkg (BGP simulator) is recommended
+
+
+Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 5 points from the whole exercise.
+<!-- </details> -->
+
+---
+
+## Task 1
+
+### DNS records and DNS cache
+
+DNS is a widely used term nowdays. In this task, you'll study network traffic logs for DNS records and answer some questions. In the second part of this task, you'll use lab 1's structure to study DNS resolver status via pfsense's webGUI
+
+### A) Analyze traffic log files for DNS entries
+
+Two traffic log files are provided in different format. Both files contain the same network traffic but one of them is a _.pcap_ and the other is _.txt _. The only difference between these two files is that _.pcap_ requires a software that supports _.pcap_ format for analysis where _.txt _ file can be analyzed used command-line or any text editor. 
+
+TODO INSERT Download links
+
+First answer the following questions:
+
+**How many different record types are in DNS. List common record types. Which record types can be considered malicious provided you are examining logs for malicious DNS traffic activity as a security analyst?**
+
+Now, analyze the traffic_logs file and asnwer following questions:
+
+**How many different record types can you find in it?**
+
+**What is the IP address of host machine querying all these DNS requests?**
+
+**Pick any single entry which includes multiple resource records (RRs) for DNS. Explain the entry in detail, what's happening. Add screenshot**
+
+### B) Study DNS cache records using pfsense's webGUI
+
+Pfsense's webGUI can be utilized to study the status of DNS resolver cache. In this task, you'll spawn network structure from lab 1 and perform tasks below.
+
+First answer the following question:
+
+**What is DNS cache. How does DNS store cache’s to speed look-up**
+
+Now, spawn your lab 1 network structure using terraform and access pfsense webGUI from kali linux. DNS cache records can be studied from Status tab by selecting DNS Resolver
+
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/5d1455ca-c946-4b8b-9900-4e7f90de8100)
+
+At first, take a glance at initial state of DNS resolver's cache and make some notes. Then, start browsing different websites including youtube.com and answer following questions:
+
+**In context of "DNS Resolver Infrastructure Cache Speed" what does an entry with Zone = youtube.com represent? Explain the record by taking real values as example**
+
+**In context of "DNS Resolver Infrastructure Cache Stats" what does an entry with Zone = youtube.com represent? Explain the record by taking real values as example**
 
 
 
-Adding useful links for Task 1 & 2 related to DNS.
 
-List of DNS record types: https://en.wikipedia.org/wiki/List_of_DNS_record_types
-Iodine: https://gist.github.com/nukeador/7483958
-
-
-
-Links for dnscat2 tutorial guides: 
-
-https://github.com/iagox86/dnscat2
-
-https://www.hackingarticles.in/dnscat2-application-layer-cc/
-
-https://www.whitelist1.com/2017/10/dns-tunneling-with-dnscat2.html
+---
 
 ## Task 3 (W.I.P):
 This task will focus on the contents of the previous lecture, particularly the one provided in [moodle](https://moodle.oulu.fi/pluginfile.php/2289617/mod_resource/content/1/Luento%207B%20internet.pdf).
