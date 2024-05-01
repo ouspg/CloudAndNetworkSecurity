@@ -251,10 +251,10 @@ In your return make sure to explain all necessary steps, commands and code adjus
 
 ## Option 2: BGP Simulator or Visualizer of your own choice
 
-If you go for this option, you are free to choose a BGP simulator or Visualizer of your own choice and carry out it's installation and perform some sort of simulation and/or visualization. 
-Note, that you have to provide a detailed report about each step taken including the installation steps. You should also include information about certain key aspects utilized in that simulator or visualizer.
+If you go for this option, you are free to choose a BGP simulator or visualizer of your own choice and carry out it's installation and perform some sort of simulation and/or visualization. 
+Note, that you have to provide a detailed report about each step taken including the installation steps. You should also include information about certain key concepts explored in that simulation or visualization.
 
-Some options but they are not tested:
+Some options for you, but they are not tested:
 * https://github.com/ssbgp/simulator
 * https://github.com/massimocandela/BGPlay
 
