@@ -110,7 +110,7 @@ For tunneling to work, a client-server model is used. Client is typically behind
 Spawn lab 1's network structure using terraform and setup DNScat2 inside terraform.
 
 >[!Tip]
-> Ubuntu acts as server and kali acts as client
+> Ubuntu acts as server and kali acts as client.
 > You are not required to use any real domain name for the scope of this task
 
 Installation steps are present in github's [official repo](https://github.com/iagox86/dnscat2). It is recommended to install the tool on server (ubuntu) first followed by client (kali).
