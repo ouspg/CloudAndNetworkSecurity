@@ -225,7 +225,7 @@ Useful article on prefix hijacking: click [here](https://www.catchpoint.com/blog
 
 Before you proceed, this task has two options. First option is guided and based on [bgpy](https://github.com/jfuruness/bgpy_pkg) which is an extendable BGP simulator that can be used for security simulations for attack and defense. Second option is free-form where students get to select a BGP simulator/visualizer of their choice and implement it. 
 
-## Option 1: Guided BGP simulation with BGPY simulator
+## Option 1: BGP simulation with BGPY simulator
 
 This simulator has been tested to work with kali linux. An Installation guide for kali linux can be found [here](https://github.com/ouspg/CloudAndNetworkSecurity/blob/week7/7.%20Security%20of%20Internet:%20The%20Big%20Picture/bgpy_pkg_install_guide.md) but it's optional and tool's official repository contains all necessary information.
 
