@@ -98,7 +98,7 @@ At first, take a glance at initial state of DNS resolver's cache and make some n
 
 Furthermore, tunneling toolkits have become an industry and are wildly available on the Internet, so hackers don’t really need technical sophistication to implement DNS tunneling attacks. "
 
-Source: Read more [here](https://www.cynet.com/attack-techniques-hands-on/how-hackers-use-dns-tunneling-to-own-your-network/#_edn2)
+Source: Read more [here](https://www.cynet.com/attack-techniques-hands-on/how-hackers-use-dns-tunneling-to-own-your-network/)
 
 For tunneling to work, a client-server model is used. Client is typically behind the organization’s security controls and the server is located somewhere on the Internet. Since this is a client-server model, any type of traffic can be sent over the tunnel. Dnscat2 is also a client-server application. Dnscat2 functions more like command and control software and also encrypts the transmitted data.
 
