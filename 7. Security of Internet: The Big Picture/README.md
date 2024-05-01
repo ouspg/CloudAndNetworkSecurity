@@ -141,13 +141,13 @@ Screenshots of commands used to gather victim info
 Screenshot and command to exit the shell session from ubuntu server
 ```
 
-### C) After thoughs
+### C) After thoughts
 
 Use wireshark to study the data that is being transferred over the DNS tunnel. 
 
-**Which protocols are used to carry the data? How is data transmitted using this protocol?**
+**Which protocols are used to carry the data? How is data transmitted using this protocol in the context of DNS tunneling?**
 
-**Add screenshots of wireshark analysis**
+**Add screenshots from wireshark analysis**
 
 
 ---
