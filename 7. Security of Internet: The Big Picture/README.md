@@ -227,68 +227,33 @@ Before you proceed, this task has two options. First option is guided and based 
 
 ## Option 1: Guided BGP simulation with BGPY simulator
 
-This simulator has been tested to work with kali linux. An Installation guide can be found here [TODO]
+This simulator has been tested to work with kali linux. An Installation guide for kali linux can be found [here](https://github.com/ouspg/CloudAndNetworkSecurity/blob/week7/7.%20Security%20of%20Internet:%20The%20Big%20Picture/bgpy_pkg_install_guide.md) but it's optional and tool's official repository contains all necessary information.
 
-Follow the install instructions below and proceed to lab tasks
+After installing the tool, you can run simulations using pypy. This generates simulation graphs. Parameters for simulations can be changed and different custom_scenarios can be implemented as well. Your task is to study the bgpy_pkg [tutorial](https://github.com/jfuruness/bgpy_pkg/wiki/Tutorial) in full and perform custom simulations of your choosing while also answering the questions below.
 
----
-
-After following the installation steps above you can run the default simulation by running the main python file in bgpy_pkg/. This generates simulation graphs for as well. Parameters can be changed in main file to implement different use cases and scenarios. Your next task is to study the bgpy_pkg [tutorial](https://github.com/jfuruness/bgpy_pkg/wiki/Tutorial) in full and perform a custom simulation of your choosing while also answering the questions below.
+In your return make sure to explain all necessary steps, commands and code adjustment with screenshots as proof
 
 ### Questions
 
-Gao Rexford algorithm. Tell about it
+**Simulator manual talks about Gao Rexford algorithm. What is it?**
 
-What are annoucements. How is the simulator propagating announcements in BGPy. Describe in your own words.
+**What are annoucements. How is the simulator propagating announcements in BGPy. Describe in your own words.**
 
-#### Info
+**What is ROV. How can ROV graphs in a particular BGP simulation be interpreted? Use one of your simulation results as an example**
 
-From a high level, when we traceback from an AS, we start at a specific AS. For the most specific prefix at that AS, we then look at the next hop along the AS path. We then look up that AS in ASGraph, and recursively repeat this process.
+**Explain ATTACKER_SUCCESS, VICTIM_SUCCESS and DISCONNECTED from AS prefix's perspective**
 
-We do this from each AS. When we traceback, there are three final possible outcomes, defined in the enum Outcomes
+**Carry-out at-least two custom simulation scenarios and mention important observations and graphs about them.**
 
-    ATTACKER_SUCCESS: The traffic on the data plane reached the attacker
-    VICTIM_SUCCESS: The traffic on the data plane reaches the victim aka the legitimate origin of the announcement
-    DISCONNECTED: The traffic does not reach either the attacker or the victim
+![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/107e1e55-e626-4499-a1eb-9d61912fdb57)
 
-#### Running the simulation
+![Tip]
+> Going through the complete github tutorial and repository itself will help answer the questions above
 
-In current simulation, following scenarios are used: ROV, peerROV and subprefixhijack
+## Option 2: BGP Simulator or Visualizer of your own choice
 
-Question: Tell more about ROV, peerROV and subprefixhijack. Would you like to implement a scenario different that subprefixhijack? 
+If you go for this option, you are free to choose a BGP simulator or Visualizer of your own choice and carry out it's installation and perform some sort of simulation and/or visualization. 
+Note, that you have to provide a detailed report about each step taken including the installation steps. You should also include information about certain key aspects utilized in that simulator or visualizer.
 
 
-### About the dataset
 
-The 'serial-1' directory contains AS relationships inferred from BGP
-data using a method similar to the method described in "AS
-Relationships, Customer Cones, and Validation" published in IMC 2013
-(http://www.caida.org/publications/papers/2013/asrank/).  The serial-1
-directory also contains provider-peer customer cones inferred for each
-AS, as well as the raw BGP routes that we extracted paths from for
-inferring relationships.  The README file in the serial-1 directory
-further describes this data set.
-
-The 'serial-2' directory combines the 'serial-1' data with relationships
-inferred from Ark traceroute data, and multi-lateral peering
-(http://www.caida.org/publications/papers/2013/inferring_multilateral_peering/).
-The README file in the serial-2 directory further describes this data
-set.
-
-We disabled public access to 2020-02 and 2020-03 data since some of
-the links were not calculated correctly, therefore producing errors in
-customer cone and ranks.
-
-------------------------
-Acceptable Use Agreement
-------------------------
-
-Access to these data is subject to the terms of the following CAIDA Acceptable Use Agreement (AUA) for Publicy Accessible Datasets.
-https://www.caida.org/about/legal/aua/public_aua/
-
-When referencing this data (as required by the AUA), please use:
-
-    The CAIDA AS Relationships Dataset, <date range used>
-    https://www.caida.org/catalog/datasets/as-relationships/
-You are required to notify CAIDA when you make a publication using these data. Please report your publication by completing the form at
-https://www.caida.org/catalog/datasets/publications/report-publication/  or by emailing us at data-info@caida.org
