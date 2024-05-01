@@ -205,7 +205,7 @@ Return a quick summary of the questions asked
 
 
 
-## Task 4 (W.I.P)
+## Task 4
 
 ### Performing Border Gateway Protocol (BGP) simulation
 
@@ -247,7 +247,7 @@ In your return make sure to explain all necessary steps, commands and code adjus
 
 ![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/113350302/107e1e55-e626-4499-a1eb-9d61912fdb57)
 
-![Tip]
+![!Tip]
 > Going through the complete github tutorial and repository itself will help answer the questions above
 
 ## Option 2: BGP Simulator or Visualizer of your own choice
@@ -255,5 +255,9 @@ In your return make sure to explain all necessary steps, commands and code adjus
 If you go for this option, you are free to choose a BGP simulator or Visualizer of your own choice and carry out it's installation and perform some sort of simulation and/or visualization. 
 Note, that you have to provide a detailed report about each step taken including the installation steps. You should also include information about certain key aspects utilized in that simulator or visualizer.
 
+Some options but they are not tested:
+* https://github.com/ssbgp/simulator
+* https://github.com/massimocandela/BGPlay
 
+Carry out your own research if you go with this option.
 
