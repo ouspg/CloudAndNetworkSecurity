@@ -171,9 +171,9 @@ but the previously mentioned lecture slides provide a good starting point and li
 ### A) Structure of the internet in general (0.15p)
 Briefly summarize how the network is divided - AS, service providers, national network isolation efforts and the dark web.
 
-What are ASs and what are is their core function in the bigger picture. Explain whether an ISP's network is equivalent to an AS and describe the structures behind ISP and AS. Summarize what routing protocols are used to exchange routing information between ASs and how these protocols work.
+What are ASs and what is their core function in the bigger picture. Explain how an ISP's network is equivalent to an AS and describe the structures behind ISP and AS. Summarize what routing protocols are used to exchange routing information between ASs and how these protocols work.
 
-Utilize a tool such as bgp.tools or similar to find out the ASs and upstreams about **your current IP address**, did you find any other information from the tool?
+Utilize a tool such as [bgp.tools](https://bgp.tools) or similar to find out the ASs and upstreams about **your current IP address**. Did you find any other information from the tool?
 
 ```
 Return a quick summary of the questions asked
