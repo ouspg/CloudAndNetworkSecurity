@@ -52,7 +52,7 @@ DNS is a widely used term nowdays. In this task, you'll study network traffic lo
 
 ### A) Analyze traffic log files for DNS entries
 
-Two traffic log files are provided in different format. Both files contain the same network traffic but one of them is a _.pcap_ and the other is _.txt _. The only difference between these two files is that _.pcap_ requires a software that supports _.pcap_ for analysis where _.txt _ file can be analyzed used command-line or any text editor. 
+Two traffic log files are provided in different format. Both files contain the same network traffic but one of them is a _.pcap_ and the other is _.txt_. The only difference between these two files is that _.pcap_ requires a software that supports _.pcap_ for analysis where _.txt_ file can be analyzed used command-line or any text editor. 
 
 Log files can be download from [misc folder](https://github.com/ouspg/CloudAndNetworkSecurity/tree/main/7.%20Security%20of%20Internet%3A%20The%20Big%20Picture/misc)
 
@@ -74,7 +74,7 @@ Pfsense's webGUI can be utilized to study the status of DNS resolver cache. In t
 
 First answer the following question:
 
-**What is DNS cache. How does DNS store cache’s to speed look-up**
+**What is DNS cache. How does DNS store cache to speed look-up**
 
 Now, spawn your lab 1 network structure using terraform and access pfsense webGUI from kali linux. DNS cache records can be studied from Status tab by selecting DNS Resolver
 
@@ -111,7 +111,7 @@ Spawn lab 1's network structure using terraform and setup DNScat2 inside terrafo
 
 >[!Tip]
 > Ubuntu acts as server and kali acts as client.
-> You are not required to use any real domain name for the scope of this task
+> You are not required to use any real domain name for this task
 
 Installation steps are present in github's [official repo](https://github.com/iagox86/dnscat2). It is recommended to install the tool on server (ubuntu) first followed by client (kali).
 ```
@@ -126,8 +126,8 @@ Refer to following guides for help with the tool itself:
 
 ### B) Establish a reverse shell session with kali linux. Carry out reconnaissance mission
 
-In the previous task if you successfully managed to establish a dns tunnel despite having pfsense as a firewall in play, you can exploit this in numerous ways. Numerous commands can be executed from server
-(ubuntu). In this specific task, you are required to establish a reverse shell session with kali linux and control it from ubuntu server via DNS tunnel. 
+In the previous task if you successfully managed to establish a dns tunnel despite having pfsense as a firewall in play, you can exploit this in numerous ways. Commands can be executed from server
+(ubuntu) on kali linux. In this specific task, you are required to establish a reverse shell session with kali linux and control it from ubuntu server via DNS tunnel. 
 
 Carry out a reconnaissance mission and gather as much information about victim (kali linux) as you can including files stored on the system. Quickly exit your session as well
 
