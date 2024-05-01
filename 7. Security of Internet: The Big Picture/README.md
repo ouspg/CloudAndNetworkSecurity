@@ -207,7 +207,7 @@ Return a quick summary of the questions asked
 
 ## Task 4 (W.I.P)
 
-# Performing Border Gateway Protocol (BGP) simulation
+### Performing Border Gateway Protocol (BGP) simulation
 
 The Internet is an interconnection of autonomous systems (AS) which use Border Gateway Protocol (BGP) to exchange routing or reachability information. BGP relies on trust among network operators to secure their systems well and to send correct data since there is no built-in validation in this protocol.
 
@@ -227,53 +227,10 @@ Before you proceed, this task has two options. First option is guided and based 
 
 ## Option 1: Guided BGP simulation with BGPY simulator
 
-This simulator has been tested to work with kali linux. Follow the install instructions below and proceed to lab tasks
+This simulator has been tested to work with kali linux. An Installation guide can be found here [TODO]
 
-## BGPY Installation
+Follow the install instructions below and proceed to lab tasks
 
-1) Install pypy on kali linux from [official website](https://www.pypy.org/download.html)
-
-2) Extract the package and rename the folder from pypy3.10-v7.x.xx-linux64 to pypy. Move to folder /opt/pypy
-```
-mv pypy-<version>-<architecture> /opt/pypy
-```
-3) Ensure symbolic reference to work by executing
-```
-sudo ln -s /opt/pypy/bin/pypy3 /usr/local/bin/pypy
-```
-
-Now pypy refers to pypy3 because of this symbolic representation!
-
-4) Next execute
-```
-/usr/local/bin/pypy -m ensurepip
-/usr/local/bin/pypy -m pip install pip --upgrade
-```
-
-So far, we have setup pypy in kali linux. Next steps are to install dependencies and the simulator itself
-
-5) Install dependencies and bgpy_pkg
-```
-sudo apt-get install -y graphviz libjpeg-dev zlib1g-dev
-pypy -m pip install pip --upgrade
-pypy -m pip install wheel --upgrade
-
-# Command below take some minutes, so be patient!
-pypy -m pip install numpy --config-settings=setup-args="-Dallow-noblas=true"
-pypy -m pip install bgpy_pkg
-```
-6) Clone BGP simulator repo
-```
-git clone https://github.com/jfuruness/bgpy_pkg
-cd bgpy_pkg/
-```
-7) Add /opt/pypy/bin to the PATH (optional):
-You can add the directory containing the bgpy script to your PATH environment variable. This allows you to execute the bgpy command from any directory without specifying its full path.
-
-You can add /opt/pypy/bin to your PATH by running the following command:
-```
-export PATH=$PATH:/opt/pypy/bin
-```
 ---
 
 After following the installation steps above you can run the default simulation by running the main python file in bgpy_pkg/. This generates simulation graphs for as well. Parameters can be changed in main file to implement different use cases and scenarios. Your next task is to study the bgpy_pkg [tutorial](https://github.com/jfuruness/bgpy_pkg/wiki/Tutorial) in full and perform a custom simulation of your choosing while also answering the questions below.
