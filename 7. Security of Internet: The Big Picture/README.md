@@ -109,7 +109,7 @@ For tunneling to work, a client-server model is used. Client is typically behind
 
 Spawn lab 1's network structure using terraform and setup DNScat2 inside terraform.
 
->[!Tip!]
+>[!Tip]
 > Ubuntu acts as server and kali acts as client
 > You are not required to use any real domain name for the scope of this task
 
