@@ -32,7 +32,7 @@ you can perform task 2 using two virtual machines (one acting as a victim and ot
 The order of the tasks is mandatory. For example, to gain points from Task 3, Task 1 and 2 should be completed.
 
 Task #|Points|Description|Tools
------|:---:|-----------|-----
+-------|:---:|-----------|-----
 Task 1 | 1 | Study traffic logs for DNS records and study pfsense's DNS resolver cache | wireshark or command-line, pfSense, Terraform
 Task 2 | 1 | DNS tunneling | DNScat2, Terraform
 Task 3 | 1 | Internet, Autonomous System(s) and BGPs: The Big Picture | No specific tools. Based on lecture 6
