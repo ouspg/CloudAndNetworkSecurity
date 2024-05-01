@@ -103,9 +103,55 @@ Source: Read more [here](https://www.cynet.com/attack-techniques-hands-on/how-ha
 For tunneling to work, a client-server model is used. Client is typically behind the organization’s security controls and the server is located somewhere on the Internet. Since this is a client-server model, any type of traffic can be sent over the tunnel. Dnscat2 is also a client-server application. Dnscat2 functions more like command and control software and also encrypts the transmitted data.
 
 >[!Note]
-> In this task students will perform DNS tunneling attack with DNScat2 using lab 1's network structure.
+> In this task students will perform DNS tunneling attack with DNScat2 using lab 1's network structure. Task can also be performed using two virtual machines on virtual box (but no instructions for this)
+
+### A) Setup Dnscat2 and establish a tunnel
+
+Spawn lab 1's network structure using terraform and setup DNScat2 inside terraform.
+
+>[!Important!]
+> Ubuntu acts as server and kali acts as client
+
+Installation steps are present in github's [official repo](https://github.com/iagox86/dnscat2). It is recommended to install the tool on server (ubuntu) first followed by client (kali).
+```
+# If you encounter conflicting port error on server, it can be fixed by changing default dns port. For example, port 53531 can be used instead of 53
+sudo ruby ./dnscat2.rb --dns port=53531
+```
+**Demonstrate DNS tunnel establishment without using any domain name. Add screeshot and provide commands used to do this**
+
+Refer to following guides for help with the tool itself:
+* DNScat2 [comprehensive guide](https://www.hackingarticles.in/dnscat2-application-layer-cc/)
+* DNS tunneling with DNScat2 [tutorial](https://www.whitelist1.com/2017/10/dns-tunneling-with-dnscat2.html)
+
+### B) Establish a reverse shell session with kali linux. Carry out reconnaissance mission
+
+In the previous task if you successfully managed to establish a dns tunnel despite having pfsense as a firewall in play, you can exploit this in numerous ways. Numerous commands can be executed from server
+(ubuntu). In this specific task, you are required to establish a reverse shell session with kali linux and control it from ubuntu server via DNS tunnel. 
+
+Carry out a reconnaissance mission and gather as much information about victim (kali linux) as you can including files stored on the system. Quickly exit your session as well
+
+**Provide step-by-step commands and screenshots with description explaining your steps**
+
+For example, you could provide:
+```
+Commands to setup tunnel
+Commands and screenshot to access shell of kali linux
+Screenshots of using kali from spawned shell in ubuntu server
+Screenshots of commands used to gather victim info
+Screenshot and command to exit the shell session from ubuntu server
+```
+
+### C) After thoughs
+
+Use wireshark to study the data that is being transferred over the DNS tunnel. 
+
+**Which protocols are used to carry the data? How is data transmitted using this protocol?**
+
+**Add screenshots of wireshark analysis**
+
 
 ---
+
 
 ## Task 3
 
