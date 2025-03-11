@@ -1,6 +1,6 @@
-#  IC00AJ73-3001 Cyber Security II: Cloud and Network Security
+#  IC00AJ73 Cyber Security II: Cloud and Network Security
 
-Exercises for the course IC00AJ73-3001 Cyber Security II: Cloud and Network Security at the University of Oulu.
+Exercises for the course IC00AJ73 Cyber Security II: Cloud and Network Security at the University of Oulu.
 
 This course handles key concepts and principles in cloud and network security. Especially in the topics of
 
@@ -22,7 +22,7 @@ Lectures are handling topics from a high perspective.
 
 Laboratory exercises are thought of as independent packages: containing theory and exercises and going technologically very deep.
 
-To pass this course with grade 1, you have to attend all lectures including the five physical lectures. Failing to do so results in a written exam based on the lectures missed.
+To pass this course with grade 1, you have to attend all lectures, excluding the first lecture. Failing to do so results in a written exam based on the lectures missed.
 
 To get a better grade, you have to do some laboratory exercises. All laboratory tasks are optional and total points from those will determine your grade.
 
@@ -31,6 +31,8 @@ To get a better grade, you have to do some laboratory exercises. All laboratory 
 As described earlier, you have to attend all lectures to pass the course. You can have higher grades by doing lab work.
 
 You can get up to 5 points in each lab (A total of 35 points). The grade is determined based on those points. For example, with 9 points you get grade 2.
+
+The week 3 has an optional project work available that differs a bit from general grading guideliens.
 
 Total Points|Total Grade
 :-:|:-:
@@ -43,11 +45,11 @@ Total Points|Total Grade
 
 ## Getting started
 
-    - Enroll in the course
-    - Find the course's Moodle page from the University's Moodle
-    - Find a link where you can receive and create a private repository containing all the return template folders. 
-    You are expected to answer for given templates and store your actual work in this repository.
-    - Create a GitHub account, if you don't have one already, and create this private repository from the link.
-    - Complete as many tasks as you wish and update your repository accordingly. 
-    Check the grading table found in each lab instructions on what you have to complete to earn the grade of your choosing
-    - Push your changes to your repository before the deadline, and return the link to your repository to the corresponding return box of the lab in Moodle.
+- Enroll in the course
+- Find the course's Moodle page from the University's Moodle
+- Find a link where you can receive and create a private repository containing all the return template folders. 
+You are expected to answer for given templates and store your actual work in this repository.
+- Create a GitHub account, if you don't have one already, and create this private repository from the link.
+- Complete as many tasks as you wish and update your repository accordingly. 
+Check the grading table found in each lab instructions on what you have to complete to earn the grade of your choosing
+- Push your changes to your repository before the deadline, and return the link to your repository to the corresponding return box of the lab in Moodle.
