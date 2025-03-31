@@ -1,7 +1,7 @@
 Cloud and Network Security Lab 7: Security of Internet: The Big Picture
 ====
 
-Responsible person/main contact: Asad Hasan & Lauri Suutari
+Responsible person/main contact: Antti Heitto
 
 
 ## Preliminary tasks & prerequisites

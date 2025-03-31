@@ -1,7 +1,7 @@
 Cloud and Network Security Lab 5: Cloud Security
 ====
 
-Responsible person/main contact: Niklas Saari, Lauri Suutari & Asad Hasan
+Responsible person/main contact: Niklas Saari
 
 ## Preliminary tasks & prerequisites
 

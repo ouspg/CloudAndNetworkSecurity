@@ -1,7 +1,7 @@
 Cloud and Network Security Lab 3: Network Protocols
 ====
 
-Responsible person/main contact: Niklas Saari, Asad Hasan & Lauri Suutari
+Responsible person/main contact: Niklas Saari 
 
 ## Preliminary tasks & prerequisites
 
