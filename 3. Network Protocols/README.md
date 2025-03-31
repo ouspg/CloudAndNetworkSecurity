@@ -30,7 +30,7 @@ You are **not required** to do the tasks in order, but if you do the second task
 
 As a result, there are two different paths to do the exercises this week.
  * In both cases, you can do the task 1, and then
-    * Do task 2 completely and ignore the rest. With very good implementation you might get even more than 9 points.
+    * Do task 2 completely and ignore the rest. With very good implementation you can get up to 14 points.
     *This task will give the most points on the course and can compensate for other weeks*.
     * Or, do the tasks 3 and 4, but not that many points are available. Task 2 covers also the topics of tasks 3 and 4.
 
@@ -39,7 +39,7 @@ As a result, there are two different paths to do the exercises this week.
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 1 | 1 | HTTP request smuggling | Wireshark, curl, docker-compose, netcat
-Task 2 | 9 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
+Task 2 | 14 | Implementing TLS 1.3 client from scratch | Rust or programming language of your choice, Wireshark, libFuzzer, libAFL
 Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alternative to task 2 with less points) | AFL++, radamsa, other fuzzing tools
 Task 4 | 2 | TLS certificate validation | certmitm
 
@@ -319,7 +319,7 @@ During the handshake, both the client and server agree on the cipher suite as fo
 
 The priority and availability of the cipher suites are pre-defined for the task.
 
-### Implementation requirements (4p)
+### Implementation requirements (5p)
 
 > [!Important]
 > You should implement *a client*, with minimal working features to complete TLS 1.3 handshake, while also noting the error handling. Or more, if you decide so, to replace other tasks from this week.
@@ -337,7 +337,7 @@ There can be constraints for the size of the tag or length, and **this defines h
 
 [The sample project](https://github.com/ouspg/tls13tutorial/) provides the *encoding* part for the above, but not the *decoding* part, other than a couple of partial examples. Decoding means mapping arbitrary binary data to correct data structures. This is the part where the typical security problems arise and you should focus on.
 
-### Functional testing and fuzzing (2p+)
+### Functional testing and fuzzing (3p+)
 
 The client should be able to handle the processing of arbitrary input data from the TCP stream. We get some guarantees with fuzz testing which provides one additional point.
 
@@ -493,10 +493,10 @@ It has already a lot of existing code, so in other programming languages, you pr
 Description |Points|
 -----|:---:|
 Use of Rust with sufficient implementation | 1 |
-Minimal handshake implementation from above | 4 |
-Functional and fuzz testing the implementation with the help of fuzzing libraries | 2+ |
+Minimal handshake implementation from above | 5 |
+Functional and fuzz testing the implementation with the help of fuzzing libraries | 3+ |
 Proper client-side certificate validation | 1+ |
-Decrypt application content from TLS 1.3 server with your client | 1 |
+Decrypt application content from TLS 1.3 server with your client | 2 |
 
 ## Task 3: Fuzz testing existing network protocol library or parser (1p)
 
@@ -586,7 +586,10 @@ To get full credit for this task you need to test **installing atleast 5 new app
 > In situations where you dont seem to be able to install/run software the best thing you can do is retrying again!
 
 ### WLAN certificate Validation (1p)
-On this task you will be provided a Raspberry Pi, and a SD card that has all the configurations set up to work as a Wi-Fi hotspot. The following video demonstrates this task:
+
+For this task, you need a Linux device that act has Wi-Fi hotspot. This can be either laptop with native Linux installation or Raspberry Pi.
+
+Alternatively, you can borrow a Raspberry Pi, and a SD card that has all the configurations set up to work as a Wi-Fi hotspot. The following video demonstrates this task:
 * [Exploiting insecure Certificate Validation in iOS](https://www.youtube.com/watch?v=bWidokJKuUc)
 
 To begin with you have 3 options:
