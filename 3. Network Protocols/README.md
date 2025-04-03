@@ -300,6 +300,7 @@ This should also make you more familiar with what it takes to transmit encrypted
 
 * Transport Layer Security [in Wikipedia](https://en.wikipedia.org/wiki/Transport_Layer_Security)
 
+* [More material](https://www.davidwong.fr/tls13/)
 
 A small background [blog](https://blog.cloudflare.com/rfc-8446-aka-tls-1-3) about the major changes compared to previous versions.
 
