@@ -248,7 +248,7 @@ Return following:
 
 ---
 
-## Task 2: Implementing TLS 1.3 client from scratch (up to 9 points)
+## Task 2: Implementing TLS 1.3 client from scratch (up to 14 points)
 
 > [!Note]
 > You can complete this task in pairs! **But not in larger groups**. Remember to mention your pair. The workload assumes that you have friendly LLMs available, such as ChatGPT, [Phind](https://www.phind.com) or [GitHub Copilot](https://docs.github.com/en/copilot/quickstart). Especially GitHub Copilot is useful for this task, so this is a good chance to try it out.
