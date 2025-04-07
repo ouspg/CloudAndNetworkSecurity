@@ -369,9 +369,9 @@ You can additionally do a proper client-side certificate validation to get an ad
 
 This will replace the final task.
 
-### The decryption of the application data content (1p)
+### The decryption of the application data content (2p)
 
-You can get **one point** for showcasing the decrypted TLS 1.3 application data from the server that supports this client.
+You can get **two points** for showcasing the decrypted TLS 1.3 application data from the server that supports this client.
 To demonstrate this, you will send TLS 1.3 encrypted application data, for example to `cloudflare.com`. The application data contains an HTTP GET request to path `/robots.txt`.
 
 ```http
