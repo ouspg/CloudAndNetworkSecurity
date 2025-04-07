@@ -42,7 +42,7 @@ You are expected to do the assignments **in order**.
 Task #|Points|Description|Tools
 -----|:---:|-----------|-----
 Task 0 | - | Setting up new network | Terraform, virtual manager
-Task 1 | 1 | Launch DDoS Attack on server and study traffic | Snort, wireshark, pfSense, DDoS-Attacker, Xdos-server
+Task 1 | 1 | Launch DDoS Attack on server and study traffic | Snort, wireshark, pfSense, DDoS-Attacker
 Task 2 | 2 | Fix security misconfigurations | pfSense,
 Task 3 | 1 | VPN setup and configuration for remote access | pfsense, OpenVPN, wireguard
 Task 4 | 1 | Your own experiment | Open-ended
@@ -208,13 +208,13 @@ Launch a DDoS attack on the server hosted in DMZ from kali (LAN) and study Snort
 
 Use following two tools turn-by-turn to perform a DDoS attack:
 1. [DDoS-Attacker](https://github.com/CruelDev69/DDoS-Attacker)
-2. [Xdos-server](https://github.com/Whomrx666/Xdos-server)
+2. [Fuzz Faster U Fool](https://github.com/ffuf/ffuf)
 
 **Provide command used to launch DDoS attack using DDoS-Attacker**
 
 **What does snort log entries show?**
 
-**Repeat the attack with XDos-server tool. What do you notice in snort log entries now?**
+**Repeat the attack with FFUF. What do you notice in snort log entries now?**
 
 ### C) Firewall state table inspection
 
