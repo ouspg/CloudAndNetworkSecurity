@@ -5,11 +5,9 @@ Responsible person/main contact: Niklas Saari
 
 ## Preliminary tasks & prerequisites
 
-> The second part of the container security lecture *is directly related* to this exercise.
-
 This week is all about containers, especially about how the Linux kernel works, Open Container Initiative (OCI) standards, and how to manage your dependencies.
 
-So-called containers these days as we know them, are mostly based on OCI standards and Linux kernel user-space virtualisation. 
+So-called containers these days as we know them, are mostly based on OCI standards and Linux kernel user-space virtualisation, in order to achieve *software-level isolation*. 
 
 
 Check the OCI standards:
@@ -17,7 +15,10 @@ Check the OCI standards:
  * [Image Specification](https://github.com/opencontainers/image-spec)
  * [Runtime Specification](https://github.com/opencontainers/runtime-spec)
 
-Core concepts are also handled in lecture.
+
+More material:
+ * [34min video](https://www.youtube.com/watch?v=x1npPrzyKfs) 
+ * https://ravichaganti.com/blog/2022-10-28-understanding-container-images-oci-image-specification/
 
 ## Grading
 
