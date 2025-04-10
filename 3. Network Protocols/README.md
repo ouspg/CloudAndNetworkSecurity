@@ -91,7 +91,7 @@ Your first task is to study HTTP request smuggling and write a detailed paragrap
 **In which version of HTTP is this vulnerability present? Why is it present in this specific HTTP version? How is the mechanism different?**
 
 Useful resources: 
-1. [Seebug article](https://paper.seebug.org/1049/)
+1. [Seebug article](https://paper.seebug.org/1049/#1-introduction)
 2. [Research article](https://www.hindawi.com/journals/scn/2022/3121177/)
 
 ### B) Setup webservers, access webpages and capture associated HTTP traffic using Wireshark
