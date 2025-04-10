@@ -183,6 +183,7 @@ There are many ways to find the layer, but extracting it directly from the regis
 
 ## Task 2: Privilege escalation on containers (1p)
 
+> [!IMPORTANT]
 > This is a CTF style task. You will get an access token from the Moodle exam. Use that to access external service. It is possible that someone else uses the same instance, so try to not break things and maybe clean your possible mess afterwards. 
 
 Assuming that the Linux kernel nor underlying hardware have vulnerabilities and you have attempted to build your container properly by adding a separate user to run the service, the most common attack vector to typically escape the container is the shared volume(s), which are incorrectly used.
