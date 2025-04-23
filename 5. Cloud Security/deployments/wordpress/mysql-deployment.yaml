@@ -1,6 +1,6 @@
 apiVersion: v1
 kind: Service
-metadata: 
+metadata:
   name: mysql-wp
 spec:
   ports:
@@ -28,42 +28,42 @@ spec:
         tier: mysql
     spec:
       containers:
-      - image: mysql:latest
-        name: mysql
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-password-f547bhm8mc
-              key: password
-        - name: MYSQL_USER
-          valueFrom:
-            secretKeyRef:
-              name: mysql-user-4t5mcf8dkm
-              key: username
-        - name: MYSQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-user-password-9m7k5b4k2m
-              key: passworduser
-        - name: MYSQL_DATABASE
-          valueFrom:
-            secretKeyRef:
-              name: mysql-database-4f74mgddt5
-              key: database
-        ports:
-        - containerPort: 3306
+        - image: mysql:8.3
           name: mysql
-        volumeMounts:
-        - name: persistent-storage
-          mountPath: /var/lib/mysql
-        - name: config-volume
-          mountPath: /etc/my.cnf
-          subPath: my.cnf
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-password-f547bhm8mc
+                  key: password
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-user-4t5mcf8dkm
+                  key: username
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-user-password-9m7k5b4k2m
+                  key: passworduser
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-database-4f74mgddt5
+                  key: database
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: persistent-storage
+              mountPath: /var/lib/mysql
+            - name: config-volume
+              mountPath: /etc/my.cnf
+              subPath: my.cnf
       volumes:
-      - name: persistent-storage
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
-      - name: config-volume
-        configMap:
-          name: mysql-config
+        - name: persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
+        - name: config-volume
+          configMap:
+            name: mysql-config
