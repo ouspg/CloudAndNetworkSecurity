@@ -6,7 +6,7 @@ Responsible person/main contact: Niklas Saari
 
 ## Preliminary tasks & prerequisites
 
-This is the sixth lab in the series with the theme of Cloud Security. 
+This is the sixth lab in the series with the theme of Cloud Security.
 You should return the tasks to GitHub.
 
 Make yourself familiar with the following topics:
@@ -144,7 +144,7 @@ The moment to strike has come: Special units of police crash into the place of t
 
 Mallory is caught by surprise when police storm into his apartment and immediately arrest him.
 
-Police officers start to search Mallory's apartment and the technician begins to investigate Mallory's computer which is turned on and logged on. 
+Police officers start to search Mallory's apartment and the technician begins to investigate Mallory's computer which is turned on and logged on.
 After discussing with the leading investigator, the technician decides to start dumping the volatile memory of the computer into his external hard drive.
 Next to Mallory's computer is an ordinary USB memory stick. That stick is securely bagged into the evidence box for later inspection.
 
@@ -156,15 +156,15 @@ Investigators know that there was so much critical information gone with Mallory
 ### Inspecting memory with Volatility 3
 
 > *Interrogator: You just would not mind telling where have you hidden your delivery caches?*
-> 
+>
 > *Mallory: Haha! Do you imagine I will tell GPS locations of my last 2 hidden drug caches because you just ask for it? Uh-, I mean- I don't know what you are talking about!*
-> 
+>
 > *Interrogator: Ok, ok, you do not need to shout. Lets have little lighter chat instead for while - shall we? I like lot of hiking, do you have any favourite map services you could recommend for me?*
-> 
+>
 > *Mallory: Well, I am ok with this little chit-chat. Killing time is just fine because eventually you realize that I am completely innocent law-abiding citizen and let me go. Hmm, I like to use Google Maps via regular browser, I am little old stylish.*
-> 
+>
 > *Interrogator: Ok, sounds nice. For what purpose are you using it?*
-> 
+>
 > *Mallory: I want to check different locations before I-, uh- I mean I like hiking too.*
 
 While the exact location remains unknown, intel gathered from other sources suggests that Mallor's organization has been using codenames for those 2 caches: *LAKE* and *COAST*. The leading investigator suspects that those codenames are most likely describing also the places themselves.
@@ -173,15 +173,15 @@ The leading investigator also suspects, that hidden caches are mostly located no
 Your first task is to find 2 different GPS locations where police officers should start for looking hidden stashes.
 
 > *Leading investigator: There is problem with gathering Mallorys emails*
-> 
+>
 > *You: How so? In this case we have a court order for service provider to give us access to Mallorys email-account.*
-> 
+>
 > *Leading investigator: Yes we do, but seems like they all have gone on holiday or something. I did not succeed on connecting to anybody who could give us access right now. Typical corporate bureaucracy in action...*
-> 
+>
 > *You: Oh. That's bad. But eventually we will get it.*
-> 
+>
 > *Leading investigator: Yes we will. But this is urgent because any useful intel we could get from his email might be irrelevant next week because word about Mallory's arrest is spreading and his contacts are going to flee any moment with hidden caches.*
-> 
+>
 > *You: I see. So we have only this memory dump right now. I'll see what I can do.*
 
 Intel from unconfirmed sources says that there are rumors about Mallory having also a third hidden cache. Nothing about it is known but its codename: *FOREST*
@@ -216,11 +216,11 @@ Your next task is to make an analysis and report of the real-world DDoS attack.
 
 There was a real DDoS campaign in Finland some years ago, and this task gives you the one target server's log file.
  A specific kind of malware was responsible for creating a botnet, which used to cause this DDoS attack.
- Malware was mostly spread by YouTube advertising (you can analyse it in the Hardware&Software security course). 
+ Malware was mostly spread by YouTube advertising (you can analyse it in the Hardware&Software security course).
 
 More about the case [is available here.](https://www.tamperelainen.fi/paikalliset/1590735)
 
- 
+
  You will find the server log file in the same place as the memory dumps of earlier tasks.
 
 After unzipping the log, you may find out that opening the log file (which contains over 6 million lines of data) may crash the regular text editor so you most likely have to utilize other tools to initially investigate of log file. Commands `grep`, `less`, `sort`, `cut`, `awk` and `uniq` might be helpful.
@@ -244,9 +244,14 @@ Well-reasoned explanation of why certain types of requests were used in DDoS att
 
 ## Task 3: XDR and SIEM protection
 
-Wazuh is a free and open-source platform used for threat prevention, detection, and response. It is capable of protecting workloads across on-premises, virtualized, containerized, and cloud-based environments. It unifies extended detection and response (XDR) and security information and event management (SIEM) protection for endpoints and cloud workloads. SIEM focuses on monitoring log data from various sources in the network whereas XDR covers a broader range of security telemetry data such as; endpoint data, network traffic and cloud-based environments.
+Wazuh is a free and open-source platform designed for threat prevention, detection, and response.
+It protects workloads across on-premises, virtualized, containerized, and cloud-based environments.
+The platform unifies extended detection and response (XDR) with security information and event management (SIEM) for endpoints and cloud workloads.
+SIEM focuses on monitoring log data from various sources in the network whereas XDR covers a broader range of security telemetry data such as; endpoint data, network traffic and cloud-based environments.
 
-Wazuh solution consists of an endpoint security agent, deployed to the monitored systems, and a management server, which collects and analyzes data gathered by the agents' endpoints. Besides, Wazuh has been fully integrated with the Elastic Stack, providing a search engine and data visualization tool that allows users to navigate through their security alerts. Because of its large coverage and adaptability to different environments, Wazuh has become one of the go-to services for SIEM & XDR protection in cloud-based environments.
+Wazuh solution consists of an endpoint security agent, deployed to the monitored systems, and a management server, which collects and analyzes data gathered by the agents' endpoints.
+Besides, Wazuh has been fully integrated with the Elastic Stack, providing a search engine and data visualization tool that allows users to navigate through their security alerts.
+Because of its large coverage and adaptability to different environments, Wazuh has become one of the go-to services for SIEM & XDR protection in cloud-based environments.
 
 Understanding the skills of configuring security monitoring systems such as Wazuh, creating custom alerting rules, and analyzing generated alerts is crucial for cloud security and the cyber security industry for several reasons such as:
 
@@ -255,24 +260,30 @@ Understanding the skills of configuring security monitoring systems such as Wazu
 
 The following image shows the important components and how they communicate with each other to form this service, in the first part of this task we are focusing on the endpoint side of things and in the other tasks the central component configuration will become crucial as well.
 
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/e03e3de9-741a-4a46-b0af-d9e9a27b4683)
+![Wazuh Architecture](img/deployment-architecture1.png)
 
 Wazuh has great documentation about different ways of its usage, you can find more about it here:
 * https://documentation.wazuh.com/current/index.html
 
 ### A) Host system & Docker monitoring (1p)
-In this task, you will explore the capabilities of Wazuh by creating a basic log auditing system for the host machine. The course staff has provided you with the required Kubernetes deployment files to easily launch the Wazuh server on your machine, these files can be found in:
+In this task, you will explore the capabilities of Wazuh by creating a basic log auditing system for the host machine.
+The course staff has provided an initial script that installs the required components in order to run the cluster locally.
 
-```
-CloudAndNetworkSecurity/6. Digital Forensics/week6/
-```
-Contrary to last week, this week's deployment has been optimized for the Minikube version of Kubernetes, you can find information about downloading this from:
-https://minikube.sigs.k8s.io/docs/start/
+Contrary to last week, this week's deployment has been optimized for the Minikube version of Kubernetes. You can find information about setting this up from the [official documentation.](https://minikube.sigs.k8s.io/docs/start/)
 
-For the course VM, check the [Arch Linux Wiki](https://wiki.archlinux.org/title/Minikube) entry and use the Docker driver.
+For the course VM, check the [Arch Linux Wiki](https://wiki.archlinux.org/title/Minikube) entry and **use the Docker driver**. By default, Minikube runs in VirtualBox virtual machine, which is not likely the most optimal for us.
 
 
-To launch the Wazuh server simply run "minikube start" and the deploy_week6.sh shell script, which will create the required services for Wazuh. These services are called wazuh-indexer, wazuh-dashboard, wazuh-cluster, wazuh and wazuh-workers. Wazuh-indexer service handles the communication between indexer nodes which are used by the API to read and write alerts, dashboard contains the frontend side of Wazuh, wazuh service handles the authentication of wazuh agents and wazuh-workers is the reporting service of this tool.
+To launch the Minikube Kubernetes cluster run `minikube start --driver=docker --container-runtime=containerd` and then deploy Wazuh itself with `deploy_wazuh.sh` shell script.
+
+The script does the following:
+  * Installs required Kubernetes components with `helm`, such as Ingress controller for Nginx.
+  * Generates self-signed certificates since Wazuh deployment uses always HTTPS protocol
+  * Downloads up-to-date Kubernetes configuration from the [upstream](https://github.com/wazuh/wazuh-kubernetes/tags) (Currently supported version is v4.11.2)
+  * Deploys the configuration
+
+These services are called `wazuh-indexer`, `wazuh-dashboard`, `wazuh-cluster`, `wazuh` and `wazuh-workers`.
+Wazuh-indexer service handles the communication between indexer nodes which are used by the API to read and write alerts, dashboard contains the frontend side of Wazuh, wazuh service handles the authentication of wazuh agents and wazuh-workers is the reporting service of this tool.
 
 Example of successful deployment of pods:
 
@@ -342,9 +353,9 @@ Example of Docker logs in the Wazuh dashboard:
 
 ### B) Create a monitor for Wazuh against potential attacks (1p)
 
-This task focuses on simulating attacks and configuring the server and agent to react to these potential threats. This allows the student to gain experience in setting up a security monitoring system and configuring it to specific needs. 
+This task focuses on simulating attacks and configuring the server and agent to react to these potential threats. This allows the student to gain experience in setting up a security monitoring system and configuring it to specific needs.
 
-In the first task, the server side of Wazuh was preconfigured for you during the deployment. This task requires you to edit the deployment files for this week as you need to be able to edit the Wazuh manager during deployment to ensure the server gets the required configurations initialized. You also may need to configure the local Wazuh agent to output new logs to the Wazuh server. The configuration you make should demonstrate an alert that is caused by some kind of attack on the target machine (where the agent is running). 
+In the first task, the server side of Wazuh was preconfigured for you during the deployment. This task requires you to edit the deployment files for this week as you need to be able to edit the Wazuh manager during deployment to ensure the server gets the required configurations initialized. You also may need to configure the local Wazuh agent to output new logs to the Wazuh server. The configuration you make should demonstrate an alert that is caused by some kind of attack on the target machine (where the agent is running).
 
 You can find more information and ideas from the Wazuh documentation:
 * https://documentation.wazuh.com/current/proof-of-concept-guide/index.html
@@ -398,17 +409,17 @@ The story continues with Mallory from task 1.
 ### A) Data hiding & password recovery (0.5p)
 
 > *Interrogator: We have started investigating that USB memory stick found next to your computer. Would you be nice enough to bother telling what data is on that stick?*
-> 
+>
 > *Mallory: Of course. I am totally innocent so I can tell that on that stick was couple of totally useless RTF and PDF documents. And I kept some lorem ipsum flle and bunch of random strings there too.*
-> 
+>
 > *Interrogator: "Was" and "kept". What do you mean?*
-> 
+>
 > *Mallory: Well, I deleted everything. And formatted that stick too. Sadly everything is gone, otherwise I would have given everything to you because I totally have nothing to hide.*
-> 
+>
 > *Interrogator: Well, I see. When you cleared that stick then?*
-> 
+>
 > *Mallory: Just 15 seconds before you burst in through my door. What a coincidence!*
-> 
+>
 > *Interrogator: Sure.*
 
 The technical investigator attaches Mallory's memory stick to his machine by using a write-blocker device. Stick seems to be empty and freshly formatted as Mallory implied. Technical investigator utilizes his tools to create a raw disk dump of that USB stick and then gives it to you.
@@ -445,30 +456,30 @@ Some hints:
 ### B) Detecting and analyzing steganography (0.5p)
 
 > *Investigator: Hey, I found something interesting*
-> 
+>
 > *You: Ok, bring it on.*
-> 
+>
 > *Investigator: I digged out some of Mallorys public online profiles and found that he has profile on this service*
-> 
+>
 > *You: Not surprising - Even you and I and 50% of population of this nation have profile there*
-> 
+>
 > *Investigator: Correct. You can see that Mallorys public profile lists all interest groups he has membership of. One of the groups gathered my attention: United Space Photo Gatherers - USPG. Do you see what I mean?*
-> 
+>
 > *You: Hmm, yesss. Mallory seems not to be that kind of person who has interest on sharing and discussing space images*
-> 
+>
 > *Investigator: I thought the same. I joined that group myself and started digging around little. Seems like that Mallory joined that group 2 years ago but has not posted single image or comment to that group - ever*
-> 
+>
 > *You: Odd, but could be explained by that he just joined group and then forgot its existence. Happens to everybody sometimes*
-> 
+>
 > *Investigator: So I thought. Until I went to the statistics page of that group. Obviously Mallory is not on those highly wanted "TOP 10 Poster of month"-listings at all, but some miscellaneous statistics show that he has been amongst TOP 100 frequent visitors during last 2 years. That is more than 99% of whole group.*
-> 
+>
 > *You: That is weird. So what is your conclusion?*
-> 
+>
 > *Investigator: I suspect that Mallory is using that message group as covert channel to receive messages from his criminal partners. Could you take a look at those images and either confirm or deny my theory?*
-> 
+>
 > *You: I'll see what I can do*
 
-Your task is to find 4 different suspicious images, and then extract the clear text of the messages hidden in them. 
+Your task is to find 4 different suspicious images, and then extract the clear text of the messages hidden in them.
 
 #### Hints and links
 
@@ -498,7 +509,7 @@ Hints:
   * The last hint for this target comes from the interrogation log:
 
 > *Interrogator: By the way, if you hid your secret data to image with some tool supporting encryption, would you use some leetspeak version of your own name as password? Like `m4lL0rY`*
-> 
+>
 > *Mallory: H-h-haha, of couse not - I am not obviously that stupid!*
-> 
+>
 > *Mallory starts to sweat visibly*
