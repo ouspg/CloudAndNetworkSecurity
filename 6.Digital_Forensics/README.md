@@ -330,20 +330,19 @@ If you want to wipe the deployment, run `kubectl delete -k wazuh/envs/local-env/
 Example of successful deployment of pods:
 
 ```bash
-sh-5.2$ kubectl get pods -n wazuh
+kubectl get pods -n wazuh
 NAME                              READY   STATUS    RESTARTS        AGE
 wazuh-dashboard-bdd9dc464-cxq2g   1/1     Running   0               5m35s
 wazuh-indexer-0                   1/1     Running   0               5m35s
-wazuh-manager-master-0            1/1     Running   1 (2m31s ago)   5m35s
-wazuh-manager-worker-0            1/1     Running   2 (49s ago)     5m35s
-sh-5.2$
+wazuh-manager-master-0            1/1     Running   0               5m35s
+wazuh-manager-worker-0            1/1     Running   0               5m35s
 ```
 
 Example of successful deployment of services:
 
 
 ```bash
-sh-5.2$ kubectl get svc -n wazuh
+kubectl get svc -n wazuh
 NAME            TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                          AGE
 dashboard       LoadBalancer   10.98.219.114    <pending>     443:32620/TCP                    6m15s
 indexer         LoadBalancer   10.109.14.19     <pending>     9200:30560/TCP                   6m15s
@@ -367,7 +366,7 @@ You can do this using the `kubectl port-forward` command or the `minikube servic
 Example of Minikube service output:
 
 ```bash
-sh-5.2$ minikube service list -n wazuh
+minikube service list -n wazuh
 |-----------|---------------|--------------------|---------------------------|
 | NAMESPACE |     NAME      |    TARGET PORT     |            URL            |
 |-----------|---------------|--------------------|---------------------------|
@@ -430,9 +429,10 @@ In the first task, the server side of Wazuh was preconfigured for you during the
 You can find more information and ideas from the Wazuh documentation:
 * https://documentation.wazuh.com/current/proof-of-concept-guide/index.html
 
-To edit the Wazuh server's ossec config, you can make changes to the file at `week6/wazuh/wazuh_managers/wazuh_conf/master.conf`
+To edit the Wazuh server's ossec config, you can make changes to the file at `wazuh/wazuh/wazuh_managers/wazuh_conf/master.conf`.
+We assume that Wazuh Kubernetes configuration repository has been cloned into `wazuh` directory.
 
-There is an example in `week6/wazuh_managers/wazuh-master-sts.yaml` about how to initialize a custom local_decoder.xml file located in `/var/ossec/etc/decoders`, in essence you need to create a Kubernetes ConfigMap for the file you want to edit in the Kubernetes wazuh-manager-master-0 pod for it to take effect in the server side of Wazuh, you also need to instruct the wazuh-manager-master StatefulSet to use this configmap in the volumes and volumeMounts sections of the `.yaml`.
+There is an example in `wazuh/wazuh/wazuh_managers/wazuh-master-sts.yaml` about how to initialize a custom local_decoder.xml file located in `/var/ossec/etc/decoders`, in essence you need to create a Kubernetes ConfigMap for the file you want to edit in the Kubernetes wazuh-manager-master-0 pod for it to take effect in the server side of Wazuh, you also need to instruct the wazuh-manager-master StatefulSet to use this configmap in the volumes and volumeMounts sections of the `.yaml`.
 
 You can use the following command to interact with pods (change the <pod_name> accordingly):
 
