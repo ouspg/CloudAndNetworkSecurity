@@ -274,26 +274,84 @@ Contrary to last week, this week's deployment has been optimized for the Minikub
 For the course VM, check the [Arch Linux Wiki](https://wiki.archlinux.org/title/Minikube) entry and **use the Docker driver**. By default, Minikube runs in VirtualBox virtual machine, which is not likely the most optimal for us.
 
 
-To launch the Minikube Kubernetes cluster run `minikube start --driver=docker --container-runtime=containerd` and then deploy Wazuh itself with `deploy_wazuh.sh` shell script.
+To launch the Minikube Kubernetes cluster run `minikube start --driver=docker --container-runtime=containerd` and then prepare Wazuh itself with `deploy_wazuh.sh` shell script.
 
 The script does the following:
   * Installs required Kubernetes components with `helm`, such as Ingress controller for Nginx.
   * Generates self-signed certificates since Wazuh deployment uses always HTTPS protocol
-  * Downloads up-to-date Kubernetes configuration from the [upstream](https://github.com/wazuh/wazuh-kubernetes/tags) (Currently supported version is v4.11.2)
-  * Deploys the configuration
+  * Downloads up-to-date Kubernetes configuration from the [upstream](https://github.com/wazuh/wazuh-kubernetes/tags) (Currently supported version is v4.11.2.)
+
+You need to change the storage controller to use Minikube by yourself:
+
+```bash
+cat wazuh/envs/local-env/storage-class.yaml
+───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
+       │ File: wazuh/envs/local-env/storage-class.yaml
+───────┼──────────────────────────────────────────────────────────────────────────────────────────────────────
+   1   │ # Copyright (C) 2019, Wazuh Inc.
+   2   │ #
+   3   │ # This program is a free software; you can redistribute it
+   4   │ # and/or modify it under the terms of the GNU General Public
+   5   │ # License (version 2) as published by the FSF - Free Software
+   6   │ # Foundation.
+   7   │
+   8   │ # Wazuh StorageClass
+   9   │
+  10   │ apiVersion: storage.k8s.io/v1
+  11   │ kind: StorageClass
+  12   │ metadata:
+  13   │   name: wazuh-storage
+  14   │
+  15   │ # Microk8s is our standard for local development
+  16 ~ │ # provisioner: microk8s.io/hostpath
+  17   │
+  18   │ # In case you're running Minikube you can comment the line above and use this one
+  19 ~ │ provisioner: k8s.io/minikube-hostpath
+  20   │
+  21   │ # If you're using a different provider you can list storage classes
+  22   │ # with: "kubectl get sc" and look for the column "Provisioner"
+```
+
+Before going futher, you might need to also increase the `wazuh-manager` memory limit (See the line https://github.com/wazuh/wazuh-kubernetes/blob/54ec7524973d5d809a434a1a6849dc0b26a21945/wazuh/wazuh_managers/wazuh-master-sts.yaml#L48).
+
+Double it to `1024Mi` for example.
+
+Then start the deployment by running the command:
+
+```
+kubectl apply -k wazuh/envs/local-env/
+```
 
 These services are called `wazuh-indexer`, `wazuh-dashboard`, `wazuh-cluster`, `wazuh` and `wazuh-workers`.
 Wazuh-indexer service handles the communication between indexer nodes which are used by the API to read and write alerts, dashboard contains the frontend side of Wazuh, wazuh service handles the authentication of wazuh agents and wazuh-workers is the reporting service of this tool.
 
+If you want to wipe the deployment, run `kubectl delete -k wazuh/envs/local-env/`.
+
 Example of successful deployment of pods:
 
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/1c656c9d-b29c-473f-a605-079c9fc95b66)
-
+```bash
+sh-5.2$ kubectl get pods -n wazuh
+NAME                              READY   STATUS    RESTARTS        AGE
+wazuh-dashboard-bdd9dc464-cxq2g   1/1     Running   0               5m35s
+wazuh-indexer-0                   1/1     Running   0               5m35s
+wazuh-manager-master-0            1/1     Running   1 (2m31s ago)   5m35s
+wazuh-manager-worker-0            1/1     Running   2 (49s ago)     5m35s
+sh-5.2$
+```
 
 Example of successful deployment of services:
 
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/756253e6-f681-4dec-adab-67ab2373a811)
 
+```bash
+sh-5.2$ kubectl get svc -n wazuh
+NAME            TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                          AGE
+dashboard       LoadBalancer   10.98.219.114    <pending>     443:32620/TCP                    6m15s
+indexer         LoadBalancer   10.109.14.19     <pending>     9200:30560/TCP                   6m15s
+wazuh           LoadBalancer   10.111.31.63     <pending>     1515:30302/TCP,55000:30899/TCP   6m15s
+wazuh-cluster   ClusterIP      None             <none>        1516/TCP                         6m14s
+wazuh-indexer   ClusterIP      None             <none>        9300/TCP                         6m14s
+wazuh-workers   LoadBalancer   10.107.178.148   <pending>     1514:31493/TCP                   6m14s
+```
 
 Once you have successfully launched the Kubernetes services and they are in READY and Running states (this can take a bit), you need to open certain ports in the cluster to access the Wazuh dashboard in the host machine and to create agents. The important ports are the following:
 
@@ -302,13 +360,28 @@ Once you have successfully launched the Kubernetes services and they are in READ
 * 1514 (TCP/UDP) The agent connecion service
 * 1515 (UDP) The agent enrollment service
 
-You can do this using the `kubectl port-forward` command or the `minikube service` command. (Keep in mind Wazuh resources are in the Wazuh namespace)
+You can do this using the `kubectl port-forward` command or the `minikube service` command. (Keep in mind Wazuh resources are in the Wazuh namespace.)
 >[!Note]
 >Keep in mind to what port the services are port-forwarded to on the host machine, you will need this port for later when configuring the agent to connect to the Wazuh server, you will need to edit the ossec.conf to use the port assigned by minikube. If you use kubectl you can define the ports to their respective ones (1514:1514, 1515:1515 ... etc), but minikube service will automatically assign some random ports which will need to be kept in mind when connecting the agent.
 
 Example of Minikube service output:
 
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/ce632966-88ed-4894-9ce3-2ac72c8e90fc)
+```bash
+sh-5.2$ minikube service list -n wazuh
+|-----------|---------------|--------------------|---------------------------|
+| NAMESPACE |     NAME      |    TARGET PORT     |            URL            |
+|-----------|---------------|--------------------|---------------------------|
+| wazuh     | dashboard     | dashboard/443      | http://192.168.49.2:32620 |
+| wazuh     | indexer       | indexer-rest/9200  | http://192.168.49.2:30560 |
+| wazuh     | wazuh         | registration/1515  | http://192.168.49.2:30302 |
+|           |               | api/55000          | http://192.168.49.2:30899 |
+| wazuh     | wazuh-cluster | No node port       |                           |
+| wazuh     | wazuh-indexer | No node port       |                           |
+| wazuh     | wazuh-workers | agents-events/1514 | http://192.168.49.2:31493 |
+|-----------|---------------|--------------------|---------------------------|
+```
+
+Remember to change `http` to `https` when accessing dashboard, for example.
 
 
 Once you have opened the ports and gained access to the Wazuh dashboard at `https://<wazuh_server_ip>:<port>` (for example https://localhost:8443) you can log in to the admin with the following credentials: `admin:SecretPassword`, afterward, if you navigate to Modules/Security Events, you should see the following (without data):
@@ -318,10 +391,7 @@ Once you have opened the ports and gained access to the Wazuh dashboard at `http
 
 Your task now is to install and configure a Wazuh agent to monitor your host machine to audit logs from Docker and analyze the data that is sent to the Wazuh server. You can deploy agents easily by navigating to the Agents page in the Wazuh dashboard and following the instructions to deploy a new agent with the packages related to your system.
 
-Example of Wazuh agent deployment in the dashboard:
-
-![image](https://github.com/ouspg/CloudAndNetworkSecurity/assets/55877405/f536191f-18ed-4703-bb74-57ecd5efdfea)
-
+See the general documentation of this version (v4.11) which is available in [here.](https://documentation.wazuh.com/4.11/installation-guide/wazuh-agent/index.html)
 
 You can find out more information about configuring the agent and Wazuh server to audit Docker containers from:
 https://documentation.wazuh.com/current/user-manual/capabilities/container-security/index.html
