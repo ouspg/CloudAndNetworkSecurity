@@ -1,7 +1,7 @@
 Cloud and Network Security Lab 6: Digital Forensics (and Incident Response)
 ====
 
-Responsible person/main contact: Niklas Saari
+Responsible person/main contact: Asad Hasan, Juuso Herajärvi
 
 
 ## Preliminary tasks & prerequisites
