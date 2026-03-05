@@ -1,7 +1,8 @@
 Cloud and Network Security Lab 1: Network Security
 ====
 
-Responsible person/main contact: Antti Heitto
+Responsible person/main contact: Asad Hasan, Juuso Herajärvi
+
 
 >[!CAUTION]
 >This platform demands a lot of resources from your host machine! If you have an older machine with 8GB RAM or less this platform will most likely not have enough resources to run optimally. You have the following options in this case: 1. Work as a group 2. Come to laboratory session & use the university's computers 3. Deploy something more lightweight instead of Kali.
