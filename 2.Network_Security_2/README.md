@@ -1,7 +1,7 @@
 Cloud and Network Security Lab 2: Network Security 2
 ====
 
-Responsible person/main contact: Asad Hasan & Lauri Suutari
+Responsible person/main contact: Asad Hasan, Juuso Herajärvi
 
 ## Preliminary tasks & prerequisites
 
