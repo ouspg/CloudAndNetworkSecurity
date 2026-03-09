@@ -73,7 +73,7 @@ The provided VM's within terraform has all the required tools preinstalled.  Con
 
 ## NEW NETWORK SETUP FOR THE SECOND LAB
 
-For enhanced security purposes, the network setup for second lab has been upgraded and web-server has been exposed outside to the WAN. Network admins have moved the HTTP server to a new sub-network behind the pfsense firewall. This new sub-network is called [DMZ](https://en.wikipedia.org/wiki/Demilitarized_zone) and it only hosts the HTTP server. Original LAN network remains the same with kali linux. Here are the features of new network as described by network admins:
+For enhanced security purposes, the network setup for second lab has been upgraded and web-server has been exposed outside to the WAN. Network admins have moved the HTTP server to a new sub-network behind the pfsense firewall. This new sub-network is called [DMZ](https://en.wikipedia.org/wiki/DMZ_(computing)) and it only hosts the HTTP server. Original LAN network remains the same with kali linux. Here are the features of new network as described by network admins:
 
 ```
 WAN Network Specifications (vtnet0):
@@ -136,7 +136,7 @@ For simplicity, follow the three steps guide below:
 **1) Fetch the new_network setup branch**
 
 
-You can fetch the lab2 branch and checkout to it in the same repository.
+You can fetch the lab2 branch from the https://github.com/lsuutari19/network_sec_platform repository and checkout to it.
 ```
 git fetch origin lab2
 git checkout lab2
