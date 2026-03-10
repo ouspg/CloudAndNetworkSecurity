@@ -2,7 +2,6 @@
 
 This installation instruction is designed for arch linux operating system.
 
-VM Passwords
 
 ## Install and setup libvirtd and necessary packages for UEFI virtualization
 ```
