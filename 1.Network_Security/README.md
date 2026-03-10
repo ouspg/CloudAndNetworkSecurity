@@ -15,7 +15,7 @@ Tips for option 3:
 ## Preliminary tasks & prerequisites
 
 * Create a GitHub account if you don't already have one
-* Create your answer repository from the [provided link]([https://classroom.github.com/a/89oK6jY_](https://moodle.oulu.fi/course/view.php?id=18795)), **as instructed [here](https://github.com/ouspg/CloudAndNetworkSecurity/blob/main/README.md#getting-started)**
+* Create your answer repository from the [provided link](https://moodle.oulu.fi/course/view.php?id=18795) on moodle, **as instructed [here](https://github.com/ouspg/CloudAndNetworkSecurity/blob/main/README.md#getting-started)**
 * This exercise can be completed on a linux system or a windows linux sub-system
 * You can also use the course's Arch Linux virtual machine
     * Instructions are available [here](https://ouspg.org/resources/laboratories/). You will find the download link from the Moodle workspace.
