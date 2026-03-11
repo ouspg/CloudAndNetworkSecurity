@@ -26,6 +26,7 @@ sudo virsh pool-destroy default_pool
 sudo virsh pool-undefine default_pool
 
 #This removes the pool completely
+```
 
 ### LISTING RESOURCES ####
 
