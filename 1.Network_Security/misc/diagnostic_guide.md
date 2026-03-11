@@ -11,7 +11,7 @@ sudo virsh pool-list
 #To list all existing pools
 sudo virsh pool-list --all    #this gives you the pool names
 
-#To check existing pools path
+#To inspect existing pools and their path
 sudo virsh pool-dumpxml default_pool    #notice default_pool is the pool name. It can be any other pool as well
 ```
 
