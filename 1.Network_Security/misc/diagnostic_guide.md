@@ -40,6 +40,9 @@ sudo virsh vol-list --pool <pool-name>
 
 #To list the networks
 sudo virsh net-list
+
+#To list all the networks deployed by libvirt
+sudo virsh net-list --all
 ```
 ### DELETING RESOURCE INSTANCES
 
