@@ -153,10 +153,10 @@ terraform --version
 sudo apt-get install virt-install virt-viewer
 sudo apt-get install virt-manager
 
-#if installing on a WSL (windows subsystem for linux) use:
+#if installing on a WSL (windows subsystem for linux) use this single command:
 sudo apt install virtinst virt-viewer
 
-#verify installationw with
+#verify installation with
 virt-manager
 ```
 
