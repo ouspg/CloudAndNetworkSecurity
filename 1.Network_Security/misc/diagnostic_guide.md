@@ -2,14 +2,22 @@ Virsh command is important to play with Virtual manager resources. Always use it
 
 When deleting volumes, use correct path relevant to your volumes.
 
-### LISTING RESOURCES ####
+### INSPECTING POOLS ###
 
 ```
 #To list the default resource pool
 sudo virsh pool-list
 
 #To list all existing pools
-sudo virsh pool-list --all
+sudo virsh pool-list --all    #this gives you the pool names
+
+#To check existing pools path
+sudo virsh pool-dumpxml default_pool    #notice default_pool is the pool name. It can be any other pool as well
+```
+
+### LISTING RESOURCES ####
+
+```
 
 #To list all domains
 sudo virsh list --all
