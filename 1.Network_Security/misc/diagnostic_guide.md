@@ -8,6 +8,9 @@ When deleting volumes, use correct path relevant to your volumes.
 #To list the default resource pool
 sudo virsh pool-list
 
+#To list all existing pools
+sudo virsh pool-list --all
+
 #To list all domains
 sudo virsh list --all
 
