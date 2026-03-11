@@ -1,6 +1,5 @@
-Libvirt acts as the control center that handles all the virtual machines and networks spawned. It is operated by the ```virsh``` command.
-
-Thus, virsh command is important to play with Virtual manager resources. Always use it with root privilages.
+Libvirt acts as the control center that handles all the virtual machines and networks spawned. It is operated by the ```virsh``` command. Whereas, QEMU is the underlying virtualization engine used in this lab setup.
+Thus, ```virsh``` command is important to play with the Virtual manager resources. Always use it with root privilages.
 
 When deleting volumes, use correct path relevant to your volumes.
 
