@@ -152,6 +152,12 @@ terraform --version
 ```
 sudo apt-get install virt-install virt-viewer
 sudo apt-get install virt-manager
+
+#if installing on a WSL (windows subsystem for linux) use:
+sudo apt install virtinst virt-viewer
+
+#verify installationw with
+virt-manager
 ```
 
 **Install qemu and verify the installation**
