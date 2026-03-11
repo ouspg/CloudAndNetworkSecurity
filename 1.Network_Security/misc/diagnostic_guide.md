@@ -15,6 +15,18 @@ sudo virsh pool-list --all    #this gives you the pool names
 sudo virsh pool-dumpxml default_pool    #notice default_pool is the pool name. It can be any other pool as well
 ```
 
+### DESTROYING POOLS ###
+```
+#In-case you messed up your setup and want to do a fresh start, destroying pools can come in handy. It is a two-step process.
+
+#Step 1: To remove a pool in lbvirt you need to destroy it first
+sudo virsh pool-destroy default_pool
+
+#Step 2: You need to undefine it as well
+sudo virsh pool-undefine default_pool
+
+#This removes the pool completely
+
 ### LISTING RESOURCES ####
 
 ```
