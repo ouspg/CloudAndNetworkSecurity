@@ -144,7 +144,7 @@ Note: the ubuntu-domain takes a minute to start due to the nature of the cloud i
   virsh net-autostart internal_network && virsh net-autostart external_network && virsh net-autostart demilitarized_zone
 ```
 
-- Running into errors? Read the troubleshoot section [here](https://github.com/lsuutari19/network_sec_platform?tab=readme-ov-file#troubleshooting)
+- Running into errors? Read the troubleshoot section [here](https://github.com/ouspg/network_sec_platform?tab=readme-ov-file#troubleshooting)
 
 - Virsh [commands](https://download.libvirt.org/virshcmdref/html-single/) are useful for troubleshooting as well, particularly the net-, pool- & volume (list, destroy, undefine)
 
