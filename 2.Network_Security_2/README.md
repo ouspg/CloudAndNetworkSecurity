@@ -207,8 +207,8 @@ Using pfSense web-GUI package manager, install [snort](https://www.snort.org/)
 Launch a DDoS attack on the server hosted in DMZ from kali (LAN) and study Snort log entries.
 
 Use following two tools turn-by-turn to perform a DDoS attack:
-1. [DDoS-Attacker](https://github.com/CruelDev69/DDoS-Attacker)
-2. [Fuzz Faster U Fool](https://github.com/ffuf/ffuf)
+1. [DDoS-Attacker](https://github.com/CruelDev69/DDoS-Attacker) (not installed on kali)
+2. [Fuzz Faster U Fool](https://github.com/ffuf/ffuf) (pre-installed on kali)
 
 **Provide command used to launch DDoS attack using DDoS-Attacker**
 
