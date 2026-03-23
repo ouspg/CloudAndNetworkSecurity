@@ -216,7 +216,7 @@ Use following two tools turn-by-turn to perform a DDoS attack:
 
 **Repeat the attack with FFUF to explicitly trigger snort alerts. What do you notice in snort log entries now?**
 
-**Add FFUF command and screenshot of successfully generated snort alerts**
+**Add FFUF command and screenshot of successfully logged snort alerts**
 
 ### C) Firewall state table inspection
 
