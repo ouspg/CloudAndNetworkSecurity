@@ -17,6 +17,7 @@ Virtual cable tick connected.
 
 <img width="752" height="334" alt="image" src="https://github.com/user-attachments/assets/65f49359-9077-408d-bfe2-c946e2112ac3" />
 
+Start your arch VM and ensure internet connectivity. This is very important!
 
 ## 3.
 
@@ -48,7 +49,7 @@ Go to your arch linux
 
 
 The issue in kali internet connectivity is not in the WAN and LAN network setup via pfsense. The traffic is correctly routed between the WAN and LAN
-which is virbr3 adapter on arch showing the network of 198.168.122.0/24. However, the arch linux is accesing the internet on the adapter enp0s3 shown as the default route. We have have to establish the connectivity between enp0s3 and virbr3 to restore the internet access on kali linux.
+which is virbr3 adapter on arch showing the network of 198.168.122.0/24. However, the arch linux is accesing the internet on the adapter enp0s3 shown as the default route. We have to establish the connectivity between enp0s3 and virbr3 to restore the internet access on kali linux.
 
 Goal: To make pfSense WAN use Arch VM as the gateway for external traffic. To do this we can perform IP forwarding on the arch linux.
 
