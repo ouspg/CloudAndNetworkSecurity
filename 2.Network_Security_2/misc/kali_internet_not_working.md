@@ -38,22 +38,19 @@ solution: add a tablet input option in virt-manager to the machine by clicking t
 ```
 <img width="425" height="401" alt="image" src="https://github.com/user-attachments/assets/de31ac45-bb44-44d3-89ea-8abae4e27e99" />
 
-```
+
 ## 4.
 Go to your arch linux
 1. List all the routes to find networks on your arch:
 `ip route`
-```
-default via 172.20.10.1 dev enp0s3 proto dhcp src 172.20.10.3 metric 100
-172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
-172.20.10.0/28 dev enp0s3 proto kernel scope link src 172.20.10.3 metric 100
-198.168.122.0/24 dev virbr3 proto kernel scope link src 198.168.122.
-```
-The issue in kali internet connectivity is not in the WAN and LAN network setup via pfsense. The traffic is correctly routed between the WAN and LAN
-which is virbr3 adapter on arch showing the network of 198.168.122.0/24. However, the arch linux is accesing the internet on the adapter enp0s3 shown as the
-default route. We have have to establish the connectivity between enp0s3 and virbr3 to restore the internet access on kali linux.
 
-pfSense WAN must use Arch VM as gateway for external traffic. To do this we can perform IP forwarding on the arch linux.
+<img width="768" height="108" alt="image" src="https://github.com/user-attachments/assets/77d154e8-cf13-495b-b828-d93ede67438b" />
+
+
+The issue in kali internet connectivity is not in the WAN and LAN network setup via pfsense. The traffic is correctly routed between the WAN and LAN
+which is virbr3 adapter on arch showing the network of 198.168.122.0/24. However, the arch linux is accesing the internet on the adapter enp0s3 shown as the default route. We have have to establish the connectivity between enp0s3 and virbr3 to restore the internet access on kali linux.
+
+Goal: To make pfSense WAN use Arch VM as the gateway for external traffic. To do this we can perform IP forwarding on the arch linux.
 
 Check if ip forwarding is enabled (output=1 means enabled)
 `cat /proc/sys/net/ipv4/ip_forward`
@@ -67,13 +64,20 @@ sudo iptables -t nat -A POSTROUTING -s 198.168.122.0/24 -o enp0s3 -j MASQUERADE
 sudo iptables -A FORWARD -i enp0s3 -o virbr3 -m state --state RELATED,ESTABLISHED -j ACCEPT
 sudo iptables -A FORWARD -i virbr3 -o enp0s3 -j ACCEPT
 ```
+<img width="1400" height="115" alt="image" src="https://github.com/user-attachments/assets/519ab27f-ca64-46c5-a744-e103e4148382" />
 
-Use pfsense Diagnostic menu's ping option to test internet availability. Ping 8.8.8.8 and  google.com. If it succeeds do the following next:
+## 5.
+Confirm internet access to the pfsense.
 
+Use pfsense Diagnostic menu's ping option to test internet availability. Ping 8.8.8.8 and  google.com. If it succeeds follow the next step:
+<img width="570" height="614" alt="image" src="https://github.com/user-attachments/assets/7fa0bb92-dd87-4c23-9565-bd18c36992b8" />
+
+## 6.
 Go to kali:
 `sudo nano /etc/resolv.conf`
 
-Add DNS server for name resolution 
-`nameserver 8.8.8.'
+Add following at the end and save the file
+`nameserver 8.8.8.8'
+<img width="663" height="519" alt="image" src="https://github.com/user-attachments/assets/3f9377b1-52ed-4b78-8ac0-cb122202176d" />
 
-Now ping 8.8.8.8 from kali and your internet access would be restored.
+Now ping 8.8.8.8 from kali and your internet access should be restored.
