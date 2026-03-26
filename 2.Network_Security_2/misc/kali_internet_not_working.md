@@ -78,7 +78,7 @@ Go to kali:
 `sudo nano /etc/resolv.conf`
 
 Add following at the end and save the file
-`nameserver 8.8.8.8'
+`nameserver 8.8.8.8`
 <img width="663" height="519" alt="image" src="https://github.com/user-attachments/assets/3f9377b1-52ed-4b78-8ac0-cb122202176d" />
 
 Now ping 8.8.8.8 from kali and your internet access should be restored.
