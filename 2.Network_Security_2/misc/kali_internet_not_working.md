@@ -1,7 +1,17 @@
 ### If you used nested virtualization and the internet on the kali linux is not working, follow this guide
 
-Power off your virtual arch and go-to network settings and choose Bridged Adapter. Refresh and assign it a new MAC address. Promisciuos mode allow all. 
-Virtual cable connected.
+Destroy everything and remove terraform tf state files 
+```
+terraform destroy
+rm terraform.tfstate
+rm terraform.tfstate.backup
+```
+
+
+Power off your virtual arch and go-to network settings and choose Bridged Adapter. Refresh and assign it a new MAC address. Promisciuos mode tick allow all. 
+Virtual cable tick connected.
+<img width="752" height="334" alt="image" src="https://github.com/user-attachments/assets/65f49359-9077-408d-bfe2-c946e2112ac3" />
+
 
 1. Make sure you have access to webGUI and you can access the webserver from your virtual arch at https://198.168.122.216
 2. Ensure correct IP assignment to the kali linux and it can ping the WAN IP + pfsense.
