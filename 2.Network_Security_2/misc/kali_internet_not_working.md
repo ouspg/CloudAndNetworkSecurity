@@ -32,7 +32,12 @@ Ensure correct IP assignment and access
    <img width="495" height="316" alt="image" src="https://github.com/user-attachments/assets/68d67521-0366-4f0a-999a-073f36dfcc82" />
 
 2. Ensure correct IP assignment to the kali linux and that it can ping the WAN IP + pfsense.
+3. Problem mouse not working inside kali linux?
+```
+solution: add a tablet input option in virt-manager to the machine by clicking the blue info button under the "File" option and choose "Add Hardware" -> "Input" -> "Type: EvTouch USB Graphics Tablet" -> "Finish"
+<img width="425" height="401" alt="image" src="https://github.com/user-attachments/assets/de31ac45-bb44-44d3-89ea-8abae4e27e99" />
 
+```
 ## 4.
 Go to your arch linux
 1. List all the routes to find networks on your arch:
