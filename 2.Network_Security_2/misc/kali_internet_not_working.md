@@ -35,6 +35,7 @@ Ensure correct IP assignment and access
 3. Problem mouse not working inside kali linux?
 ```
 solution: add a tablet input option in virt-manager to the machine by clicking the blue info button under the "File" option and choose "Add Hardware" -> "Input" -> "Type: EvTouch USB Graphics Tablet" -> "Finish"
+```
 <img width="425" height="401" alt="image" src="https://github.com/user-attachments/assets/de31ac45-bb44-44d3-89ea-8abae4e27e99" />
 
 ```
