@@ -19,7 +19,7 @@ Virtual cable tick connected.
 
 Start your arch VM and ensure internet connectivity. This is very important!
 
-> ⚠️ **Warning**
+> [!WARNING]
 > Internet may not work in bridged mode on restricted networks (e.g., university Wi-Fi) due to policies like client isolation, MAC filtering, or blocked promiscuous traffic.
 > If connectivity fails, use a personal hotspot, home Wi-Fi, or a wired Ethernet connection.
 
