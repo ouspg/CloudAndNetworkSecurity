@@ -163,7 +163,6 @@ You aren't expected to create any code in this task, instead this will focus on 
 You are allowed to use AI in this task, but you do need to back up the information you provide with relevant sources. Create a list of links to the sources you used to complete this task and **cite them properly** as if this was a small scientific article.
 
 You are free to use any resources found online,
-but the previously mentioned lecture slides provide a good starting point and links to good resources.
 
 **Ensure that the answers you provide are under 200 words per section.**
 
