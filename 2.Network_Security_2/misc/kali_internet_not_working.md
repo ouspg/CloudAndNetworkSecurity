@@ -45,6 +45,7 @@ solution: add a tablet input option in virt-manager to the machine by clicking t
 <img width="425" height="401" alt="image" src="https://github.com/user-attachments/assets/de31ac45-bb44-44d3-89ea-8abae4e27e99" />
 
 
+
 ## 4.
 Go to your arch linux
 1. List all the routes to find networks on your arch:
@@ -71,6 +72,10 @@ sudo iptables -A FORWARD -i enp0s3 -o virbr3 -m state --state RELATED,ESTABLISHE
 sudo iptables -A FORWARD -i virbr3 -o enp0s3 -j ACCEPT
 ```
 <img width="1400" height="115" alt="image" src="https://github.com/user-attachments/assets/519ab27f-ca64-46c5-a744-e103e4148382" />
+
+> [!CAUTION]
+> Network interface names (e.g., enp0s3, virbr3) may change after a system reboot or when running terraform apply. This can cause previously configured NAT rules to stop working.
+> Always verify the current interface names using `ip route` and update NAT (MASQUERADE) command accordingly.
 
 ## 5.
 Confirm internet access to the pfsense.
