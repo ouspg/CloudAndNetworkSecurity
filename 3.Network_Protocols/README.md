@@ -588,7 +588,7 @@ To get full credit for this task you need to test **installing atleast 5 new app
 
 ### WLAN certificate Validation (1p)
 
-For this task, you need a Linux device that act has Wi-Fi hotspot. This can be either laptop with native Linux installation or Raspberry Pi.
+For this task, you need a Linux device that act as Wi-Fi hotspot. This can be either laptop with native Linux installation or Raspberry Pi.
 
 Alternatively, you can borrow a Raspberry Pi, and a SD card that has all the configurations set up to work as a Wi-Fi hotspot. The following video demonstrates this task:
 * [Exploiting insecure Certificate Validation in iOS](https://www.youtube.com/watch?v=bWidokJKuUc)
