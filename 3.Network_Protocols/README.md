@@ -44,7 +44,7 @@ Task 3 | 1 | Fuzz testing exising network protocol (TLS library, Wireshark) (alt
 Task 4 | 2 | TLS certificate validation | certmitm
 
 
-Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 10 points from the whole exercise (Combination of Task 1 and Task 2).
+Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 15 points from the whole exercise (Combination of Task 1 and Task 2).
 <!-- </details> -->
 
 ---
