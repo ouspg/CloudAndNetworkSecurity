@@ -54,7 +54,7 @@ DNS is a widely used term nowdays. In this task, you'll study network traffic lo
 
 Two traffic log files are provided in different format. Both files contain the same network traffic but one of them is a _.pcap_ and the other is _.txt_. The only difference between these two files is that _.pcap_ requires a software that supports _.pcap_ for analysis where _.txt_ file can be analyzed used command-line or any text editor. 
 
-Log files can be download from [misc folder](https://github.com/ouspg/CloudAndNetworkSecurity/tree/main/7.%20Security%20of%20Internet%3A%20The%20Big%20Picture/misc)
+Log files can be download from [misc folder](7.Security_of_Internet:The_Big_Picture/misc)
 
 First answer the following questions:
 
