@@ -13,3 +13,21 @@ pfSense | 1 gb | [pfsense download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24ce
 
 Extract the file with `tar -xf Xubuntu-qcow2.tar.xz `
 
+Clone the repository with:
+```
+git clone https://github.com/ouspg/network_sec_platform.git
+```
+
+
+
+Download all the relevant images & place them in the directory network_sec_platform/images
+
+Rename the `Xubuntu.qcow2` to `kali-linux-2023.4-qemu-amd64.qcow2`
+
+Login credentials for VMs in following format: username:password
+
+Xubuntu linux: osboxes:xubuntu
+
+Ubuntu server: ubuntu:linux
+
+You are all set to deply the network with terraform now!
