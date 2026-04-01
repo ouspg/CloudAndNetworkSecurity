@@ -7,7 +7,7 @@ Download the custom created lightweight Xubuntu VM from [here](https://a3s.fi/sw
 
 Image name|Image size|Download Link
 :-:|:-:|:-:
-Xubuntu linux | 4.8 gb | [Xubuntu download](https://a3s.fi/swift/v1/CloudAndNetworkSecurity/Xubuntu.qcow2.tar.gz)
+Xubuntu linux | 4.5 gb | [Xubuntu download](https://a3s.fi/swift/v1/CloudAndNetworkSecurity/Xubuntu.qcow2.tar.gz)
 Ubuntu server | 1.8 gb | [server download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/ubuntu_server.qcow2)
 pfSense | 1 gb | [pfsense download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/router_pfsense.qcow2)
 
