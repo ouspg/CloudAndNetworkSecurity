@@ -31,4 +31,4 @@ Image|Username:Password
 Xubuntu linux | osboxes:xubuntu
 Ubuntu server | ubuntu:linux
 
-You are all set to deply the network with terraform now!
+You are all set to deploy the network with terraform now using this lightweight image. It has the required tools installed for lab 1!
