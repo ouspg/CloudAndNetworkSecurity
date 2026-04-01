@@ -13,7 +13,7 @@ pfSense | 1 gb | [pfsense download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24ce
 
 Extract the file with `tar -xvzf Xubuntu.qcow2.tar.gz `
 
-Clone the repository with:
+Clone the repository if you haven't already:
 ```
 git clone https://github.com/ouspg/network_sec_platform.git
 ```
