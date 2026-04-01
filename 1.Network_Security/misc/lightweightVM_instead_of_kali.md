@@ -11,3 +11,5 @@ Xubuntu linux | 4.7 gb | [Xubuntu download](https://a3s.fi/swift/v1/CloudAndNetw
 Ubuntu server | 1.8 gb | [server download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/ubuntu_server.qcow2)
 pfSense | 1 gb | [pfsense download](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/router_pfsense.qcow2)
 
+Extract the file with `tar -xf Xubuntu-qcow2.tar.xz `
+
