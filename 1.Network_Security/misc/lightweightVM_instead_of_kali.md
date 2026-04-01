@@ -26,8 +26,9 @@ Rename the `Xubuntu.qcow2` to `kali-linux-2023.4-qemu-amd64.qcow2`
 
 Login credentials for VMs in following format: username:password
 
-Xubuntu linux: osboxes:xubuntu
-
-Ubuntu server: ubuntu:linux
+Image|Username:Password
+:-:|:-:|
+Xubuntu linux | osboxes:xubuntu
+Ubuntu server | ubuntu:linux
 
 You are all set to deply the network with terraform now!
