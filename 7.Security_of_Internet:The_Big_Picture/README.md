@@ -122,7 +122,6 @@ sudo ruby ./dnscat2.rb --dns port=53531
 
 Refer to following guides for help with the tool itself:
 * DNScat2 [comprehensive guide](https://www.hackingarticles.in/dnscat2-application-layer-cc/)
-* DNS tunneling with DNScat2 [tutorial](https://www.whitelist1.com/2017/10/dns-tunneling-with-dnscat2.html)
 
 ### B) Establish a reverse shell session with kali linux. Carry out reconnaissance mission
 
