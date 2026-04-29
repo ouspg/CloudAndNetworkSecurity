@@ -15,7 +15,6 @@ Make yourself familiar with the following topics:
 * List of [DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 * DNScat2 official reposiotry on [Github](https://github.com/iagox86/dnscat2)
 * DNScat2 [comprehensive guide](https://www.hackingarticles.in/dnscat2-application-layer-cc/)
-* DNS tunneling with DNScat2 [tutorial](https://www.whitelist1.com/2017/10/dns-tunneling-with-dnscat2.html)
 * BGP in a nutshell [guide](https://blog.j2sw.com/networking/border-gateway-protocol-bgp-in-a-nutshell/)
 * BGP simulator bgpy_pkg on [Github](https://github.com/jfuruness/bgpy_pkg)
 
