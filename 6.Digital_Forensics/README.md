@@ -154,7 +154,7 @@ The apartment is evacuated in a hurry and human casualties are avoided, but Mall
 
 Investigators know that there was so much critical information gone with Mallory's computer and any hope they have left lies in a single memory dump of Mallory's machine and an ordinary USB memory stick.
 
-### Inspecting memory with Volatility 3
+### Inspecting memory with Volatility (either 2 or 3)
 
 > *Interrogator: You just would not mind telling where have you hidden your delivery caches?*
 >
