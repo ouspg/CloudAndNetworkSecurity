@@ -17,6 +17,7 @@ Get familiar with the documentation of the following tools / useful background i
 
 * [Digital forensics on Wikipedia](https://en.wikipedia.org/wiki/Digital_forensics)
 * [Volatility 3 documentation](https://volatility3.readthedocs.io/en/latest/)
+* [Volatility 2 and 3](https://medium.com/@0x0Aleem/practical-memory-forensics-with-volatility-2-3-windows-and-linux-cheat-sheet-ef5eee325863)
 
 ### For the second task
 
