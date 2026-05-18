@@ -62,7 +62,7 @@ Task| Points | Description | Good-to-have skills
 Bonus|1| Data recovery and steganography | Data recovery and steganography investigation | Basic understanding of disk storage systems and steganography
 
 
-Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 6 points from the whole exercise.
+Total points accumulated by doing the exercises reflect the overall grade. You can acquire up to 5 points from the whole exercise.
 <!-- </details> -->
 
 ---
